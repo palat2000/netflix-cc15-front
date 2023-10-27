@@ -3,24 +3,29 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "netflix-sans-bold";
+    font-family: "netflix-sans";
     src: url("./fonts/NetflixSans-Bold.otf");
+    font-weight: 600;
 }
 
 @font-face {
-    font-family: "netflix-sans-light";
+    font-family: "netflix-sans";
     src: url("./fonts/NetflixSans-Light.otf");
+    font-weight: 300;
+
 }
 @font-face {
-    font-family: "netflix-sans-regular";
+    font-family: "netflix-sans";
     src: url("./fonts/NetflixSans-Regular.otf");
+    font-weight: 400;
 }
 @font-face {
-    font-family: "netflix-sans-medium";
-    src: url("./fonts/NetflixSans-Medium.otf")
+    font-family: "netflix-sans";
+    src: url("./fonts/NetflixSans-Medium.otf");
+    font-weight: 500;
 }
 *{
-    font-family: "netflix-sans-regular", "netflix-sans-medium", "netflix-sans-light", "netflix-sans-bold";
+    font-family: "netflix-sans";
 }
 
 
