@@ -1,5 +1,9 @@
-function RegisterPage() {
-  return <div>RegisterPage</div>;
-}
+import RegisterBody from "../features/auth/register/RegisterBody";
 
-export default RegisterPage;
+export default function RegisterPage() {
+  return (
+    <>
+      <RegisterBody />
+    </>
+  );
+}
