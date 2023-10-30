@@ -5,7 +5,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
       <div>
-        <div className="flex justify-between bg-gray-900 h-5 items-center p-10">
+        <div className="flex justify-between bg-black h-5 items-center p-10">
       <div className="flex items-center gap-5">
         <BiMenu
           onClick={() => setIsOpen(!isOpen)}
@@ -31,7 +31,7 @@ function Header() {
         ></input>
  
     </div>
-   {isOpen && <div className="p-2 bg-gray-900 w-32 absolute translate-y-0 ">
+   {isOpen && <div className="p-2 bg-gray-900 w-32 absolute translate-y-0 md:hidden">
         <div>
           <div className="flex items-center gap-1">
             <img
