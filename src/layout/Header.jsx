@@ -1,87 +1,67 @@
-import { TiPencil } from "react-icons/ti";
-import { FaPlusCircle } from "react-icons/fa";
+import { BiMenu } from "react-icons/bi";
+import { useState } from "react";
+
 function Header() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex flex-col bg-black items-center h-full p-10">
-      <div className="text-white">Manage Profiles:</div>
-
-      <div className="flex flex-row flex-wrap ">
-        <div className="cursor-pointer  flex flex-col items-center p-1">
-          <TiPencil className="absoluteb translate-y-12 z-20 text-white text-lg" />
-          <img
-            className="h-20 rounded-sm relative opacity-70 hover:border"
-            src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 text-xs text-gray-500 hover:text-white">
-            User name{" "}
-          </div>
-        </div>
-        <div className="cursor-pointer  flex flex-col items-center p-1">
-          <TiPencil className="absoluteb translate-y-12 z-20 text-white text-lg" />
-          <img
-            className="h-20 rounded-sm relative opacity-70 hover:border"
-            src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 text-xs text-gray-500 hover:text-white">
-            User name{" "}
-          </div>
-        </div>
-        <div className="cursor-pointer  flex flex-col items-center p-1">
-          <TiPencil className="absoluteb translate-y-12 z-20 text-white text-lg" />
-          <img
-            className="h-20 rounded-sm relative opacity-70 hover:border"
-            src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 text-xs text-gray-500 hover:text-white">
-            User name{" "}
-          </div>
-        </div>
-        <div className="cursor-pointer  flex flex-col items-center p-1">
-          <TiPencil className="absoluteb translate-y-12 z-20 text-white text-lg" />
-          <img
-            className="h-20 rounded-sm relative opacity-70 hover:border"
-            src="https://i.pinimg.com/originals/b0/90/cb/b090cba82229ba7a9f4df22ec8f3ea34.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 text-xs text-gray-500 hover:text-white">
-            Children{" "}
-          </div>
-        </div>
-        <div className="cursor-pointer  flex flex-col items-center p-1">
-          <FaPlusCircle className="absolute translate-y-10 z-20 text-gray-500 hover:text-white text-4xl" />
-          <img
-            className=" h-20 rounded-sm relative hover:border opacity-0 border-white"
-            src="https://i.pinimg.com/originals/b0/90/cb/b090cba82229ba7a9f4df22ec8f3ea34.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 translate-y-4  text-xs text-gray-500 hover:text-white">
-            Add Profiles{" "}
-          </div>
-        </div>
-        
-
-
-
-
-
-
-
-
-      </div>
-
-      <div></div>
-      <div></div>
-      <div></div>
+      <div>
+        <div className="flex justify-between bg-gray-900 h-5 items-center p-10">
+      <div className="flex items-center gap-5">
+        <BiMenu
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-white text-4xl cursor-pointer relative md:hidden "
+        />
+        <img
+          className="h-12 cursor-pointer "
+          src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
+        ></img>
+    <div className="hidden md:flex gap-5">
+    <div className="text-white hover:text-gray-400 cursor-pointer">Home</div>
+            <div className="text-white hover:text-gray-400 cursor-pointer">TV Shows</div>
+            <div className="text-white hover:text-gray-400 cursor-pointer">Movies</div>
+            <div className="text-white hover:text-gray-400 cursor-pointer">My List</div>
+    
     </div>
+      </div>
+    
+
+        <input
+          placeholder="Search"
+          className=" w-36 border text-gray-500 border-white opacity-50 bg-gray-900 p-1 focus:border-yellow-500"
+        ></input>
+ 
+    </div>
+   {isOpen && <div className="p-2 bg-gray-900 w-32 absolute translate-y-0 ">
+        <div>
+          <div className="flex items-center gap-1">
+            <img
+              className="h-6 "
+              src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png"
+              alt=""
+            />
+            <div>
+              <div className="text-xs text-gray-400">Kridtue01</div>
+              <div className="text-xs text-gray-400">Swift Profile</div>
+            </div>
+          </div>
+          <div className="text-xs text-gray-400">Account</div>
+          <div className="text-xs text-gray-400">Help Center</div>
+          <div className="text-xs text-gray-400">Sign Out of Netflix</div>
+          <br />
+        </div>
+        <div className="text-xs text-gray-400">Home</div>
+        <div className="text-xs text-gray-400">My List</div>
+        <div className="text-xs text-gray-400">Kids</div>
+        <div className="text-xs text-gray-400">Action</div>
+        <div className="text-xs text-gray-400">Romantic</div>
+        <div className="text-xs text-gray-400">Horror</div>
+        <div className="text-xs text-gray-400">Comedy</div>
+        <div className="text-xs text-gray-400">Sport</div>
+        <div className="text-xs text-gray-400">series</div>
+      </div>}
+      </div>
   );
 }
+
 
 export default Header;
