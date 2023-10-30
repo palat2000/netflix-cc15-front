@@ -1,5 +1,7 @@
+import { Outlet } from "react-router-dom";
+
 function RegisterPage() {
-  return <div>RegisterPage</div>;
+  return <Outlet />;
 }
 
 export default RegisterPage;
