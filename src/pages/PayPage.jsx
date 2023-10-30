@@ -17,11 +17,11 @@ function PayPage() {
         const res = await axios.post(
           `/payment/success-subscription/${query.get("session_id")}`
         );
-        console.log(res);
       } catch (err) {
         console.log(err);
       }
     };
+    console.log(query);
     if (query.get("success") === "true") {
       subscription();
     }
