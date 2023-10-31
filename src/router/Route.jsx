@@ -42,10 +42,6 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "payment-result",
-        element: <GoToPaymentResult />,
-      },
-      {
         path: "title/:movieId",
         element: <GuestBrowsePage />,
       },

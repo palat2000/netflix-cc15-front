@@ -1,11 +1,5 @@
-import PayPage from "./payPage";
-
 function HomePage() {
-  return (
-    <div>
-      <PayPage />
-    </div>
-  );
+  return <div>HomePage</div>;
 }
 
 export default HomePage;
