@@ -1,7 +1,9 @@
-import { Outlet } from "react-router-dom";
+import RegisterBody from "../features/auth/register/RegisterBody";
 
-function RegisterPage() {
-  return <Outlet />;
+export default function RegisterPage() {
+  return (
+    <>
+      <RegisterBody />
+    </>
+  );
 }
-
-export default RegisterPage;
