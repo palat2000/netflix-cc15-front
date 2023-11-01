@@ -1,5 +1,11 @@
+import NavbarAdult from "../components/Browse/NavbarAdult";
+
 function UserBrowsePage() {
-  return <div>UserBrowsePage</div>;
+  return (
+    <>
+      <NavbarAdult />
+    </>
+  );
 }
 
 export default UserBrowsePage;
