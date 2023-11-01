@@ -4,10 +4,13 @@ import phone from "../assets/Phone.png";
 import computer from "../assets/Computer.png";
 import { CheckIcon } from "../icons";
 import axios from "../config/axios";
+import { useState } from "react";
 
 export default function PackagePage() {
+  const [isLoading, setIsLoading] = useState(false);
   const handleClick = async () => {
     try {
+      setIsLoading(true);
       const res = await axios.post("/payment/create-checkout-session", {
         lookup_key: "bill",
       });
@@ -19,6 +22,8 @@ export default function PackagePage() {
         icon: "error",
         confirmButtonText: "close",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
