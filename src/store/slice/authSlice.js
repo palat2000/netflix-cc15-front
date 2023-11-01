@@ -13,9 +13,7 @@ const initialState = {
 
 export const registerAction = createAsyncThunk('/auth/register', async (input) => {
   try {
-    console.log("input", input)
     let res = await registerUser(input)
-  
     return res
   } catch (error) {
     throw error.response.data
@@ -25,8 +23,7 @@ export const registerAction = createAsyncThunk('/auth/register', async (input) =
 export const loginAction = createAsyncThunk('auth/login',async (input) =>{
   try{
     let res = await loginUser(input)
-    addAccessToken(res.data.accessToken)
-    return res.data
+    return res
   }catch(error){
     throw error.response.data
   }
