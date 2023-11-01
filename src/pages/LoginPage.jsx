@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction, resetState } from "../store/slice/authSlice";
 import { addAccessToken } from "../utils/local-storage";
+import HeaderHomePage from "../layout/HeaderHomePage";
 
 function LoginPage() {
   const {
@@ -20,8 +21,7 @@ function LoginPage() {
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data));
     if (userData) {
-      addAccessToken(userData.accessToken);
-      dispatch(resetState());
+      // addAccessToken(r.accessToken);
       navigate("/browse");
     }
   };
