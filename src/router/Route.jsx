@@ -4,9 +4,7 @@ import UserBrowsePage from "../pages/UserBrowsePage";
 import WatchPage from "../pages/WatchPage";
 import Layout from "../layout/Layout";
 import LoginPage from "../pages/LoginPage";
-import GoToPaymentResult from "../pages/GoToPaymentResult";
 import GuestBrowsePage from "../pages/GuestBrowsePage";
-
 import PackagePage from "../pages/PackagePage";
 import RegisterBody from "../features/auth/register/RegisterBody";
 
@@ -30,11 +28,6 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <RegisterBody />,
-        
-      },
-      {
-        path: "payment-result",
-        element: <GoToPaymentResult />,
       },
       {
         path: "title/:movieId",

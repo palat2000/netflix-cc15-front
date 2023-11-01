@@ -1,8 +1,39 @@
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 import phone from "../assets/Phone.png";
 import computer from "../assets/Computer.png";
 import { CheckIcon } from "../icons";
+import axios from "../config/axios";
 
 export default function PackagePage() {
+  const handleClick = async () => {
+    try {
+      const res = await axios.post("/payment/create-checkout-session", {
+        lookup_key: "bill",
+      });
+      window.location.replace(res.data.url);
+    } catch (err) {
+      Swal.fire({
+        title: "Error!",
+        text: err.message,
+        icon: "error",
+        confirmButtonText: "close",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("canceled") === "true") {
+      Swal.fire({
+        title: "Cancel",
+        text: "Cancel subscription payment",
+        icon: "info",
+        confirmButtonText: "close",
+      });
+    }
+  }, []);
+
   return (
     <div className="w-full md:flex md:justify-center">
       <div className="flex justify-center md:w-96 md:flex md:justify-center">
@@ -29,7 +60,7 @@ export default function PackagePage() {
                 <div className="flex">Monthly price</div>
               </div>
               <div className=" flex justify-center">
-                <div className="text-[#E50914]">419</div>
+                <div className="text-primary">419</div>
               </div>
             </div>
             <hr />
@@ -38,7 +69,7 @@ export default function PackagePage() {
                 <div>Video quality</div>
               </div>
               <div className=" flex justify-center">
-                <div className="text-[#E50914]">4K+HDR</div>
+                <div className="text-primary">4K+HDR</div>
               </div>
             </div>
             <hr />
@@ -55,7 +86,10 @@ export default function PackagePage() {
             </div>
           </div>
           <hr />
-          <button className="bg-[#E50914] w-full h-16 text-2xl font-light text-white rounded-md mt-2">
+          <button
+            onClick={handleClick}
+            className="bg-primary w-full h-16 text-2xl font-light text-white rounded-md mt-2"
+          >
             Payment
           </button>
         </div>
