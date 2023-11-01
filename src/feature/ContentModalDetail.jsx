@@ -36,18 +36,25 @@ export default function ContentModalDetail({ movieId }) {
 
     console.log(movieData)
     return (
-        <div className="flex flex-col bg-black items-center absolute w-full h-full top-0 left-0 p-5">
-            {movieData ? (<div className="bg-red-900 text-white flex flex-col w-full items-center">
-                ContentModal
-                <TrailerHeaderModal trailer={movieData?.trailer} />
-                <div>Title:{movieData?.title}</div>
-                <div className="flex">Detail:{movieData?.detail}</div>
-                <div>Genre:{movieData?.genres}</div>
-                <div>Actors:{movieData?.actors}</div>
-                <div>Video:{movieData?.video}</div>
-                <div>moreLikeThis:{movieData?.moreLikeThis}</div>
-            </div>) : (<> </>)}
-
-        </div>
+        <>
+            <img className="w-full h-full overflow-hidden" src="https://res.cloudinary.com/dijmrcacg/image/upload/v1698807655/cld-sample.jpg"></img>
+            <div className="bg-black bg-opacity-80 pt-5 flex flex-col justify-start items-center absolute w-screen h-screen top-0 left-0 overflow-auto ">
+                {/* <div className="bg-black bg w-full h-full opacity-70"></div> */}
+                {movieData ? (<div className="bg-neutral-900 rounded-md overflow-y-hidden text-white flex flex-col w-1/2 items-center absolute">
+                    {/* ContentModal */}
+                    <TrailerHeaderModal trailer={movieData?.trailer} />
+                    <div>Title:{movieData?.title}</div>
+                    <div className="flex">Detail:{movieData?.detail}</div>
+                    <div >Genre:{movieData?.genres}</div>
+                    <div>Actors:{movieData?.actors}</div>
+                    <div className="w-full break-words">Video:{movieData?.video}</div>
+                    <div className="w-full break-words">Video:{movieData?.video}</div>
+                    <div className="w-full break-words">Video:{movieData?.video}</div>
+                    <div className="w-full break-words">Video:{movieData?.video}</div>
+                    <div className="w-full break-words">Video:{movieData?.video}</div>
+                    <div className="w-full break-words">moreLikeThis:{movieData?.moreLikeThis}</div>
+                </div>) : (<> </>)}
+            </div>
+        </>
     )
 }
