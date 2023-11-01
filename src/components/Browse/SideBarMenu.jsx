@@ -1,7 +1,7 @@
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
 
-export default function NavbarAdult() {
+export default function SideBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

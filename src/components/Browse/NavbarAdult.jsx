@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBell } from "@fortawesome/free-solid-svg-icons";
 import UserProfileMenu from "./UserProfileMenu";
+// import SideBarMenu from "./SideBarMenu";
 
 export default function NavbarAdult() {
   const [isSearch, setIsSearch] = useState(false);
@@ -9,6 +10,7 @@ export default function NavbarAdult() {
   return (
     <>
       <div className="flex justify-between items-center text-xs bg-black">
+        {/* <SideBarMenu /> */}
         <div className="flex justify-items-start items-center  mx-10 text-white">
           <img
             className="h-8 w-auto"
