@@ -17,13 +17,12 @@ export default function RegisterForm() {
     const userData = useSelector((state) => state.user.data);
 
     console.log(userData)
-
+    
     const handleSubmitForm = (data) => {
         dispatch(registerAction(data))
-        if(userData){
-          addAccessToken(userData.accessToken)
-          dispatch(resetState())
-          navigate('signup/plan')
+        if(addAccessToken){
+        //   dispatch(resetState())
+          navigate('/package')
         }
 
         ;

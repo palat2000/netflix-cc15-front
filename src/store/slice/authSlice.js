@@ -14,6 +14,7 @@ export const registerAction = createAsyncThunk('/auth/register', async (input) =
   try {
 
     let res = await registerUser(input)
+    console.log(res.data)
     return res.data
   } catch (error) {
     throw error.response.data
