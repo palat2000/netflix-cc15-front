@@ -1,7 +1,11 @@
+import MovieName from "../Browse/MovieName";
+
 export default function MainTrailer() {
   return (
-    <div className="absolute top-0 ">
-      <video width="1280" height="720" controls>
+    <div className="relative top-0  ">
+      <MovieName />
+
+      <video width="4000" height="auto" loop muted autoPlay controls="">
         <source
           src="https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596144/action/o4ln7l1yshyx4mv5jqnh.mp4"
           type="video/mp4"

@@ -9,9 +9,9 @@ export default function NavbarAdult() {
 
   return (
     <>
-      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 sticky top-0 bg-transparent">
+      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[8px]">
         {/* <SideBarMenu /> */}
-        <div className="flex justify-items-start items-center  mx-10 text-white">
+        <div className="flex justify-items-start items-center  mx-10">
           <img
             className="h-8 w-auto"
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
