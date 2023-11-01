@@ -28,4 +28,9 @@
     font-family: "netflix-sans";
 }
 
+body{
+    height: 100vh;
+    background-color: gray;
+
+}
 
