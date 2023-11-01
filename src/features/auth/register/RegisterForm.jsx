@@ -19,13 +19,13 @@ export default function RegisterForm() {
     console.log(userData)
     
     const handleSubmitForm = (data) => {
-        dispatch(registerAction(data))
-        if(addAccessToken){
-        //   dispatch(resetState())
-          navigate('/package')
-        }
+        dispatch(registerAction(data)).unwrap().then(r=>{
+            if(userData){
+                addAccessToken(r.accessToken)
+                navigate("/package")
+            }
 
-        ;
+        })
     };
 
     return (

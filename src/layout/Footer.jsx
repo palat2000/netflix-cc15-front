@@ -8,7 +8,7 @@ import { LiaCopyrightSolid } from "react-icons/lia";
 
 function Footer() {
   return (
-    <div className="flex-col flex  md:flex-row justify-between bg-gray-900 items-center py-20  ">
+    <div className="flex-col flex justify-around md:flex-row bg-gray-900 items-center py-20  ">
       <div>
         <div className="flex gap-5 p-2">
           <FaFacebookSquare className="cursor-pointer text-white" />
