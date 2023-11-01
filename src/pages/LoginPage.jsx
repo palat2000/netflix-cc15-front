@@ -20,8 +20,8 @@ function LoginPage() {
 
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data));
-    if (userData) {
-      // addAccessToken(r.accessToken);
+    if (userData?.accessToken) {
+      addAccessToken(userData.accessToken);
       navigate("/browse");
     }
   };
@@ -40,9 +40,9 @@ function LoginPage() {
             <div className="w-full flex flex-col gap-4 ">
               <div>
                 <input
-                  placeholder="Email "
+                  placeholder="email "
                   className=" bg-[#333333] border border-black outline-none p-2 w-full rounded-md"
-                  {...register("Email", {
+                  {...register("email", {
                     required: "Please enter a valid email.",
                     minLength: {
                       value: 5,
@@ -54,9 +54,9 @@ function LoginPage() {
                     },
                   })}
                 />
-                {errors.Email && (
+                {errors.email && (
                   <p className="text-[#e87c03] font-[13px]">
-                    {errors.Email.message}
+                    {errors.email.message}
                   </p>
                 )}
               </div>
