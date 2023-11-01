@@ -27,13 +27,13 @@ function LoginPage() {
   };
 
   return (
-    <div className=" flex justify-center md:flex-col md:justify-center md:flex-cols md:flex">
-      <div className="flex w-full bg-black text-white md:bg-green-500 md:flex justify-center pb-5 md:bg-cover md:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/993921bb-c0e1-4bc7-b327-ced8627c4f71/TH-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg')]">
-        <div className="flexjustify-center mt-2 flex-col w-11/12 md:bg-opacity-70 md:rounded-md md:bg-black md:w-[500px]  md:pt-[60px] md:px-[68px] md:pb-[40px] md:flex-col md:justify-end">
+    <div className=" flex justify-center md:flex-col md:items-center md:flex h-full">
+      <div className="flex w-full bg-black text-white md:bg-green-500 md:flex justify-center pb-5 md:bg-cover md:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/993921bb-c0e1-4bc7-b327-ced8627c4f71/TH-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg')] h-full">
+        <div className="flex self-center justify-center mt-2 flex-col w-11/12 md:bg-opacity-70 md:rounded-md md:pb-[40px] md:pt-[60px] md:bg-black md:w-[500px] md:px-[68px]  md:flex-col">
           <h1 className="mb-[10px] text-[32px] pb-5 pt-2">Sign In</h1>
           {userError && (
-            <div className="pt-[10px] pb-[10px] pl-[10px] pr-[10px] mb-4 rounded-md text-[13px] bg-[#e87c03]">
-              Incorrect password. Please try again{" "}
+            <div className="p-[10px] mb-4 rounded-md text-[13px] bg-[#e87c03]">
+              Incorrect password. Please try again
             </div>
           )}
           <form onSubmit={handleSubmit(handleSubmitForm)}>
@@ -89,7 +89,7 @@ function LoginPage() {
                   )}
                 </div>
               </div>
-              <button className="bg-[#e50914] text-white p-[16px] rounded-md">
+              <button className="bg-[#e50914] text-white p-[10px] rounded-md">
                 Sign In
               </button>
             </div>
