@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <div>
       <div className="bg-[url('/NetflixBG1.png')] bg-cover bg-center h-screen  ">
-        <div className="w-full h-full items-centerv bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-black">
+        <div className="w-full h-full items-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-black">
           <HeaderHomePage />
           <div className="h-full flex items-center mx-36 pb-10">
             <div className=" text-white text-center">
