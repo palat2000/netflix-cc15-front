@@ -7,8 +7,6 @@ const userApi = axios.create({
 
 export const registerUser = async (body) => {
     const res = await userApi.post('/auth/register', body)
-    addAccessToken(res.data.addAccessToken)
-    // console.log(addAccessToken)
     return res.data
 }
 

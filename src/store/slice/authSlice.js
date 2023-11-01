@@ -2,20 +2,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 import { registerUser,loginUser } from "../utils/userApi";
 import { useNavigate } from "react-router-dom";
+import { addAccessToken } from "../../utils/local-storage";
 
 const initialState = {
   error: null,
   loading: false,
-  data: []
+  data: {}
 };
 
 
 export const registerAction = createAsyncThunk('/auth/register', async (input) => {
   try {
-
+    console.log("input", input)
     let res = await registerUser(input)
-    console.log(res.data)
-    return res.data
+  
+    return res
   } catch (error) {
     throw error.response.data
   }
@@ -24,7 +25,7 @@ export const registerAction = createAsyncThunk('/auth/register', async (input) =
 export const loginAction = createAsyncThunk('auth/login',async (input) =>{
   try{
     let res = await loginUser(input)
-    console.log(res)
+    addAccessToken(res.data.accessToken)
     return res.data
   }catch(error){
     throw error.response.data
