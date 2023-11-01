@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction, resetState } from "../../../store/slice/authSlice";
-import { useState } from "react";
+import { addAccessToken } from "../../../utils/local-storage";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterForm() {
     const {
@@ -10,14 +11,23 @@ export default function RegisterForm() {
         formState: { errors },
     } = useForm();
 
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const userError = useSelector((state) => state.user.error);
+    const userData = useSelector((state) => state.user.data);
 
+    console.log(userData)
 
     const handleSubmitForm = (data) => {
-        dispatch(registerAction(data));
-    };
+        dispatch(registerAction(data))
+        if(userData){
+          addAccessToken(userData.accessToken)
+          dispatch(resetState())
+          navigate('signup/plan')
+        }
 
+        ;
+    };
 
     return (
         <form onSubmit={handleSubmit(handleSubmitForm)}>
