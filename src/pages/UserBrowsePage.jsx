@@ -1,5 +1,9 @@
+
+
 function UserBrowsePage() {
-  return <div>UserBrowsePage</div>;
+  return (
+    <div>UserBrowsePage</div>
+  );
 }
 
 export default UserBrowsePage;
