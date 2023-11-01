@@ -9,7 +9,7 @@ export default function NavbarAdult() {
 
   return (
     <>
-      <div className="flex justify-between items-center text-xs bg-black">
+      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 sticky top-0 bg-transparent">
         {/* <SideBarMenu /> */}
         <div className="flex justify-items-start items-center  mx-10 text-white">
           <img
