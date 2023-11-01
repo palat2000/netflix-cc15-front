@@ -35,7 +35,7 @@ export default function PackagePage() {
   }, []);
 
   return (
-    <div className="w-full md:flex md:justify-center">
+    <div className="w-full h-full md:flex md:justify-center md:items-center">
       <div className="flex justify-center md:w-96 md:flex md:justify-center">
         <div className="flex justify-center flex-col gap-4  w-11/12 md:w-10/12 md:justify-center md:block">
           <div className="font-medium text-3xl">

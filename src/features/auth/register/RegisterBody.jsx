@@ -2,7 +2,7 @@ import RegisterForm from "./RegisterForm";
 
 export default function RegisterBody() {
   return (
-    <div className="w-full md:flex md:justify-center">
+    <div className="w-full h-full md:flex md:justify-center md:items-center">
       <div className=" flex justify-center md:w-96 md:flex md:justify-center">
         <div className="flex justify-center flex-col gap-4  w-10/12 md:w-10/12 md:justify-center md:block">
           <div className="gap-1 flex flex-col">

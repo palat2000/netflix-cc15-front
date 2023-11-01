@@ -11,7 +11,7 @@ function HomePage() {
       <div className="bg-[url('/NetflixBG1.png')] bg-cover bg-center h-screen  ">
         <div className="w-full h-full items-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-black">
           <HeaderHomePage />
-          <div className="h-full flex items-center mx-36 pb-10">
+          <div className="h-full flex items-center justify-center mx-36 pb-10">
             <div className=" text-white text-center">
               <div className="text-3xl font-bold">
                 The biggest local and international hits. The best stories. All
