@@ -9,6 +9,7 @@ import PlanPage from "../pages/PlanPage";
 import GoToPaymentResult from "../pages/GoToPaymentResult";
 import RegisterFormPage from "../pages/RegisterFormPage";
 import GuestBrowsePage from "../pages/GuestBrowsePage";
+import RegisterBody from "../features/auth/register/RegisterBody";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <RegisterPage />,
+        element: <RegisterBody />,
         children: [
           {
             path: "",
