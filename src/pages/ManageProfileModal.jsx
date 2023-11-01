@@ -1,10 +1,8 @@
-import Button from "@mui/material/Button";
 import { HiPencil } from "react-icons/hi";
-import Modal from "@mui/material/Modal";
 import { useState } from "react";
 
 export default function ManageProfileModal({ onClose }) {
-const [isOpenEditImageModal , setIsOpenEditImageModal] = useState(false)
+  const [isOpenEditImageModal, setIsOpenEditImageModal] = useState(false);
   return (
     <div>
       <div>
@@ -13,12 +11,13 @@ const [isOpenEditImageModal , setIsOpenEditImageModal] = useState(false)
             <div className="text-white text-4xl">Edit Profile</div>
             <hr className="" />
             <div className="flex gap-5 group">
-              <div 
-            onClick={()=>setIsOpenEditImageModal(!isOpenEditImageModal)}
-            className="bg-yellow-500 h-24 w-24   group-hover:cursor-pointer">
+              <div
+                onClick={() => setIsOpenEditImageModal(!isOpenEditImageModal)}
+                className="bg-yellow-500 h-24 w-24   group-hover:cursor-pointer"
+              >
                 <HiPencil className="text-xs group absolute translate-y-20   translate-x-1 bg-gray-600 rounded-full text-white " />
               </div>
-                 
+
               <div className="flex flex-col gap-2">
                 <input placeholder="Name" className="bg-gray-600 p-1 "></input>
                 <div className="flex gap-3">
