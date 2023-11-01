@@ -11,7 +11,7 @@ export default function RegisterBody() {
               Create a password to start your membership
             </div>
             <div className="text-base text-neutral-700">
-              {"Just a few more steps and you're done!"}
+              Just a few more steps and you're done!
             </div>
             <div className="text-base text-neutral-700">
               We hate paperwork, too.

@@ -4,9 +4,9 @@ import UserBrowsePage from "../pages/UserBrowsePage";
 import WatchPage from "../pages/WatchPage";
 import Layout from "../layout/Layout";
 import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
 import GuestBrowsePage from "../pages/GuestBrowsePage";
 import PackagePage from "../pages/PackagePage";
+import RegisterBody from "../features/auth/register/RegisterBody";
 
 const router = createBrowserRouter([
   {
@@ -26,12 +26,12 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "title/:movieId",
-        element: <GuestBrowsePage />,
+        path: "signup",
+        element: <RegisterBody />,
       },
       {
-        path: "register",
-        element: <RegisterPage />,
+        path: "title/:movieId",
+        element: <GuestBrowsePage />,
       },
       {
         path: "package",

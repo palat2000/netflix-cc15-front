@@ -1,13 +1,72 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
+import { registerUser,loginUser } from "../utils/userApi";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  authUser: null,
+  error: null,
   loading: false,
+  data: []
 };
 
-const authSlice = createSlice({
-  name: "authSlice",
+
+export const registerAction = createAsyncThunk('/auth/register', async (input) => {
+  try {
+
+    let res = await registerUser(input)
+    console.log(res.data)
+    return res.data
+  } catch (error) {
+    throw error.response.data
+  }
+})
+
+export const loginAction = createAsyncThunk('auth/login',async (input) =>{
+  try{
+    let res = await loginUser(input)
+    console.log(res)
+    return res.data
+  }catch(error){
+    throw error.response.data
+  }
+})
+
+export const authSlice = createSlice({
+  name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    resetState: (state) => {
+      return initialState;
+    }
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(registerAction.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(registerAction.pending, (state, action) => {
+        state.loading = null;
+        state.loading = true
+      })
+      .addCase(registerAction.rejected, (state, action) => {
+        state.error = action.error
+        state.loading = false
+      })
+      .addCase(loginAction.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(loginAction.pending, (state, action) => {
+        state.loading = null;
+        state.loading = true
+      })
+      .addCase(loginAction.rejected, (state, action) => {
+        state.error = action.error
+        state.loading = false
+      })
+
+  }
 });
+export const { resetState } = authSlice.actions;
+export default authSlice.reducer
