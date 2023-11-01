@@ -21,7 +21,7 @@ function LoginPage() {
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data));
     if (userData) {
-      addAccessToken(r.accessToken);
+      // addAccessToken(r.accessToken);
       navigate("/browse");
     }
   };
