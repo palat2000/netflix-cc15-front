@@ -25,7 +25,7 @@ function HomePage() {
               </div>
 
               <div className="flex justify-center">
-                <div className="px-4 text-black">
+                <div className="px-4 text-black ">
                   <HomePageInput
                     placeholder="Email address"
                     value={null}

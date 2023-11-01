@@ -9,7 +9,6 @@ import PlanPage from "../pages/PlanPage";
 import GoToPaymentResult from "../pages/GoToPaymentResult";
 import RegisterFormPage from "../pages/RegisterFormPage";
 import GuestBrowsePage from "../pages/GuestBrowsePage";
-import RegisterPage from "../pages/RegisterPage";
 
 import PackagePage from "../pages/PackagePage";
 
