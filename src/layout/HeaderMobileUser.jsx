@@ -1,15 +1,14 @@
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
 
-
-function Header() {
-  const [isOpenNav, setIsOpenNav] = useState(false);
+export default function HeaderMobileUser() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <div className="flex justify-between bg-black h-5 items-center p-10">
-        <div className="flex items-center  gap-10">
+      <div className="flex justify-between bg-gray-900 h-5 items-center p-10">
+        <div className="flex items-center gap-2">
           <BiMenu
-            onClick={()=>setIsOpenNav(!isOpenNav)}
+            onClick={() => setIsOpen(!isOpen)}
             className="text-white text-4xl cursor-pointer relative md:hidden "
           />
           <img
@@ -17,10 +16,10 @@ function Header() {
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
           ></img>
           <div className="hidden md:flex gap-5 ">
-            <div className="text-white text-sm hover:text-gray-600 cursor-pointer">Home</div>
-            <div className="text-white text-sm hover:text-gray-600 cursor-pointer">TV Shows</div>
-            <div className="text-white text-sm hover:text-gray-600 cursor-pointer">Movies</div>
-            <div className="text-white text-sm hover:text-gray-600 cursor-pointer">My List</div>
+            <div className="text-white hover:text-gray-600 cursor-pointer">Home</div>
+            <div className="text-white hover:text-gray-600 cursor-pointer">TV Shows</div>
+            <div className="text-white hover:text-gray-600 cursor-pointer">Movies</div>
+            <div className="text-white hover:text-gray-600 cursor-pointer">My List</div>
           </div>
         </div>
 
@@ -29,11 +28,10 @@ function Header() {
             placeholder="Search"
             className=" w-32  text-gray-500 border border-white "
           ></input>
-          <div>Kids</div>
         </div>
       </div>
-      {isOpenNav && (
-        <div className="p-2 bg-gray-900 w-32 absolute translate-y-0 z-50 md:hidden ">
+      {isOpen && (
+        <div className="p-2 bg-gray-900 w-32 absolute translate-y-0 ">
           <div>
             <div className="flex items-center gap-1">
               <img
@@ -63,8 +61,5 @@ function Header() {
         </div>
       )}
     </div>
-    )
-   
+  );
 }
-
-export default Header;
