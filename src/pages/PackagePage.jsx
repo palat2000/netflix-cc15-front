@@ -7,6 +7,7 @@ import axios from "../config/axios";
 import { useState } from "react";
 import { addAccessToken, removeAccessToken } from "../utils/local-storage";
 import { useNavigate } from "react-router-dom";
+import ButtonNetflix from "../features/logo&button/ButtonNetflix";
 
 export default function PackagePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +30,7 @@ export default function PackagePage() {
       setIsLoading(false);
     }
   };
+
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -73,9 +75,9 @@ export default function PackagePage() {
         </button>
       </div>
       <hr />
-      <div className="w-full h-full md:flex md:justify-center md:items-center">
+      <div className="w-full h-full pt-14 md:flex md:justify-center md:items-center">
         <div className="flex justify-center md:w-96 md:flex md:justify-center">
-          <div className="flex justify-center flex-col gap-4  w-11/12 md:w-10/12 md:justify-center md:block">
+          <div className="flex justify-center flex-col gap-3 pt-3 w-11/12 md:w-full md:justify-center md:flex md:pt-10">
             <div className="font-medium text-3xl">
               Choose the plan that’s right for you
             </div>
@@ -92,7 +94,7 @@ export default function PackagePage() {
               <span>Change or cancel your plan anytime.</span>
             </div>
             <div className="flex flex-col justify-center w-full">
-              <div className="flex flex-row justify-between ml- ">
+              <div className="flex flex-row justify-between pb-2 ">
                 <div className=" flex justify-center">
                   <div className="flex">Monthly price</div>
                 </div>
@@ -101,7 +103,7 @@ export default function PackagePage() {
                 </div>
               </div>
               <hr />
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between pb-2">
                 <div className=" flex justify-center">
                   <div>Video quality</div>
                 </div>
@@ -123,12 +125,7 @@ export default function PackagePage() {
               </div>
             </div>
             <hr />
-            <button
-              onClick={handleClick}
-              className="bg-[#E50914] w-full h-16 text-2xl font-light text-white rounded-md mt-2"
-            >
-              Payment
-            </button>
+            <ButtonNetflix handleClick = {handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
           </div>
         </div>
       </div>
