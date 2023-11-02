@@ -16,15 +16,14 @@ function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { error, loading } = useSelector((state) => { return state.user })
+  const { error } = useSelector((state) => { return state.user })
 
-  console.log(error)
+  
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data)).unwrap().then(user => {
-      if (data) {
+      if (user) {
         addAccessToken(user.accessToken)
-        dispatch(resetState())
-        navigate("/browse")
+        navigate("/mangae-profile")
       }
 
     })

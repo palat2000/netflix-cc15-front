@@ -31,6 +31,7 @@ export default function PackagePage() {
     }
   };
 
+
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("canceled") === "true") {

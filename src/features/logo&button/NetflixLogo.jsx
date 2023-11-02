@@ -1,5 +1,6 @@
 export default function NetflixLogo() {
 
+    
     return (
         <img
             onClick={() => {

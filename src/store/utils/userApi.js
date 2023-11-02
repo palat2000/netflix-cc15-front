@@ -12,5 +12,6 @@ export const registerUser = async (body) => {
 
 export const loginUser = async (body) => {
     const res = await userApi.post('/auth/login', body)
+    console.log(res.data)
     return res.data
 }
