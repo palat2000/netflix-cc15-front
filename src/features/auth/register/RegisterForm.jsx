@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerAction, resetState } from "../../../store/slice/authSlice";
 import { addAccessToken } from "../../../utils/local-storage";
 import { useNavigate } from "react-router-dom";
+import ButtonNetflix from "../../logo&button/ButtonNetflix";
 
 export default function RegisterForm() {
     const {
@@ -79,9 +80,7 @@ export default function RegisterForm() {
                         <p className="text-red-500">{errors.password.message}</p>
                     )}
                 </div>
-                <button className="bg-[#E50914] w-full h-16 text-2xl font-light text-white rounded-md">
-                    Next
-                </button>
+                <ButtonNetflix fontSize={"2xl"} text={"Next"}></ButtonNetflix>
             </div>
         </form>
     );
