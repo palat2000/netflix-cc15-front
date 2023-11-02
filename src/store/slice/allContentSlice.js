@@ -30,9 +30,17 @@ const allContentSlice = createSlice({
         state.error = null;
         state.data = [];
       })
-      .addCase();
+      .addCase(fetchAllContent.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.data = action.payload;
+      })
+      .addCase(fetchAllContent.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.data = [];
+      });
   },
 });
 
-// export const {} = allContentSlice.actions;
 export default allContentSlice.reducer;
