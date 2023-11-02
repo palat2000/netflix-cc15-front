@@ -9,9 +9,9 @@ export default function NavbarAdult() {
 
   return (
     <>
-      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[8px]">
+      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px]">
         {/* <SideBarMenu /> */}
-        <div className="flex justify-items-start items-center  mx-10">
+        <div className="flex justify-start items-center ml-10  ">
           <img
             className="h-8 w-auto"
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
@@ -23,7 +23,7 @@ export default function NavbarAdult() {
         </div>
 
         <div className=" flex items-center">
-          <div className="flex justify-end border border-solid items-center ">
+          <div className=" flex justify-end border border-solid items-center ">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               style={{ color: "#ffffff" }}
@@ -38,11 +38,14 @@ export default function NavbarAdult() {
               ></input>
             )}
           </div>
+          <div className=" hidden md:block">
+            <div className="flex items-center">
+              <div className="text-white ml-2">Kids</div>
 
-          <div className="text-white mx-2">Kids</div>
-
-          <FontAwesomeIcon icon={faBell} className="mx-2 text-white" />
-          <UserProfileMenu />
+              <FontAwesomeIcon icon={faBell} className="mx-2 text-white" />
+              <UserProfileMenu />
+            </div>
+          </div>
         </div>
       </div>
     </>

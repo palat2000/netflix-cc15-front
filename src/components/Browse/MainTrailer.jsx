@@ -1,9 +1,9 @@
-import MovieName from "../Browse/MovieName";
+import MovieDetails from "./MovieDetails";
 
 export default function MainTrailer() {
   return (
     <div className="relative top-0  ">
-      <MovieName />
+      <MovieDetails />
 
       <video width="4000" height="auto" loop muted autoPlay controls="">
         <source
