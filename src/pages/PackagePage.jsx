@@ -5,7 +5,7 @@ import computer from "../assets/Computer.png";
 import { CheckIcon } from "../icons";
 import axios from "../config/axios";
 import { useState } from "react";
-import { addAccessToken, removeAccessToken } from "../utils/local-storage";
+import { removeAccessToken } from "../utils/local-storage";
 import { useNavigate } from "react-router-dom";
 import ButtonNetflix from "../features/logo&button/ButtonNetflix";
 
@@ -56,23 +56,12 @@ export default function PackagePage() {
         ></img>
         <button
           onClick={() => {
-            return navigate("/login");
+            removeAccessToken()
+            return navigate("/");
           }}
-          className="pr-7 text-2xl font-bold"
-        >
-          {addAccessToken ? (
-            <button
-              onClick={() => {
-                removeAccessToken();
-                return navigate("/");
-              }}
-            >
-              Sign Out
-            </button>
-          ) : (
-            <>Sign in</>
-          )}
-        </button>
+          className="pr-7 text-2xl font-bold">
+            Sign out 
+          </button>
       </div>
       <hr />
       <div className="w-full h-full pt-14 md:flex md:justify-center md:items-center">
@@ -125,7 +114,7 @@ export default function PackagePage() {
               </div>
             </div>
             <hr />
-            <ButtonNetflix handleClick = {handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
+            <ButtonNetflix handleClick={handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
           </div>
         </div>
       </div>
