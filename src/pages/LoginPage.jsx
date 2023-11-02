@@ -31,7 +31,7 @@ function LoginPage() {
   };
   return (
     <div className=" flex justify-center md:flex-col md:items-center md:flex h-full">
-      <div className="flex w-full flex-col justify-around bg-black text-white  md:flex  pb-5 md:bg-cover md:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/993921bb-c0e1-4bc7-b327-ced8627c4f71/TH-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg')] h-full">
+      <div className="flex w-full flex-col justify-between bg-black text-white  md:flex  pb-5 md:bg-cover md:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/993921bb-c0e1-4bc7-b327-ced8627c4f71/TH-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg')] h-full">
       <NetflixLogo/>
         <div className="flex self-center justify-center flex-col w-11/12 md:bg-opacity-70 md:rounded-md md:pb-[40px] md:pt-[60px] md:bg-black md:w-[500px] md:px-[68px]  md:flex-col">
           <h1 className="mb-[10px] text-[32px] pb-5 pt-2">Sign In</h1>

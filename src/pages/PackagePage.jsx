@@ -76,7 +76,7 @@ export default function PackagePage() {
       <hr />
       <div className="w-full h-full md:flex md:justify-center md:items-center">
         <div className="flex justify-center md:w-96 md:flex md:justify-center">
-          <div className="flex justify-center flex-col gap-4  w-11/12 md:w-10/12 md:justify-center md:block">
+          <div className="flex justify-center flex-col gap-3 pt-3 w-11/12 md:w-full md:justify-center md:flex md:pt-10">
             <div className="font-medium text-3xl">
               Choose the plan that’s right for you
             </div>
@@ -93,7 +93,7 @@ export default function PackagePage() {
               <span>Change or cancel your plan anytime.</span>
             </div>
             <div className="flex flex-col justify-center w-full">
-              <div className="flex flex-row justify-between ml- ">
+              <div className="flex flex-row justify-between pb-2 ">
                 <div className=" flex justify-center">
                   <div className="flex">Monthly price</div>
                 </div>
@@ -102,7 +102,7 @@ export default function PackagePage() {
                 </div>
               </div>
               <hr />
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between pb-2">
                 <div className=" flex justify-center">
                   <div>Video quality</div>
                 </div>
@@ -124,8 +124,6 @@ export default function PackagePage() {
               </div>
             </div>
             <hr />
-            
-
             <ButtonNetflix handleClick = {handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
           </div>
         </div>
