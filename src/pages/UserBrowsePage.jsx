@@ -33,13 +33,12 @@ function UserBrowsePage() {
 
   return (
     <div>
-      UserBrowsePage
-      <ContentModalContextProvider movieId={1} >
+      UserBrowsePager
+      <ContentModalContextProvider movieId={1}>
         <ContentModal />
       </ContentModalContextProvider>
-    </div >
+    </div>
   );
-
 }
 
 export default UserBrowsePage;
