@@ -8,8 +8,6 @@ import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 
 function UserBrowsePage() {
-  
-  
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("success") === "true") {
@@ -21,23 +19,17 @@ function UserBrowsePage() {
       });
     }
   }, []);
-  
+
   return (
-
-
- 
-
-      <ContentModalContextProvider movieId={1} >
+    <ContentModalContextProvider movieId={1}>
       <div className="bg-black">
         <NavbarAdult />
         <MainTrailer />
         <VDOSwiperSlides />
       </div>
-        <ContentModal />
-      </ContentModalContextProvider>
-
+      <ContentModal />
+    </ContentModalContextProvider>
   );
-
 }
 
 export default UserBrowsePage;
