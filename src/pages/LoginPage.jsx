@@ -21,6 +21,7 @@ function LoginPage() {
   
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data)).unwrap().then(user => {
+      console.log(data)
       if (user) {
         addAccessToken(user.accessToken)
         navigate("/mangae-profile")
