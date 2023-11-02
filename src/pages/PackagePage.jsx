@@ -31,7 +31,6 @@ export default function PackagePage() {
     }
   };
 
-
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("canceled") === "true") {
@@ -56,12 +55,13 @@ export default function PackagePage() {
         ></img>
         <button
           onClick={() => {
-            removeAccessToken()
+            removeAccessToken();
             return navigate("/");
           }}
-          className="pr-7 text-2xl font-bold">
-            Sign out 
-          </button>
+          className="pr-7 text-2xl font-bold"
+        >
+          Sign out
+        </button>
       </div>
       <hr />
       <div className="w-full h-full pt-14 md:flex md:justify-center md:items-center">
@@ -114,7 +114,11 @@ export default function PackagePage() {
               </div>
             </div>
             <hr />
-            <ButtonNetflix handleClick={handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
+            <ButtonNetflix
+              handleClick={handleClick}
+              fontSize={"2xl"}
+              text={"Next"}
+            ></ButtonNetflix>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import PlayButton from "../Button/PlayButton";
 import MoreInfoButton from "../Button/MoreInfoButton";
 import ContentModal from "../../feature/ContentModal";
+import ContentModalContextProvider from "../../feature/context/ContentModalContext";
 
 export default function MovieDetails() {
   return (
@@ -18,7 +19,11 @@ export default function MovieDetails() {
             consectetur
             <div className="flex">
               <PlayButton customizeClass={"ml-0"} />
-              <MoreInfoButton />
+              <ContentModalContextProvider movieId={1}>
+                <ContentModal>
+                  <MoreInfoButton />
+                </ContentModal>
+              </ContentModalContextProvider>
             </div>
           </div>
         </div>
