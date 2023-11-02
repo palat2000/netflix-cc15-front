@@ -13,6 +13,12 @@ export const loginUser = async (body) => {
     console.log(res.data)
     return res.data
 }
+export const editUserProfile = async (body) => {
+    
+    const res = await axios.patch('/user/profile', body)
+    console.log(res.data)
+    return res.data
+}
 
 
 

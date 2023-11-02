@@ -6,55 +6,45 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function ManageProfiles() {
   const [IsOpenModal, setIsOpenModal] = useState(false);
-  const userData = useSelector((state) => 
-  {console.log(state)
-  return state.user.data});
-console.log(userData)
+  const userData = useSelector((state) => {
+    return state.user.data.allUserProfile;
+  });
 
-  console.log("maaanage profile page",userData)
+  // console.log("maaanage profile page", userData[0].profileImageUrl);
+  console.log("maaanage profile page", userData);
+
+  // console.log(textOj[0].name);
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl">Manage Profiles:</div>
       <div className="flex flex-row flex-wrap gap-2">
-        <div
-          onClick={() => setIsOpenModal(!IsOpenModal)}
-          className="cursor-pointer  flex flex-col items-center p-1  group"
-        >
-          <TiPencil className=" translate-y-12 z-20 text-white text-lg  " />
-          <img
-            className="h-20 rounded-sm relative opacity-70 group-hover:border"
-            src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
-            alt=""
-          ></img>
+        {userData.map((el) => {
+          return (
+            <div
+            key={el.id}>
+              <div
+                onClick={() => setIsOpenModal(!IsOpenModal)}
+                className="cursor-pointer  flex flex-col items-center p-1  group"
+               
+              >
+                <TiPencil className=" translate-y-12 z-20 text-white text-lg  " />
+                <img
+                  className="h-20 rounded-sm relative opacity-70 group-hover:border"
+                  src={el.profileImageUrl}
+                  alt=""
+                ></img>
 
-          <div className="p-1 text-xs text-gray-500  group-hover:text-white ">
-            User name
-          </div>
-        </div>
-        <div className="cursor-pointer  flex flex-col items-center p-1 group">
-          <TiPencil className=" translate-y-12 z-20 text-white text-lg" />
-          <img
-            className="h-20 rounded-sm relative opacity-70 group-hover:border"
-            src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 text-xs text-gray-500 group-hover:text-white ">
-            User name
-          </div>
-        </div>
-        <div className="cursor-pointer  flex flex-col items-center p-1 group">
-          <TiPencil className=" translate-y-12 z-20 text-white text-lg" />
-          <img
-            className="h-20 rounded-sm relative opacity-70 group-hover:border"
-            src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
-            alt=""
-          ></img>
-
-          <div className="p-1 text-xs text-gray-500 group-hover:text-white ">
-            User name
-          </div>
-        </div>
+                <div className="p-1 text-xs text-gray-500  group-hover:text-white ">
+                  {el.userProfileName}
+                </div>
+              </div>
+                {IsOpenModal && (
+                  <ManageProfileModal onClose={setIsOpenModal} data={el} />
+                )}
+            </div>
+          );
+        })}
+        {/* 
         <div className="cursor-pointer  flex flex-col items-center p-1 group">
           <TiPencil className=" translate-y-12 z-20 text-white text-lg" />
           <img
@@ -66,7 +56,7 @@ console.log(userData)
           <div className="p-1 text-xs text-gray-500 group-hover:text-white ">
             Children
           </div>
-        </div>
+        </div> */}
         <div
           onClick={() => setIsOpenModal(!IsOpenModal)}
           className="cursor-pointer  flex flex-col items-center p-1 group gap-1"
@@ -82,7 +72,6 @@ console.log(userData)
       <div className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer">
         Done
       </div>
-      {IsOpenModal && <ManageProfileModal onClose={setIsOpenModal} />}
     </div>
   );
 }

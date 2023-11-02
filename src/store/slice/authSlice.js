@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-import { registerUser,loginUser } from "../utils/userApi";
+import { registerUser,loginUser, editUserProfile } from "../utils/userApi";
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
 import { faL } from "@fortawesome/free-solid-svg-icons";
@@ -24,6 +24,15 @@ export const registerAction = createAsyncThunk('/auth/register', async (input) =
 export const loginAction = createAsyncThunk('auth/login',async (input) =>{
   try{
     let res = await loginUser(input)
+    return res
+  }catch(error){
+    throw error.response.data
+  }
+})
+export const editProfileAction = createAsyncThunk('user/profile',async (input) =>{
+  try{
+    const res = await axios.patch('/user/profile', input)
+    console.log(res)
     return res
   }catch(error){
     throw error.response.data
@@ -64,6 +73,10 @@ export const authSlice = createSlice({
       .addCase(loginAction.rejected, (state, action) => {
         state.error = action.error
         state.loading = false
+      })
+      .addCase(editProfileAction.fulfilled, (state, action)=>{
+        state.loading = false
+        state.data = action.payload
       })
    
    

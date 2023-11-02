@@ -24,7 +24,7 @@ function LoginPage() {
       console.log(data)
       if (user) {
         addAccessToken(user.accessToken)
-        navigate("/mangae-profile")
+        navigate("/manage-profile")
       }
 
     })
