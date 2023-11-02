@@ -3,6 +3,7 @@ import axios from "../../config/axios";
 import { registerUser,loginUser } from "../utils/userApi";
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
   error: null,
@@ -28,6 +29,8 @@ export const loginAction = createAsyncThunk('auth/login',async (input) =>{
     throw error.response.data
   }
 })
+
+
 
 export const authSlice = createSlice({
   name: "user",
@@ -63,6 +66,8 @@ export const authSlice = createSlice({
         state.error = action.error
         state.loading = false
       })
+   
+   
 
   }
 });

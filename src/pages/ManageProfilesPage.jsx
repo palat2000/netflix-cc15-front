@@ -2,11 +2,18 @@ import { TiPencil } from "react-icons/ti";
 import { FaPlusCircle } from "react-icons/fa";
 import ManageProfileModal from "../pages/ManageProfileModal";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ManageProfiles() {
   const [IsOpenModal, setIsOpenModal] = useState(false);
+  const userData = useSelector((state) => 
+  {console.log(state)
+  return state.user.data});
+console.log(userData)
+
+  console.log("maaanage profile page",userData)
   return (
-    <div className="flex flex-col bg-black items-center h-full p-10 gap-5 relative">
+    <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl">Manage Profiles:</div>
       <div className="flex flex-row flex-wrap gap-2">
         <div

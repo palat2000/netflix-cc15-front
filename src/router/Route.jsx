@@ -7,7 +7,8 @@ import LoginPage from "../pages/LoginPage";
 import GuestBrowsePage from "../pages/GuestBrowsePage";
 import PackagePage from "../pages/PackagePage";
 import RegisterBody from "../features/auth/register/RegisterBody";
-
+import ManageProfiles from "../pages/ManageProfilesPage";
+import Admin from "../pages/Admin"
 const router = createBrowserRouter([
   {
     path: "",
@@ -42,7 +43,13 @@ const router = createBrowserRouter([
   {
     path: "watch/:movieId",
     element: <WatchPage />,
-  },
+  },{
+    path: "manage-profile",
+    element: <ManageProfiles />
+  },{
+    path: "admin",
+    element: <Admin/>
+  }
 ]);
 
 function Route() {
