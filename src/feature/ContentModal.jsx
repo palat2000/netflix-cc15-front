@@ -1,18 +1,13 @@
-import { useState } from "react"
 import ContentModalDetail from "./ContentModalDetail"
+import useContentModal from "./hook/useContentModal"
 
-export default function ContentModal({ movieId }) {
+export default function ContentModal({ movieId, component }) {
 
-    // alert(movieId)
-    const [isOpen, setIsOpen] = useState(false)
-
-    const handleClickClose = () => {
-        setIsOpen(!isOpen)
-    }
+    const { isOpen, handleClickOpen } = useContentModal()
 
     return (
         <>
-            <div onClick={handleClickClose}>Open</div>
+            <div onClick={handleClickOpen}>{component || "Open"}</div>
             {isOpen && (
                 <ContentModalDetail movieId={movieId} />
             )
