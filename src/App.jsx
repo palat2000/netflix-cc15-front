@@ -3,9 +3,9 @@ import Route from "./router/Route";
 function App() {
   return (
     <div>
-      <Route />;
+      <Route />
     </div>
-  )
+  );
 }
 
 export default App;
