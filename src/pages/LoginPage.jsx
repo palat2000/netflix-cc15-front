@@ -5,6 +5,7 @@ import { loginAction, resetState } from "../store/slice/authSlice";
 import { addAccessToken } from "../utils/local-storage";
 import { CircularProgress } from "@mui/material";
 import NetflixLogo from "../features/logo&button/NetflixLogo";
+import ButtonNetflix from "../features/logo&button/ButtonNetflix";
 
 function LoginPage() {
   const {
@@ -92,15 +93,9 @@ function LoginPage() {
                   )}
                 </div>
               </div>
-              {!loading ?
-                <button className="bg-[#e50914] text-white p-[10px] rounded-md h-14 ">
-                  <div>Sign In</div>
-                </button>
-                :
-                <button className="bg-red-800  text-white p-[10px] rounded-md h-14 ">
-                  <CircularProgress sx={{ color: "whitesmoke" }} />
-                </button>
-              }
+              <div>
+              <ButtonNetflix text={"Sign In"}></ButtonNetflix>
+              </div>
             </div>
           </form>
           <div className="flex pt-5 gap-1">

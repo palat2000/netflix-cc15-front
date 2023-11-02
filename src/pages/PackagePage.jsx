@@ -7,6 +7,7 @@ import axios from "../config/axios";
 import { useState } from "react";
 import { addAccessToken, removeAccessToken } from "../utils/local-storage";
 import { useNavigate } from "react-router-dom";
+import ButtonNetflix from "../features/logo&button/ButtonNetflix";
 
 export default function PackagePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -123,12 +124,9 @@ export default function PackagePage() {
               </div>
             </div>
             <hr />
-            <button
-              onClick={handleClick}
-              className="bg-[#E50914] w-full h-16 text-2xl font-light text-white rounded-md mt-2"
-            >
-              Payment
-            </button>
+            
+
+            <ButtonNetflix handleClick = {handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
           </div>
         </div>
       </div>
