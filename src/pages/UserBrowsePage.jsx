@@ -1,3 +1,5 @@
+import ContentModal from "../feature/ContentModal";
+import ContentModalContextProvider from "../feature/context/ContentModalContext";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
@@ -13,7 +15,16 @@ function UserBrowsePage() {
       });
     }
   }, []);
-  return <div>UserBrowsePage</div>;
+
+  return (
+    <div>
+      UserBrowsePage
+      <ContentModalContextProvider movieId={1} >
+        <ContentModal />
+      </ContentModalContextProvider>
+    </div >
+  );
+
 }
 
 export default UserBrowsePage;
