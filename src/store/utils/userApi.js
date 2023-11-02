@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../../config/axios'
 import { addAccessToken } from '../../utils/local-storage'
 
 const userApi = axios.create({

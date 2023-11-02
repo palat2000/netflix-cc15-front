@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction, resetState } from "../store/slice/authSlice";
 import { addAccessToken } from "../utils/local-storage";
-import HeaderHomePage from "../layout/HeaderHomePage";
+import { CircularProgress } from "@mui/material";
+import NetflixLogo from "../features/logo&button/NetflixLogo";
 
 function LoginPage() {
   const {
@@ -13,27 +13,30 @@ function LoginPage() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const userError = useSelector((state) => state.user.error);
-  const userData = useSelector((state) => state.user.data);
 
+  const { error, loading } = useSelector((state) => { return state.user })
+
+  console.log(error)
   const handleSubmitForm = (data) => {
-    dispatch(loginAction(data));
-    if (userData?.accessToken) {
-      addAccessToken(userData.accessToken);
-      navigate("/browse");
-    }
-  };
+    dispatch(loginAction(data)).unwrap().then(user => {
+      if (data) {
+        addAccessToken(user.accessToken)
+        dispatch(resetState())
+        navigate("/browse")
+      }
 
+    })
+  };
   return (
     <div className=" flex justify-center md:flex-col md:items-center md:flex h-full">
-      <div className="flex w-full bg-black text-white md:bg-green-500 md:flex justify-center pb-5 md:bg-cover md:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/993921bb-c0e1-4bc7-b327-ced8627c4f71/TH-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg')] h-full">
-        <div className="flex self-center justify-center mt-2 flex-col w-11/12 md:bg-opacity-70 md:rounded-md md:pb-[40px] md:pt-[60px] md:bg-black md:w-[500px] md:px-[68px]  md:flex-col">
+      <div className="flex w-full flex-col justify-around bg-black text-white  md:flex  pb-5 md:bg-cover md:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/993921bb-c0e1-4bc7-b327-ced8627c4f71/TH-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg')] h-full">
+      <NetflixLogo/>
+        <div className="flex self-center justify-center flex-col w-11/12 md:bg-opacity-70 md:rounded-md md:pb-[40px] md:pt-[60px] md:bg-black md:w-[500px] md:px-[68px]  md:flex-col">
           <h1 className="mb-[10px] text-[32px] pb-5 pt-2">Sign In</h1>
-          {userError && (
-            <div className="p-[10px] mb-4 rounded-md text-[13px] bg-[#e87c03]">
-              Incorrect password. Please try again
+          {error && (
+            <div className="p-[10px] mb-4 rounded-md text-[15px] bg-[#e87c03]">
+              {error.message}
             </div>
           )}
           <form onSubmit={handleSubmit(handleSubmitForm)}>
@@ -89,15 +92,23 @@ function LoginPage() {
                   )}
                 </div>
               </div>
-              <button className="bg-[#e50914] text-white p-[10px] rounded-md">
-                Sign In
-              </button>
+              {!loading ?
+                <button className="bg-[#e50914] text-white p-[10px] rounded-md h-14 ">
+                  <div>Sign In</div>
+                </button>
+                :
+                <button className="bg-red-800  text-white p-[10px] rounded-md h-14 ">
+                  <CircularProgress sx={{ color: "whitesmoke" }} />
+                </button>
+              }
             </div>
           </form>
           <div className="flex pt-5 gap-1">
             <div className="text-[#737373]">New to Netflix?</div>
             <button
+              className="hover:underline"
               onClick={() => {
+                dispatch(resetState())
                 return navigate("/signup");
               }}
             >

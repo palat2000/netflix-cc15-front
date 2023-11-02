@@ -1,19 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import HeaderHomePage from "../../../layout/HeaderHomePage";
 import RegisterForm from "./RegisterForm";
+import NetflixLogo from "../../logo&button/NetflixLogo";
 
 export default function RegisterBody() {
   const navigate = useNavigate();
   return (
     <div className=" w-full flex flex-col justify-center md:flex md:justify-center">
       <div className="flex justify-between items-center">
-        <img
-          onClick={() => {
-            return navigate("/");
-          }}
-          className="w-44 cursor-pointer pl-7"
-          src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
-        ></img>
+        <NetflixLogo/>
         <button
           onClick={() => {
             return navigate("/login");
