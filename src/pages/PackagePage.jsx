@@ -7,6 +7,7 @@ import axios from "../config/axios";
 import { useState } from "react";
 import { addAccessToken, removeAccessToken } from "../utils/local-storage";
 import { useNavigate } from "react-router-dom";
+import ButtonNetflix from "../features/logo&button/ButtonNetflix";
 
 export default function PackagePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -75,8 +76,8 @@ export default function PackagePage() {
       <hr />
       <div className="w-full h-full pt-14 md:flex md:justify-center md:items-center">
         <div className="flex justify-center md:w-96 md:flex md:justify-center">
-          <div className="flex justify-center flex-col gap-2  w-11/12  md:justify-center md:flex md:w-full ">
-            <div className="font-medium text-3xl ">
+          <div className="flex justify-center flex-col gap-3 pt-3 w-11/12 md:w-full md:justify-center md:flex md:pt-10">
+            <div className="font-medium text-3xl">
               Choose the plan that’s right for you
             </div>
             <div className="flex flex-row gap-2">
@@ -123,12 +124,7 @@ export default function PackagePage() {
               </div>
             </div>
             <hr />
-            <button
-              onClick={handleClick}
-              className="bg-[#E50914] w-full h-16 text-2xl font-light text-white rounded-md mt-2"
-            >
-              Payment
-            </button>
+            <ButtonNetflix handleClick = {handleClick} fontSize={"2xl"} text={"Next"}></ButtonNetflix>
           </div>
         </div>
       </div>
