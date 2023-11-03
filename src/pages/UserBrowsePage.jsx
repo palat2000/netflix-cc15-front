@@ -41,7 +41,7 @@ function UserBrowsePage() {
   return (
     <div>
       <ContentModalContextProvider movieId={1}>
-        <ContentModal />
+        <ContentModal movieId={1} />
       </ContentModalContextProvider>
     </div>
   );

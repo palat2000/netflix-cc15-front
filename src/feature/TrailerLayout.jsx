@@ -4,7 +4,7 @@ import PlayButton from '../components/button/PlayButton';
 import TrailerLayoutRight from './TrailerLayoutRight';
 import useContentModal from './hook/useContentModal';
 
-export default function TrailerLayout() {
+export default function TrailerLayout({ movieId }) {
 
     const { movieData } = useContentModal()
 
@@ -23,7 +23,7 @@ export default function TrailerLayout() {
                         </div>
                     </div>
                 </div>
-                <TrailerLayoutRight />
+                <TrailerLayoutRight movieId={movieId} />
             </div>
         </div>
     )

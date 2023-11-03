@@ -7,6 +7,7 @@ const userApi = axios.create({
 
 export const registerUser = async (body) => {
   const res = await userApi.post("/auth/register", body);
+  console.log("🚀 ~ file: userApi.js:10 ~ registerUser ~ res:", res)
   return res.data;
 };
 

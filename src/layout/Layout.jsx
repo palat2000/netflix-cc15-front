@@ -3,13 +3,15 @@ import Footer from "./Footer";
 import { useSelector } from "react-redux";
 
 function Layout() {
-  const modalIsOpen = useSelector(state => state.movie.modalIsOpen)
+  const modalIsOpen = useSelector(state => state.content.modalIsOpen)
   return (
     <div className={`flex flex-col h-screen ${modalIsOpen && "overflow-hidden"} `}>
-      {/* // <div className="flex flex-col h-screen overflow-hidden"> */}
-      <Outlet />
+      {/* <div className="flex flex-col h-screen overflow-hidden"> */}
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Footer />
-    </div>
+    </div >
   );
 }
 

@@ -1,14 +1,33 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  error: null,
-  loading: false,
-  data: {},
+  modalIsopen: false
 };
 
 const contentSlice = createSlice({
   name: "content",
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {},
+  reducers: {
+    openModal: (state) => {
+      state.modalIsOpen = true
+    },
+    closeModal: (state) => {
+      state.modalIsOpen = false
+    },
+    setData: (state, action) => {
+      state[action.payload] = {
+        trailerIsMute: true,
+      }
+    },
+    toggleMute: (state, action) => {
+      console.log(action.payload)
+      state[action.payload].trailerIsMute = !state[action.payload].trailerIsMute
+    }
+  },
+  // extraReducers: (builder) => { },
 });
+
+export const { openModal, closeModal, setData, toggleMute } = contentSlice.actions
+const contentReducer = contentSlice.reducer
+export default contentReducer
+

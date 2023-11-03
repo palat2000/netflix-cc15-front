@@ -2,10 +2,10 @@ import CloseButton from '../components/button/CloseButton';
 import MuteButton from '../components/button/MuteButton';
 import SoundOnButton from '../components/button/SoundOnButton';
 import { useSelector, useDispatch } from 'react-redux'
-import { closeModal, toggleMute } from '../store/slice/movieSlice'
+import { closeModal, toggleMute } from "../store/slice/contentSlice"
 
-export default function TrailerLayoutRight() {
-    const trailerIsMute = useSelector(state => state.movie.trailerIsMute)
+export default function TrailerLayoutRight({ movieId }) {
+    const trailerIsMute = useSelector(state => state.content[movieId]?.trailerIsMute)
     const dispatch = useDispatch()
 
 
@@ -15,12 +15,12 @@ export default function TrailerLayoutRight() {
                 <CloseButton />
             </div>
             {trailerIsMute && (
-                <div onClick={() => dispatch(toggleMute())}>
+                <div onClick={() => dispatch(toggleMute(movieId))}>
                     <MuteButton />
                 </div>
             )}
             {!trailerIsMute && (
-                <div onClick={() => dispatch(toggleMute())}>
+                <div onClick={() => dispatch(toggleMute(movieId))}>
                     <SoundOnButton />
                 </div>
             )}
