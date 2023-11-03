@@ -1,9 +1,11 @@
+import MuteButton from "../Button/MuteButton";
 import MovieDetails from "./MovieDetails";
 
 export default function MainTrailer() {
   return (
     <div className="relative top-0  ">
       <MovieDetails />
+      <MuteButton />
 
       <video width="4000" height="auto" loop muted autoPlay controls="">
         <source

@@ -21,7 +21,7 @@ export default function MovieDetails() {
               <PlayButton customizeClass={"ml-0"} />
               <ContentModalContextProvider movieId={1}>
                 <ContentModal>
-                  <MoreInfoButton />
+                  <MoreInfoButton customizeClass={"ml-0"} />
                 </ContentModal>
               </ContentModalContextProvider>
             </div>
