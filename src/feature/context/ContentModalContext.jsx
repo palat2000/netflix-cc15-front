@@ -7,7 +7,7 @@ export default function ContentModalContextProvider({ children, movieId }) {
     const [isOpen, setIsOpen] = useState(false)
     const [movieData, setMovieData] = useState(null)
 
-    // ใช้แทน res.data
+    // ใช้แทน res.data ={movie: [{}] , moreLikeThis:[{},{}]} 
     const movie1 = {
         trailer: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596816/comedy/ui7yzevyv2zfbiibhccl.mp4",
         title: "CC15 Movie",
@@ -36,7 +36,9 @@ export default function ContentModalContextProvider({ children, movieId }) {
         }
     }, [])
 
-    const handleClickOpen = () => { setIsOpen(true) }
+    const handleClickOpen = () => {
+        setIsOpen(true)
+    }
     const handleClickClose = () => { setIsOpen(false) }
     const trailerPlayer = useRef(null)
 

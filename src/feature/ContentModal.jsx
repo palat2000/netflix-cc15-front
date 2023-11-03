@@ -1,14 +1,18 @@
 import ContentModalDetail from "./ContentModalDetail"
-import useContentModal from "./hook/useContentModal"
+import { useSelector, useDispatch } from 'react-redux'
+import { openModal } from '../store/slice/movieSlice'
 
 export default function ContentModal({ movieId, component }) {
 
-    const { isOpen, handleClickOpen } = useContentModal()
+    const modalIsOpen = useSelector(state => state.movie.modalIsOpen)
+    const dispatch = useDispatch()
+
+    console.log(modalIsOpen)
 
     return (
         <>
-            <div onClick={handleClickOpen}>{component || "Open"}</div>
-            {isOpen && (
+            <div onClick={() => dispatch(openModal())}>{component || "Open"}</div>
+            {modalIsOpen && (
                 <ContentModalDetail movieId={movieId} />
             )
             }

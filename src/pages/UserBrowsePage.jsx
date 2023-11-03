@@ -18,7 +18,6 @@ function UserBrowsePage() {
 
   return (
     <div>
-      UserBrowsePage
       <ContentModalContextProvider movieId={1} >
         <ContentModal />
       </ContentModalContextProvider>
