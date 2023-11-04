@@ -9,6 +9,7 @@ import PackagePage from "../pages/PackagePage";
 import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
+import ManageProfiles from "../pages/ManageProfilesPage";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "watch/:movieId",
     element: <WatchPage />,
+  },
+  {
+    path: "manage-profile",
+    element: <ManageProfiles />,
   },
 ]);
 
