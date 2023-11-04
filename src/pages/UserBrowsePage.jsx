@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import MainTrailer from "../components/Browse/MainTrailer";
 import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
+import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 
 function UserBrowsePage() {
   useEffect(() => {
@@ -21,14 +22,23 @@ function UserBrowsePage() {
   }, []);
 
   return (
-    <ContentModalContextProvider movieId={1}>
-      <div className="bg-black">
-        <NavbarAdult />
-        <MainTrailer />
-        <VDOSwiperSlides />
-      </div>
-      <ContentModal />
-    </ContentModalContextProvider>
+    <div>
+      <ContentModalContextProvider movieId={1}>
+        <div className="bg-black">
+          <NavbarAdult />
+          <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
+            <ButtonMainTrailerGroup />
+          </div>
+          <MainTrailer />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+        </div>
+        <ContentModal />
+      </ContentModalContextProvider>
+    </div>
   );
 }
 
