@@ -7,6 +7,7 @@ import LoginPage from "../pages/LoginPage";
 import GuestBrowsePage from "../pages/GuestBrowsePage";
 import PackagePage from "../pages/PackagePage";
 import RegisterBody from "../features/auth/register/RegisterBody";
+import SearchPage from "../pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         path: "package",
         element: <PackagePage />,
       },
+      {
+        path:"search",
+        element:<SearchPage/>
+      }
     ],
   },
   {
