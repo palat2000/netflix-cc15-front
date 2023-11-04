@@ -1,7 +1,7 @@
 import ContentModalDetail from "./ContentModalDetail"
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchContentAction, openModal, setData } from "../store/slice/contentSlice"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function ContentModal({ movieId, component }) {
 
