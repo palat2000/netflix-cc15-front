@@ -14,9 +14,21 @@ export const loginUser = async (body) => {
     return res.data
 }
 export const editUserProfile = async (body) => {
-    
+
     const res = await axios.patch('/user/profile', body)
-    console.log(res.data)
+    // console.log("asdasd",res.data)
+    return res.data
+}
+export const createUserProfile = async (body) => {
+
+    const res = await axios.post('/user/profile', body)
+    // console.log("asdasd",res.data)
+    return res.data
+}
+export const deleteUserProfile = async (param) => {
+console.log("parammmmmm",param)
+    const res = await axios.delete(`/user/profile/${param}`)
+    console.log("asdasd",res.data)
     return res.data
 }
 

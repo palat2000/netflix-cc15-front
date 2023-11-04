@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-import { registerUser,loginUser, editUserProfile } from "../utils/userApi";
+import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile } from "../utils/userApi";
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
 import { faL } from "@fortawesome/free-solid-svg-icons";
@@ -31,7 +31,31 @@ export const loginAction = createAsyncThunk('auth/login',async (input) =>{
 })
 export const editProfileAction = createAsyncThunk('user/profile',async (input) =>{
   try{
-    const res = await axios.patch('/user/profile', input)
+  
+    console.log(input.get("profileImageUrl"),"ooooooo");
+    const res = await editUserProfile(input)
+    console.log(res)
+    return res
+  }catch(error){
+    throw error.response.data
+  }
+})
+export const createProfileAction = createAsyncThunk('user/profile',async (input) =>{
+  try{
+  
+    // console.log(input.get("profileImageUrl"),"ooooooo");
+    const res = await createUserProfile(input)
+    console.log(res)
+    return res
+  }catch(error){
+    throw error.response.data
+  }
+})
+export const deleteUserProfileAction = createAsyncThunk('user/profile',async (input) =>{
+  try{
+  
+    // console.log(input.get("profileImageUrl"),"ooooooo");
+    const res = await deleteUserProfile(input)
     console.log(res)
     return res
   }catch(error){
@@ -78,6 +102,10 @@ export const authSlice = createSlice({
         state.loading = false
         state.data = action.payload
       })
+      // .addCase(createProfileAction.fulfilled, (state, action)=> {
+      //   state.loading = false
+      //   state.data = action.payload
+      // })
    
    
 
