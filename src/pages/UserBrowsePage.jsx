@@ -4,6 +4,11 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "../config/axios";
 
+import MainTrailer from "../components/Browse/MainTrailer";
+import NavbarAdult from "../components/Browse/NavbarAdult";
+import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
+import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
+
 function UserBrowsePage() {
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -33,13 +38,23 @@ function UserBrowsePage() {
 
   return (
     <div>
-      UserBrowsePage
-      <ContentModalContextProvider movieId={1} >
+      <ContentModalContextProvider movieId={1}>
+        <div className="bg-black">
+          <NavbarAdult />
+          <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
+            <ButtonMainTrailerGroup />
+          </div>
+          <MainTrailer />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+        </div>
         <ContentModal />
       </ContentModalContextProvider>
-    </div >
+    </div>
   );
-
 }
 
 export default UserBrowsePage;
