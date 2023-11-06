@@ -20,16 +20,19 @@ function WatchPage() {
   // }
 
   useEffect(
-    () => console.log(currentTime)
+    () => {
+      console.log(currentTime)
+
+    }
     , [currentTime]
   )
 
   return (
     <>
       <div className=" w-screen h-screen bg-black flex items-center ">
-        <PlayerControls watchPlayer={watchPlayer} currentTime={currentTime} />
+        <PlayerControls watchPlayer={watchPlayer} currentTime={currentTime} setCurrentTime={setCurrentTime} />
         <video preload autoPlay onTimeUpdate={el => setCurrentTime(el.target.currentTime)} ref={watchPlayer} className="w-full h-full object-contain">
-          <source src={"https://res.cloudinary.com/diyiw4pvv/video/upload/v1698595931/horror/ifx8p6t58uo958x6g5dz.mp4"}></source>
+          <source src={"https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"}></source>
         </video>
       </div>
     </>
