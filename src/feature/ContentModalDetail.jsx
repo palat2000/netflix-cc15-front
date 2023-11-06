@@ -13,12 +13,13 @@ export default function ContentModalDetail({ movieId }) {
         <>
             <div className="bg-black bg-opacity-90 pt-5 flex flex-col justify-start items-center absolute w-screen h-screen top-0 left-0 z-50 overflow-auto">
                 <div onClick={() => dispatch(closeModal())} className="w-full h-screen "></div>
-                {movieData ? (<div className="flex flex-col w-full items-center h-full absolute p-[2%] max-w-[850px]">
-                    <div className="bg-neutral-900 text-white flex flex-col w-full items-center">
-                        <TrailerHeaderModal movieId={movieId} />
-                        <InfoBody movieId={movieId} />
-                    </div>
-                </div>) : (<> </>)}
+                {movieData ? (
+                    <div className="flex flex-col w-full items-center h-full absolute p-[2%] max-w-[850px]">
+                        <div className="bg-neutral-900 text-white flex flex-col w-full items-center">
+                            <TrailerHeaderModal movieId={movieId} />
+                            <InfoBody movieId={movieId} />
+                        </div>
+                    </div>) : (<> </>)}
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function MoreLikeThisBox({ movie }) {
+export default function EpisodeBox({ movie }) {
     const videoEpisode = useRef(null);
     const [videoDuration, setVideoDuration] = useState(null);
 

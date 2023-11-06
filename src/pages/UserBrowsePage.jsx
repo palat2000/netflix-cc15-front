@@ -1,5 +1,4 @@
 import ContentModal from "../feature/ContentModal";
-import ContentModalContextProvider from "../feature/context/ContentModalContext";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
@@ -40,9 +39,7 @@ function UserBrowsePage() {
 
   return (
     <div>
-      {/* <ContentModalContextProvider movieId={1}> */}
-      <ContentModal movieId={2} />
-      {/* </ContentModalContextProvider> */}
+      <ContentModal movieId={1} />
     </div>
   );
 }

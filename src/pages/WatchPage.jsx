@@ -28,7 +28,7 @@ function WatchPage() {
     <>
       <div className=" w-screen h-screen bg-black flex items-center ">
         <PlayerControls watchPlayer={watchPlayer} currentTime={currentTime} />
-        <video onTimeUpdate={el => setCurrentTime(el.target.currentTime)} ref={watchPlayer} className="w-full h-full object-contain">
+        <video preload autoPlay onTimeUpdate={el => setCurrentTime(el.target.currentTime)} ref={watchPlayer} className="w-full h-full object-contain">
           <source src={"https://res.cloudinary.com/diyiw4pvv/video/upload/v1698595931/horror/ifx8p6t58uo958x6g5dz.mp4"}></source>
         </video>
       </div>

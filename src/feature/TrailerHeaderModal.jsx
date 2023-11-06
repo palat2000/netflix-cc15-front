@@ -29,6 +29,7 @@ export default function TrailerHeaderModal({ movieId }) {
                     <source src={movieTrailer}></source>
                 </video>}
             </Link>
+            <div className='w-full h-[25%] absolute bottom-0 bg-gradient-to-t from-neutral-900'></div>
         </div>
     )
 }
