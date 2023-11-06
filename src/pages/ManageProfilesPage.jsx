@@ -10,9 +10,16 @@ export default function ManageProfiles() {
   const [IsOpenModal, setIsOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
+  const [data, setData] = useState(null)
   const userData = useSelector((state) => {
+   
     return state.user.data.allUserProfile;
   });
+
+  useEffect(()=>{
+    setData(userData)
+    
+  },[])
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -69,7 +76,9 @@ export default function ManageProfiles() {
           <ManageProfileModal onClose={setIsOpenModal} data={modalData} />
         )}
       </div>
-      <div className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer md:p-2 md:font-medium md:pl-8 md:pr-8 md:text-lg">
+      <div 
+      onClick={()=>console.log(data)}
+      className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer md:p-2 md:font-medium md:pl-8 md:pr-8 md:text-lg">
         Done
       </div>
     </div>

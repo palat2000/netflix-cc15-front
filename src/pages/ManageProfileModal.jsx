@@ -85,8 +85,8 @@ export default function ManageProfileModal({ onClose, data }) {
               </div>
               {userData?.length > 1 && (
                 <div
-                  onClick={() => console.log(data)}
-                  // onClick={handleDelete}
+                  // onClick={() => console.log(data)}
+                  onClick={handleDelete}
                   className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer"
                 >
                   Delete
