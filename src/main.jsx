@@ -7,9 +7,9 @@ import { StyledEngineProvider } from "@mui/material";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
-<StyledEngineProvider injectFirst>
+        <StyledEngineProvider injectFirst>
 
-        <App />
-</StyledEngineProvider>
+            <App />
+        </StyledEngineProvider>
     </Provider>
 );

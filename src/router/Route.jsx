@@ -10,6 +10,7 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import YourAccount from "../pages/YourAccountPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: "search",
         element: <SearchPage />,
       },
+      {
+        path:"YourAccount",
+        element:<YourAccount/>
+      }
     ],
   },
   {
