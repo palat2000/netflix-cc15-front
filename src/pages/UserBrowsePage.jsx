@@ -40,9 +40,9 @@ function UserBrowsePage() {
 
   return (
     <div>
-      <ContentModalContextProvider movieId={1}>
-        <ContentModal movieId={1} />
-      </ContentModalContextProvider>
+      {/* <ContentModalContextProvider movieId={1}> */}
+      <ContentModal movieId={2} />
+      {/* </ContentModalContextProvider> */}
     </div>
   );
 }

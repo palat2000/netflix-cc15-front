@@ -35,7 +35,7 @@ export default function InfoBody({ movieId }) {
             </div>
             {movieData?.isTVShow && (
                 <div>
-                    <div className="font-semibold text-xl border-b-[1px] border-neutral-600 pb-2">Episodes</div>
+                    <div className="font-semibold text-xl pb-2 border-b-[1px] border-neutral-600">Episodes</div>
                     {movieData?.video?.map((el, index) => <MoreLikeThisBox key={index} movie={el} />
                     )}
                 </div>
