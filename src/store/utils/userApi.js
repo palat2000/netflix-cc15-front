@@ -1,5 +1,5 @@
-import axios from '../../config/axios'
-import { addAccessToken } from '../../utils/local-storage'
+import axios from "../../config/axios";
+
 
 
 
@@ -26,11 +26,17 @@ export const createUserProfile = async (body) => {
     return res.data
 }
 export const deleteUserProfile = async (param) => {
-console.log("parammmmmm",param)
+// console.log("parammmmmm",param)
     const res = await axios.delete(`/user/profile/${param}`)
-    console.log("asdasd",res.data)
+    // console.log("asdasd",res.data)
     return res.data
 }
 
 
 
+
+
+export const getMe = async () => {
+  const res = await axios.get("/auth/me");
+  return res.data;
+};

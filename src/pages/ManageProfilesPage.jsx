@@ -5,14 +5,19 @@ import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfile
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { getMeAction } from "../store/slice/authSlice";
+import { fetchAllContent } from "../store/slice/allContentSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function ManageProfiles() {
   const [IsOpenModal, setIsOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
+  const navigate = useNavigate();
   const userData = useSelector((state) => {
-    return state.user.data.allUserProfile;
+    return state?.user?.data?.allUserProfile;
   });
+
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -44,7 +49,10 @@ export default function ManageProfiles() {
         })}
         {userData?.length < 5 && (
           <div
-            onClick={() => setIsOpenModalCreate(!isOpenModalCreate)}
+            onClick={() => {
+              setModalData(userData);
+              return setIsOpenModalCreate(!isOpenModalCreate);
+            }}
             className="cursor-pointer   flex flex-col items-center p-1 group gap-1"
           >
             <FaPlusCircle className="md:h-40  absolute translate-y-10 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl" />
@@ -69,7 +77,10 @@ export default function ManageProfiles() {
           <ManageProfileModal onClose={setIsOpenModal} data={modalData} />
         )}
       </div>
-      <div className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer md:p-2 md:font-medium md:pl-8 md:pr-8 md:text-lg">
+      <div
+        onClick={() => console.log(userData)}
+        className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer md:p-2 md:font-medium md:pl-8 md:pr-8 md:text-lg"
+      >
         Done
       </div>
     </div>
