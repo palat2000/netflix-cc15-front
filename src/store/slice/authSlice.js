@@ -1,10 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-<<<<<<< HEAD
-import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile } from "../utils/userApi";
-=======
-import { registerUser, loginUser, getMe } from "../utils/userApi";
->>>>>>> af178f9a0c40e794b3f6c7f6452bdfbf2b6304ad
+import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile,getMe } from "../utils/userApi";
+
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
 import { faL } from "@fortawesome/free-solid-svg-icons";

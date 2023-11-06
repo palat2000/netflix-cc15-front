@@ -16,10 +16,7 @@ export default function ManageProfiles() {
     return state.user.data.allUserProfile;
   });
 
-  useEffect(()=>{
-    setData(userData)
-    
-  },[])
+ 
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
