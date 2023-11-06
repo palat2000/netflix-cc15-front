@@ -4,35 +4,44 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUserProfileAction,
   editProfileAction,
+  getMeAction,
 } from "../store/slice/authSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchAllContent } from "../store/slice/allContentSlice";
 
 export default function ManageProfileModal({ onClose, data }) {
-  const [file, setFile] = useState(null);
-  const [name, setName] = useState(null);
+  const [file, setFile] = useState(data.profileImageUrl);
+  const [name, setName] = useState(data.userProfileName);
   const [userProfileId, setUserProfileId] = useState(null);
-
+  const navigate = useNavigate();
   const inputEl = useRef(null);
   const dispatch = useDispatch();
+
 
   const handleSaveEdit = () => {
     const formData = new FormData();
 
     formData.append("profileImageUrl", file);
     formData.append("userProfileName", name);
-    // formData.append("userProfileId", data.id);
+    formData.append("userProfileId", data.id);
 
     dispatch(editProfileAction(formData))
       .unwrap()
-      .then(() => onClose(false));
+      .then(() => {
+       
+       return onClose(false)});
   };
 
   const handleDelete = () => {
 
-    dispatch(deleteUserProfileAction(data.id));
+    dispatch(deleteUserProfileAction(data.id))
+    .unwrap()
+    .then(() => onClose(false));
   };
 
   const userData = useSelector((state) => {
-    return state.user.data.allUserProfile;
+    return state?.user?.data?.allUserProfile;
   });
 
   return (
@@ -53,7 +62,8 @@ export default function ManageProfileModal({ onClose, data }) {
                 <input
                   onChange={(e) => setName(e.target.value)}
                   value={data.userProfileName}
-                  className="bg-gray-600 p-1 text-white "
+                  name="userProfileName"
+                  className="bg-gray-600 p-1 text-white"
                 ></input>
               </div>
             </div>
@@ -72,7 +82,8 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                onClick={handleSaveEdit}
+                // onClick={handleSaveEdit}
+                onClick={() => console.log(name)}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer"
               >
                 Save
