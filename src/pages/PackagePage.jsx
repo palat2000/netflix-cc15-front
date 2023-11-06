@@ -5,13 +5,12 @@ import computer from "../assets/Computer.png";
 import { CheckIcon } from "../icons";
 import axios from "../config/axios";
 import { useState } from "react";
-import { removeAccessToken } from "../utils/local-storage";
-import { useNavigate } from "react-router-dom";
 import ButtonNetflix from "../features/logo&button/ButtonNetflix";
+import HeaderAuthPage from "../components/header/HeaderAuthPage";
+import Spinner from "../components/spinner/Spinner";
 
 export default function PackagePage() {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   const handleClick = async () => {
     try {
       setIsLoading(true);
@@ -44,29 +43,12 @@ export default function PackagePage() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col md:flex md:justify-center">
-      <div className="flex justify-between items-center">
-        <img
-          onClick={() => {
-            return navigate("/");
-          }}
-          className="w-44 cursor-pointer pl-7"
-          src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
-        ></img>
-        <button
-          onClick={() => {
-            removeAccessToken();
-            return navigate("/");
-          }}
-          className="pr-7 text-2xl font-bold"
-        >
-          Sign out
-        </button>
-      </div>
-      <hr />
-      <div className="w-full h-full pt-14 md:flex md:justify-center md:items-center">
+    <div className="w-full flex flex-col md:flex md:justify-center h-full">
+      <HeaderAuthPage />
+      <div className="w-full h-full py-10 md:flex md:justify-center md:items-center relative">
+        {isLoading && <Spinner />}
         <div className="flex justify-center md:w-96 md:flex md:justify-center">
-          <div className="flex justify-center flex-col gap-3 pt-3 w-11/12 md:w-full md:justify-center md:flex md:pt-10">
+          <div className="flex justify-center flex-col gap-3 w-11/12 md:w-full md:justify-center md:flex">
             <div className="font-medium text-3xl">
               Choose the plan that’s right for you
             </div>
@@ -108,16 +90,16 @@ export default function PackagePage() {
               </div>
               <div className=" flex justify-center">
                 <div className="flex flex-col">
-                  <img src={phone} alt="" className="w-20" />
-                  <img src={computer} alt="" className="w-20" />
+                  <img src={phone} alt="phone" className="w-20" />
+                  <img src={computer} alt="computer" className="w-20" />
                 </div>
               </div>
             </div>
             <hr />
             <ButtonNetflix
               handleClick={handleClick}
-              fontSize={"2xl"}
-              text={"Next"}
+              fontSize="2xl"
+              text="Next"
             ></ButtonNetflix>
           </div>
         </div>
