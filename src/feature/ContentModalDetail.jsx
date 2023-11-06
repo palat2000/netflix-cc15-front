@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import InfoBody from "./InfoBody"
 import TrailerHeaderModal from "./TrailerHeaderModal"
-import useContentModal from "./hook/useContentModal"
 import { closeModal } from "../store/slice/contentSlice"
 
 export default function ContentModalDetail({ movieId }) {
