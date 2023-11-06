@@ -26,9 +26,9 @@ export const createUserProfile = async (body) => {
     return res.data
 }
 export const deleteUserProfile = async (param) => {
-console.log("parammmmmm",param)
+// console.log("parammmmmm",param)
     const res = await axios.delete(`/user/profile/${param}`)
-    console.log("asdasd",res.data)
+    // console.log("asdasd",res.data)
     return res.data
 }
 
