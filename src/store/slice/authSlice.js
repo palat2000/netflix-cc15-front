@@ -1,6 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile,getMe } from "../utils/userApi";
+import {
+  registerUser,
+  loginUser,
+  editUserProfile,
+  createUserProfile,
+  deleteUserProfile,
+  getMe,
+} from "../utils/userApi";
 
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
@@ -13,7 +20,7 @@ const initialState = {
 };
 
 export const registerAction = createAsyncThunk(
-  "/auth/register",
+  "auth/register",
   async (input) => {
     try {
       let res = await registerUser(input);
@@ -24,50 +31,50 @@ export const registerAction = createAsyncThunk(
   }
 );
 
-
-
-export const loginAction = createAsyncThunk('auth/login',async (input) =>{
-  try{
-    let res = await loginUser(input)
-    return res
-  }catch(error){
-    throw error.response.data
+export const loginAction = createAsyncThunk("auth/login", async (input) => {
+  try {
+    let res = await loginUser(input);
+    return res;
+  } catch (error) {
+    throw error.response.data;
   }
-})
-export const editProfileAction = createAsyncThunk('user/profile',async (input) =>{
-  try{
-  
-    console.log(input.get("profileImageUrl"),"ooooooo");
-    const res = await editUserProfile(input)
-    console.log(res)
-    return res
-  }catch(error){
-    throw error.response.data
+});
+export const editProfileAction = createAsyncThunk(
+  "auth/edit",
+  async (input) => {
+    try {
+      const res = await editUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
   }
-})
-export const createProfileAction = createAsyncThunk('user/profile',async (input) =>{
-  try{
-  
-    // console.log(input.get("profileImageUrl"),"ooooooo");
-    const res = await createUserProfile(input)
-    console.log(res)
-    return res
-  }catch(error){
-    throw error.response.data
+);
+export const createProfileAction = createAsyncThunk(
+  "auth/create",
+  async (input) => {
+    try {
+      const res = await createUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
   }
-})
-export const deleteUserProfileAction = createAsyncThunk('user/profile',async (input) =>{
-  try{
-  
-    // console.log(input.get("profileImageUrl"),"ooooooo");
-    const res = await deleteUserProfile(input)
-    console.log(res)
-    return res
-  }catch(error){
-    throw error.response.data
+);
+export const deleteUserProfileAction = createAsyncThunk(
+  "auth/delete",
+  async (input) => {
+    try {
+      const res = await deleteUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
   }
-})
-
+);
 
 export const getMeAction = createAsyncThunk("auth/me", async () => {
   const res = await getMe();
@@ -108,16 +115,18 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
-      .addCase(editProfileAction.fulfilled, (state, action)=>{
-        state.loading = false
-        state.data = action.payload
+      .addCase(editProfileAction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
       })
-      // .addCase(createProfileAction.fulfilled, (state, action)=> {
-      //   state.loading = false
-      //   state.data = action.payload
-      // })
-   
-   
+      .addCase(editProfileAction.pending, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(editProfileAction.rejected, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
         state.loading = true;
@@ -132,10 +141,20 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.data = {};
-      });
-      
-  }
+      })
+      .addCase(deleteUserProfileAction.fulfilled, (state, action) => {
+        state.data.allUserProfile = state.data.allUserProfile.filter(
+          (el) => el.id !== action.payload.deleteUserProfile.id
+        );
+        console.log(action);
+      })
+      .addCase(deleteUserProfileAction.rejected, (state, action) => {
+
+      })
+      .addCase(createProfileAction.fulfilled, (state,action)=> {
+        state.data.allUserProfile 
+      })
   },
-);
+});
 export const { resetState } = authSlice.actions;
 export default authSlice.reducer;
