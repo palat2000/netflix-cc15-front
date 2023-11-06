@@ -1,5 +1,5 @@
-import axios from '../../config/axios'
-import { addAccessToken } from '../../utils/local-storage'
+import axios from "../../config/axios";
+
 
 
 
@@ -34,3 +34,9 @@ console.log("parammmmmm",param)
 
 
 
+
+
+export const getMe = async () => {
+  const res = await axios.get("/auth/me");
+  return res.data;
+};
