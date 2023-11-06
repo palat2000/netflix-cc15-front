@@ -116,11 +116,8 @@ export const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(editProfileAction.fulfilled, (state, action) => {
-        state.data.newUserProfileName = [
-          ...state.data.newUserProfileName,
-          action.payload.newUserProfileName,
-        ];
-        console.log(state)
+        state.loading = false;
+        state.data = action.payload;
       })
       .addCase(editProfileAction.pending, (state, action) => {
         state.loading = false;
@@ -152,19 +149,8 @@ export const authSlice = createSlice({
         console.log(action);
       })
       .addCase(deleteUserProfileAction.rejected, (state, action) => {})
-      .addCase(createProfileAction.pending, (state, action) => {
-     
-      })
       .addCase(createProfileAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.data.allUserProfile = [
-          ...state.data.allUserProfile,
-          action.payload.userProfile,
-        ];
-      })
-      .addCase(createProfileAction.rejected, (state, action) => {
-        
-        state.error = action.error.message;
+        state.data.allUserProfile;
       });
   },
 });
