@@ -8,21 +8,31 @@ import { useEffect } from "react";
 import { getMeAction } from "../store/slice/authSlice";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 import { useNavigate } from "react-router-dom";
+import { getMe } from "../store/utils/userApi";
 
 export default function ManageProfiles() {
   const [IsOpenModal, setIsOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
+  const [render, setRender] = useState([])
+
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const userData = useSelector((state) => {
     return state?.user?.data?.allUserProfile;
   });
-  // const filnalData = [...filnalData,...userData,]
+
+useEffect(()=>{
+
+  getMe()
+},[])
+  
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   return (
-    <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
+    <div 
+    className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl md:text-6xl">Manage Profiles:</div>
       <div className="flex flex-row flex-wrap gap-2">
         {userData?.map((data, i) => {
