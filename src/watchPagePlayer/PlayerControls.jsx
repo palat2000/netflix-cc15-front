@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function PlayerControls({ watchPlayer, currentTime, setCurrentTime }) {
+export default function PlayerControls({ watchPlayer, currentTime, displayControls }) {
 
     const [newCurrentTime, setNewCurrentTime] = useState(0)
     const [play, setPlay] = useState(true)
@@ -28,7 +28,7 @@ export default function PlayerControls({ watchPlayer, currentTime, setCurrentTim
     }
 
     return (
-        <div className="text-white gap-8 absolute z-10 flex flex-col justify-between items-center h-full w-full ">
+        displayControls && <div className="text-white gap-8 absolute z-10 flex flex-col justify-between items-center h-full w-full ">
             <div></div>
             <div className=" w-full flex flex-col">
                 <input onChange={changeCurrentTime} value={currentTime} className="w-full" type="range" min="0" max={watchPlayer?.current?.duration} step="any"></input>
