@@ -13,7 +13,6 @@ import ManageProfiles from "../pages/ManageProfilesPage";
 import YourAccount from "../pages/YourAccountPage";
 import WhoIsWatching from "../pages/WhoIsWatching";
 import TVShowsPage from "../pages/TVShowsPage";
-import WhoIsWatching from "../pages/WhoIsWatching";
 
 const router = createBrowserRouter([
   {

@@ -11,9 +11,9 @@ import { useEffect } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 
 export default function ManageProfileModal({ onClose, data }) {
-  const [file, setFile] = useState(data.profileImageUrl);
+  const [file, setFile] = useState(null);
+  // const [defaultFile, setDefaultFile] = useState(data.profileImageUrl);
   const [name, setName] = useState(data.userProfileName);
-  const [userProfileId, setUserProfileId] = useState(null);
   const navigate = useNavigate();
   const inputEl = useRef(null);
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ export default function ManageProfileModal({ onClose, data }) {
     // formData.append("profileImageUrl", defaultFile);
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
+    formData.append("userId", data.userId);
 
     dispatch(editProfileAction(formData))
       .unwrap()
@@ -65,8 +66,7 @@ export default function ManageProfileModal({ onClose, data }) {
               <div className="flex flex-col gap-2">
                 <input
                   onChange={(e) => setName(e.target.value)}
-                  value={data.userProfileName}
-                  name="userProfileName"
+                  value={name}
                   className="bg-gray-600 p-1 text-white"
                 ></input>
               </div>
@@ -86,8 +86,7 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                // onClick={handleSaveEdit}
-                onClick={() => console.log(name)}
+                onClick={handleSaveEdit}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer"
               >
                 Save

@@ -1,8 +1,8 @@
 import { HiPencil } from "react-icons/hi";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProfileAction, getMeAction } from "../store/slice/authSlice";
-import { useNavigate } from "react-router-dom";
+import { createProfileAction, resetState } from "../store/slice/authSlice";
+
 export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
   const [name, setName] = useState(null);
@@ -10,7 +10,12 @@ export default function ManageProfileModal({ onClose, data }) {
   const [emptyError, setEmptyError] = useState(null);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { error } = useSelector((state) => {
+    return state.user;
+  });
+  const defaultImage =
+    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
+
   const handleSaveEdit = () => {
     dispatch(resetState());
     if (name === null) {
@@ -22,11 +27,9 @@ export default function ManageProfileModal({ onClose, data }) {
     formData.append("isKid", kid);
     formData.append("userId", data[0].userId);
 
-    dispatch(createProfileAction(formData))
+    const res = dispatch(createProfileAction(formData))
       .unwrap()
       .then(() => onClose(false));
-
-    navigate("/manage-profile");
   };
   return (
     <div>
@@ -84,8 +87,11 @@ export default function ManageProfileModal({ onClose, data }) {
                 Continue
               </div>
               <div
-                onClick={() => onClose(false)}
-                // onClick={() => console.log(data)}
+                onClick={() => {
+                  dispatch(resetState());
+                  return onClose(false);
+                }}
+                // onClick={() => console.log(file)}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer"
               >
                 Cancel
