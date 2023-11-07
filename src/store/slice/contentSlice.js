@@ -8,9 +8,9 @@ const initialState = {
 
 export const fetchContentAction = createAsyncThunk('content/fetch', async (movieId, thunkAPI) => {
   try {
-
     const response = await getContentById(movieId)
     response.movieId = movieId
+    console.log(response)
     return response;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
@@ -35,9 +35,6 @@ const contentSlice = createSlice({
     toggleMute: (state, action) => {
       state[action.payload].trailerIsMute = !state[action.payload].trailerIsMute
     },
-    // loadTrailer: (state, action) => {
-    //   state[action.payload].loadTrailer = true
-    // }
   },
   extraReducers: (builder) => {
     builder
@@ -51,7 +48,6 @@ const contentSlice = createSlice({
         state.loading = false
       })
       .addCase(fetchContentAction.rejected, (state, action) => {
-        // console.log((action))
         state[action.payload.movieId].loading = false;
         state[action.payload.movieId].error = action.payload;
         state[action.payload.movieId].data = [];

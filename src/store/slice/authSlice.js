@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile,getMe } from "../utils/userApi";
-
+import { registerUser, loginUser, editUserProfile, createUserProfile, deleteUserProfile, getMe } from "../utils/userApi";
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
 import { faL } from "@fortawesome/free-solid-svg-icons";
@@ -26,44 +25,44 @@ export const registerAction = createAsyncThunk(
 
 
 
-export const loginAction = createAsyncThunk('auth/login',async (input) =>{
-  try{
+export const loginAction = createAsyncThunk('auth/login', async (input) => {
+  try {
     let res = await loginUser(input)
     return res
-  }catch(error){
+  } catch (error) {
     throw error.response.data
   }
 })
-export const editProfileAction = createAsyncThunk('user/profile',async (input) =>{
-  try{
-  
-    console.log(input.get("profileImageUrl"),"ooooooo");
+export const editProfileAction = createAsyncThunk('user/profile', async (input) => {
+  try {
+
+    console.log(input.get("profileImageUrl"), "ooooooo");
     const res = await editUserProfile(input)
     console.log(res)
     return res
-  }catch(error){
+  } catch (error) {
     throw error.response.data
   }
 })
-export const createProfileAction = createAsyncThunk('user/profile',async (input) =>{
-  try{
-  
+export const createProfileAction = createAsyncThunk('user/profile', async (input) => {
+  try {
+
     // console.log(input.get("profileImageUrl"),"ooooooo");
     const res = await createUserProfile(input)
     console.log(res)
     return res
-  }catch(error){
+  } catch (error) {
     throw error.response.data
   }
 })
-export const deleteUserProfileAction = createAsyncThunk('user/profile',async (input) =>{
-  try{
-  
+export const deleteUserProfileAction = createAsyncThunk('user/profile', async (input) => {
+  try {
+
     // console.log(input.get("profileImageUrl"),"ooooooo");
     const res = await deleteUserProfile(input)
     console.log(res)
     return res
-  }catch(error){
+  } catch (error) {
     throw error.response.data
   }
 })
@@ -108,7 +107,7 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
-      .addCase(editProfileAction.fulfilled, (state, action)=>{
+      .addCase(editProfileAction.fulfilled, (state, action) => {
         state.loading = false
         state.data = action.payload
       })
@@ -116,8 +115,8 @@ export const authSlice = createSlice({
       //   state.loading = false
       //   state.data = action.payload
       // })
-   
-   
+
+
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
         state.loading = true;
@@ -133,9 +132,9 @@ export const authSlice = createSlice({
         state.error = null;
         state.data = {};
       });
-      
+
   }
-  },
+},
 );
 export const { resetState } = authSlice.actions;
 export default authSlice.reducer;

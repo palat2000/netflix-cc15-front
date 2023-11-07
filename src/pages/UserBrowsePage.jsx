@@ -9,6 +9,7 @@ import MainTrailer from "../components/Browse/MainTrailer";
 import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
+import { editProfileAction } from "../store/slice/authSlice";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function UserBrowsePage() {
     if (query.get("success") === "true") {
       subscription(sessionId);
     }
-    dispatch(fetchAllContent());
+    // dispatch(fetchAllContent());
   }, []);
 
   if (loading) return <h1>Loading...</h1>;
@@ -47,16 +48,16 @@ function UserBrowsePage() {
       <div className="bg-black">
         <NavbarAdult />
         <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
+          <MainTrailer />
           <ButtonMainTrailerGroup />
         </div>
-        <MainTrailer />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
       </div>
-      <ContentModal />
+      {/* <ContentModal /> */}
     </div>
   );
 }
