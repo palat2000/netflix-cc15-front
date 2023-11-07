@@ -10,7 +10,11 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+<<<<<<< HEAD
 import YourAccount from "../pages/YourAccountPage";
+=======
+import WhoIsWatching from "../pages/WhoIsWatching";
+>>>>>>> origin/profileEdit
 
 const router = createBrowserRouter([
   {
@@ -63,6 +67,10 @@ const router = createBrowserRouter([
     path: "manage-profile",
     element: <ManageProfiles />,
   },
+  {
+    path: "choose-profile",
+    element: <WhoIsWatching />
+  }
 ]);
 
 function Route() {
