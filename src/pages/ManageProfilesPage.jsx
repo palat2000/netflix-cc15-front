@@ -23,9 +23,6 @@ export default function ManageProfiles() {
     return state?.user?.data?.allUserProfile;
   });
 
-<<<<<<< HEAD
-console.log(userData)
-=======
 useEffect(()=>{
 
   getMe()
@@ -34,7 +31,6 @@ useEffect(()=>{
   const defaultImage =
   "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
->>>>>>> origin/profileEdit
   return (
     <div 
     className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -45,7 +41,6 @@ useEffect(()=>{
             <div key={i} className="flex">
               <div
                 onClick={() => {
-             
                   setModalData(data);
                   setIsOpenModal(!IsOpenModal);
                 }}
@@ -54,7 +49,7 @@ useEffect(()=>{
                 <TiPencil className=" translate-y-14 z-20 text-white text-lg  md:translate-y-24 md:text-4xl" />
                 <img
                   className="h-24 w-40 rounded-sm relative opacity-70 group-hover:border  md:h-40 "
-                  src={data.profileImageUrl ? data.profileImageUrl : defaultImage}
+                  src={data?.profileImageUrl ? data?.profileImageUrl : defaultImage}
                   alt=""
                 ></img>
 

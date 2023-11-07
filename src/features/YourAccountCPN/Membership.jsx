@@ -6,7 +6,7 @@ export default function Membership(){
         return state?.user?.data;
     });
     console.log(userData)
-    return <div className="flex justify-between pt-3 ">
+    return <div className="flex justify-between pt-10 ">
     <div className="pr-10 w-2/6">
         <div className="text-[#737373]">MEMBERSHIP & BILLING</div>
         <button className="bg-[#E5E5E5] hover:bg-slate-100 pl-10 pr-10 pt-2 pb-2 rounded-sm drop-shadow-md text-sm">Cancel Membership</button>
