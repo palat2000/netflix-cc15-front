@@ -1,9 +1,15 @@
 import ContentModal from "../feature/ContentModal";
+import ContentModalContextProvider from "../feature/context/ContentModalContext";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 import Swal from "sweetalert2";
 import axios from "../config/axios";
+
+import MainTrailer from "../components/Browse/MainTrailer";
+import NavbarAdult from "../components/Browse/NavbarAdult";
+import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
+import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
@@ -32,14 +38,28 @@ function UserBrowsePage() {
     if (query.get("success") === "true") {
       subscription(sessionId);
     }
-    // dispatch(fetchAllContent());
+    dispatch(fetchAllContent());
   }, []);
 
   if (loading) return <h1>Loading...</h1>;
 
   return (
     <div>
-      <ContentModal movieId={1} />
+      <ContentModalContextProvider movieId={1}>
+        <div className="bg-black">
+          <NavbarAdult />
+          <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
+            <ButtonMainTrailerGroup />
+          </div>
+          <MainTrailer />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+          <VDOSwiperSlides />
+        </div>
+        <ContentModal />
+      </ContentModalContextProvider>
     </div>
   );
 }

@@ -5,23 +5,23 @@ import { useEffect } from "react"
 
 export default function ContentModal({ movieId, children }) {
 
-    const modalIsOpen = useSelector(state => state.content.modalIsOpen)
-    const dispatch = useDispatch()
+  const modalIsOpen = useSelector(state => state.content.modalIsOpen)
+  const dispatch = useDispatch()
 
-    useEffect(
-        () => {
-            dispatch(setData(movieId))
-            dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => { console.log(err) })
-        }, []
-    )
+  useEffect(
+    () => {
+      dispatch(setData(movieId))
+      dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => { console.log(err) })
+    }, []
+  )
 
-    return (
-        <>
-            <div className="cursor-pointer" onClick={() => dispatch(openModal())}>{children || "Open"}</div>
-            {modalIsOpen && (
-                <ContentModalDetail movieId={movieId} />
-            )
-            }
-        </>
-    )
+  return (
+    <>
+      <div className="cursor-pointer" onClick={() => dispatch(openModal())}>{children || "Open"}</div>
+      {modalIsOpen && (
+        <ContentModalDetail movieId={movieId} />
+      )
+      }
+    </>
+  )
 }

@@ -6,7 +6,7 @@ export default function HomePageInput({
 }) {
   return (
     <input
-      className=" h-full rounded-md  border-2 bg-transparent px-3 text-white"
+      className=" h-full rounded-md  border-2  bg-transparent px-3 outline-none text-white"
       type={type}
       placeholder={placeholder}
       value={value}
