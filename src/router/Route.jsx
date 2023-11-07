@@ -16,12 +16,12 @@ import WhoIsWatching from "../pages/WhoIsWatching";
 const router = createBrowserRouter([
   {
     path: "",
+    element: <HomePage />,
+  },
+  {
+    path: "",
     element: <Layout />,
     children: [
-      {
-        path: "",
-        element: <HomePage />,
-      },
       {
         path: "browse",
         element: <UserBrowsePage />,
@@ -29,14 +29,6 @@ const router = createBrowserRouter([
       {
         path: "browse/genres/:genres",
         element: <TVShowsPage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
       },
       {
         path: "success",
@@ -55,6 +47,14 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
     ],
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignUpPage />,
   },
   {
     path: "watch/:movieId",
