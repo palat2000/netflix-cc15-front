@@ -10,6 +10,7 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import WhoIsWatching from "../pages/WhoIsWatching";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
     path: "manage-profile",
     element: <ManageProfiles />,
   },
+  {
+    path: "choose-profile",
+    element: <WhoIsWatching />
+  }
 ]);
 
 function Route() {

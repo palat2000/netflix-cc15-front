@@ -11,35 +11,36 @@ import { useEffect } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 
 export default function ManageProfileModal({ onClose, data }) {
-  const [file, setFile] = useState(data.profileImageUrl);
+  const [file, setFile] = useState(null);
+  // const [defaultFile, setDefaultFile] = useState(data.profileImageUrl);
   const [name, setName] = useState(data.userProfileName);
-  const [userProfileId, setUserProfileId] = useState(null);
   const navigate = useNavigate();
   const inputEl = useRef(null);
   const dispatch = useDispatch();
-
 
   const handleSaveEdit = () => {
     const formData = new FormData();
 
     formData.append("profileImageUrl", file);
+    // formData.append("profileImageUrl", defaultFile);
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
+    formData.append("userId", data.userId);
 
     dispatch(editProfileAction(formData))
       .unwrap()
       .then(() => {
-       
-       return onClose(false)});
+        return onClose(false);
+      });
   };
 
   const handleDelete = () => {
-
     dispatch(deleteUserProfileAction(data.id))
-    .unwrap()
-    .then(() => onClose(false));
+      .unwrap()
+      .then(() => onClose(false));
   };
-
+  const defaultImage =
+    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
   const userData = useSelector((state) => {
     return state?.user?.data?.allUserProfile;
   });
@@ -51,18 +52,21 @@ export default function ManageProfileModal({ onClose, data }) {
           <div className="flex flex-col gap-10">
             <div className="text-white text-4xl">Edit Profile</div>
             <hr className="" />
-            <div className="flex gap-5 group ">
-              <img
-                onClick={() => inputEl.current.click()}
-                className="bg-yellow-500 h-24 w-24   group-hover:cursor-pointer "
-                src={data.profileImageUrl}
-              ></img>
+            <div className="flex gap-5 group  h-24 w-24 ">
+              {data.profileImageUrl ? (
+                <img
+                  onClick={() => inputEl.current.click()}
+                  className="bg-yellow-500 h-24 w-24   group-hover:cursor-pointer "
+                  src={file ? URL.createObjectURL(file) : data.profileImageUrl}
+                ></img>
+              ) : (
+                <img src={defaultImage}></img>
+              )}
               <HiPencil className="text-xs group absolute translate-y-20  translate-x-1 bg-gray-600 rounded-full text-white " />
               <div className="flex flex-col gap-2">
                 <input
                   onChange={(e) => setName(e.target.value)}
-                  value={data.userProfileName}
-                  name="userProfileName"
+                  value={name}
                   className="bg-gray-600 p-1 text-white"
                 ></input>
               </div>
@@ -82,8 +86,7 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                // onClick={handleSaveEdit}
-                onClick={() => console.log(name)}
+                onClick={handleSaveEdit}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer"
               >
                 Save
@@ -96,8 +99,8 @@ export default function ManageProfileModal({ onClose, data }) {
               </div>
               {userData?.length > 1 && (
                 <div
-                  // onClick={() => console.log(data)}
                   onClick={handleDelete}
+                  // onClick={()=> console.log(file)}
                   className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer"
                 >
                   Delete
