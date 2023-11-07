@@ -1,5 +1,4 @@
 import ContentModal from "../../feature/ContentModal";
-import ContentModalContextProvider from "../../feature/context/ContentModalContext";
 import MoreInfoButton from "../Button/MoreInfoButton";
 import MuteButton from "../button/new/MuteButton";
 import PlayButton from "../button/new/PlayButton";
@@ -12,11 +11,9 @@ export default function ButtonMainTrailerGroup() {
           <div className="flex">
             <PlayButton customizeClass={"ml-0 "} />
             <div>
-              <ContentModalContextProvider movieId={1}>
-                <ContentModal>
-                  <MoreInfoButton customizeClass={"ml-0 p-10  "} />
-                </ContentModal>
-              </ContentModalContextProvider>
+              <ContentModal>
+                <MoreInfoButton customizeClass={"ml-0 p-10  "} />
+              </ContentModal>
             </div>
           </div>
           <div>
