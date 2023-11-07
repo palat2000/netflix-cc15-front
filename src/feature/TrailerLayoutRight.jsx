@@ -1,8 +1,8 @@
 import { useState } from "react";
 import useContentModal from "./hook/useContentModal";
-import CloseButton from "../components/new/CloseButton";
+import CloseButton from "../components/button/CloseButton";
 import MuteButton from "../components/Button/MuteButton";
-import SoundOnButton from "../components/new/SoundOnButton";
+import SoundOnButton from "../components/button/SoundOnButton";
 
 export default function TrailerLayoutRight() {
   const [isMute, setIsMute] = useState(true);

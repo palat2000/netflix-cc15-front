@@ -1,5 +1,4 @@
 import ContentModal from "../feature/ContentModal";
-import ContentModalContextProvider from "../feature/context/ContentModalContext";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
@@ -45,21 +44,19 @@ function UserBrowsePage() {
 
   return (
     <div>
-      <ContentModalContextProvider movieId={1}>
-        <div className="bg-black">
-          <NavbarAdult />
-          <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
-            <ButtonMainTrailerGroup />
-          </div>
-          <MainTrailer />
-          <VDOSwiperSlides />
-          <VDOSwiperSlides />
-          <VDOSwiperSlides />
-          <VDOSwiperSlides />
-          <VDOSwiperSlides />
+      <div className="bg-black">
+        <NavbarAdult />
+        <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
+          <ButtonMainTrailerGroup />
         </div>
-        <ContentModal />
-      </ContentModalContextProvider>
+        <MainTrailer />
+        <VDOSwiperSlides />
+        <VDOSwiperSlides />
+        <VDOSwiperSlides />
+        <VDOSwiperSlides />
+        <VDOSwiperSlides />
+      </div>
+      <ContentModal />
     </div>
   );
 }
