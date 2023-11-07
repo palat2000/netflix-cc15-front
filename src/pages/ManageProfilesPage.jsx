@@ -15,10 +15,11 @@ export default function ManageProfiles() {
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const navigate = useNavigate();
   const userData = useSelector((state) => {
+    console.log(state.user.data)
     return state?.user?.data?.allUserProfile;
   });
 
-
+console.log(userData)
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl md:text-6xl">Manage Profiles:</div>

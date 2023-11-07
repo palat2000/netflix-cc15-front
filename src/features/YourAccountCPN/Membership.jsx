@@ -1,5 +1,11 @@
+import { useSelector } from "react-redux";
 
 export default function Membership(){
+
+    const userData = useSelector((state) => {
+        return state?.user?.data;
+    });
+    console.log(userData)
     return <div className="flex justify-between pt-3 ">
     <div className="pr-10 w-2/6">
         <div className="text-[#737373]">MEMBERSHIP & BILLING</div>
@@ -7,24 +13,23 @@ export default function Membership(){
     </div>
     <div className="flex-1">
         <div className="flex justify-between">
-            <div>kobclimax@gmail.com</div>
-            <div>Change email</div>
+            <div>{userData.email}</div>
+            <button className="text-blue-600 hover:underline">Your email</button>
         </div>
         <div className="flex justify-between">
-            <div className="flex">
+            <div className="flex text-gray-500">
 
-                <div>password:</div>
+                <div >password:</div>
                 <div>********</div>
             </div>
-            <div>Change Password</div>
         </div>
         <div className="flex justify-between">
-            <div className="flex">
+            <div className="flex  text-gray-500">
 
                 <div>Phone:</div>
-                <div>0999999</div>
+                <div>{userData.mobile}</div>
             </div>
-            <div>Change Phone number</div>
+            <button className="text-blue-600 hover:underline">Your Phone number</button>
         </div>
         <hr className="mt-2 mb-2" />
         <div className="pb-3 pt-3">Expired in USERDATA FORM BACKEND</div>
