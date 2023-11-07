@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import AddToListButton from "../components/button/AddToListButton"
 import LikeButton from "../components/button/LikeButton"
-import PlayButton from "../components/button/PlayButton"
+import PlayButton from "../components/button/new/PlayButton"
 import { useNavigate } from "react-router-dom"
 
 export default function TrailerLayoutLeft({ movieId }) {
