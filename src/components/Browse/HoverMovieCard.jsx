@@ -1,6 +1,7 @@
 import { useState } from "react";
+import MovieCard from "./MovieCard";
 
-export default function HoverMovieCard() {
+export default function HoverMovieCard({ movie }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -11,5 +12,18 @@ export default function HoverMovieCard() {
     setIsHovered(false);
   };
 
-  return <div>HoverMovieCard</div>;
+  const scale = isHovered ? 1.2 : 1;
+
+  return (
+    <div onMouseLeave={handleMouseLeave}>
+      <button
+        onMouseEnter={handleMouseEnter}
+        style={{ transform: `scale(${scale})` }}
+      >
+        <MovieCard movie={movie} />
+      </button>
+
+      {isHovered && <MovieCard movie={movie} />}
+    </div>
+  );
 }
