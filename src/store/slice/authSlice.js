@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile,getMe } from "../utils/userApi";
+import { registerUser,loginUser, editUserProfile, createUserProfile, deleteUserProfile,getMe, checkEmailInDatabase } from "../utils/userApi";
 
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
@@ -74,6 +74,18 @@ export const getMeAction = createAsyncThunk("auth/me", async () => {
   return res;
 });
 
+export const checkEmailInDatabaseAction = createAsyncThunk("auth/checkemail",async(input) =>{
+  try {
+    const res = await checkEmailInDatabase(input)
+    console.log(res)
+    return res
+  } catch (error) {
+    throw error.response.data
+  }
+})
+
+
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
@@ -132,6 +144,19 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.data = {};
+      })
+      
+      .addCase(checkEmailInDatabaseAction.pending, (state, action) => {
+        state.loading = true;
+        state.data = action.payload;
+      })
+      .addCase(checkEmailInDatabaseAction.fulfilled, (state, action) => {
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(checkEmailInDatabaseAction.rejected, (state, action) => {
+        state.error = action.error;
+        state.loading = false;
       });
       
   }

@@ -20,6 +20,8 @@ function LoginPage() {
     return state.user;
   });
 
+  console.log()
+
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data))
       .unwrap()
