@@ -6,13 +6,16 @@ import { createProfileAction, resetState } from "../store/slice/authSlice";
 export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
   const [name, setName] = useState(null);
-  const [kid, setKid] = useState(false);
+  const [kid, setKid] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
   const { error } = useSelector((state) => {
     return state.user;
   });
+  const isKidHandleChange = () => {
+    setKid(!kid);
+  };
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
@@ -36,33 +39,35 @@ export default function ManageProfileModal({ onClose, data }) {
       <div>
         <div className="bg-black h-full w-full z-50 flex items-center justify-center absolute top-0 right-0  ">
           <div className="flex flex-col gap-10">
-            <div className="text-white text-4xl">Add Profile</div>
+            <div className="text-white text-4xl md:text-7xl">Add Profile</div>
+            <div className="text-gray-500 text-4xl md:text-xl -m-3">
+              Add a profile for another person watching Netflix.
+            </div>
             <hr className="" />
             <div className="flex gap-5 group ">
               <img
                 onClick={() => inputEl.current.click()}
-                className="bg-yellow-500 h-24 w-24   group-hover:cursor-pointer"
+                className="bg-yellow-500 h-24 w-24  md:h-40 md:w-40 rounded-md group-hover:cursor-pointer"
                 src={file ? URL.createObjectURL(file) : defaultImage}
               ></img>
-              <HiPencil className="text-xs group absolute translate-y-20   translate-x-1 bg-gray-600 rounded-full text-white " />
+              <HiPencil className="text-xs group absolute translate-y-20   translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1" />
               <div className="flex flex-col gap-2">
                 {error && <div className="text-red-500">{error}</div>}
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-gray-600 p-1 text-white"
+                  className="bg-gray-600 p-1 md:w-96 md:p-2 text-white md:text-3xl"
                   value={name}
                 ></input>
-                <div className="flex gap-3">
+                <span className="flex gap-3 ">
                   <input
-                    value={kid}
-                    onChange={() => setKid(!kid)}
+                    onChange={isKidHandleChange}
                     type="checkbox"
-                    className="w-5"
+                    className="w-7 h-7"
                   />
-                  <div className="text-white">Is Kid</div>
-                </div>
+                  <div className="text-white md:text-2xl ">Kid ?</div>
+                </span>
               </div>
             </div>
             <input
@@ -82,7 +87,7 @@ export default function ManageProfileModal({ onClose, data }) {
                   return handleSaveEdit();
                 }}
                 // onClick={()=>console.log(data.message)}
-                className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer"
+                className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Continue
               </div>
@@ -91,8 +96,7 @@ export default function ManageProfileModal({ onClose, data }) {
                   dispatch(resetState());
                   return onClose(false);
                 }}
-                // onClick={() => console.log(file)}
-                className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer"
+                className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
               </div>
