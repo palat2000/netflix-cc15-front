@@ -53,15 +53,12 @@ export default function VDOSwiperSlides({ movieDetails }) {
         pagination="true"
       >
         {movieDetails.movies?.top10.map((m, i) => {
-          console.log(m);
           return (
-            <div key={m?.id}>
-              <swiper-slide>
-                <div className="">
-                  <HoverMovieCard movie={m} />
-                </div>
-              </swiper-slide>
-            </div>
+            // <div key={m?.id}>
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+            // </div>
           );
         })}
       </swiper-container>
