@@ -10,6 +10,7 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import TVShowsPage from "../pages/TVShowsPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: "browse",
         element: <UserBrowsePage />,
       },
+      {
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
+      },
+
       {
         path: "login",
         element: <LoginPage />,
