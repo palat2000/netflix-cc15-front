@@ -27,7 +27,7 @@ export default function WhoIsWatching() {
   };
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
-      <div className="text-white text-2xl md:text-6xl m-5">Who is watching?</div>
+      <div className="text-white text-2xl md:text-6xl m-5">Who is watching ?</div>
       <div className="flex flex-row flex-wrap gap-2">
         {userData?.map((data, i) => {
           return (
