@@ -10,27 +10,21 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import Authenticate from "../features/auth/register/Authenticate";
+import RedirectIfAuthenticated from "../features/auth/register/RedirectIfAuthenticated";
 
 const router = createBrowserRouter([
   {
     path: "",
-    element: <Layout />,
+    element: (
+      <Authenticate>
+        <Layout />
+      </Authenticate>
+    ),
     children: [
-      {
-        path: "",
-        element: <HomePage />,
-      },
       {
         path: "browse",
         element: <UserBrowsePage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
       },
       {
         path: "success",
@@ -41,14 +35,36 @@ const router = createBrowserRouter([
         element: <GuestBrowsePage />,
       },
       {
-        path: "package",
-        element: <PackagePage />,
-      },
-      {
         path: "search",
         element: <SearchPage />,
       },
     ],
+  },
+  {
+    path: "auth",
+    element: (
+      <RedirectIfAuthenticated>
+        <Layout />
+      </RedirectIfAuthenticated>
+    ),
+    children: [
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "signup",
+        element: <SignUpPage />,
+      },
+      {
+        path: "package",
+        element: <PackagePage />,
+      },
+    ],
+  },
+  {
+    path: "home",
+    element: <HomePage />,
   },
   {
     path: "watch/:movieId",

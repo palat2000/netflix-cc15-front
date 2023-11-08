@@ -6,7 +6,7 @@ import { getAccessToken } from "./utils/local-storage";
 
 function App() {
   const dispatch = useDispatch();
-  const { loading } = useSelector((store) => store.user);
+  const { loading, data } = useSelector((store) => store.user);
 
   useEffect(() => {
     if (getAccessToken()) {

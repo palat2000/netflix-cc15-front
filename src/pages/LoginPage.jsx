@@ -27,7 +27,7 @@ function LoginPage() {
         console.log(data);
         if (user) {
           addAccessToken(user.accessToken);
-          navigate("/manage-profile");
+          navigate("/browse");
         }
       });
   };
