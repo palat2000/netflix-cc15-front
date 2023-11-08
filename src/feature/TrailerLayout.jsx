@@ -1,7 +1,7 @@
 import TrailerLayoutRight from "./TrailerLayoutRight";
 import useContentModal from "./hook/useContentModal";
 import PlayButton from "../components/Button/PlayButton";
-import AddToListButton from "./AddToListButton";
+import AddToListButton from "../components/Button/AddToListButton";
 import LikeButton from "../components/Button/LikeButton";
 
 export default function TrailerLayout() {

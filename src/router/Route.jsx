@@ -12,6 +12,7 @@ import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
 import YourAccount from "../pages/YourAccountPage";
 import WhoIsWatching from "../pages/WhoIsWatching";
+import TVShowsPage from "../pages/TVShowsPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
         path: "browse",
         element: <UserBrowsePage />,
       },
+      {
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
+      },
+
       {
         path: "login",
         element: <LoginPage />,
@@ -51,9 +57,9 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path:"YourAccount",
-        element:<YourAccount/>
-      }
+        path: "YourAccount",
+        element: <YourAccount />,
+      },
     ],
   },
   {
@@ -66,8 +72,8 @@ const router = createBrowserRouter([
   },
   {
     path: "choose-profile",
-    element: <WhoIsWatching />
-  }
+    element: <WhoIsWatching />,
+  },
 ]);
 
 function Route() {
