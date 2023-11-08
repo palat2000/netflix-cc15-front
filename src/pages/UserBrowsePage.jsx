@@ -56,7 +56,6 @@ function UserBrowsePage() {
           <div className="static ">
             <MainTrailer />
           </div>
-
           <VDOSwiperSlides movieDetails={movie} />
         </div>
         <ContentModal />
