@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice ,current } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 import {
   registerUser,
@@ -7,6 +7,7 @@ import {
   createUserProfile,
   deleteUserProfile,
   getMe,
+  chooseUserProfile,
 } from "../utils/userApi";
 
 import { useNavigate } from "react-router-dom";
@@ -75,6 +76,18 @@ export const deleteUserProfileAction = createAsyncThunk(
     }
   }
 );
+export const chooseUserProfileAction = createAsyncThunk(
+  "auth/profile",
+  async (input) => {
+    try {
+      const res = await chooseUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
 
 export const getMeAction = createAsyncThunk("auth/me", async () => {
   const res = await getMe();
@@ -116,19 +129,21 @@ export const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(editProfileAction.fulfilled, (state, action) => {
-        state.data.newUserProfileName = [
-          ...state.data.newUserProfileName,
-          action.payload.newUserProfileName,
-        ];
-        console.log(state)
+        // console.log(current(state))
+        const idx = state.data.allUserProfile.findIndex((el)=>el?.id === action.payload.userProfile.id)
+        state.data.allUserProfile[idx] = action.payload.userProfile
+       
       })
       .addCase(editProfileAction.pending, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        // state.data = action.payload;
       })
       .addCase(editProfileAction.rejected, (state, action) => {
-        state.loading = false;
+
+        state.error = action.error.message;
         state.data = action.payload;
+        // console.log(state)
+        // console.log(action.error.message)
       })
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
@@ -153,7 +168,7 @@ export const authSlice = createSlice({
       })
       .addCase(deleteUserProfileAction.rejected, (state, action) => {})
       .addCase(createProfileAction.pending, (state, action) => {
-     
+        state.loading = true;
       })
       .addCase(createProfileAction.fulfilled, (state, action) => {
         state.loading = false;
@@ -165,7 +180,15 @@ export const authSlice = createSlice({
       .addCase(createProfileAction.rejected, (state, action) => {
         
         state.error = action.error.message;
-      });
+      })
+      .addCase(chooseUserProfileAction.pending, (state, action)=> {
+        state.loading = false;
+      })
+      .addCase(chooseUserProfileAction.fulfilled, (state, action)=> {
+        // state.data = action.payload
+        console.log(action)
+        console.log(current(state))
+      })
   },
 });
 export const { resetState } = authSlice.actions;
