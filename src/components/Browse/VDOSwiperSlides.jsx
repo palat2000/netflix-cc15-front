@@ -4,13 +4,14 @@ import { useRef, useEffect } from "react";
 import { register } from "swiper/element/bundle";
 
 import "swiper/css";
+import HoverMovieCard from "./HoverMovieCard";
 
 register();
 
 export default function VDOSwiperSlides({ movieDetails }) {
   const swiperElRef = useRef(null);
   // const [movie, setMovie] = useState(null);
-
+  console.log(movieDetails);
   useEffect(() => {
     // listen for Swiper events using addEventListener
     swiperElRef.current.addEventListener("swiperprogress", (e) => {
@@ -52,12 +53,15 @@ export default function VDOSwiperSlides({ movieDetails }) {
         pagination="true"
       >
         {movieDetails.movies?.top10.map((m, i) => {
+          console.log(m);
           return (
-            <swiper-slide key={m?.id}>
-              <video width={200} height="auto" loop autoPlay muted controls="">
-                <source src={m?.trailer} type="video/mp4" />
-              </video>
-            </swiper-slide>
+            <div key={m?.id}>
+              <swiper-slide>
+                <div className="">
+                  <HoverMovieCard movie={m} />
+                </div>
+              </swiper-slide>
+            </div>
           );
         })}
       </swiper-container>

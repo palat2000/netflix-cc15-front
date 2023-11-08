@@ -60,7 +60,7 @@ function UserBrowsePage() {
         </div>
         <ContentModal />
       </ContentModalContextProvider>
-      <MovieCard />
+      {/* <MovieCard /> */}
     </div>
   );
 }
