@@ -48,13 +48,8 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchPage />,
-      },
-      // -----------------
-      {
-        path:"loading",
-        element:<LoadingPage/>
       }
-      // -------------------
+     
     ],
   },
   {
