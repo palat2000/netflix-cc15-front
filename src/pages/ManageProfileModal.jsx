@@ -6,9 +6,6 @@ import {
   editProfileAction,
   resetState,
 } from "../store/slice/authSlice";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { fetchAllContent } from "../store/slice/allContentSlice";
 
 export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
@@ -33,16 +30,13 @@ export default function ManageProfileModal({ onClose, data }) {
     const formData = new FormData();
 
     formData.append("profileImageUrl", file);
-    // formData.append("profileImageUrl", defaultFile);
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
     formData.append("userId", data.userId);
 
     dispatch(editProfileAction(formData))
       .unwrap()
-      .then(() => {
-        return onClose(false);
-      });
+      .then(() => onClose(false));
   };
 
   const handleDelete = () => {
