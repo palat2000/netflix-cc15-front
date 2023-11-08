@@ -2,9 +2,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import UserProfileMenu from "./UserProfileMenu";
-import { useRef } from "react";
-import { useEffect } from "react";
-import NotificatioBell from "./NotificationBell";
 import { useNavigate } from "react-router-dom";
 // import SideBarMenu from "./SideBarMenu";
 
@@ -13,43 +10,7 @@ export default function NavbarAdult({ setSearch }) {
   const ref = useRef(null);
 
   const [isSearch, setIsSearch] = useState(false);
-
-  const handleOnChange = (e) => {
-    console.log("handleOnChange =", e);
-    setSearch(e);
-    localStorage.setItem("searchQuery", JSON.stringify(e));
-
-    if (e.length === 1) {
-      navigate("/search");
-    }
-  };
-
-  const handleClick = () => {
-    setIsSearch(true);
-    ref.current.focus();
-  };
-
-  const searchEl = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutSide = (e) => {
-      console.log("test");
-      if (!searchEl.current?.contains(e.target)) {
-        setIsSearch(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutSide);
-    return () => document.removeEventListener("click", handleClickOutSide);
-  }, []);
-
-  // const onClickSearchEnter = () => {
-  //   setIsSearch(true);
-  // };
-  // const onClickSearchLeave = () => {
-  //   setIsSearch(false);
-  // };
-
+  const navigate = useNavigate();
   return (
     <div>
       <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px] mx-10  ">
@@ -79,7 +40,14 @@ export default function NavbarAdult({ setSearch }) {
             />
             {isSearch && (
               <input
-                ref={ref}
+                onChange={(e) => {
+                  console.log(e);
+                  if (e.length <= 0) {
+                    Navigate("/browse");
+                  } else {
+                    return navigate("/search");
+                  }
+                }}
                 placeholder="Search"
                 className="w-full text-white outline-none opacity-50 bg-black"
                 onChange={(e) => handleOnChange(e.target.value)}

@@ -56,12 +56,10 @@ const router = createBrowserRouter([
         path: "success",
         element: <SuccessPage />,
       },
-      // -----------------
       {
         path: "loading",
         element: <LoadingPage />,
       },
-      // -------------------
     ],
   },
   {
