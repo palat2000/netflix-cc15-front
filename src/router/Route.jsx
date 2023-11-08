@@ -10,6 +10,7 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import LayoutBrowse from "../layout/LayoutBrowse";
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,7 @@ const router = createBrowserRouter([
         path: "",
         element: <HomePage />,
       },
-      {
-        path: "browse",
-        element: <UserBrowsePage />,
-      },
+      
       {
         path: "login",
         element: <LoginPage />,
@@ -44,11 +42,22 @@ const router = createBrowserRouter([
         path: "package",
         element: <PackagePage />,
       },
+      
+    ],
+  },
+  {
+    path: "",
+    element: <LayoutBrowse />,
+    children: [
+      {
+        path: "browse",
+        element: <UserBrowsePage />,
+      },
       {
         path: "search",
         element: <SearchPage />,
       },
-    ],
+    ]
   },
   {
     path: "watch/:movieId",

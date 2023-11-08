@@ -47,7 +47,6 @@ function UserBrowsePage() {
     <div>
       <ContentModalContextProvider movieId={1}>
         <div className="bg-black">
-          <NavbarAdult />
           <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
             <ButtonMainTrailerGroup />
           </div>
