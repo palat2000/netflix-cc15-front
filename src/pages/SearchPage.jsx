@@ -1,89 +1,95 @@
+import { useState, useEffect } from "react";
+import NavbarAdult from "../components/Browse/NavbarAdult";
+
+const mockUpVdo = [
+  {
+    id: 1,
+    title: "Movie1",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596763/comedy/d4gpv9gp8nof7reqij5d.mp4",
+  },
+  {
+    id: 2,
+    title: "Serie3",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698585618/samples/elephants.mp4",
+  },
+  {
+    id: 3,
+    title: "Serie4",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698595946/horror/qkkeqbqxmarksnll0jiw.mp4",
+  },
+  {
+    id: 4,
+    title: "Serie1",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596763/comedy/d4gpv9gp8nof7reqij5d.mp4",
+  },
+  {
+    id: 5,
+    title: "Serie4",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698585621/samples/cld-sample-video.mp4",
+  },
+  {
+    id: 6,
+    title: "Movie2",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596702/sport/xgramqrcb5rpl06ktsvi.mp4",
+  },
+  {
+    id: 7,
+    title: "Movie6",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596561/romantic/vd0ipr9lhhxhd5vaarly.mp4",
+  },
+  {
+    id: 8,
+    title: "Movie5",
+    src: "https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596564/romantic/web19jdfwzzjvss41ekq.mp4",
+  },
+];
 
 export default function SearchPage() {
+  const [search, setSearch] = useState(null);
+  const [movie, setMovie] = useState(null);
 
-    return (
-        <div className="bg-black h-full pr-10 pl-10 pb-8 pt-8">\
-        <div className="flex">
-            <div className="text-[#808080]">more to explore:</div>
-            <div className="text-[#ffffff]">more to explore</div>
+  useEffect(() => {
+    if (search) {
+      const filterMovie = mockUpVdo.filter((vdo) => {
+        const lowerTitle = vdo.title.toLocaleLowerCase();
+        const lowerSearch = search.toLocaleLowerCase();
+
+        if (lowerTitle.includes(lowerSearch)) {
+          return vdo;
+        }
+      });
+
+      setMovie(filterMovie);
+    } else {
+      //   setMovie(mockUpVdo);
+    }
+  }, [search]);
+
+  return (
+    <>
+      <NavbarAdult setSearch={setSearch} />
+
+      <div className="bg-black h-full pr-10 pl-10 pb-8 pt-8">
+        <div className="flex py-2">
+          <div className="text-[#808080]">more to explore:</div>
+          <div className="text-[#ffffff] pl-2">{search}</div>
         </div>
         <div className="grid grid-cols-6 gap-3  bg-fixed ">
-            <div >
-                <img 
-                className="rounded-md pb-8 pt-8 " 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            <div>
-                <img 
-                className="rounded-md pb-8 pt-8" 
-                src="https://occ-0-1214-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQ_kCEIka2Swqcv3rsSoV00hhyUBGhbO4asIqU7ACCtYgbdpUMp2bDHWJPuwFrVOeQXzzBtIf64CQKaZtdEOADrspcSv8ZbBLqVc6kXgKHW3sxRcjXFyjIEKcAkO6lCIHRZi.jpg?r=31f" alt="Mockup" />
-
-            </div>
-            
+          {movie &&
+            movie.map((vdo, i) => {
+              return (
+                <div key={i}>
+                  <video
+                    className="rounded-md pb-8 pt-8 "
+                    src={vdo.src}
+                    alt="Mockup"
+                  />
+                  <div className="text-white">{vdo.title}</div>
+                </div>
+              );
+            })}
         </div>
-        
-       
-        </div>
-        )
+      </div>
+    </>
+  );
 }
