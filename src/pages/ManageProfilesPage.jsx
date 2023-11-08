@@ -5,23 +5,17 @@ import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfile
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getMe } from "../store/utils/userApi";
 
 export default function ManageProfiles() {
   const [IsOpenModal, setIsOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
-  const [render, setRender] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => {
     return state?.user;
   });
-
-  useEffect(() => {
-    getMe();
-  }, []);
 
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
