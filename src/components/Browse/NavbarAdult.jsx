@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import UserProfileMenu from "./UserProfileMenu";
 import { useRef } from "react";
 import { useEffect } from "react";
@@ -81,7 +81,6 @@ export default function NavbarAdult() {
             <div className="flex items-center">
               <div className="hover:text-gray-400 text-white ml-2">Kids</div>
               <NotificatioBell />
-              {/* <FontAwesomeIcon icon={faBell} className="mx-2 text-white" /> */}
 
               <UserProfileMenu />
             </div>

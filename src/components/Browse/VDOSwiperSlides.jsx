@@ -53,9 +53,9 @@ export default function VDOSwiperSlides({ movieDetails }) {
       >
         {movieDetails.movies?.top10.map((m, i) => {
           return (
-            <swiper-slide key={m.id}>
-              <video width={200} height="auto" loop muted controls="">
-                <source src={m.trailer} type="video/mp4" />
+            <swiper-slide key={m?.id}>
+              <video width={200} height="auto" loop autoPlay muted controls="">
+                <source src={m?.trailer} type="video/mp4" />
               </video>
             </swiper-slide>
           );
