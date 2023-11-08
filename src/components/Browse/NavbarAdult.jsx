@@ -14,8 +14,19 @@ export default function NavbarAdult({ setSearch }) {
 
   const [isSearch, setIsSearch] = useState(false);
 
+  const handleOnChange = (e) => {
+    console.log("handleOnChange =", e);
+    setSearch(e);
+    localStorage.setItem("searchQuery", JSON.stringify(e));
+
+    if (e.length === 1) {
+      navigate("/search");
+    }
+  };
+
   const handleClick = () => {
     setIsSearch(true);
+    ref.current.focus();
   };
 
   const searchEl = useRef(null);
@@ -31,7 +42,7 @@ export default function NavbarAdult({ setSearch }) {
     document.addEventListener("click", handleClickOutSide);
     return () => document.removeEventListener("click", handleClickOutSide);
   }, []);
-  console.log(isSearch);
+
   // const onClickSearchEnter = () => {
   //   setIsSearch(true);
   // };
@@ -68,16 +79,10 @@ export default function NavbarAdult({ setSearch }) {
             />
             {isSearch && (
               <input
-                onChange={(e) => {
-                  console.log(e);
-                  if (e.length <= 0) {
-                    Navigate("/browse");
-                  } else {
-                    return navigate("/search");
-                  }
-                }}
+                ref={ref}
                 placeholder="Search"
                 className="w-full text-white outline-none opacity-50 bg-black"
+                onChange={(e) => handleOnChange(e.target.value)}
               ></input>
             )}
           </div>
