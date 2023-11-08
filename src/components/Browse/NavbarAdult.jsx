@@ -5,13 +5,28 @@ import UserProfileMenu from "./UserProfileMenu";
 import { useRef } from "react";
 import { useEffect } from "react";
 import NotificatioBell from "./NotificationBell";
+import { useNavigate } from "react-router-dom";
 // import SideBarMenu from "./SideBarMenu";
 
-export default function NavbarAdult() {
+export default function NavbarAdult({ setSearch }) {
+  const navigate = useNavigate();
+  const ref = useRef(null);
+
   const [isSearch, setIsSearch] = useState(false);
+
+  const handleOnChange = (e) => {
+    console.log("handleOnChange =", e);
+    setSearch(e);
+    localStorage.setItem("searchQuery", JSON.stringify(e));
+
+    if (e.length === 1) {
+      navigate("/search");
+    }
+  };
 
   const handleClick = () => {
     setIsSearch(true);
+    ref.current.focus();
   };
 
   const searchEl = useRef(null);
@@ -27,7 +42,7 @@ export default function NavbarAdult() {
     document.addEventListener("click", handleClickOutSide);
     return () => document.removeEventListener("click", handleClickOutSide);
   }, []);
-  console.log(isSearch);
+
   // const onClickSearchEnter = () => {
   //   setIsSearch(true);
   // };
@@ -64,16 +79,10 @@ export default function NavbarAdult() {
             />
             {isSearch && (
               <input
-                onChange={(e) => {
-                  console.log(e);
-                  if (e.length <= 0) {
-                    Navigate("/browse");
-                  } else {
-                    return navigate("/search");
-                  }
-                }}
+                ref={ref}
                 placeholder="Search"
                 className="w-full text-white outline-none opacity-50 bg-black"
+                onChange={(e) => handleOnChange(e.target.value)}
               ></input>
             )}
           </div>
