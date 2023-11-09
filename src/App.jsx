@@ -9,9 +9,9 @@ function App() {
   const { loading } = useSelector((store) => store.user);
 
   useEffect(() => {
-    if (getAccessToken()) {
-      dispatch(getMeAction());
-    }
+    // if (getAccessToken()) {
+    //   dispatch(getMeAction());
+    // }
   }, []);
 
   if (loading) return <h1>Loading...</h1>;

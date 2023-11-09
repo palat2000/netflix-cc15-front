@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice ,current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 import {
   registerUser,
@@ -130,16 +130,16 @@ export const authSlice = createSlice({
       })
       .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
-        const idx = state.data.allUserProfile.findIndex((el)=>el?.id === action.payload.userProfile.id)
-        state.data.allUserProfile[idx] = action.payload.userProfile
-       
+        const idx = state.data.allUserProfile.findIndex(
+          (el) => el?.id === action.payload.userProfile.id
+        );
+        state.data.allUserProfile[idx] = action.payload.userProfile;
       })
       .addCase(editProfileAction.pending, (state, action) => {
         state.loading = false;
         // state.data = action.payload;
       })
       .addCase(editProfileAction.rejected, (state, action) => {
-
         state.error = action.error.message;
         state.data = action.payload;
         // console.log(state)
@@ -178,17 +178,16 @@ export const authSlice = createSlice({
         ];
       })
       .addCase(createProfileAction.rejected, (state, action) => {
-        
         state.error = action.error.message;
       })
-      .addCase(chooseUserProfileAction.pending, (state, action)=> {
+      .addCase(chooseUserProfileAction.pending, (state, action) => {
         state.loading = false;
       })
-      .addCase(chooseUserProfileAction.fulfilled, (state, action)=> {
+      .addCase(chooseUserProfileAction.fulfilled, (state, action) => {
         // state.data = action.payload
-        console.log(action)
-        console.log(current(state))
-      })
+        console.log(action);
+        console.log(current(state));
+      });
   },
 });
 export const { resetState } = authSlice.actions;

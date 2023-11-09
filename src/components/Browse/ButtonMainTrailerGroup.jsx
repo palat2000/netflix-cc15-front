@@ -8,7 +8,7 @@ export default function ButtonMainTrailerGroup() {
   return (
     <div>
       <div>
-        <div className="flex justify-between z-10 ">
+        <div className="flex justify-between  z-10 ">
           <div className="flex">
             <PlayButton customizeClass={"ml-0 "} />
             <div>

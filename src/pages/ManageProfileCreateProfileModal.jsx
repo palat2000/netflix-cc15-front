@@ -13,9 +13,9 @@ export default function ManageProfileModal({ onClose, data }) {
   const { error } = useSelector((state) => {
     return state.user;
   });
-  const isKidHandleChange = ()=> {
-    setKid(!kid)
-  }
+  const isKidHandleChange = () => {
+    setKid(!kid);
+  };
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
@@ -40,7 +40,9 @@ export default function ManageProfileModal({ onClose, data }) {
         <div className="bg-black h-full w-full z-50 flex items-center justify-center absolute top-0 right-0  ">
           <div className="flex flex-col gap-10">
             <div className="text-white text-4xl md:text-7xl">Add Profile</div>
-            <div className="text-gray-500 text-4xl md:text-xl -m-3">Add a profile for another person watching Netflix.</div>
+            <div className="text-gray-500 text-4xl md:text-xl -m-3">
+              Add a profile for another person watching Netflix.
+            </div>
             <hr className="" />
             <div className="flex gap-5 group ">
               <img
@@ -91,8 +93,9 @@ export default function ManageProfileModal({ onClose, data }) {
               </div>
               <div
                 onClick={() => {
-                    dispatch(resetState());
-                   return onClose(false)}}
+                  dispatch(resetState());
+                  return onClose(false);
+                }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel

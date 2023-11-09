@@ -5,7 +5,6 @@ export default function MainTrailer() {
     <div>
       <div className="relative">
         <MovieDetails />
-
         <video width="4000" height="auto" loop muted autoPlay controls="">
           <source
             src="https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596144/action/o4ln7l1yshyx4mv5jqnh.mp4"

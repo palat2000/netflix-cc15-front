@@ -77,9 +77,10 @@ export default function ManageProfileModal({ onClose, data }) {
                 ></img>
               )}
 
-              <HiPencil 
-               onClick={() => inputEl.current.click()}
-              className="text-xs group absolute translate-y-20  translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1 group-hover:cursor-pointer " />
+              <HiPencil
+                onClick={() => inputEl.current.click()}
+                className="text-xs group absolute translate-y-20  translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1 group-hover:cursor-pointer "
+              />
               <div className="flex flex-col gap-2">
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
                 {error && <div className="text-red-500">{error}</div>}
