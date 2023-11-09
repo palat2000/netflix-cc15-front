@@ -1,15 +1,11 @@
-import ContentModal from "../feature/ContentModal";
-import ContentModalContextProvider from "../feature/context/ContentModalContext";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 import Swal from "sweetalert2";
 import axios from "../config/axios";
-
 import MainTrailer from "../components/Browse/MainTrailer";
 import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
-import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 
 function TVShowsPage() {
   const dispatch = useDispatch();
@@ -45,16 +41,12 @@ function TVShowsPage() {
 
   return (
     <div>
-      <ContentModalContextProvider movieId={1}>
-        <div className="bg-black">
-          <NavbarAdult />
-          <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  "></div>
-          <MainTrailer />
-
-          <VDOSwiperSlides />
-        </div>
-        <ContentModal />
-      </ContentModalContextProvider>
+      <div className="bg-black">
+        <NavbarAdult />
+        <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  "></div>
+        <MainTrailer />
+        <VDOSwiperSlides />
+      </div>
     </div>
   );
 }

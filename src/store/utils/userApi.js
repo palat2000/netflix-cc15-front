@@ -21,14 +21,8 @@ export const createUserProfile = async (body) => {
   // console.log("asdasd",res.data)
   return res.data;
 };
+
 export const deleteUserProfile = async (param) => {
-<<<<<<< HEAD
-    console.log("parammmmmm", param)
-    const res = await axios.delete(`/user/profile/${param}`)
-    console.log("asdasd", res.data)
-    return res.data
-}
-=======
   // console.log("parammmmmm",param)
   const res = await axios.delete(`/user/profile/${param}`);
   // console.log("asdasd",res.data)
@@ -40,9 +34,8 @@ export const chooseUserProfile = async (body) => {
   // console.log("asdasd",res.data)
   return res.data;
 };
->>>>>>> develop
 
 export const getMe = async () => {
-    const res = await axios.get("/auth/me");
-    return res.data;
+  const res = await axios.get("/auth/me");
+  return res.data;
 };
