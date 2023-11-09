@@ -19,6 +19,7 @@ export default function RegisterForm() {
 
     
     const handleSubmitForm = (data) => {
+        data.email = data.email(toLowerCase)
         dispatch(registerAction(data)).unwrap().then(user=>{
             if(userData){
                 addAccessToken(user.accessToken)
