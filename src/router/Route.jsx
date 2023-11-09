@@ -10,28 +10,27 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import YourAccount from "../pages/YourAccountPage";
 import WhoIsWatching from "../pages/WhoIsWatching";
+import TVShowsPage from "../pages/TVShowsPage";
+import LoadingPage from "../pages/LoadingPage";
 
 const router = createBrowserRouter([
+  {
+    path: "",
+    element: <HomePage />,
+  },
   {
     path: "",
     element: <Layout />,
     children: [
       {
-        path: "",
-        element: <HomePage />,
-      },
-      {
         path: "browse",
         element: <UserBrowsePage />,
       },
       {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
       },
       {
         path: "success",
@@ -49,7 +48,27 @@ const router = createBrowserRouter([
         path: "search",
         element: <SearchPage />,
       },
+      {
+        path: "YourAccount",
+        element: <YourAccount />,
+      },
+      {
+        path: "success",
+        element: <SuccessPage />,
+      },
+      {
+        path: "loading",
+        element: <LoadingPage />,
+      },
     ],
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignUpPage />,
   },
   {
     path: "watch/:movieId",
@@ -61,8 +80,8 @@ const router = createBrowserRouter([
   },
   {
     path: "choose-profile",
-    element: <WhoIsWatching />
-  }
+    element: <WhoIsWatching />,
+  },
 ]);
 
 function Route() {

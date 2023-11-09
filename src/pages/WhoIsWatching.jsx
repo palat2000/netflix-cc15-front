@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
 import { chooseUserProfileAction } from "../store/slice/authSlice";
-import {  addChooseProfileAccessToken } from "../utils/local-storage";
+import { addChooseProfileAccessToken } from "../utils/local-storage";
 
 export default function WhoIsWatching() {
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
@@ -20,14 +20,18 @@ export default function WhoIsWatching() {
   const userData = user?.data?.allUserProfile;
 
   const handleChooseProfile = (id) => {
-    dispatch(chooseUserProfileAction(id)).unwrap().then((user)=>{
-      addChooseProfileAccessToken(user.accessToken)
-      navigate("/browse")
-    })
+    dispatch(chooseUserProfileAction(id))
+      .unwrap()
+      .then((user) => {
+        addChooseProfileAccessToken(user.accessToken);
+        navigate("/browse");
+      });
   };
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
-      <div className="text-white text-2xl md:text-6xl m-5">Who is watching ?</div>
+      <div className="text-white text-2xl md:text-6xl m-5">
+        Who is watching ?
+      </div>
       <div className="flex flex-row flex-wrap gap-2">
         {userData?.map((data, i) => {
           return (

@@ -1,8 +1,8 @@
 import TrailerLayoutRight from "./TrailerLayoutRight";
 import useContentModal from "./hook/useContentModal";
-import PlayButton from "../components/Button/PlayButton";
-import AddToListButton from "./AddToListButton";
-import LikeButton from "../components/Button/LikeButton";
+import AddToListButton from "../components/button/AddToListButton";
+import LikeButton from "../components/button/LikeButton";
+import PlayCircleButton from "../components/button/PlayCircleButton";
 
 export default function TrailerLayout() {
   const { movieData } = useContentModal();
@@ -13,7 +13,7 @@ export default function TrailerLayout() {
         <div className="z-10 w-5/12 flex flex-col gap-3">
           <h1 className="text-4xl font-semibold">{movieData?.title}</h1>
           <div className="flex items-center gap-1">
-            <PlayButton />
+            <PlayCircleButton />
             <div className="flex">
               <AddToListButton />
               <LikeButton />

@@ -22,7 +22,7 @@ export default function ManageProfiles() {
 
   const userData = user?.data?.allUserProfile;
   // const userData = user?.data
-  console.log(userData)
+  console.log(userData);
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -92,7 +92,6 @@ export default function ManageProfiles() {
       >
         Done
       </div>
-   
     </div>
   );
 }
