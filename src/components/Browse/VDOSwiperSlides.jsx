@@ -43,6 +43,7 @@ export default function VDOSwiperSlides({ movieDetails }) {
   //   },
   // });
   console.log(movieDetails);
+
   return (
     <>
       <div className="text-white mx-10">Top 10</div>
@@ -54,16 +55,111 @@ export default function VDOSwiperSlides({ movieDetails }) {
       >
         {movieDetails.movies?.top10.map((m, i) => {
           return (
-            // <div key={m?.id}>
             <swiper-slide key={m?.id}>
               <HoverMovieCard movie={m} />
             </swiper-slide>
-            // </div>
+          );
+        })}
+      </swiper-container>
+      <div className="text-white mx-10">Top 10</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.top10.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
           );
         })}
       </swiper-container>
 
-      <div className="text-white mx-10">ACTION</div>
+      <div className="text-white mx-10">Top 10</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.top10.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+      <div className="text-white mx-10">Top 10</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.top10.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+    </>
+  );
+}
+
+/* <div className="text-white mx-10">New releases</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.NewReleases.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+
+      <div className="text-white mx-10">Continue watching</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.continueWatching.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+
+      <div className="text-white mx-10">My list</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.myList.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+
+      <div className="text-white mx-10">Action movies</div>
       <swiper-container
         ref={swiperElRef}
         slides-per-view="5"
@@ -72,31 +168,89 @@ export default function VDOSwiperSlides({ movieDetails }) {
       >
         {movieDetails.movies?.action.map((m, i) => {
           return (
-            // <div key={m?.id}>
             <swiper-slide key={m?.id}>
               <HoverMovieCard movie={m} />
             </swiper-slide>
-            // </div>
           );
         })}
       </swiper-container>
-      {/* <div className="text-white mx-10">Fevorait</div>
+
+      <div className="text-white mx-10">Romance movies</div>
       <swiper-container
         ref={swiperElRef}
         slides-per-view="5"
         navigation="true"
         pagination="true"
       >
-        {movieDetails.movies?.fevGenre.map((m, i) => {
+        {movieDetails.movies?.romantic.map((m, i) => {
           return (
-            <swiper-slide key={m.id}>
-              <video width={200} height="auto" loop muted controls="">
-                <source src={m.trailer} type="video/mp4" />
-              </video>
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
             </swiper-slide>
           );
         })}
-      </swiper-container> */}
-    </>
-  );
-}
+      </swiper-container>
+
+      <div className="text-white mx-10">Comedy movies</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.comedy.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+
+      <div className="text-white mx-10">Horror movies</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.horror.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+
+      <div className="text-white mx-10">Drama movies</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.dramas.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+
+      <div className="text-white mx-10">kid movies</div>
+      <swiper-container
+        ref={swiperElRef}
+        slides-per-view="5"
+        navigation="true"
+        pagination="true"
+      >
+        {movieDetails.movies?.kids.map((m, i) => {
+          return (
+            <swiper-slide key={m?.id}>
+              <HoverMovieCard movie={m} />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container> */
