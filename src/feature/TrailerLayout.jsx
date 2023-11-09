@@ -1,8 +1,8 @@
 import TrailerLayoutRight from "./TrailerLayoutRight";
 import useContentModal from "./hook/useContentModal";
-import PlayButton from "../components/Button/PlayButton";
-import AddToListButton from "../components/Button/AddToListButton";
-import LikeButton from "../components/Button/LikeButton";
+import PlayButton from "../components/button/PlayButton";
+import AddToListButton from "../components/button/AddToListButton";
+import LikeButton from "../components/button/LikeButton";
 
 export default function TrailerLayout() {
   const { movieData } = useContentModal();
