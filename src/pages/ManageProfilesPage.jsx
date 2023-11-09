@@ -22,7 +22,7 @@ export default function ManageProfiles() {
 
   const userData = user?.data?.allUserProfile;
   // const userData = user?.data
-  console.log(userData)
+  console.log(userData);
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -39,7 +39,11 @@ export default function ManageProfiles() {
                 className="cursor-pointer  flex flex-col items-center p-1 gap-1 group"
               >
                 <TiPencil className=" translate-y-14 z-20 text-white text-lg  md:translate-y-28 md:text-4xl md:m-1" />
-               {data.isKid && <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-20 md:text-2xl md:translate-x-12 md:translate-y-40">kids</div>}
+                {data.isKid && (
+                  <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-20 md:text-2xl md:translate-x-12 md:translate-y-40">
+                    kids
+                  </div>
+                )}
                 <img
                   className="h-20 w-20 m-1 rounded-md relative opacity-70 group-hover:border-4 border-gray-500 md:hover:border-white  md:h-40 md:w-40"
                   src={
@@ -92,7 +96,6 @@ export default function ManageProfiles() {
       >
         Done
       </div>
-   
     </div>
   );
 }

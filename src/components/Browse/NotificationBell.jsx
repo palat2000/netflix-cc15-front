@@ -3,9 +3,12 @@ import profilePic2 from "../../assets/netflix-profile-yellow.jpeg";
 import profilePic3 from "../../assets/netflix-profile-green.jpeg";
 import profilePic4 from "../../assets/netflix-profile-blue.jpeg";
 import profilePic5 from "../../assets/netflix-profile-kid.png";
+import NotiPic1 from "../../assets/SpidermanImg.jpeg";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 
-export default function UserProfileMenu() {
+export default function NotificatioBell() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -18,17 +21,12 @@ export default function UserProfileMenu() {
 
   return (
     <>
-      <div className=" dropdown " onMouseLeave={handleMouseLeave}>
+      <div className="dropdown " onMouseLeave={handleMouseLeave}>
         <button
-          className="flex items-center relative dropbtn hover:text-white "
+          className="relative dropbtn hover:text-white "
           onMouseEnter={handleMouseEnter}
         >
-          <img
-            src={profilePic1}
-            alt="product"
-            width={15}
-            className="rounded-sm mr-1 "
-          ></img>
+          <FontAwesomeIcon icon={faBell} className="mx-2 text-white" />
         </button>
         {isHovered && (
           <>
@@ -38,64 +36,84 @@ export default function UserProfileMenu() {
                   <div className="flex flex-col mx-2 ">
                     <a href="" className="flex hover:text-stone-400 my-1 ">
                       <img
-                        src={profilePic1}
+                        src={NotiPic1}
                         alt="product"
-                        width={15}
+                        width={50}
                         className="rounded-sm mr-1"
                       ></img>
-                      Account1
+                      Notification 1
                     </a>
                     <a href="" className="flex hover:text-stone-400 my-1">
                       <img
-                        src={profilePic2}
+                        src={NotiPic1}
                         alt="product"
-                        width={15}
+                        width={50}
                         className="rounded-sm mr-1"
                       ></img>
-                      Account2
+                      Notification 2
                     </a>
                     <a href="" className="flex hover:text-stone-400 my-1">
                       <img
-                        src={profilePic3}
+                        src={NotiPic1}
                         alt="product"
-                        width={15}
+                        width={50}
                         className="rounded-sm mr-1"
                       ></img>
-                      Account3
+                      Notification 3
                     </a>
                     <a href="" className="flex hover:text-stone-400 my-1">
                       <img
-                        src={profilePic4}
+                        src={NotiPic1}
                         alt="product"
-                        width={15}
+                        width={50}
                         className="rounded-sm mr-1"
                       ></img>
-                      Account4
+                      Notification 4
                     </a>
-
                     <a href="" className="flex hover:text-stone-400 my-1">
                       <img
-                        src={profilePic5}
+                        src={NotiPic1}
                         alt="product"
-                        width={15}
+                        width={50}
                         className="rounded-sm mr-1"
                       ></img>
-                      Kid Account
+                      Notification 5
                     </a>
-
-                    <a
-                      href="/manage-profile"
-                      className=" hover:text-stone-400 my-1"
-                    >
-                      Manage Profiles
+                    <a href="" className="flex hover:text-stone-400 my-1">
+                      <img
+                        src={NotiPic1}
+                        alt="product"
+                        width={50}
+                        className="rounded-sm mr-1"
+                      ></img>
+                      Notification 6
                     </a>
-
-                    <a href="" className=" hover:text-stone-400 my-1">
-                      Account
+                    <a href="" className="flex hover:text-stone-400 my-1">
+                      <img
+                        src={NotiPic1}
+                        alt="product"
+                        width={50}
+                        className="rounded-sm mr-1"
+                      ></img>
+                      Notification 7
                     </a>
-
-                    <a href="" className=" hover:text-stone-400 my-1">
-                      Sign Out of Netflex
+                    <a href="" className="flex hover:text-stone-400 my-1">
+                      <img
+                        src={NotiPic1}
+                        alt="product"
+                        width={50}
+                        className="rounded-sm mr-1"
+                      ></img>
+                      Notification 8
+                    </a>
+                    <a href="" className="flex hover:text-stone-400 my-1">
+                      <img
+                        src={NotiPic1}
+                        alt="product"
+                        width={50}
+                        className="rounded-sm mr-1"
+                      ></img>
+                      Notification 9
                     </a>
                   </div>
                 </div>
