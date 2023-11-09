@@ -33,6 +33,7 @@ export default function WhoIsWatching() {
           return (
             <div
               onClick={() => {
+                setModalData(data)
                 handleChooseProfile({id:data.id});
               }}
               key={i}
@@ -40,7 +41,7 @@ export default function WhoIsWatching() {
             >
               <div className="cursor-pointer  flex flex-col items-center p-1 gap-1 group">
                 {data.isKid && (
-                  <div className="text-white bg-gradient-to-br from-red-300 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-16 md:text-2xl md:translate-x-12 md:translate-y-32">
+                  <div className="bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-16 md:text-2xl md:translate-x-12 md:translate-y-32">
                     kids
                   </div>
                 )}
@@ -63,6 +64,7 @@ export default function WhoIsWatching() {
         {userData?.length < 5 && (
           <div
             onClick={() => {
+              setModalData(userData);
               return setIsOpenModalCreate(!isOpenModalCreate);
             }}
             className="cursor-pointer  flex flex-col items-center p-1 translate-y-2 rounded-md group md:translate-y-2 "
