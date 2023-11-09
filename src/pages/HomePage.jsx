@@ -4,11 +4,12 @@ import HomePageInput from "../components/HomePage/HomePageInput";
 import HeaderHomePage from "../layout/HeaderHomePage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../layout/Footer";
 
 function HomePage() {
   return (
-    <div>
-      <div className="bg-[url('/NetflixBG1.png')] bg-cover bg-center h-screen  ">
+    <div className="h-screen flex flex-col">
+      <div className="bg-[url('/NetflixBG1.png')] bg-cover bg-center flex-1">
         <div className="w-full h-full items-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-black">
           <HeaderHomePage />
           <div className="h-full flex items-center justify-center mx-36 pb-10">
@@ -43,6 +44,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
