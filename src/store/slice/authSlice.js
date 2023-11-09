@@ -1,6 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-import { registerUser, loginUser, editUserProfile, createUserProfile, deleteUserProfile, getMe } from "../utils/userApi";
+import {
+  registerUser,
+  loginUser,
+  editUserProfile,
+  createUserProfile,
+  deleteUserProfile,
+  getMe,
+  chooseUserProfile,
+} from "../utils/userApi";
+
 import { useNavigate } from "react-router-dom";
 import { addAccessToken } from "../../utils/local-storage";
 import { faL } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +21,7 @@ const initialState = {
 };
 
 export const registerAction = createAsyncThunk(
-  "/auth/register",
+  "auth/register",
   async (input) => {
     try {
       let res = await registerUser(input);
@@ -23,50 +32,62 @@ export const registerAction = createAsyncThunk(
   }
 );
 
-
-
-export const loginAction = createAsyncThunk('auth/login', async (input) => {
+export const loginAction = createAsyncThunk("auth/login", async (input) => {
   try {
-    let res = await loginUser(input)
-    return res
+    let res = await loginUser(input);
+    return res;
   } catch (error) {
-    throw error.response.data
+    throw error.response.data;
   }
-})
-export const editProfileAction = createAsyncThunk('user/profile', async (input) => {
-  try {
-
-    console.log(input.get("profileImageUrl"), "ooooooo");
-    const res = await editUserProfile(input)
-    console.log(res)
-    return res
-  } catch (error) {
-    throw error.response.data
+});
+export const editProfileAction = createAsyncThunk(
+  "auth/edit",
+  async (input) => {
+    try {
+      const res = await editUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
   }
-})
-export const createProfileAction = createAsyncThunk('user/profile', async (input) => {
-  try {
-
-    // console.log(input.get("profileImageUrl"),"ooooooo");
-    const res = await createUserProfile(input)
-    console.log(res)
-    return res
-  } catch (error) {
-    throw error.response.data
+);
+export const createProfileAction = createAsyncThunk(
+  "auth/create",
+  async (input) => {
+    try {
+      const res = await createUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
   }
-})
-export const deleteUserProfileAction = createAsyncThunk('user/profile', async (input) => {
-  try {
-
-    // console.log(input.get("profileImageUrl"),"ooooooo");
-    const res = await deleteUserProfile(input)
-    console.log(res)
-    return res
-  } catch (error) {
-    throw error.response.data
+);
+export const deleteUserProfileAction = createAsyncThunk(
+  "auth/delete",
+  async (input) => {
+    try {
+      const res = await deleteUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
   }
-})
-
+);
+export const chooseUserProfileAction = createAsyncThunk(
+  "auth/profile",
+  async (input) => {
+    try {
+      const res = await chooseUserProfile(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
 
 export const getMeAction = createAsyncThunk("auth/me", async () => {
   const res = await getMe();
@@ -108,15 +129,22 @@ export const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(editProfileAction.fulfilled, (state, action) => {
-        state.loading = false
-        state.data = action.payload
+        // console.log(current(state))
+        const idx = state.data.allUserProfile.findIndex(
+          (el) => el?.id === action.payload.userProfile.id
+        );
+        state.data.allUserProfile[idx] = action.payload.userProfile;
       })
-      // .addCase(createProfileAction.fulfilled, (state, action)=> {
-      //   state.loading = false
-      //   state.data = action.payload
-      // })
-
-
+      .addCase(editProfileAction.pending, (state, action) => {
+        state.loading = false;
+        // state.data = action.payload;
+      })
+      .addCase(editProfileAction.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.data = action.payload;
+        // console.log(state)
+        // console.log(action.error.message)
+      })
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
         state.loading = true;
@@ -131,10 +159,36 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.data = {};
+      })
+      .addCase(deleteUserProfileAction.fulfilled, (state, action) => {
+        state.data.allUserProfile = state.data.allUserProfile.filter(
+          (el) => el.id !== action.payload.deleteUserProfile.id
+        );
+        console.log(action);
+      })
+      .addCase(deleteUserProfileAction.rejected, (state, action) => { })
+      .addCase(createProfileAction.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(createProfileAction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data.allUserProfile = [
+          ...state.data.allUserProfile,
+          action.payload.userProfile,
+        ];
+      })
+      .addCase(createProfileAction.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(chooseUserProfileAction.pending, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(chooseUserProfileAction.fulfilled, (state, action) => {
+        // state.data = action.payload
+        console.log(action);
+        console.log(current(state));
       });
-
-  }
-},
-);
+  },
+});
 export const { resetState } = authSlice.actions;
 export default authSlice.reducer;

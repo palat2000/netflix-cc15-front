@@ -1,19 +1,22 @@
 import ContentModal from "../../feature/ContentModal";
-import MoreInfoButton from "../Button/MoreInfoButton";
+import ContentModalContextProvider from "../../feature/context/ContentModalContext";
+import MoreInfoCircleButton from "../button/MoreInfoCircleButton";
 import MuteButton from "../button/MuteButton";
-import PlayButton from "../button/PlayButton";
+import PlayCircleButton from "../button/PlayCircleButton";
 
 export default function ButtonMainTrailerGroup() {
   return (
     <div>
       <div>
-        <div className="flex justify-between z-10 ">
+        <div className="flex justify-between  z-10 ">
           <div className="flex">
-            <PlayButton customizeClass={"ml-0 "} />
+            <PlayCircleButton customizeClass={"ml-0 "} />
             <div>
-              <ContentModal movieId={1}>
-                <MoreInfoButton customizeClass={"ml-0 p-10  "} />
-              </ContentModal>
+              <ContentModalContextProvider movieId={1}>
+                <ContentModal>
+                  <MoreInfoCircleButton customizeClass={"ml-0 p-10  "} />
+                </ContentModal>
+              </ContentModalContextProvider>
             </div>
           </div>
           <div>

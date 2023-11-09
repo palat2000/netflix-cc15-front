@@ -1,9 +1,10 @@
 import RegisterForm from "../features/auth/register/RegisterForm";
 import HeaderAuthPage from "../components/header/HeaderAuthPage";
+import Footer from "../layout/Footer";
 
 function SignUpPage() {
   return (
-    <div className=" w-full flex flex-col justify-center md:flex md:justify-center">
+    <div className=" w-full flex flex-col justify-center">
       <HeaderAuthPage isSignUp={true} />
       <div className="flex m-36 justify-center">
         <div className=" flex md:w-96 md:flex md:justify-center">
@@ -24,6 +25,7 @@ function SignUpPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
