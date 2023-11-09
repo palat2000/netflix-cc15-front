@@ -3,6 +3,7 @@ import AddToListButton from "../components/button/AddToListButton"
 import LikeButton from "../components/button/LikeButton"
 import PlayButton from "../components/button/PlayButton"
 import { useNavigate } from "react-router-dom"
+import axios from "../config/axios"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
@@ -19,8 +20,12 @@ export default function TrailerLayoutLeft({ movieId }) {
                     <PlayButton />
                 </div>
                 <div className='flex'>
-                    <AddToListButton />
-                    <LikeButton />
+                    <div>
+                        <AddToListButton />
+                    </div>
+                    <div>
+                        <LikeButton />
+                    </div>
                 </div>
             </div>
         </div>

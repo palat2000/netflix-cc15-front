@@ -18,6 +18,7 @@ export default function WhoIsWatching() {
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const userData = user?.data?.allUserProfile;
+  console.log("🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:", userData)
 
   const handleChooseProfile = (id) => {
     dispatch(chooseUserProfileAction(id))
