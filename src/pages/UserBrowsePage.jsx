@@ -43,7 +43,7 @@ function UserBrowsePage() {
     if (query.get("success") === "true") {
       subscription(sessionId);
     }
-    // dispatch(fetchAllContent());
+    dispatch(fetchAllContent());
   }, []);
 
   if (loading) return <h1>Loading...</h1>;
@@ -56,11 +56,11 @@ function UserBrowsePage() {
           <MainTrailer />
           <ButtonMainTrailerGroup />
         </div>
+        {/* <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
-        <VDOSwiperSlides />
-        <VDOSwiperSlides />
+        <VDOSwiperSlides /> */}
       </div>
       {/* <ContentModal /> */}
     </div>
