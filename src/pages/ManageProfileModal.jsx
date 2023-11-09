@@ -30,6 +30,7 @@ export default function ManageProfileModal({ onClose, data }) {
     const formData = new FormData();
 
     formData.append("profileImageUrl", file);
+    // formData.append("profileImageUrl", defaultFile);
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
     formData.append("userId", data.userId);
@@ -59,7 +60,7 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 group  h-24 w-24 md:h-40 md:w-40">
               {data.isKid && (
-                <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold translate-x-16 ml-1 translate-y-20 text-xs absolute  z-20  ">
+                <div className=" bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold translate-x-16 ml-1 translate-y-20 text-xs absolute  z-20  md:text-2xl md:translate-y-32 md:translate-x-24">
                   kids
                 </div>
               )}

@@ -128,22 +128,20 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
+      .addCase(editProfileAction.pending, (state, action) => {
+        state.loading = true;
+      })
       .addCase(editProfileAction.fulfilled, (state, action) => {
-        // console.log(current(state))
+        state.loading = false;
         const idx = state.data.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
         state.data.allUserProfile[idx] = action.payload.userProfile;
       })
-      .addCase(editProfileAction.pending, (state, action) => {
-        state.loading = false;
-        // state.data = action.payload;
-      })
       .addCase(editProfileAction.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
         state.data = action.payload;
-        // console.log(state)
-        // console.log(action.error.message)
       })
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
@@ -160,11 +158,15 @@ export const authSlice = createSlice({
         state.error = null;
         state.data = {};
       })
+      .addCase(deleteUserProfileAction.pending, (state, action) => {
+        state.loading = true;
+      })
       .addCase(deleteUserProfileAction.fulfilled, (state, action) => {
+        state.loading = false;
+
         state.data.allUserProfile = state.data.allUserProfile.filter(
           (el) => el.id !== action.payload.deleteUserProfile.id
         );
-        console.log(action);
       })
       .addCase(deleteUserProfileAction.rejected, (state, action) => {})
       .addCase(createProfileAction.pending, (state, action) => {
@@ -184,7 +186,6 @@ export const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(chooseUserProfileAction.fulfilled, (state, action) => {
-        // state.data = action.payload
         console.log(action);
         console.log(current(state));
       });

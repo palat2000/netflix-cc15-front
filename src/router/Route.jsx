@@ -10,9 +10,10 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
-import LoadingPage from "../pages/LoadingPage";
-import TVShowsPage from "../pages/TVShowsPage";
+import YourAccount from "../pages/YourAccountPage";
 import WhoIsWatching from "../pages/WhoIsWatching";
+import TVShowsPage from "../pages/TVShowsPage";
+import LoadingPage from "../pages/LoadingPage";
 
 const router = createBrowserRouter([
   {
@@ -48,8 +49,16 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
+        path: "YourAccount",
+        element: <YourAccount />,
+      },
+      {
         path: "success",
         element: <SuccessPage />,
+      },
+      {
+        path: "loading",
+        element: <LoadingPage />,
       },
     ],
   },
