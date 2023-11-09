@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         element: <UserBrowsePage />,
       },
       {
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
+      },
+      {
         path: "success",
         element: <SuccessPage />,
       },
