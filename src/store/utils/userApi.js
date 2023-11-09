@@ -38,3 +38,9 @@ export const getMe = async () => {
   const res = await axios.get("/auth/me");
   return res.data;
 };
+
+export const checkEmailInDatabase = async (body) => {
+    const res = await axios.post("/auth/checkemail",body)
+    return res.data
+
+}
