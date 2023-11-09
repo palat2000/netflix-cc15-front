@@ -1,26 +1,13 @@
-import TrailerLayoutRight from "./TrailerLayoutRight";
-import useContentModal from "./hook/useContentModal";
-import AddToListButton from "../components/button/AddToListButton";
-import LikeButton from "../components/button/LikeButton";
-import PlayCircleButton from "../components/button/PlayCircleButton";
+import TrailerLayoutLeft from './TrailerLayoutLeft';
+import TrailerLayoutRight from './TrailerLayoutRight';
 
-export default function TrailerLayout() {
-  const { movieData } = useContentModal();
+export default function TrailerLayout({ movieId }) {
 
   return (
-    <div className="bg-red-300 bg-opacity-20 absolute flex justify-center items-end h-full w-full pt-4">
-      <div className="flex justify-between w-11/12 h-full items-end">
-        <div className="z-10 w-5/12 flex flex-col gap-3">
-          <h1 className="text-4xl font-semibold">{movieData?.title}</h1>
-          <div className="flex items-center gap-1">
-            <PlayCircleButton />
-            <div className="flex">
-              <AddToListButton />
-              <LikeButton />
-            </div>
-          </div>
-        </div>
-        <TrailerLayoutRight />
+    <div className='bg-opacity-20 absolute flex justify-center items-end h-full w-full pt-5 pb-5'>
+      <div className='flex justify-between w-11/12 h-full items-end'>
+        <TrailerLayoutLeft movieId={movieId} />
+        <TrailerLayoutRight movieId={movieId} />
       </div>
     </div>
   );

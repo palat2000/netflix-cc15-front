@@ -1,0 +1,566 @@
+[33mcommit 179612576f6eb1ee77862ba6e4f4837a675dc9bf[m[33m ([m[1;36mHEAD -> [m[1;32mcontentModal-logic[m[33m)[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Sun Nov 5 02:37:33 2023 +0700
+
+    check
+
+[33mcommit d2642a12b87fe3ac79743d453f9707a4c0f7b691[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Sun Nov 5 02:23:22 2023 +0700
+
+    fix
+
+[33mcommit 1ac7762427946f61ef6fbf1f160d77466cba5605[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Sun Nov 5 02:17:13 2023 +0700
+
+    fixMoveButton
+
+[33mcommit 95b4c7bdd6271dcdc46c857b906ea04728e2efd4[m
+Merge: de76ec7 60e9e72
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Sun Nov 5 02:16:08 2023 +0700
+
+    moveButton
+
+[33mcommit de76ec760917c40db945ce3dd0a2782ed7cd418a[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Sun Nov 5 02:01:29 2023 +0700
+
+    contentModalandUserBrowse
+
+[33mcommit 60e9e724010601a63661809b551829c0cebdcaba[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Merge: 946caae 0490de3
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Sat Nov 4 21:42:30 2023 +0700
+
+    Merge pull request #18 from palat2000/profileEdit
+    
+    Profile edit
+
+[33mcommit 0490de38f0c8243d2b9d71ca31dbcffd05d8c649[m
+Merge: 642f745 07862f8
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Sat Nov 4 21:41:54 2023 +0700
+
+    merging
+
+[33mcommit 946caae0a40ce44698702bd1030d904bba5d4db8[m
+Merge: 0a47ff1 642f745
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Sat Nov 4 21:35:06 2023 +0700
+
+    Merge pull request #17 from palat2000/stripe
+    
+    Stripe
+
+[33mcommit 642f7451972e56131a2cd28879531f97b1b6258e[m
+Merge: be3ea10 0a47ff1
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Sat Nov 4 21:26:19 2023 +0700
+
+    merging
+
+[33mcommit 0a47ff18c0388bc3dc413df6703b64ceb279b4e0[m
+Merge: 5d0f6d5 072ec70
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Sat Nov 4 21:16:01 2023 +0700
+
+    Merge pull request #16 from palat2000/AddSearchPage
+    
+    AddSearchPage
+
+[33mcommit 5d0f6d520164e4512f115de4a3442a35b82dd980[m
+Merge: e426731 5691e01
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Sat Nov 4 21:14:38 2023 +0700
+
+    Merge pull request #15 from palat2000/Feature-NET-34-UserBrowsePage
+    
+    Feature net 34 user browse page
+
+[33mcommit 5691e010d7952cd3d5260ef76fb6aa58a3090d28[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Sat Nov 4 20:20:49 2023 +0700
+
+    Sat Push
+
+[33mcommit 07862f832585fd656d3df6689224b1076132801e[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Sat Nov 4 19:26:43 2023 +0700
+
+    editprofile
+
+[33mcommit be3ea10403a1ea0b09d04dec0ec6a0d30b826ca2[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Sat Nov 4 16:15:31 2023 +0700
+
+    add successPage
+
+[33mcommit 1c5b90298d1be599c8186a9ed96a4e225b9cc076[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Sat Nov 4 16:15:18 2023 +0700
+
+    refactor
+
+[33mcommit 670cede6fe94ce2d86f90e5b5d8dccf3cadb52ac[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Sat Nov 4 12:27:45 2023 +0700
+
+    addSettimeout
+
+[33mcommit 23a8e53994f6bbdf88e7893b4bc9c7ef4497548e[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Fri Nov 3 18:19:55 2023 +0700
+
+    bindingState
+
+[33mcommit 072ec70ef62f4cd9c6e7632e29eb792ea3340afc[m[33m ([m[1;31morigin/AddSearchPage[m[33m)[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Fri Nov 3 16:07:41 2023 +0700
+
+    AddSearchPage
+
+[33mcommit 3fef63fd4faf1ee9f4f6e62d94a0357035597601[m
+Merge: 4736de1 af178f9
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Fri Nov 3 11:55:10 2023 +0700
+
+    Merge branch 'allContentStateRedux' into contentModal-logic
+
+[33mcommit 4736de1cd9e56596ba2b96593373510771ba57fe[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Fri Nov 3 11:52:33 2023 +0700
+
+    compareBug
+
+[33mcommit af178f9a0c40e794b3f6c7f6452bdfbf2b6304ad[m[33m ([m[1;31morigin/allContentStateRedux[m[33m, [m[1;32mallContentStateRedux[m[33m)[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Fri Nov 3 11:08:54 2023 +0700
+
+    update 03/11
+
+[33mcommit c565e457688b6a025291e022ac78a8a514a8a736[m[33m ([m[1;31morigin/Feature-NET-34-UserBrowsePage[m[33m)[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Fri Nov 3 10:43:48 2023 +0700
+
+    add Mute Button
+
+[33mcommit c2ab8c297c5a616031dbdd5a8571d1af1eb2604c[m
+Merge: c6fb001 06dc873
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Fri Nov 3 10:12:18 2023 +0700
+
+    mergeWithAllRedeux
+
+[33mcommit c6fb0013859b6d9f21293625e6662128db7a13a5[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Fri Nov 3 10:04:50 2023 +0700
+
+    prepareToCreateContentState
+
+[33mcommit 06dc873fea06b106dd1612d54700bb8af218bd1f[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 20:36:36 2023 +0700
+
+    getMeAction
+
+[33mcommit 8ccc4380dfe5ad071b5763c62e51f3be54113d31[m
+Merge: 015a30c e426731
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 20:12:09 2023 +0700
+
+    Merge branch 'develop' into allContentStateRedux
+
+[33mcommit 015a30c0358cd5ee681fca4eb9a811b57f7709ab[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 20:01:52 2023 +0700
+
+    all content slice
+
+[33mcommit f4320a1b709adfbe164e53ec76e63b6d2deef2ba[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Thu Nov 2 17:59:38 2023 +0700
+
+    add MoreInfoButton
+
+[33mcommit c36c2e15bbc4d8cb84cc66f5c5e6b222931af2db[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Thu Nov 2 17:59:24 2023 +0700
+
+    fixsomething
+
+[33mcommit 80926aeb452049c4659e0991e97528af9970e03a[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Thu Nov 2 17:19:46 2023 +0700
+
+    add All Button to folder
+
+[33mcommit e426731ffaabe993f815fa94bcebe654eb60eddd[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 17:12:40 2023 +0700
+
+    rename localstorage.js
+
+[33mcommit f19d4c32577ad5fb729f024cc626f5d13a59237e[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 17:05:59 2023 +0700
+
+    pre allcontent state
+
+[33mcommit 0f23616e0d353c3e14b38625aa3099122f3bd5df[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 16:08:02 2023 +0700
+
+    remove semicolon
+
+[33mcommit bbfdff751e8bfeca486d7c145b4613b047a3d375[m
+Merge: c0d231a f613561
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 15:51:19 2023 +0700
+
+    Merge branch 'develop' into testproduct
+
+[33mcommit c0d231a5caa5a5ed37087cd1e968855b8d4dc4ba[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Thu Nov 2 15:50:52 2023 +0700
+
+    fix update sub
+
+[33mcommit 756205dd52a540ddf6f7dbe1d90ff0e449d3b049[m
+Merge: 38444dd f613561
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Thu Nov 2 15:11:24 2023 +0700
+
+    merge
+
+[33mcommit 45532da12b2f9ff0c070e8c1b4264a6c7b76dd1a[m[33m ([m[1;31morigin/contentModal-logic[m[33m)[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Thu Nov 2 14:59:38 2023 +0700
+
+    moveAddToComponentButton
+
+[33mcommit 38444dd5358fdc764bb41c2056fb5c35c0513092[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Thu Nov 2 14:57:34 2023 +0700
+
+    addMoreInfo
+
+[33mcommit f6135610016029d702afbad23e2b132d4315cf41[m
+Merge: 7a3a875 2bc74a3
+Author: jongbeeq <140533512+jongbeeq@users.noreply.github.com>
+Date:   Thu Nov 2 14:55:09 2023 +0700
+
+    Merge pull request #14 from palat2000/contentModal-logic
+    
+    Content modal logic
+
+[33mcommit 2bc74a36b5e5cb0be74eed78f7c0af0d105c842f[m
+Merge: e53a2b7 7a3a875
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Thu Nov 2 14:54:09 2023 +0700
+
+    mergeToDevelop
+
+[33mcommit e53a2b7c679df56734c726c247e718582c5d03c2[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Thu Nov 2 14:42:33 2023 +0700
+
+    createButton
+
+[33mcommit 0aee91c4a883c75a54467c28a39e22c9c645a89f[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Thu Nov 2 14:42:09 2023 +0700
+
+    add more info button
+
+[33mcommit 79b7612bd82280556ba64bbae844f421c090bceb[m
+Merge: c5e7651 7a3a875
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Thu Nov 2 14:22:17 2023 +0700
+
+    Merge branch 'develop' of https://github.com/palat2000/netflix-cc15-front into develop
+
+[33mcommit c5e76518ea3a89a6eee58e3ccfa41da4a02d0a49[m
+Merge: 480c6d6 11bcb41
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Thu Nov 2 14:21:50 2023 +0700
+
+    adminpage
+
+[33mcommit 7a3a875e8e1097a0c133f992d334557d6a9b6020[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 14:19:46 2023 +0700
+
+    fixPackagePage&resetState
+
+[33mcommit 480c6d60319251086bea031629756953b281aaa3[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Thu Nov 2 12:16:44 2023 +0700
+
+    dsadsa
+
+[33mcommit 11bcb41d3908cf3322e5776770539cf55226cb5a[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 12:12:04 2023 +0700
+
+    dataselectedit
+
+[33mcommit f8ffdba76f8cb3fb3f16a09c40f3ca6a6e99d00f[m
+Merge: 8465b71 8352f49
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 10:58:54 2023 +0700
+
+    merge develop
+
+[33mcommit 8352f49b744ee3eab27c4db29bf154561814a065[m
+Merge: 74db0d6 2894271
+Author: warittorn <92501411+Wrtoz21@users.noreply.github.com>
+Date:   Thu Nov 2 10:56:45 2023 +0700
+
+    Merge pull request #12 from palat2000/feature/loginFix
+    
+    Feature spinner on button and dynamic button & netflix component
+
+[33mcommit 2894271496f8e9cd2a6e6dc07936820faae89840[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 10:54:31 2023 +0700
+
+    loginFix 10:54am
+
+[33mcommit 8465b7113c6015a34c1bba204b09cfdf29a6c35b[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 10:44:03 2023 +0700
+
+    error
+
+[33mcommit 1f9ca845354b9aa7ca8bd4e3d8117a3186c243a4[m[33m ([m[1;31morigin/feature/loginFix[m[33m)[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 10:25:37 2023 +0700
+
+    Add custom ButtonNetflix&custom NetflixLogo&spinner in button
+
+[33mcommit 74db0d6963bdaf91ce1feb88195f1e9f03fd8e2e[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Thu Nov 2 09:49:53 2023 +0700
+
+    add spinner/add netflix logo on sign in page
+
+[33mcommit 5e038876aedeba52dbb81490f7283c557fdffbb7[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Thu Nov 2 04:37:11 2023 +0700
+
+    layoutTrailerandButton
+
+[33mcommit beb7d70674d1c28ba5ba1551a0437ee6da117728[m
+Author: jongbeeq <titivutewhangsukij@gmail.com>
+Date:   Thu Nov 2 01:50:57 2023 +0700
+
+    createUIModal
+
+[33mcommit 6cde834137fa6db2941c26ee5d72dae06525f9db[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Wed Nov 1 17:29:11 2023 +0700
+
+    add MovieName
+
+[33mcommit 127571d4d1d75ca9dd173d94707d33df0addace3[m
+Merge: 781f0de acd7bc3
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Wed Nov 1 17:08:47 2023 +0700
+
+    Merge pull request #11 from palat2000/feature/loginWESNESDAY
+    
+    Feature/login wesnesday
+
+[33mcommit acd7bc3fe02bf485542b72619052f7fdfd10840c[m
+Merge: 781f0de 0841ba3
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 17:08:06 2023 +0700
+
+    fix conflict update
+
+[33mcommit 0841ba3f2bd8e7e4349cd4309067eb6369987ecd[m[33m ([m[1;31morigin/feature/loginWESNESDAY[m[33m)[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Wed Nov 1 16:57:38 2023 +0700
+
+    frontEnd Login already success
+
+[33mcommit 781f0defe77e7c4d11299e471c011bac4a186dc8[m
+Merge: ef9d3e7 40ad739
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Wed Nov 1 16:03:25 2023 +0700
+
+    Merge pull request #10 from palat2000/feature/reduxRegister
+    
+    Feature/redux register
+
+[33mcommit 40ad73956a5cb486aa0202770ef367eab59cba40[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 16:02:03 2023 +0700
+
+    update
+
+[33mcommit 6894d9340d57a972905665be6edcf84758c16b2f[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 15:59:41 2023 +0700
+
+    ddd
+
+[33mcommit 42287188a98bc96820f1b97edf92f4361230c7ea[m
+Merge: ef9d3e7 c44134b
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 15:58:15 2023 +0700
+
+    fix conflict
+
+[33mcommit ef9d3e79eba8efecb089f8c7dd8be4d52a31f151[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 15:39:35 2023 +0700
+
+    sss
+
+[33mcommit c44134bfa7de41f42d03b14f46e53726f5ca2fc7[m
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Wed Nov 1 15:37:56 2023 +0700
+
+    register/login success
+
+[33mcommit 71e1a96966ca4060c231ccd49ca6b9e6b246807e[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Wed Nov 1 15:15:33 2023 +0700
+
+    add VDOSlides
+
+[33mcommit befb684cfab64fcf7addb4298c924217cc363084[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 14:57:12 2023 +0700
+
+    update 01/11 3pm
+
+[33mcommit 696d8cc35126ad2723a0e7739e0966762c5df07b[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Wed Nov 1 14:42:06 2023 +0700
+
+    add vdo for userbrowse
+
+[33mcommit cdacb478f51d7bd29235aa59e55e5f33c9b6ab70[m
+Merge: a070a75 3b3cff9
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Wed Nov 1 14:37:42 2023 +0700
+
+    Merge pull request #7 from palat2000/stripe
+    
+    Stripe
+
+[33mcommit 3b3cff9941c77733a9da856e8f8d0fb9fdb2eeaa[m[33m ([m[1;31morigin/stripe[m[33m)[m
+Merge: a1e3e5b a070a75
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 14:36:49 2023 +0700
+
+    merging
+
+[33mcommit 1546b77c2f9e43fd7e8914cf72771eb92d87862d[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Wed Nov 1 14:24:36 2023 +0700
+
+    add MainTrailer
+
+[33mcommit a070a758179310031599f68a7aa1180008227635[m
+Merge: 3d3db2d afacc7b
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Wed Nov 1 14:23:17 2023 +0700
+
+    Merge pull request #6 from palat2000/header
+    
+    Header
+
+[33mcommit afacc7b73fb5526722581820a2d61610d443f363[m
+Merge: 0fda8bc 7094bd6
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 14:22:30 2023 +0700
+
+    fix conflict
+
+[33mcommit 0fda8bc27c689663827177460acf736a3425b3ae[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 14:19:52 2023 +0700
+
+    aaa
+
+[33mcommit 7094bd69ae56b94ad51d8d60b71df24e190b8287[m[33m ([m[1;31morigin/header[m[33m)[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Wed Nov 1 14:10:53 2023 +0700
+
+    deleteimportlib
+
+[33mcommit e85e73080cd70827a4fc9c899d2ede4e9187f76e[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 14:09:39 2023 +0700
+
+    correction word
+
+[33mcommit 5ad037039c94213f2dcb1194fec5b7c4ffdfca55[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Wed Nov 1 14:08:30 2023 +0700
+
+    fixhomepage
+
+[33mcommit cdc8c2d21556176a6d58baa8c1901f8ea5e9520c[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Wed Nov 1 13:59:02 2023 +0700
+
+    uninstalllib
+
+[33mcommit 1bb01af14401eda41a682f23b0b07ca2b460990a[m
+Author: Krid-Chaichaloemdet <kridtue01@hotmail.com>
+Date:   Wed Nov 1 13:55:00 2023 +0700
+
+    headr/footer/manageprofilepage
+
+[33mcommit a1e3e5b890207ccf18bd18e43275896ce49efd80[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 13:50:35 2023 +0700
+
+    update 01/11
+
+[33mcommit 7358e2578735c63f7b3457d8bd7f08e4474ab858[m
+Author: Koblamer <RapeepornT.mar@gmail.com>
+Date:   Wed Nov 1 13:30:06 2023 +0700
+
+    Edit Navbar and SideBar
+
+[33mcommit 0cdc6000927fc13f99358333339c72ed894f2868[m
+Merge: 4e1759d 3d3db2d
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 13:19:26 2023 +0700
+
+    merging
+
+[33mcommit 3d3db2d28abbcef0838e802a2ebebb162b759bb3[m
+Merge: 1ec86b7 6a67127
+Author: palat2000 <135611056+palat2000@users.noreply.github.com>
+Date:   Wed Nov 1 12:16:07 2023 +0700
+
+    Merge pull request #4 from palat2000/feature/reduxRegister
+    
+    Feature/redux register
+
+[33mcommit 6a671275c65d4c661cf1922f27f55d54d9fd75a6[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 12:14:41 2023 +0700
+
+    fix some bug
+
+[33mcommit d6ac167bce84c3a0fbfa344cef975f1baa183e4e[m
+Author: palat2000 <palat.tungsantitham@gmail.com>
+Date:   Wed Nov 1 12:07:17 2023 +0700
+
+    fix conflict
+
+[33mcommit 5cc5dcc034b673708d0fdb9379ab21c3e5575559[m
+Merge: 482615e 1ec86b7
+Author: warittorn21 <kobclimax@gmail.com>
+Date:   Wed Nov 1 11:59:46 2023 +0700
+
+    feature redux register/login on processing
