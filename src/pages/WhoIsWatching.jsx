@@ -1,8 +1,10 @@
 import { FaPlusCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function WhoIsWatching() {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col bg-black items-center h-full p-10 gap-5  ">
+    <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl">Who is watching?</div>
       <div className="flex flex-row flex-wrap gap-2">
         <div className="cursor-pointer  flex flex-col items-center p-1 group">
@@ -58,7 +60,9 @@ export default function WhoIsWatching() {
           </div>
         </div>
       </div>
-      <div className="pl-4 pr-4 text-xs p-1 bg-black border border-gray-500 text-gray-500 hover:border-white  hover:text-white hover:cursor-pointer">
+      <div 
+       onClick={() =>  navigate("/manage-profile")}
+      className="pl-4 pr-4 text-xs p-1 bg-black border border-gray-500 text-gray-500 hover:border-white  hover:text-white hover:cursor-pointer">
         Manage Profiles
       </div>
     </div>
