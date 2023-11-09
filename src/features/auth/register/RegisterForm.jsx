@@ -17,11 +17,10 @@ export default function RegisterForm() {
     const userError = useSelector((state) => state.user.error);
     const userData = useSelector((state) => state.user.data);
 
-    
+
     const handleSubmitForm = (data) => {
-        data.email = data.email(toLowerCase)
-        dispatch(registerAction(data)).unwrap().then(user=>{
-            if(userData){
+        dispatch(registerAction(data)).unwrap().then(user => {
+            if (userData) {
                 addAccessToken(user.accessToken)
                 navigate("/package")
             }

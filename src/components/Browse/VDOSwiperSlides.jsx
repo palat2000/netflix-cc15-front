@@ -11,6 +11,7 @@ register();
 export default function VDOSwiperSlides({ movieDetails }) {
   const swiperElRef = useRef(null);
   // const [movie, setMovie] = useState(null);
+  console.log(movieDetails);
   useEffect(() => {
     // listen for Swiper events using addEventListener
     swiperElRef.current.addEventListener("swiperprogress", (e) => {
@@ -42,7 +43,6 @@ export default function VDOSwiperSlides({ movieDetails }) {
   //     dynamicBullets: true,
   //   },
   // });
-  console.log(movieDetails);
   return (
     <>
       <div className="text-white mx-10">Top 10</div>
@@ -63,23 +63,6 @@ export default function VDOSwiperSlides({ movieDetails }) {
         })}
       </swiper-container>
 
-      <div className="text-white mx-10">ACTION</div>
-      <swiper-container
-        ref={swiperElRef}
-        slides-per-view="5"
-        navigation="true"
-        pagination="true"
-      >
-        {movieDetails.movies?.action.map((m, i) => {
-          return (
-            // <div key={m?.id}>
-            <swiper-slide key={m?.id}>
-              <HoverMovieCard movie={m} />
-            </swiper-slide>
-            // </div>
-          );
-        })}
-      </swiper-container>
       {/* <div className="text-white mx-10">Fevorait</div>
       <swiper-container
         ref={swiperElRef}

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import NavbarAdult from "../components/Browse/NavbarAdult";
-import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 
 const mockUpVdo = [
   {
@@ -46,31 +44,13 @@ const mockUpVdo = [
   },
 ];
 
-// XxXXXXXXXX show this one
-
-// const SearchPage = () => {
-//   const navigate = useNavigate();
-//   const [movie, setMovie] = useState(null);
-
-//   let search = window.location.search;
-// };
-
-// const getMovie = useCallback(async () => {
-//   const res = await axios.get(`/movie?trailer=${trailer || []}`);
-//   setMovie(res?.data?.movie);
-// }, []);
-
-////  XXXXXXXXXXXXX untill this one
-
 export default function SearchPage() {
-  //   const navigate = useNavigate();
-
   const [search, setSearch] = useState(null);
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     if (search) {
-      const filterMovie = getMovie.filter((vdo) => {
+      const filterMovie = mockUpVdo.filter((vdo) => {
         const lowerTitle = vdo.title.toLocaleLowerCase();
         const lowerSearch = search.toLocaleLowerCase();
 
@@ -81,10 +61,9 @@ export default function SearchPage() {
 
       setMovie(filterMovie);
     } else {
-      //   navigate("/browse");
+      //   setMovie(mockUpVdo);
     }
-  });
-  // }, [navigate, search]);
+  }, [search]);
 
   return (
     <>

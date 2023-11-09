@@ -30,7 +30,7 @@ export default function ManageProfileModal({ onClose, data }) {
     formData.append("isKid", kid);
     formData.append("userId", data[0].userId);
 
-  dispatch(createProfileAction(formData))
+    const res = dispatch(createProfileAction(formData))
       .unwrap()
       .then(() => onClose(false));
   };
@@ -83,16 +83,18 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                onClick={handleSaveEdit}
+                onClick={() => {
+                  return handleSaveEdit();
+                }}
+                // onClick={()=>console.log(data.message)}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Continue
               </div>
               <div
                 onClick={() => {
-                  // dispatch(resetState());
+                  dispatch(resetState());
                   return onClose(false);
-                  // console.log(kid)
                 }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
