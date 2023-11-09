@@ -1,8 +1,8 @@
 import ContentModal from "../../feature/ContentModal";
 import ContentModalContextProvider from "../../feature/context/ContentModalContext";
-import MoreInfoButton from "../Button/MoreInfoButton";
-import MuteButton from "../Button/MuteButton";
-import PlayButton from "../Button/PlayButton";
+import MoreInfoButton from "../button/MoreInfoButton";
+import MuteButton from "../button/MuteButton";
+import PlayButton from "../button/PlayButton";
 
 export default function ButtonMainTrailerGroup() {
   return (
