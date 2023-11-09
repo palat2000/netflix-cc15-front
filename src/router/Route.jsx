@@ -17,27 +17,15 @@ import TVShowsPage from "../pages/TVShowsPage";
 const router = createBrowserRouter([
   {
     path: "",
+    element: <HomePage />,
+  },
+  {
+    path: "",
     element: <Layout />,
     children: [
       {
-        path: "",
-        element: <HomePage />,
-      },
-      {
         path: "browse",
         element: <UserBrowsePage />,
-      },
-      {
-        path: "browse/genres/:genres",
-        element: <TVShowsPage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
       },
       {
         path: "success",
@@ -59,7 +47,19 @@ const router = createBrowserRouter([
         path: "YourAccount",
         element: <YourAccount />,
       },
+      {
+        path: "success",
+        element: <SuccessPage />,
+      },
     ],
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignUpPage />,
   },
   {
     path: "watch/:movieId",
