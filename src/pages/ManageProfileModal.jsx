@@ -30,6 +30,7 @@ export default function ManageProfileModal({ onClose, data }) {
     const formData = new FormData();
 
     formData.append("profileImageUrl", file);
+    // formData.append("profileImageUrl", defaultFile);
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
     formData.append("userId", data.userId);
