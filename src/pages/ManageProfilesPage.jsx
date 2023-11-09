@@ -20,9 +20,6 @@ export default function ManageProfiles() {
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-  const defaultImage =
-    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
-
   const userData = user?.data?.allUserProfile;
   // const userData = user?.data
   console.log(userData);
