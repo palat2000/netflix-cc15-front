@@ -11,8 +11,6 @@ export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const [name, setName] = useState(data.userProfileName);
-  // const [defaultFile, setDefaultFile] = useState(data.profileImageUrl);
-  const navigate = useNavigate();
   const inputEl = useRef(null);
   const dispatch = useDispatch();
 

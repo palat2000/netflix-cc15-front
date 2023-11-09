@@ -1,8 +1,8 @@
 import ContentModal from "../../feature/ContentModal";
 import ContentModalContextProvider from "../../feature/context/ContentModalContext";
-import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
-import PlayCircleButton from "../Button/PlayCircleButton";
+import MoreInfoCircleButton from "../button/MoreInfoCircleButton";
 import MuteButton from "../button/MuteButton";
+import PlayCircleButton from "../button/PlayCircleButton";
 
 export default function ButtonMainTrailerGroup() {
   return (
