@@ -11,13 +11,8 @@ import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 
-import MovieCard from "../components/Browse/MovieCard";
-
-function UserBrowsePage() {
+function TVShowsPage() {
   const dispatch = useDispatch();
-  const movie = useSelector((state) => state.allContent.data);
-  console.log(movie);
-
   const { error, loading, data } = useSelector((store) => store.allContent);
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -53,16 +48,15 @@ function UserBrowsePage() {
       <ContentModalContextProvider movieId={1}>
         <div className="bg-black">
           <NavbarAdult />
-          <div className="static ">
-            <MainTrailer />
-          </div>
-          <VDOSwiperSlides movieDetails={movie} />
+          <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  "></div>
+          <MainTrailer />
+
+          <VDOSwiperSlides />
         </div>
         <ContentModal />
       </ContentModalContextProvider>
-      {/* <MovieCard /> */}
     </div>
   );
 }
 
-export default UserBrowsePage;
+export default TVShowsPage;

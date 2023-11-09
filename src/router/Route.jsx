@@ -10,6 +10,9 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import YourAccount from "../pages/YourAccountPage";
+import WhoIsWatching from "../pages/WhoIsWatching";
+import TVShowsPage from "../pages/TVShowsPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "browse",
         element: <UserBrowsePage />,
+      },
+      {
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
       },
       {
         path: "success",
@@ -39,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchPage />,
+      },
+      {
+        path: "YourAccount",
+        element: <YourAccount />,
       },
       {
         path: "success",
@@ -61,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: "manage-profile",
     element: <ManageProfiles />,
+  },
+  {
+    path: "choose-profile",
+    element: <WhoIsWatching />,
   },
 ]);
 
