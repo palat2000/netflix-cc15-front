@@ -14,23 +14,15 @@ import ManageProfiles from "../pages/ManageProfilesPage";
 const router = createBrowserRouter([
   {
     path: "",
+    element: <HomePage />,
+  },
+  {
+    path: "",
     element: <Layout />,
     children: [
       {
-        path: "",
-        element: <HomePage />,
-      },
-      {
         path: "browse",
         element: <UserBrowsePage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
       },
       {
         path: "success",
@@ -48,7 +40,19 @@ const router = createBrowserRouter([
         path: "search",
         element: <SearchPage />,
       },
+      {
+        path: "success",
+        element: <SuccessPage />,
+      },
     ],
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignUpPage />,
   },
   {
     path: "watch/:movieId",
