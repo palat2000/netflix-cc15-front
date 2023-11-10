@@ -4,7 +4,6 @@ import { changStatusOpenModal } from "../store/slice/contentSlice"
 import { useEffect, useState } from "react"
 
 export default function ContentModal({ movieId, children }) {
-
   const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
 
@@ -25,5 +24,5 @@ export default function ContentModal({ movieId, children }) {
         )
       }
     </>
-  )
+  );
 }

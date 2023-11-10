@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import NavbarAdult from "../components/Browse/NavbarAdult";
 import { useSelector } from "react-redux";
-import ContentModalDetail from "../feature/ContentModalDetail";
 
 function LayoutBrowse() {
   const modalIsOpen = useSelector(state => state.content.modalIsOpen)
