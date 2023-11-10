@@ -11,8 +11,7 @@ export default function WhoIsWatching() {
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [modalData, setModalData] = useState(null);
   const dispatch = useDispatch();
-  const [allprofileData, setAllProfileData] = useState({})
-
+  const [allprofileData, setAllProfileData] = useState({});
 
   const user = useSelector((state) => {
     return state?.user;
@@ -23,8 +22,11 @@ export default function WhoIsWatching() {
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-  const userData = user?.data?.allUserProfile;
-  console.log("🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:", userData)
+  const userData = user?.data?.user.allUserProfile;
+  console.log(
+    "🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:",
+    userData
+  );
 
   const handleChooseProfile = (id) => {
     dispatch(chooseUserProfileAction(id))
@@ -74,13 +76,12 @@ export default function WhoIsWatching() {
         {userData?.length < 5 && (
           <div
             onClick={() => {
-              setModalData(userData)
+              setModalData(userData);
               return setIsOpenModalCreate(!isOpenModalCreate);
             }}
             className="cursor-pointer  flex flex-col items-center p-1 translate-y-2 rounded-md group md:translate-y-2 "
           >
-            <FaPlusCircle 
-            className="md:h-40  absolute translate-y-5 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl md:-translate-y-1" />
+            <FaPlusCircle className="md:h-40  absolute translate-y-5 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl md:-translate-y-1" />
             <div className=" h-20 w-20 -translate-y-1  rounded-md  group-hover:border opacity-0 group-hover:opacity-75 bg-white  md:h-40 md:w-40"></div>
 
             <div className="p-1 translate-y-2  md:-translate-y-2 md:m-3 md:text-lg text-xs text-gray-500 group-hover:text-white ">
