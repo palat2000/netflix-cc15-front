@@ -1,32 +1,28 @@
-import ContentModalDetail from "./ContentModalDetail";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchContentAction,
-  openModal,
-  setData,
-} from "../store/slice/contentSlice";
-import { useEffect } from "react";
+import ContentModalDetail from "./ContentModalDetail"
+import { useDispatch } from 'react-redux'
+import { changStatusOpenModal } from "../store/slice/contentSlice"
+import { useEffect, useState } from "react"
 
 export default function ContentModal({ movieId, children }) {
-  const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
-  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(setData(movieId));
-    dispatch(fetchContentAction(movieId))
-      .unwrap()
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  useEffect(
+    () => { dispatch(changStatusOpenModal(open)) }
+    , [open]
+  )
 
   return (
     <>
-      <div className="cursor-pointer" onClick={() => dispatch(openModal())}>
-        {children || []}
-      </div>
-      {modalIsOpen && <ContentModalDetail movieId={movieId} />}
+      <div className="cursor-pointer" onClick={() =>
+        setOpen(true)
+      }>{children || "Open"}</div>
+      {
+        open
+        && (
+          <ContentModalDetail setOpen={setOpen} movieId={movieId} />
+        )
+      }
     </>
   );
 }

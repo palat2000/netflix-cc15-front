@@ -3,11 +3,13 @@ import AddToListButton from "../components/button/AddToListButton"
 import LikeButton from "../components/button/LikeButton"
 import PlayButton from "../components/button/PlayButton"
 import { useNavigate } from "react-router-dom"
+import { editMylist } from "../store/utils/contentApi"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
-    const movieTitle = useSelector(state => state?.content[movieId]?.data?.movie[0]?.title)
+    const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
     const navigate = useNavigate()
+
 
     return (
         <div className='z-10 w-5/12 flex flex-col gap-3'>
@@ -19,8 +21,12 @@ export default function TrailerLayoutLeft({ movieId }) {
                     <PlayButton />
                 </div>
                 <div className='flex'>
-                    <AddToListButton />
-                    <LikeButton />
+                    <div onClick={() => editMylist(movieId)}>
+                        <AddToListButton />
+                    </div>
+                    <div>
+                        <LikeButton />
+                    </div>
                 </div>
             </div>
         </div>

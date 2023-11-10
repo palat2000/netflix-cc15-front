@@ -3,8 +3,7 @@ import { getContentById } from "../utils/contentApi";
 
 const initialState = {
   modalIsopen: false,
-  loading: false,
-  trailerIsMute: false
+  loading: false
 };
 
 export const fetchContentAction = createAsyncThunk('content/fetch', async (movieId, thunkAPI) => {
@@ -22,11 +21,19 @@ const contentSlice = createSlice({
   name: "content",
   initialState,
   reducers: {
-    changStatusOpenModal: (state, action) => {
-      state.modalIsOpen = action.payload
+    openModal: (state) => {
+      state.modalIsOpen = true
+    },
+    closeModal: (state) => {
+      state.modalIsOpen = false
+    },
+    setData: (state, action) => {
+      state[action.payload] = {
+        trailerIsMute: false,
+      }
     },
     toggleMute: (state, action) => {
-      state.trailerIsMute = !state.trailerIsMute
+      state[action.payload].trailerIsMute = !state[action.payload].trailerIsMute
     },
   },
   extraReducers: (builder) => {
@@ -35,19 +42,21 @@ const contentSlice = createSlice({
         state.loading = true
       })
       .addCase(fetchContentAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.error = null;
-        state.data = action.payload;
+        state[action.payload.movieId].loading = false;
+        state[action.payload.movieId].error = null;
+        state[action.payload.movieId].data = action.payload;
+        state.loading = false
       })
       .addCase(fetchContentAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.data = [];
+        state[action.payload.movieId].loading = false;
+        state[action.payload.movieId].error = action.payload;
+        state[action.payload.movieId].data = [];
+        state.loading = false
       });
   }
 });
 
-export const { openModal, closeModal, setData, toggleMute, loadTrailer, changStatusOpenModal } = contentSlice.actions
+export const { openModal, closeModal, setData, toggleMute, loadTrailer } = contentSlice.actions
 const contentReducer = contentSlice.reducer
 export default contentReducer
 

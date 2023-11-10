@@ -92,8 +92,12 @@ export const chooseUserProfileAction = createAsyncThunk(
 );
 
 export const getMeAction = createAsyncThunk("auth/me", async () => {
-  const res = await getMe();
-  return res;
+  try {
+    const res = await getMe();
+    return res;
+  } catch (error) {
+    throw error.response.data;
+  }
 });
 
 export const checkEmailInDatabaseAction = createAsyncThunk(
@@ -133,7 +137,7 @@ export const authSlice = createSlice({
       })
       .addCase(loginAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload.user;
+        state.data = action.payload;
       })
       .addCase(loginAction.pending, (state, action) => {
         state.error = null;

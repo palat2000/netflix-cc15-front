@@ -15,7 +15,7 @@ function App() {
     }
   }, []);
 
-  if (loading) return <LoadingPage/>;
+  if (loading) return <LoadingPage />;
 
   return (
     <div>
