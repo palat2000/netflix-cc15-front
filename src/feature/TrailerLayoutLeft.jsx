@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import AddToListButton from "../components/button/AddToListButton"
 import LikeButton from "../components/button/LikeButton"
 import PlayButton from "../components/button/PlayButton"
@@ -8,6 +8,7 @@ import { editMylist } from "../store/utils/contentApi"
 export default function TrailerLayoutLeft({ movieId }) {
 
     const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
 
@@ -21,7 +22,7 @@ export default function TrailerLayoutLeft({ movieId }) {
                     <PlayButton />
                 </div>
                 <div className='flex'>
-                    <div onClick={() => editMylist(movieId)}>
+                    <div onClick={() => dispatch(editMylist(movieId))}>
                         <AddToListButton />
                     </div>
                     <div>

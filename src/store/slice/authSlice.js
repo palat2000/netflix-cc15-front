@@ -94,6 +94,7 @@ export const chooseUserProfileAction = createAsyncThunk(
 export const getMeAction = createAsyncThunk("auth/me", async () => {
   try {
     const res = await getMe();
+    console.log(res)
     return res;
   } catch (error) {
     throw error.response.data;

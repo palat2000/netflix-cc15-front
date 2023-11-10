@@ -27,7 +27,8 @@ export default function ContentModalDetail({ movieId, setOpen }) {
               <TrailerHeaderModal movieId={movieId} setOpen={setOpen} />
               <InfoBody movieId={movieId} />
             </div>
-          </div>) : (<> </>)}
+          </div>
+        ) : (<> </>)}
       </div>
     </>
   )
