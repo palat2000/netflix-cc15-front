@@ -11,10 +11,10 @@ function LayoutBrowse() {
       <div className="flex-1">
         <NavbarAdult />
         <Outlet />
-        {modalIsOpen && (
-          <ContentModalDetail movieId={1} />
-        )
-        }
+        {/* {modalIsOpen && ( */}
+        {/* <ContentModalDetail movieId={1} /> */}
+        {/* ) */}
+        {/* } */}
       </div>
       <Footer />
     </div>
