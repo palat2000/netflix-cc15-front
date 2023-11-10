@@ -1,15 +1,24 @@
 import axios from "axios";
 import { BACKEND_URL } from "./env.js";
-import { getAccessToken, getChooseProfileAccessToken, removeAccessToken } from "../utils/local-storage";
+import {
+  getAccessToken,
+  getChooseProfileAccessToken,
+  removeAccessToken,
+} from "../utils/local-storage";
 
 axios.defaults.baseURL = BACKEND_URL;
 
 axios.interceptors.request.use((config) => {
   const token = getAccessToken();
-  const profileId = getChooseProfileAccessToken()
+  const profileId = getChooseProfileAccessToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-    config.headers.Profile = profileId
+    config.headers.Profile = profileId;
+  }
+  if (localStorage.getItem("CHOOSE_PROFILE_ACCESS_TOKEN")) {
+    config.headers.authorizationprofile = `Bearer ${localStorage.getItem(
+      "CHOOSE_PROFILE_ACCESS_TOKEN"
+    )}`;
   }
   return config;
 });

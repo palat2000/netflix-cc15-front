@@ -5,8 +5,8 @@ import MovieCard from "./MovieCard";
 function MovieSlideTab() {
   return (
     <motion.div whileHover={{ scale: 1.5 }} className="movie-item">
-      <MovieCard />
-      {/* <video
+      {/* <MovieCard /> */}
+      <video
         className="rounded-t-md"
         width="200"
         height="auto"
@@ -19,7 +19,7 @@ function MovieSlideTab() {
           src="https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596816/comedy/ohox5l0fspwywcynxvqr.mp4"
           type="video/mp4"
         />
-      </video> */}
+      </video>
     </motion.div>
   );
 }
