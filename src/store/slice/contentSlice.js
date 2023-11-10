@@ -25,14 +25,6 @@ const contentSlice = createSlice({
     changStatusOpenModal: (state, action) => {
       state.modalIsOpen = action.payload
     },
-    // closeModal: (state) => {
-    //   state.modalIsOpen = false
-    // },
-    // setData: (state, action) => {
-    //   state[action.payload] = {
-    //     trailerIsMute: false,
-    //   }
-    // },
     toggleMute: (state, action) => {
       state.trailerIsMute = !state.trailerIsMute
     },
