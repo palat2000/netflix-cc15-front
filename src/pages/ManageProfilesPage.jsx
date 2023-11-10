@@ -2,7 +2,7 @@ import { TiPencil } from "react-icons/ti";
 import { FaPlusCircle } from "react-icons/fa";
 import ManageProfileModal from "../pages/ManageProfileModal";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,8 @@ export default function ManageProfiles() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+
   const user = useSelector((state) => {
     return state?.user;
   });

@@ -92,8 +92,12 @@ export const chooseUserProfileAction = createAsyncThunk(
 );
 
 export const getMeAction = createAsyncThunk("auth/me", async () => {
-  const res = await getMe();
-  return res;
+  try {
+    const res = await getMe();
+    return res;
+  } catch (error) {
+    throw error.response.data;
+  }
 });
 
 export const checkEmailInDatabaseAction = createAsyncThunk(

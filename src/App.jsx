@@ -10,12 +10,12 @@ function App() {
   const { loading } = useSelector((store) => store.user);
 
   useEffect(() => {
-    // if (getAccessToken()) {
-    //   dispatch(getMeAction());
-    // }
+    if (getAccessToken()) {
+      dispatch(getMeAction());
+    }
   }, []);
 
-  if (loading) return <LoadingPage/>;
+  if (loading) return <LoadingPage />;
 
   return (
     <div>
