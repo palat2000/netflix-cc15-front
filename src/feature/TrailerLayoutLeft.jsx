@@ -22,7 +22,7 @@ export default function TrailerLayoutLeft({ movieId }) {
                 <div onClick={() => navigate(`/watch/1`)}>
                     <PlayButton />
                 </div>
-                <div className='flex'>
+                <div className='flex gap-1'>
                     <div onClick={() => dispatch(editMyListAction(movieId))}>
                         <AddToListButton />
                     </div>
