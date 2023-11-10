@@ -12,6 +12,7 @@ import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 
 import MovieCard from "../components/Browse/MovieCard";
+import MovieSlideTab from "../components/Browse/MovieSlider";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
@@ -56,7 +57,9 @@ function UserBrowsePage() {
           <div className="static ">
             <MainTrailer />
           </div>
-          <VDOSwiperSlides movieDetails={movie} />
+          {/* <VDOSwiperSlides movieDetails={movie} /> */}
+
+          <MovieSlideTab />
         </div>
         <ContentModal />
       </ContentModalContextProvider>

@@ -46,7 +46,7 @@ const mockUpVdo = [
   },
 ];
 
-// XxXXXXXXXX show this one
+// XxXXXXXXXX
 
 // const SearchPage = () => {
 //   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const mockUpVdo = [
 //   setMovie(res?.data?.movie);
 // }, []);
 
-////  XXXXXXXXXXXXX untill this one
+////  XXXXXXXXXXXXX
 
 export default function SearchPage() {
   //   const navigate = useNavigate();
@@ -70,7 +70,7 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (search) {
-      const filterMovie = getMovie.filter((vdo) => {
+      const filterMovie = mockUpVdo.filter((vdo) => {
         const lowerTitle = vdo.title.toLocaleLowerCase();
         const lowerSearch = search.toLocaleLowerCase();
 
@@ -83,7 +83,7 @@ export default function SearchPage() {
     } else {
       //   navigate("/browse");
     }
-  });
+  }, []);
   // }, [navigate, search]);
 
   return (

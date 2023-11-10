@@ -6,7 +6,7 @@ export default function ContentModal({ movieId, children }) {
 
   return (
     <>
-      <div onClick={handleClickOpen}>{children || "Open"}</div>
+      <div onClick={handleClickOpen}>{children || []}</div>
       {isOpen && <ContentModalDetail movieId={movieId} />}
     </>
   );
