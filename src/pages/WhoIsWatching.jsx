@@ -44,7 +44,7 @@ export default function WhoIsWatching() {
             >
               <div className="cursor-pointer  flex flex-col items-center p-1 gap-1 group">
                 {data.isKid && (
-                  <div className="text-white bg-gradient-to-br from-red-300 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-16 md:text-2xl md:translate-x-12 md:translate-y-32">
+                  <div className=" bg-gradient-to-br from-red-300 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-16 md:text-2xl md:translate-x-12 md:translate-y-32">
                     kids
                   </div>
                 )}
@@ -67,11 +67,13 @@ export default function WhoIsWatching() {
         {userData?.length < 5 && (
           <div
             onClick={() => {
+              setModalData(userData)
               return setIsOpenModalCreate(!isOpenModalCreate);
             }}
             className="cursor-pointer  flex flex-col items-center p-1 translate-y-2 rounded-md group md:translate-y-2 "
           >
-            <FaPlusCircle className="md:h-40  absolute translate-y-5 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl md:-translate-y-1" />
+            <FaPlusCircle 
+            className="md:h-40  absolute translate-y-5 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl md:-translate-y-1" />
             <div className=" h-20 w-20 -translate-y-1  rounded-md  group-hover:border opacity-0 group-hover:opacity-75 bg-white  md:h-40 md:w-40"></div>
 
             <div className="p-1 translate-y-2  md:-translate-y-2 md:m-3 md:text-lg text-xs text-gray-500 group-hover:text-white ">
@@ -90,6 +92,7 @@ export default function WhoIsWatching() {
       </div>
       <div
         onClick={() => navigate("/manage-profile")}
+        // onClick={()=>console.log(user)}
         className="pl-4 pr-4 text-xs p-1 bg-black border  text-gray-500 hover:border-2 hover:border-white border-gray-500 hover:text-white hover:cursor-pointer md:text-2xl md:pl-9 md:pr-9 md:p-2"
       >
         Manage Profiles

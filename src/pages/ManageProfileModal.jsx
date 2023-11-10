@@ -19,17 +19,20 @@ export default function ManageProfileModal({ onClose, data }) {
     return state.user;
   });
 
-  const a = useSelector((state) => state.user);
-  console.log(a);
+
 
   const handleSaveEdit = () => {
-    dispatch(resetState());
+    // dispatch(resetState());
+    // if(file === null) {
+    //   setFile(data.)
+    // }
     if (name.length <= 0) {
       return setEmptyError("This field can't be empty");
     }
     const formData = new FormData();
 
     formData.append("profileImageUrl", file);
+    formData.append("imagesss", data.profileImageUrl);
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
     formData.append("userId", data.userId);
@@ -59,7 +62,7 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 group  h-24 w-24 md:h-40 md:w-40">
               {data.isKid && (
-                <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold translate-x-16 ml-1 translate-y-20 text-xs absolute  z-20  ">
+                <div className=" bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold translate-x-16 ml-1 translate-y-20 text-xs absolute  z-20 md:translate-y-32 md:translate-x-24 md:text-2xl md:mx-2">
                   kids
                 </div>
               )}
@@ -77,9 +80,10 @@ export default function ManageProfileModal({ onClose, data }) {
                 ></img>
               )}
 
-              <HiPencil 
-               onClick={() => inputEl.current.click()}
-              className="text-xs group absolute translate-y-20  translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1 group-hover:cursor-pointer " />
+              <HiPencil
+                onClick={() => inputEl.current.click()}
+                className="text-xs group absolute translate-y-20  translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1 group-hover:cursor-pointer "
+              />
               <div className="flex flex-col gap-2">
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
                 {error && <div className="text-red-500">{error}</div>}
@@ -115,7 +119,6 @@ export default function ManageProfileModal({ onClose, data }) {
               </div>
               <div
                 onClick={() => onClose(false)}
-                // onClick={()=>console.log(error)}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
@@ -123,6 +126,7 @@ export default function ManageProfileModal({ onClose, data }) {
               {userData?.length > 1 && (
                 <div
                   onClick={handleDelete}
+                  // onClick={()=>console.log(data)}
                   className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
                 >
                   Delete

@@ -7,6 +7,7 @@ import {
   createUserProfile,
   deleteUserProfile,
   getMe,
+  checkEmailInDatabase,
   chooseUserProfile,
 } from "../utils/userApi";
 
@@ -35,6 +36,7 @@ export const registerAction = createAsyncThunk(
 export const loginAction = createAsyncThunk("auth/login", async (input) => {
   try {
     let res = await loginUser(input);
+    console.log(res)
     return res;
   } catch (error) {
     throw error.response.data;
@@ -94,6 +96,19 @@ export const getMeAction = createAsyncThunk("auth/me", async () => {
   return res;
 });
 
+export const checkEmailInDatabaseAction = createAsyncThunk(
+  "auth/checkemail",
+  async (input) => {
+    try {
+      const res = await checkEmailInDatabase(input);
+      console.log(res);
+      return res;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
@@ -106,7 +121,7 @@ export const authSlice = createSlice({
     builder
       .addCase(registerAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload.user;
+        state.data = action.payload;
       })
       .addCase(registerAction.pending, (state, action) => {
         state.error = null;
@@ -128,16 +143,17 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
+      .addCase(editProfileAction.pending, (state, action) => {
+        state.loading = true;
+        // state.data = action.payload;
+      })
       .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
+        state.loading = false;
         const idx = state.data.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
         state.data.allUserProfile[idx] = action.payload.userProfile;
-      })
-      .addCase(editProfileAction.pending, (state, action) => {
-        state.loading = false;
-        // state.data = action.payload;
       })
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
@@ -166,7 +182,7 @@ export const authSlice = createSlice({
         );
         console.log(action);
       })
-      .addCase(deleteUserProfileAction.rejected, (state, action) => {})
+      .addCase(deleteUserProfileAction.rejected, (state, action) => { })
       .addCase(createProfileAction.pending, (state, action) => {
         state.loading = true;
       })
@@ -187,6 +203,18 @@ export const authSlice = createSlice({
         // state.data = action.payload
         console.log(action);
         console.log(current(state));
+      })
+      .addCase(checkEmailInDatabaseAction.pending, (state, action) => {
+        state.loading = true;
+        state.data = action.payload;
+      })
+      .addCase(checkEmailInDatabaseAction.fulfilled, (state, action) => {
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(checkEmailInDatabaseAction.rejected, (state, action) => {
+        state.error = action.error;
+        state.loading = false;
       });
   },
 });

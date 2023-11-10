@@ -52,7 +52,7 @@ export default function VDOSwiperSlides({ movieDetails }) {
         navigation="true"
         pagination="true"
       >
-        {movieDetails.movies?.top10.map((m, i) => {
+        {movieDetails?.movies?.top10?.map((m, i) => {
           return (
             // <div key={m?.id}>
             <swiper-slide key={m?.id}>

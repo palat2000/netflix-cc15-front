@@ -10,22 +10,20 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
-import LoadingPage from "../pages/LoadingPage";
-import TVShowsPage from "../pages/TVShowsPage";
+import YourAccount from "../pages/YourAccountPage";
 import WhoIsWatching from "../pages/WhoIsWatching";
+import TVShowsPage from "../pages/TVShowsPage";
+import LoadingPage from "../pages/LoadingPage";
+import LayoutBrowse from "../layout/LayoutBrowse";
 
 const router = createBrowserRouter([
-  {
-    path: "",
-    element: <HomePage />,
-  },
   {
     path: "",
     element: <Layout />,
     children: [
       {
-        path: "browse",
-        element: <UserBrowsePage />,
+        path: "",
+        element: <HomePage />,
       },
       {
         path: "success",
@@ -39,13 +37,23 @@ const router = createBrowserRouter([
         path: "package",
         element: <PackagePage />,
       },
+    ],
+  },
+  {
+    path: "",
+    element: <LayoutBrowse />,
+    children: [
+      {
+        path: "browse",
+        element: <UserBrowsePage />,
+      },
       {
         path: "search",
         element: <SearchPage />,
       },
       {
-        path: "success",
-        element: <SuccessPage />,
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
       },
     ],
   },
