@@ -10,6 +10,7 @@ import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup"
 import { editProfileAction } from "../store/slice/authSlice";
 
 import MovieCard from "../components/Browse/MovieCard";
+import MovieSlideTab from "../components/Browse/MovieSlider";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
@@ -27,9 +28,8 @@ function UserBrowsePage() {
     <div>
       <div className="bg-black">
         <NavbarAdult />
-        <div className=" mx-10 z-10 text-white ml-10 bottom-2/4 md:box-content  ">
+        <div className="static">
           <MainTrailer />
-          <ButtonMainTrailerGroup />
         </div>
         {/* <VDOSwiperSlides />
         <VDOSwiperSlides />

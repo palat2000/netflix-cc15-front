@@ -19,8 +19,6 @@ export default function ManageProfileModal({ onClose, data }) {
     return state.user;
   });
 
-
-
   const handleSaveEdit = () => {
     // dispatch(resetState());
     // if(file === null) {

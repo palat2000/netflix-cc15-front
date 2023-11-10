@@ -36,7 +36,7 @@ export const registerAction = createAsyncThunk(
 export const loginAction = createAsyncThunk("auth/login", async (input) => {
   try {
     let res = await loginUser(input);
-    console.log(res)
+    console.log(res);
     return res;
   } catch (error) {
     throw error.response.data;
@@ -170,7 +170,7 @@ export const authSlice = createSlice({
         state.error = null;
         state.loading = false;
         state.data = action.payload.user;
-        console.log(current(state))
+        console.log(current(state));
       })
       .addCase(getMeAction.rejected, (state, action) => {
         state.loading = false;
@@ -183,7 +183,7 @@ export const authSlice = createSlice({
         );
         console.log(action);
       })
-      .addCase(deleteUserProfileAction.rejected, (state, action) => { })
+      .addCase(deleteUserProfileAction.rejected, (state, action) => {})
       .addCase(createProfileAction.pending, (state, action) => {
         state.loading = true;
       })
