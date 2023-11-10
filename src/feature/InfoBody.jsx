@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import EpisodeBox from "./EpisodeBox"
 import MovieLikeThisBox from "./MovieLikeThisBox"
 
-export default function InfoBody({ movieId }) {
+export default function InfoBody() {
 
     const movieData = useSelector(state => state?.content?.data?.movie[0])
     const moreLikeThisData = useSelector(state => state?.content?.data?.moreLikeThis)

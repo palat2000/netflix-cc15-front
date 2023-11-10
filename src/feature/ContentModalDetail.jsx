@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import InfoBody from "./InfoBody"
 import TrailerHeaderModal from "./TrailerHeaderModal"
-import { closeModal, fetchContentAction, setData } from "../store/slice/contentSlice"
+import { fetchContentAction } from "../store/slice/contentSlice"
 import { useEffect } from "react"
 
 export default function ContentModalDetail({ movieId, setOpen }) {

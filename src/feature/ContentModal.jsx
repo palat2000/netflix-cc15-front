@@ -1,6 +1,6 @@
 import ContentModalDetail from "./ContentModalDetail"
-import { useSelector, useDispatch } from 'react-redux'
-import { changStatusOpenModal, fetchContentAction, openModal, setData } from "../store/slice/contentSlice"
+import { useDispatch } from 'react-redux'
+import { changStatusOpenModal } from "../store/slice/contentSlice"
 import { useEffect, useState } from "react"
 
 export default function ContentModal({ movieId, children }) {
