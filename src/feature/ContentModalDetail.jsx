@@ -1,13 +1,22 @@
 import { useDispatch, useSelector } from "react-redux"
 import InfoBody from "./InfoBody"
 import TrailerHeaderModal from "./TrailerHeaderModal"
-import { closeModal } from "../store/slice/contentSlice"
+import { closeModal, fetchContentAction, setData } from "../store/slice/contentSlice"
+import { useEffect } from "react"
 
 export default function ContentModalDetail({ movieId }) {
 
-  const movieData = useSelector(state => state?.content[movieId]?.data)
-
   const dispatch = useDispatch()
+
+  useEffect(
+    () => {
+      dispatch(setData(movieId))
+      dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => { console.log(err) })
+    }, []
+  )
+
+  const movieData = useSelector(state => state?.content[movieId]?.data)
+  console.log("🚀 ~ file: ContentModalDetail.jsx:19 ~ ContentModalDetail ~ movieData:", movieData)
 
   return (
     <>

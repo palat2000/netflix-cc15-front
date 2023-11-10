@@ -37,7 +37,7 @@ function UserBrowsePage() {
         <VDOSwiperSlides />
         <VDOSwiperSlides /> */}
       </div>
-      {/* <ContentModal /> */}
+      <ContentModal movieId={2} />
     </div>
   );
 }

@@ -8,12 +8,12 @@ export default function ContentModal({ movieId, children }) {
   const modalIsOpen = useSelector(state => state.content.modalIsOpen)
   const dispatch = useDispatch()
 
-  useEffect(
-    () => {
-      dispatch(setData(movieId))
-      dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => { console.log(err) })
-    }, []
-  )
+  // useEffect(
+  //   () => {
+  //     dispatch(setData(movieId))
+  //     dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => { console.log(err) })
+  //   }, []
+  // )
 
   return (
     <>

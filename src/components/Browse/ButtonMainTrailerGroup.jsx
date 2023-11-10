@@ -11,7 +11,7 @@ export default function ButtonMainTrailerGroup() {
           <div className="flex">
             <PlayCircleButton customizeClass={"ml-0 "} />
             <div>
-              <ContentModal movieId={2}>
+              <ContentModal movieId={1}>
                 <MoreInfoCircleButton customizeClass={"ml-0 p-10  "} />
               </ContentModal>
             </div>
