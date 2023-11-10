@@ -8,7 +8,7 @@ import { editMylist } from "../store/utils/contentApi"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
-    const movieTitle = useSelector(state => state?.content[movieId]?.data?.movie[0]?.title)
+    const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
     const navigate = useNavigate()
 
 

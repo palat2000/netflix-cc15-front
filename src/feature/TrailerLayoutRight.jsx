@@ -4,14 +4,14 @@ import SoundOnButton from '../components/button/SoundOnButton';
 import { useSelector, useDispatch } from 'react-redux'
 import { closeModal, toggleMute } from "../store/slice/contentSlice"
 
-export default function TrailerLayoutRight({ movieId }) {
-  const trailerIsMute = useSelector(state => state.content[movieId]?.trailerIsMute)
+export default function TrailerLayoutRight({ movieId, setOpen }) {
+  const trailerIsMute = useSelector(state => state.content?.trailerIsMute)
   const dispatch = useDispatch()
 
 
   return (
     <div className='flex flex-col justify-between items-center h-full'>
-      <div onClick={() => dispatch(closeModal())}>
+      <div onClick={() => setOpen(false)}>
         <CloseButton />
       </div>
       {trailerIsMute && (
