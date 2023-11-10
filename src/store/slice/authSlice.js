@@ -36,6 +36,7 @@ export const registerAction = createAsyncThunk(
 export const loginAction = createAsyncThunk("auth/login", async (input) => {
   try {
     let res = await loginUser(input);
+    console.log(res);
     return res;
   } catch (error) {
     throw error.response.data;
@@ -142,16 +143,17 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
-      .addCase(editProfileAction.fulfilled, (state, acstion) => {
+      .addCase(editProfileAction.pending, (state, action) => {
+        state.loading = true;
+        // state.data = action.payload;
+      })
+      .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
+        state.loading = false;
         const idx = state.data.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
         state.data.allUserProfile[idx] = action.payload.userProfile;
-      })
-      .addCase(editProfileAction.pending, (state, action) => {
-        state.loading = false;
-        // state.data = action.payload;
       })
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
@@ -168,6 +170,7 @@ export const authSlice = createSlice({
         state.error = null;
         state.loading = false;
         state.data = action.payload.user;
+        console.log(current(state));
       })
       .addCase(getMeAction.rejected, (state, action) => {
         state.loading = false;
@@ -180,7 +183,7 @@ export const authSlice = createSlice({
         );
         console.log(action);
       })
-      .addCase(deleteUserProfileAction.rejected, (state, action) => { })
+      .addCase(deleteUserProfileAction.rejected, (state, action) => {})
       .addCase(createProfileAction.pending, (state, action) => {
         state.loading = true;
       })
