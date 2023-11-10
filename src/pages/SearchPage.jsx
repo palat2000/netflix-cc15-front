@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import NavbarAdult from "../components/Browse/NavbarAdult";
-import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 
 const mockUpVdo = [
   {
@@ -63,8 +61,6 @@ const mockUpVdo = [
 ////  XXXXXXXXXXXXX
 
 export default function SearchPage() {
-  //   const navigate = useNavigate();
-
   const [search, setSearch] = useState(null);
   const [movie, setMovie] = useState(null);
 
@@ -81,10 +77,9 @@ export default function SearchPage() {
 
       setMovie(filterMovie);
     } else {
-      //   navigate("/browse");
+      //   setMovie(mockUpVdo);
     }
-  }, []);
-  // }, [navigate, search]);
+  }, [search]);
 
   return (
     <>

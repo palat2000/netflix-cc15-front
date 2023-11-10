@@ -52,7 +52,7 @@ export default function NavbarAdult({ setSearch }) {
 
   return (
     <div>
-      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px] mx-10  ">
+      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px] px-10 ">
         <div className="flex justify-start items-center ">
           <img
             className="h-8 w-auto"

@@ -1,15 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import MovieCard from "./MovieCard";
+import { Slide } from "@mui/material";
 
 function MovieSlideTab() {
   return (
-    <motion.div
-      whileHover={{ scale: 1.5 }}
-      className="example-container movie-item flex"
-    >
+    <div className="flex text-white">
       <MovieCard />
-    </motion.div>
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+    </div>
   );
 }
 

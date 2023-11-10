@@ -11,6 +11,7 @@ register();
 export default function VDOSwiperSlides({ movieDetails }) {
   const swiperElRef = useRef(null);
   // const [movie, setMovie] = useState(null);
+  console.log(movieDetails);
   useEffect(() => {
     // listen for Swiper events using addEventListener
     swiperElRef.current.addEventListener("swiperprogress", (e) => {
@@ -53,7 +54,7 @@ export default function VDOSwiperSlides({ movieDetails }) {
         navigation="true"
         pagination="true"
       >
-        {movieDetails.movies?.top10.map((m, i) => {
+        {movieDetails?.movies?.top10?.map((m, i) => {
           return (
             <swiper-slide key={m?.id}>
               <HoverMovieCard movie={m} />

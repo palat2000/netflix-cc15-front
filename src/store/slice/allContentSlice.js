@@ -14,6 +14,7 @@ export const fetchAllContent = createAsyncThunk(
       const response = await getAllContent();
       return response;
     } catch (err) {
+      console.log(thunkAPI.rejectWithValue(err.message))
       return thunkAPI.rejectWithValue(err.message);
     }
   }

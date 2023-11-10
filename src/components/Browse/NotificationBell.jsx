@@ -1,8 +1,8 @@
-// import profilePic1 from "../../assets/netflix-profile-red.jpeg";
-// import profilePic2 from "../../assets/netflix-profile-yellow.jpeg";
-// import profilePic3 from "../../assets/netflix-profile-green.jpeg";
-// import profilePic4 from "../../assets/netflix-profile-blue.jpeg";
-// import profilePic5 from "../../assets/netflix-profile-kid.png";
+import profilePic1 from "../../assets/netflix-profile-red.jpeg";
+import profilePic2 from "../../assets/netflix-profile-yellow.jpeg";
+import profilePic3 from "../../assets/netflix-profile-green.jpeg";
+import profilePic4 from "../../assets/netflix-profile-blue.jpeg";
+import profilePic5 from "../../assets/netflix-profile-kid.png";
 import NotiPic1 from "../../assets/SpidermanImg.jpeg";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

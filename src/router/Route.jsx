@@ -10,7 +10,11 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
+import YourAccount from "../pages/YourAccountPage";
+import WhoIsWatching from "../pages/WhoIsWatching";
 import TVShowsPage from "../pages/TVShowsPage";
+import LoadingPage from "../pages/LoadingPage";
+import LayoutBrowse from "../layout/LayoutBrowse";
 
 const router = createBrowserRouter([
   {
@@ -20,23 +24,6 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-      },
-      {
-        path: "browse",
-        element: <UserBrowsePage />,
-      },
-      {
-        path: "browse/genres/:genres",
-        element: <TVShowsPage />,
-      },
-
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpPage />,
       },
       {
         path: "success",
@@ -50,11 +37,33 @@ const router = createBrowserRouter([
         path: "package",
         element: <PackagePage />,
       },
+    ],
+  },
+  {
+    path: "",
+    element: <LayoutBrowse />,
+    children: [
+      {
+        path: "browse",
+        element: <UserBrowsePage />,
+      },
       {
         path: "search",
         element: <SearchPage />,
       },
+      {
+        path: "browse/genres/:genres",
+        element: <TVShowsPage />,
+      },
     ],
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignUpPage />,
   },
   {
     path: "watch/:movieId",
@@ -63,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: "manage-profile",
     element: <ManageProfiles />,
+  },
+  {
+    path: "choose-profile",
+    element: <WhoIsWatching />,
   },
 ]);
 
