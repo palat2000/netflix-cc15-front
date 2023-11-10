@@ -170,6 +170,7 @@ export const authSlice = createSlice({
         state.error = null;
         state.loading = false;
         state.data = action.payload.user;
+        console.log(current(state))
       })
       .addCase(getMeAction.rejected, (state, action) => {
         state.loading = false;
