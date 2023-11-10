@@ -12,7 +12,7 @@ import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 
 import MovieCard from "../components/Browse/MovieCard";
-import MovieSlideTab from "../components/Browse/MovieSlider";
+import MovieSlideTab from "../components/Browse/MovieSlideTab";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
@@ -51,19 +51,19 @@ function UserBrowsePage() {
 
   return (
     <div>
-      <ContentModalContextProvider movieId={1}>
-        <div className="bg-black">
-          <NavbarAdult />
-          <div className="static ">
-            <MainTrailer />
-          </div>
-          {/* <VDOSwiperSlides movieDetails={movie} /> */}
-
-          <MovieSlideTab />
+      {/* <ContentModalContextProvider movieId={1}> */}
+      <div className="bg-black">
+        <NavbarAdult />
+        <div className="static ">
+          <MainTrailer />
         </div>
-        <ContentModal />
-      </ContentModalContextProvider>
-      {/* <MovieCard /> */}
+        {/* <VDOSwiperSlides movieDetails={movie} /> */}
+        {/* <MovieCard /> */}
+        <MovieSlideTab />
+        {/* <MovieSlideTab /> */}
+      </div>
+      {/* <ContentModal /> */}
+      {/* </ContentModalContextProvider> */}
     </div>
   );
 }

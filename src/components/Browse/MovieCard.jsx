@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import React from "react";
+import { motion } from "framer-motion";
 
 export default function MovieCard() {
   // const navigate = useNavigate();
@@ -25,21 +27,27 @@ export default function MovieCard() {
   // }, [getMovieById]);
 
   return (
-    <div className="relative flex  rounded-sm  bg-zinc-900  ">
-      <video
-        className="rounded-t-md"
-        width="200"
-        height="auto"
-        muted
-        loop
-        autoPlay
-        controls=""
-      >
-        <source
-          src="https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596816/comedy/ohox5l0fspwywcynxvqr.mp4"
-          type="video/mp4"
-        />
-      </video>
-    </div>
+    <motion.div
+      className="box"
+      whileHover={{ scale: [null, 1.5, 1.4] }}
+      transition={{ duration: 0.3 }}
+    />
+
+    // <div className="relative flex  rounded-sm  bg-zinc-900  ">
+    //   <video
+    //     className="rounded-t-md"
+    //     width="200"
+    //     height="auto"
+    //     muted
+    //     loop
+    //     autoPlay
+    //     controls=""
+    //   >
+    //     <source
+    //       src="https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596816/comedy/ohox5l0fspwywcynxvqr.mp4"
+    //       type="video/mp4"
+    //     />
+    //   </video>
+    // </div>
   );
 }
