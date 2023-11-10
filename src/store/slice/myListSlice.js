@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getContentById } from "../utils/contentApi";
+import { editMylist } from "../utils/contentApi";
 
 const initialState = {
-  modalIsopen: false,
+  data: null,
+  error: null,
   loading: false
 };
 
-export const fetchContentAction = createAsyncThunk('content/fetch', async (movieId, thunkAPI) => {
+export const editMyListAction = createAsyncThunk('myList/edit', async (movieId, thunkAPI) => {
   try {
-    const response = await getContentById(movieId)
-    response.movieId = movieId
+    const response = await editMylist(movieId)
     console.log(response)
     return response;
   } catch (err) {
@@ -17,46 +17,43 @@ export const fetchContentAction = createAsyncThunk('content/fetch', async (movie
   }
 })
 
-const contentSlice = createSlice({
-  name: "content",
+const myListSlice = createSlice({
+  name: "myList",
   initialState,
   reducers: {
-    openModal: (state) => {
-      state.modalIsOpen = true
-    },
-    closeModal: (state) => {
-      state.modalIsOpen = false
-    },
-    setData: (state, action) => {
-      state[action.payload] = {
-        trailerIsMute: false,
-      }
-    },
-    toggleMute: (state, action) => {
-      state[action.payload].trailerIsMute = !state[action.payload].trailerIsMute
-    },
+    // openModal: (state) => {
+    //   state.modalIsOpen = true
+    // },
+    // closeModal: (state) => {
+    //   state.modalIsOpen = false
+    // },
+    // setData: (state, action) => {
+    //   state[action.payload] = {
+    //     trailerIsMute: false,
+    //   }
+    // },
+    // toggleMute: (state, action) => {
+    //   state[action.payload].trailerIsMute = !state[action.payload].trailerIsMute
+    // },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchContentAction.pending, (state) => {
+      .addCase(editMyListAction.pending, (state) => {
         state.loading = true
       })
-      .addCase(fetchContentAction.fulfilled, (state, action) => {
-        state[action.payload.movieId].loading = false;
-        state[action.payload.movieId].error = null;
-        state[action.payload.movieId].data = action.payload;
-        state.loading = false
+      .addCase(editMyListAction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+        state.error = null;
       })
-      .addCase(fetchContentAction.rejected, (state, action) => {
-        state[action.payload.movieId].loading = false;
-        state[action.payload.movieId].error = action.payload;
-        state[action.payload.movieId].data = [];
-        state.loading = false
+      .addCase(editMyListAction.rejected, (state, action) => {
+        state.loading = false;
+        state.data = null;
+        state.error = action.payload;
       });
   }
 });
 
-export const { openModal, closeModal, setData, toggleMute, loadTrailer } = contentSlice.actions
-const contentReducer = contentSlice.reducer
-export default contentReducer
+const myListReducer = myListSlice.reducer
+export default myListReducer
 

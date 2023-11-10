@@ -94,6 +94,7 @@ export const chooseUserProfileAction = createAsyncThunk(
 export const getMeAction = createAsyncThunk("auth/me", async () => {
   try {
     const res = await getMe();
+    console.log(res);
     return res;
   } catch (error) {
     throw error.response.data;
@@ -147,17 +148,17 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
-      .addCase(editProfileAction.pending, (state, action) => {
-        state.loading = true;
-        // state.data = action.payload;
-      })
-      .addCase(editProfileAction.fulfilled, (state, action) => {
+      .addCase(editProfileAction.fulfilled, (state, acstion) => {
         // console.log(current(state))
         state.loading = false;
         const idx = state.data.user.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
         state.data.user.allUserProfile[idx] = action.payload.userProfile;
+      })
+      .addCase(editProfileAction.pending, (state, action) => {
+        state.loading = false;
+        // state.data = action.payload;
       })
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
