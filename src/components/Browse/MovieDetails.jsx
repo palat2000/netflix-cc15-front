@@ -4,7 +4,7 @@ export default function MovieDetails() {
   return (
     <div>
       <div>
-        <div className=" absolute z-10 text-white ml-10 bottom-2/4  md:box-content ">
+        <div className="absolute z-10 text-white ml-10 bottom-2/4  md:box-content ">
           <div className="static text-3xl font-extrabold ">
             MovieName Longer
           </div>
