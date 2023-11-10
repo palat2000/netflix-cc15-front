@@ -44,6 +44,22 @@ const mockUpVdo = [
   },
 ];
 
+// XxXXXXXXXX
+
+// const SearchPage = () => {
+//   const navigate = useNavigate();
+//   const [movie, setMovie] = useState(null);
+
+//   let search = window.location.search;
+// };
+
+// const getMovie = useCallback(async () => {
+//   const res = await axios.get(`/movie?trailer=${trailer || []}`);
+//   setMovie(res?.data?.movie);
+// }, []);
+
+////  XXXXXXXXXXXXX
+
 export default function SearchPage() {
   const [search, setSearch] = useState(null);
   const [movie, setMovie] = useState(null);
