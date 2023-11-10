@@ -148,7 +148,7 @@ export const authSlice = createSlice({
         state.error = action.error;
         state.loading = false;
       })
-      .addCase(editProfileAction.fulfilled, (state, acstion) => {
+      .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
         state.loading = false;
         const idx = state.data.user.allUserProfile.findIndex(
@@ -183,7 +183,7 @@ export const authSlice = createSlice({
         state.data = {};
       })
       .addCase(deleteUserProfileAction.fulfilled, (state, action) => {
-        state.data.allUserProfile = state.data.allUserProfile.filter(
+        state.data.user.allUserProfile = state.data.user.allUserProfile.filter(
           (el) => el.id !== action.payload.deleteUserProfile.id
         );
         console.log(action);
@@ -194,8 +194,8 @@ export const authSlice = createSlice({
       })
       .addCase(createProfileAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data.allUserProfile = [
-          ...state.data.allUserProfile,
+        state.data.user.allUserProfile = [
+          ...state.data.user.allUserProfile,
           action.payload.userProfile,
         ];
       })

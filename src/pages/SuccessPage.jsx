@@ -38,7 +38,7 @@ function SuccessPage() {
         <h2>Payment successful</h2>
         <h3>Subscription success</h3>
         <button
-          onClick={() => navigate("/browse")}
+          onClick={() => navigate("/choose-profile")}
           className="px-4 py-2 bg-primary text-white rounded-md"
         >
           Continue

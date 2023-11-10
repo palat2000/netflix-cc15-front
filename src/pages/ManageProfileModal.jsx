@@ -48,7 +48,7 @@ export default function ManageProfileModal({ onClose, data }) {
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
   const userData = useSelector((state) => {
-    return state?.user?.data?.allUserProfile;
+    return state?.user?.data?.user.allUserProfile;
   });
 
   return (
