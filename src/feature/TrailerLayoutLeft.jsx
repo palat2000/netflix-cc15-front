@@ -4,6 +4,7 @@ import LikeButton from "../components/button/LikeButton"
 import PlayButton from "../components/button/PlayButton"
 import { useNavigate } from "react-router-dom"
 import { editMylist } from "../store/utils/contentApi"
+import { editMyListAction } from "../store/slice/myListSlice"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
@@ -22,7 +23,7 @@ export default function TrailerLayoutLeft({ movieId }) {
                     <PlayButton />
                 </div>
                 <div className='flex'>
-                    <div onClick={() => dispatch(editMylist(movieId))}>
+                    <div onClick={() => dispatch(editMyListAction(movieId))}>
                         <AddToListButton />
                     </div>
                     <div>
