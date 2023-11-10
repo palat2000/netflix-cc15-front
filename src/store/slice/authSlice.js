@@ -154,10 +154,10 @@ export const authSlice = createSlice({
       .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
         state.loading = false;
-        const idx = state.data.allUserProfile.findIndex(
+        const idx = state.data.user.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
-        state.data.allUserProfile[idx] = action.payload.userProfile;
+        state.data.user.allUserProfile[idx] = action.payload.userProfile;
       })
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
@@ -173,7 +173,7 @@ export const authSlice = createSlice({
       .addCase(getMeAction.fulfilled, (state, action) => {
         state.error = null;
         state.loading = false;
-        state.data = action.payload.user;
+        state.data = action.payload;
         console.log(current(state));
       })
       .addCase(getMeAction.rejected, (state, action) => {
