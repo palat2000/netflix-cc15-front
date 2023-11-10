@@ -31,13 +31,14 @@ function UserBrowsePage() {
         <div className="static">
           <MainTrailer />
         </div>
+        <MovieSlideTab />
         {/* <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides />
         <VDOSwiperSlides /> */}
       </div>
-      <ContentModal movieId={2} />
+      {/* <ContentModal movieId={2} /> */}
     </div>
   );
 }

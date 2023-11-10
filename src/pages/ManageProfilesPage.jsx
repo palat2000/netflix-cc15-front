@@ -42,7 +42,7 @@ export default function ManageProfiles() {
               >
                 <TiPencil className=" translate-y-14 z-20 text-white text-lg  md:translate-y-28 md:text-4xl md:m-1" />
                 {data.isKid && (
-                  <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-20 md:text-2xl md:translate-x-12 md:translate-y-40">
+                  <div className=" bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-20 my-2 md:text-2xl md:translate-x-12 md:translate-y-44 md:my-1">
                     kids
                   </div>
                 )}

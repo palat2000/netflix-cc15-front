@@ -20,7 +20,7 @@ export default function ManageProfileModal({ onClose, data }) {
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const handleSaveEdit = () => {
-    dispatch(resetState());
+    // dispatch(resetState());
     if (name === null) {
       return setEmptyError("This field can't be empty");
     }
@@ -83,19 +83,15 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                onClick={() => {
-                  return handleSaveEdit();
-                }}
+                onClick={handleSaveEdit}
                 // onClick={()=>console.log(data.message)}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Continue
               </div>
               <div
-                onClick={() => {
-                  dispatch(resetState());
-                  return onClose(false);
-                }}
+                // onClick={() => onClose(false)}
+                onClick={() => console.log(data)}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
