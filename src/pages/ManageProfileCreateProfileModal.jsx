@@ -2,25 +2,36 @@ import { HiPencil } from "react-icons/hi";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProfileAction, resetState } from "../store/slice/authSlice";
+import { createUserProfile } from "../store/utils/userApi";
 
 export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
   const [name, setName] = useState(null);
   const [kid, setKid] = useState(null);
+  const [isError, setIserror] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => {
-    return state.user;
-  });
+  // const error = useSelector((state) => {
+  //   return state?.user;
+  // });
   const isKidHandleChange = () => {
     setKid(!kid);
   };
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-  const handleSaveEdit = () => {
-    // dispatch(resetState());
+ 
+
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+    const checkName = data.find((el) =>{ 
+      return  el.userProfileName === name
+      })
+    if(checkName){
+      return setEmptyError("This name was already used")
+    }
     if (name === null) {
       return setEmptyError("This field can't be empty");
     }
@@ -30,10 +41,12 @@ export default function ManageProfileModal({ onClose, data }) {
     formData.append("isKid", kid);
     formData.append("userId", data[0].userId);
 
-    const res = dispatch(createProfileAction(formData))
-      .unwrap()
-      .then(() => onClose(false));
+
+
+    const res = dispatch(createProfileAction(formData)).unwrap();
+    console.log("res", res).then(() => onClose(false));
   };
+
   return (
     <div>
       <div>
@@ -52,7 +65,7 @@ export default function ManageProfileModal({ onClose, data }) {
               ></img>
               <HiPencil className="text-xs group absolute translate-y-20   translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1" />
               <div className="flex flex-col gap-2">
-                {error && <div className="text-red-500">{error}</div>}
+                {isError && <div className="text-red-500">{isError}</div>}
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
                 <input
                   type="text"
@@ -83,15 +96,13 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                onClick={handleSaveEdit}
-                // onClick={()=>console.log(data.message)}
+                onClick={handleCreate}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Continue
               </div>
               <div
-                // onClick={() => onClose(false)}
-                onClick={() => console.log(data)}
+                onClick={() => onClose(false)}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel

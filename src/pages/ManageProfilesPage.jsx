@@ -21,8 +21,6 @@ export default function ManageProfiles() {
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const userData = user?.data?.allUserProfile;
-  // const userData = user?.data
-  console.log(userData);
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -91,7 +89,6 @@ export default function ManageProfiles() {
       </div>
       <div
         onClick={() => navigate("/choose-profile")}
-        // onClick={()=>console.log(userData)}
         className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer md:p-2 md:font-medium md:pl-8 md:pr-8 md:text-lg"
       >
         Done
