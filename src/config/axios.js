@@ -9,16 +9,14 @@ import {
 axios.defaults.baseURL = BACKEND_URL;
 
 axios.interceptors.request.use((config) => {
-  const token = getAccessToken();
-  const profileId = getChooseProfileAccessToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-    config.headers.Profile = profileId;
+  const authToken = getAccessToken();
+  const profileToken = getChooseProfileAccessToken();
+  if (authToken) {
+    config.headers.Authorization = `Bearer ${authToken}`;
+    config.headers.Profile = profileToken;
   }
-  if (localStorage.getItem("CHOOSE_PROFILE_ACCESS_TOKEN")) {
-    config.headers.authorizationprofile = `Bearer ${localStorage.getItem(
-      "CHOOSE_PROFILE_ACCESS_TOKEN"
-    )}`;
+  if (profileToken) {
+    config.headers.authorizationprofile = `Bearer ${profileToken}`;
   }
   return config;
 });
@@ -29,6 +27,9 @@ axios.interceptors.response.use(
     if (error.response.status === 401) {
       removeAccessToken();
       window.location.href = "/login";
+    }
+    if (error.response.status === 402) {
+      window.location.href = "/package";
     }
     return Promise.reject(error);
   }

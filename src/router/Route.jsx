@@ -15,23 +15,31 @@ import WhoIsWatching from "../pages/WhoIsWatching";
 import TVShowsPage from "../pages/TVShowsPage";
 import LoadingPage from "../pages/LoadingPage";
 import LayoutBrowse from "../layout/LayoutBrowse";
+import LayoutStandAlone from "../layout/LayoutStandAlone";
+import RedirectIfAuthenticated from "../features/auth/RedirectIfAuthenticated";
+import Authenticated from "../features/auth/Authenticated";
+import RedirectIfNotChooseProfile from "../features/auth/RedirectIfNotChooseProfile";
 
 const router = createBrowserRouter([
   {
     path: "",
-    element: <Layout />,
+    element: (
+      <RedirectIfAuthenticated>
+        <HomePage />
+      </RedirectIfAuthenticated>
+    ),
+  },
+  {
+    path: "",
+    element: (
+      <Authenticated>
+        <Layout />
+      </Authenticated>
+    ),
     children: [
-      {
-        path: "",
-        element: <HomePage />,
-      },
       {
         path: "success",
         element: <SuccessPage />,
-      },
-      {
-        path: "title/:movieId",
-        element: <GuestBrowsePage />,
       },
       {
         path: "package",
@@ -41,7 +49,13 @@ const router = createBrowserRouter([
   },
   {
     path: "",
-    element: <LayoutBrowse />,
+    element: (
+      <Authenticated>
+        <RedirectIfNotChooseProfile>
+          <LayoutBrowse />
+        </RedirectIfNotChooseProfile>
+      </Authenticated>
+    ),
     children: [
       {
         path: "browse",
@@ -58,24 +72,52 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "login",
-    element: <LoginPage />,
+    path: "",
+    element: (
+      <RedirectIfAuthenticated>
+        <LayoutStandAlone />
+      </RedirectIfAuthenticated>
+    ),
+    children: [
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "signup",
+        element: <SignUpPage />,
+      },
+      {
+        path: "title/:movieId",
+        element: <GuestBrowsePage />,
+      },
+    ],
   },
   {
-    path: "signup",
-    element: <SignUpPage />,
-  },
-  {
-    path: "watch/:movieId",
-    element: <WatchPage />,
-  },
-  {
-    path: "manage-profile",
-    element: <ManageProfiles />,
-  },
-  {
-    path: "choose-profile",
-    element: <WhoIsWatching />,
+    path: "",
+    element: (
+      <Authenticated>
+        <LayoutStandAlone />
+      </Authenticated>
+    ),
+    children: [
+      {
+        path: "watch/:movieId",
+        element: (
+          <RedirectIfNotChooseProfile>
+            <WatchPage />
+          </RedirectIfNotChooseProfile>
+        ),
+      },
+      {
+        path: "manage-profile",
+        element: <ManageProfiles />,
+      },
+      {
+        path: "choose-profile",
+        element: <WhoIsWatching />,
+      },
+    ],
   },
 ]);
 
