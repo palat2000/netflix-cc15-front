@@ -3,10 +3,11 @@ import AddToListButton from "../components/button/AddToListButton"
 import LikeButton from "../components/button/LikeButton"
 import PlayButton from "../components/button/PlayButton"
 import { useNavigate } from "react-router-dom"
-import { editMylist } from "../store/utils/contentApi"
+import { editMylist, getMyListById } from "../store/utils/contentApi"
 import { editMyListAction } from "../store/slice/myListSlice"
 import IsInMyListButton from "../components/Button/IsInMyListButton"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { fetchContentAction } from "../store/slice/contentSlice"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
@@ -19,6 +20,11 @@ export default function TrailerLayoutLeft({ movieId }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    useEffect(
+        () => {
+            getMyListById(movieId).then(res => setMovieIsInMyList(res.isInMyList))
+        }, []
+    )
 
     return (
         <div className='z-10 w-5/12 flex flex-col gap-3'>

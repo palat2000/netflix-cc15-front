@@ -8,7 +8,9 @@ export default function ContentModal({ movieId, children }) {
   const dispatch = useDispatch()
 
   useEffect(
-    () => { dispatch(changStatusOpenModal(open)) }
+    () => {
+      dispatch(changStatusOpenModal(open))
+    }
     , [open]
   )
 

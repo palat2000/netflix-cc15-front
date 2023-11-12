@@ -19,3 +19,8 @@ export const editMylist = async (movieId) => {
   const res = await axios.post('/user-browse/mylist', { movieId: movieId });
   return res.data;
 };
+
+export const getMyListById = async (movieId) => {
+  const res = await axios.get(`/user-browse/mylist/${movieId}`)
+  return res.data
+}
