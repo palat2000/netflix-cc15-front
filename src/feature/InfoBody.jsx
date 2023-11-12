@@ -44,9 +44,11 @@ export default function InfoBody() {
                     {movieData?.video?.map((el, index) => <EpisodeBox key={index} movie={el} />)}
                 </div>
             )}
-            <div>
+            <div >
                 <div className="font-semibold text-xl pb-2">More Like This</div>
-                {moreLikeThisData?.map((el, index) => <MovieLikeThisBox key={index} movie={el} />)}
+                <div className="flex flex-wrap gap-[2%] gap-y-3">
+                    {moreLikeThisData?.map((el, index) => <MovieLikeThisBox key={index} movie={el} />)}
+                </div>
             </div>
         </div>
     )

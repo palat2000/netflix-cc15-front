@@ -7,6 +7,7 @@ import MyListButton from "./MyListButton"
 export default function TrailerLayoutLeft({ movieId }) {
 
     const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
+    const movieIsInMyListData = useSelector(state => state?.content?.data?.movie?.inMyListHistory)
 
     const navigate = useNavigate()
 
@@ -21,7 +22,7 @@ export default function TrailerLayoutLeft({ movieId }) {
                     <PlayButton />
                 </div>
                 <div className='flex gap-1'>
-                    <MyListButton movieId={movieId} />
+                    <MyListButton movieId={movieId} movieIsInMyListData={movieIsInMyListData} />
                     <div>
                         <LikeButton />
                     </div>
