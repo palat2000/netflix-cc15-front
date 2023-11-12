@@ -20,7 +20,7 @@ export default function TrailerHeaderModal({ movieId, setOpen }) {
     setTimeout(() => playTrailer(), 500)
 
     return (
-        <div className="flex flex-col relative w-full">
+        <div className="flex flex-col relative w-full h-[454.5px]">
             <TrailerLayout movieId={movieId} setOpen={setOpen} />
             <Link onClick={() => dispatch(closeModal())} to={`/watch/${movieId}`}>
                 {!play && <img src={movieImage} />}

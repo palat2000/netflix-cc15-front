@@ -23,13 +23,13 @@ export default function ContentModalDetail({ movieId, setOpen }) {
         <div onClick={() => setOpen(false)} className="w-full h-screen "></div>
         {movieData ? (
           <div className="flex flex-col w-full items-center h-full absolute p-[2%] max-w-[850px]">
-            <div className="bg-neutral-900 text-white flex flex-col w-full items-center">
-              <TrailerHeaderModal movieId={movieId} setOpen={setOpen} />
+            <div className="flex bg-neutral-900 text-white flex-col w-full items-center">
+              <TrailerHeaderModal setIsLoad movieId={movieId} setOpen={setOpen} />
               <InfoBody movieId={movieId} />
             </div>
           </div>
         ) : (<> </>)}
-      </div>
+      </div >
     </>
   )
 }

@@ -5,7 +5,8 @@ import MovieLikeThisBox from "./MovieLikeThisBox"
 export default function InfoBody() {
 
     const movieData = useSelector(state => state?.content?.data?.movie[0])
-    const moreLikeThisData = useSelector(state => state?.content?.data?.moreLikeThis)
+    const moreLikeThisData = useSelector(state => state?.content?.data?.moreLikeThisData)
+    console.log("🚀 ~ file: InfoBody.jsx:9 ~ InfoBody ~ moreLikeThisData:", moreLikeThisData)
     const isSerie = movieData?.video
     console.log("🚀 ~ file: InfoBody.jsx:10 ~ InfoBody ~ isSerie:", isSerie)
 
