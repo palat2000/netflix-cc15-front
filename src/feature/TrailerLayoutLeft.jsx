@@ -5,10 +5,17 @@ import PlayButton from "../components/button/PlayButton"
 import { useNavigate } from "react-router-dom"
 import { editMylist } from "../store/utils/contentApi"
 import { editMyListAction } from "../store/slice/myListSlice"
+import IsInMyListButton from "../components/Button/IsInMyListButton"
+import { useState } from "react"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
     const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
+    const movieIsInMyListData = useSelector(state => state?.content?.data?.movie?.inMyListHistory)
+    console.log("🚀 ~ file: TrailerLayoutLeft.jsx:14 ~ TrailerLayoutLeft ~ movieIsInMyList:", movieIsInMyListData)
+
+    const [movieIsInMyList, setMovieIsInMyList] = useState(movieIsInMyListData)
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -23,9 +30,14 @@ export default function TrailerLayoutLeft({ movieId }) {
                     <PlayButton />
                 </div>
                 <div className='flex gap-1'>
-                    <div onClick={() => dispatch(editMyListAction(movieId))}>
-                        <AddToListButton />
-                    </div>
+                    {movieIsInMyList ?
+                        <div onClick={() => editMylist(movieId).then(res => setMovieIsInMyList(res.movieAddtoList))}>
+                            <IsInMyListButton />
+                        </div>
+                        :
+                        <div onClick={() => editMylist(movieId).then(res => setMovieIsInMyList(res.movieAddtoList))}>
+                            <AddToListButton />
+                        </div>}
                     <div>
                         <LikeButton />
                     </div>
