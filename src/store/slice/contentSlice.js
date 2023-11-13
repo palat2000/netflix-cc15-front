@@ -33,6 +33,8 @@ const contentSlice = createSlice({
     builder
       .addCase(fetchContentAction.pending, (state) => {
         state.loading = true
+        state.error = null;
+        state.data = null;
       })
       .addCase(fetchContentAction.fulfilled, (state, action) => {
         state.loading = false;

@@ -13,7 +13,7 @@ axios.interceptors.request.use((config) => {
   const profileId = getChooseProfileAccessToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-    config.headers.Profile = profileId;
+    config.headers.AuthorizationProfile = `Bearer ${profileId}`;
   }
   if (localStorage.getItem("CHOOSE_PROFILE_ACCESS_TOKEN")) {
     config.headers.authorizationprofile = `Bearer ${localStorage.getItem(
