@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUserProfileAction,
   editProfileAction,
+  resetState,
 } from "../store/slice/authSlice";
 
-export default function ManageProfileModal({ onClose, data }) {
+export default function ManageProfileModal({ onClose, data ,dataUser }) {
   const [file, setFile] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const [isError, setIsError] = useState(null);
@@ -22,10 +23,23 @@ export default function ManageProfileModal({ onClose, data }) {
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
   console.log(error);
 
+  const tragetData = dataUser.data.allUserProfile.find((el)=> {
+    return  el.userProfileName === name
+  })
   const handleSaveEdit = () => {
-    if (error) {
-      return setIsError(error);
-    }
+    // if (error) {
+    //   return setIsError(error);
+    // }
+    // if(tragetData.)
+    // if (tragetData == name) {
+    //   return name
+    // }
+    // if(tragetData) {
+
+    //   return setIsError("This name was already used")
+    // }
+
+    console.log(tragetData)
     if (name.length <= 0) {
       return setEmptyError("This field can't be empty");
     }
@@ -86,6 +100,7 @@ export default function ManageProfileModal({ onClose, data }) {
               <div className="flex flex-col gap-2">
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
                 {isError && <div className="text-red-500">{isError}</div>}
+                {error && <div className="text-red-500">{error}</div>}
 
                 <input
                   onChange={(e) => {
@@ -117,6 +132,7 @@ export default function ManageProfileModal({ onClose, data }) {
               </div>
               <div
                 onClick={() => {
+                  dispatch(resetState())
                   return onClose(false);
                 }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
@@ -125,7 +141,9 @@ export default function ManageProfileModal({ onClose, data }) {
               </div>
               {userData?.length > 1 && (
                 <div
-                  onClick={handleDelete}
+                  // onClick={handleDelete}
+                  // onClick={()=>console.log(dataUser.data.allUserProfile.userProfileName)}
+                  onClick={()=>console.log(tragetData)}
                   className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
                 >
                   Delete

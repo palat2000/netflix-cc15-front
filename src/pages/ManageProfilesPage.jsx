@@ -84,7 +84,7 @@ export default function ManageProfiles() {
         )}
 
         {IsOpenModal && (
-          <ManageProfileModal onClose={setIsOpenModal} data={modalData} />
+          <ManageProfileModal onClose={setIsOpenModal} data={modalData} dataUser={user}/>
         )}
       </div>
       <div

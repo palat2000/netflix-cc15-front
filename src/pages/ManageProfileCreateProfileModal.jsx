@@ -12,9 +12,9 @@ export default function ManageProfileModal({ onClose, data }) {
   const [emptyError, setEmptyError] = useState(null);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
-  // const error = useSelector((state) => {
-  //   return state?.user;
-  // });
+  const error = useSelector((state) => {
+    return state?.user.error;
+  });
   const isKidHandleChange = () => {
     setKid(!kid);
   };
@@ -25,7 +25,8 @@ export default function ManageProfileModal({ onClose, data }) {
 
 
   const handleCreate = (e) => {
-    e.preventDefault();
+    console.log("do it ")
+
     const checkName = data.find((el) =>{ 
       return  el.userProfileName === name
       })
@@ -65,8 +66,9 @@ export default function ManageProfileModal({ onClose, data }) {
               ></img>
               <HiPencil className="text-xs group absolute translate-y-20   translate-x-1 bg-gray-900 rounded-full text-white md:text-3xl md:translate-y-32 md:-my-1" />
               <div className="flex flex-col gap-2">
-                {isError && <div className="text-red-500">{isError}</div>}
+                {error && <div className="text-red-500">{error}</div>}
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
+                {/* {error && <div className="text-red-500">{error}</div>} */}
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
@@ -102,7 +104,13 @@ export default function ManageProfileModal({ onClose, data }) {
                 Continue
               </div>
               <div
-                onClick={() => onClose(false)}
+                // onClick={() => onClose(false)}
+                // onClick={()=>console.log(name)}
+                onClick={()=> {dispatch(resetState())
+                return onClose(false)
+                }
+                
+                }
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
