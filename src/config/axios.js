@@ -4,6 +4,7 @@ import {
   getAccessToken,
   getChooseProfileAccessToken,
   removeAccessToken,
+  removeChooseProfileAccessToken,
 } from "../utils/local-storage";
 
 axios.defaults.baseURL = BACKEND_URL;
@@ -30,6 +31,11 @@ axios.interceptors.response.use(
     }
     if (error.response.status === 402) {
       window.location.href = "/package";
+    }
+    if (error.response.status === 403) {
+      removeChooseProfileAccessToken();
+      console.log(error.response);
+      window.location.href = "/choose-profile";
     }
     return Promise.reject(error);
   }

@@ -19,6 +19,7 @@ import LayoutStandAlone from "../layout/LayoutStandAlone";
 import RedirectIfAuthenticated from "../features/auth/RedirectIfAuthenticated";
 import Authenticated from "../features/auth/Authenticated";
 import RedirectIfNotChooseProfile from "../features/auth/RedirectIfNotChooseProfile";
+import RedirectIfNotSubscribe from "../features/auth/RedirectIfNotSubscribe";
 
 const router = createBrowserRouter([
   {
@@ -51,9 +52,11 @@ const router = createBrowserRouter([
     path: "",
     element: (
       <Authenticated>
-        <RedirectIfNotChooseProfile>
-          <LayoutBrowse />
-        </RedirectIfNotChooseProfile>
+        <RedirectIfNotSubscribe>
+          <RedirectIfNotChooseProfile>
+            <LayoutBrowse />
+          </RedirectIfNotChooseProfile>
+        </RedirectIfNotSubscribe>
       </Authenticated>
     ),
     children: [
@@ -97,7 +100,9 @@ const router = createBrowserRouter([
     path: "",
     element: (
       <Authenticated>
-        <LayoutStandAlone />
+        <RedirectIfNotSubscribe>
+          <LayoutStandAlone />
+        </RedirectIfNotSubscribe>
       </Authenticated>
     ),
     children: [

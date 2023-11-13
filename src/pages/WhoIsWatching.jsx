@@ -16,13 +16,13 @@ export default function WhoIsWatching() {
   const user = useSelector((state) => {
     return state?.user;
   });
-  console.log("🚀 ~ file: WhoIsWatching.jsx:30 ~ user ~ user:", user)
+  console.log("🚀 ~ file: WhoIsWatching.jsx:30 ~ user ~ user:", user);
 
   const navigate = useNavigate();
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-  const userData = user?.data?.user.allUserProfile;
+  const userData = user?.data?.allUserProfile;
   console.log(
     "🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:",
     userData

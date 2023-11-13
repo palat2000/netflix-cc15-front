@@ -9,6 +9,8 @@ import {
   getMe,
   checkEmailInDatabase,
   chooseUserProfile,
+  getAllUserProfile,
+  getMeProfile,
 } from "../utils/userApi";
 
 import { useNavigate } from "react-router-dom";
@@ -17,8 +19,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
   error: null,
-  loading: false,
-  data: {},
+  loading: true,
+  data: { user: null, userProfile: null, allUserProfile: [] },
 };
 
 export const registerAction = createAsyncThunk(
@@ -79,7 +81,7 @@ export const deleteUserProfileAction = createAsyncThunk(
   }
 );
 export const chooseUserProfileAction = createAsyncThunk(
-  "auth/profile",
+  "user/profile",
   async (input) => {
     try {
       const res = await chooseUserProfile(input);
@@ -114,6 +116,29 @@ export const checkEmailInDatabaseAction = createAsyncThunk(
   }
 );
 
+export const getAllUserProfileAction = createAsyncThunk(
+  "user/getProfile",
+  async () => {
+    try {
+      const response = await getAllUserProfile();
+      return response;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const getMeProfileAction = createAsyncThunk("user/me", async () => {
+  try {
+    const responseUser = await getMe();
+    const responseProfile = await getMeProfile();
+    const responseAllUserProfile = await getAllUserProfile();
+    return { ...responseUser, ...responseProfile, ...responseAllUserProfile };
+  } catch (error) {
+    throw error.response.data;
+  }
+});
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
@@ -121,12 +146,15 @@ export const authSlice = createSlice({
     resetState: (state) => {
       state.error = null;
     },
+    toggleLoading: (state) => {
+      state.loading = !state.loading;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(registerAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.data.user = action.payload.user;
       })
       .addCase(registerAction.pending, (state, action) => {
         state.error = null;
@@ -138,7 +166,7 @@ export const authSlice = createSlice({
       })
       .addCase(loginAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.data.user = action.payload.user;
       })
       .addCase(loginAction.pending, (state, action) => {
         state.error = null;
@@ -151,10 +179,10 @@ export const authSlice = createSlice({
       .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
         state.loading = false;
-        const idx = state.data.user.allUserProfile.findIndex(
+        const idx = state.data.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
-        state.data.user.allUserProfile[idx] = action.payload.userProfile;
+        state.data.allUserProfile[idx] = action.payload.userProfile;
       })
       .addCase(editProfileAction.pending, (state, action) => {
         state.loading = false;
@@ -169,21 +197,18 @@ export const authSlice = createSlice({
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
         state.loading = true;
-        state.data = {};
       })
       .addCase(getMeAction.fulfilled, (state, action) => {
         state.error = null;
         state.loading = false;
-        state.data = action.payload;
-        console.log(current(state));
+        state.data.user = action.payload.user;
       })
       .addCase(getMeAction.rejected, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.data = {};
       })
       .addCase(deleteUserProfileAction.fulfilled, (state, action) => {
-        state.data.user.allUserProfile = state.data.user.allUserProfile.filter(
+        state.data.allUserProfile = state.data.allUserProfile.filter(
           (el) => el.id !== action.payload.deleteUserProfile.id
         );
         console.log(action);
@@ -194,8 +219,8 @@ export const authSlice = createSlice({
       })
       .addCase(createProfileAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data.user.allUserProfile = [
-          ...state.data.user.allUserProfile,
+        state.data.allUserProfile = [
+          ...state.data.allUserProfile,
           action.payload.userProfile,
         ];
       })
@@ -207,6 +232,7 @@ export const authSlice = createSlice({
       })
       .addCase(chooseUserProfileAction.fulfilled, (state, action) => {
         // state.data = action.payload
+        state.data.userProfile = action.payload.userProfile;
         console.log(action);
         console.log(current(state));
       })
@@ -221,8 +247,28 @@ export const authSlice = createSlice({
       .addCase(checkEmailInDatabaseAction.rejected, (state, action) => {
         state.error = action.error;
         state.loading = false;
+      })
+      .addCase(getAllUserProfileAction.pending, (state, action) => {})
+      .addCase(getAllUserProfileAction.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(getAllUserProfileAction.fulfilled, (state, action) => {
+        state.data.allUserProfile = action.payload.allUserProfile;
+      })
+      .addCase(getMeProfileAction.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+        state.data.userProfile = action.payload.userProfile;
+        state.data.allUserProfile = action.payload.allUserProfile;
+        state.loading = false;
+      })
+      .addCase(getMeProfileAction.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getMeProfileAction.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });
-export const { resetState } = authSlice.actions;
+export const { resetState, toggleLoading } = authSlice.actions;
 export default authSlice.reducer;
