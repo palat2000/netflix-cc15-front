@@ -4,10 +4,12 @@ import { useDispatch } from "react-redux";
 import axios from "../config/axios";
 import { isOnWatchPage, setRecentTime } from "../store/slice/watchPageSlice";
 import React from 'react';
+import { useLocation } from "react-router-dom";
 
 function WatchPage() {
 
   const watchPlayer = useRef(null)
+  const videoContainer = useRef(null)
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
 
@@ -25,21 +27,21 @@ function WatchPage() {
     watchPlayer.current.currentTime = video?.videoData?.history[0]?.recentWatching
   }
 
-  // const handleOnPause = () => {
-  //   const recentWatch = watchPlayer.current.currentTime
-  //   endWatching(1, recentWatch)
-  // }
+  const handleOnPause = () => {
+    const recentWatch = watchPlayer.current.currentTime
+    endWatching(1, recentWatch)
+  }
 
-  // const handleOnEnded = () => {
-  //   console.log('first')
-  //   endWatching(1, 0)
-  // }
+  const handleOnEnded = () => {
+    console.log('first')
+    endWatching(1, 0)
+  }
 
   // onEnded={handleOnEnded} onPause={handleOnPause}
 
-  const updateTime = () => {
-    dispatch(setRecentTime(watchPlayer?.current?.currentTime))
-  }
+  // const updateTime = () => {
+  //   dispatch(setRecentTime(watchPlayer?.current?.currentTime))
+  // }
 
   // componentWillUnmount() {
   //   alert('The component is going to be unmounted');
@@ -47,10 +49,11 @@ function WatchPage() {
 
   return (
     <>
-      <div className=" w-screen h-screen bg-black flex items-center ">
-        {video && <video onTimeUpdate={updateTime} onLoadStart={loadRecentWatching} controls disablePictureInPicture preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center ">
+        {video && <video onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} controls disablePictureInPicture preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
           <source src={video?.videoData?.videoUrl}></source>
         </video>}
+        <h1>FullScreen</h1>
       </div >
     </>
   )

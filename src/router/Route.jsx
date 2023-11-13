@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import UserBrowsePage from "../pages/UserBrowsePage";
 import WatchPage from "../pages/WatchPage";
@@ -15,6 +15,8 @@ import WhoIsWatching from "../pages/WhoIsWatching";
 import TVShowsPage from "../pages/TVShowsPage";
 import LoadingPage from "../pages/LoadingPage";
 import LayoutBrowse from "../layout/LayoutBrowse";
+import { endWatchingAction } from "../store/slice/watchPageSlice";
+import { useDispatch } from "react-redux";
 
 const router = createBrowserRouter([
   {
