@@ -6,9 +6,8 @@ import { createUserProfile } from "../store/utils/userApi";
 
 export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [kid, setKid] = useState(null);
-  const [isError, setIserror] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
@@ -24,16 +23,9 @@ export default function ManageProfileModal({ onClose, data }) {
  
 
 
-  const handleCreate = (e) => {
-    console.log("do it ")
-
-    const checkName = data.find((el) =>{ 
-      return  el.userProfileName === name
-      })
-    if(checkName){
-      return setEmptyError("This name was already used")
-    }
-    if (name === null) {
+  const handleCreate = () => {
+  
+    if (name === "") {
       return setEmptyError("This field can't be empty");
     }
     const formData = new FormData();
@@ -68,7 +60,6 @@ export default function ManageProfileModal({ onClose, data }) {
               <div className="flex flex-col gap-2">
                 {error && <div className="text-red-500">{error}</div>}
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
-                {/* {error && <div className="text-red-500">{error}</div>} */}
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
@@ -104,8 +95,6 @@ export default function ManageProfileModal({ onClose, data }) {
                 Continue
               </div>
               <div
-                // onClick={() => onClose(false)}
-                // onClick={()=>console.log(name)}
                 onClick={()=> {dispatch(resetState())
                 return onClose(false)
                 }

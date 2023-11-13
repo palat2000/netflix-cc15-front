@@ -7,10 +7,9 @@ import {
   resetState,
 } from "../store/slice/authSlice";
 
-export default function ManageProfileModal({ onClose, data ,dataUser }) {
+export default function ManageProfileModal({ onClose, data, dataUser }) {
   const [file, setFile] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
-  const [isError, setIsError] = useState(null);
   const [name, setName] = useState(data.userProfileName);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
@@ -23,23 +22,11 @@ export default function ManageProfileModal({ onClose, data ,dataUser }) {
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
   console.log(error);
 
-  const tragetData = dataUser.data.allUserProfile.find((el)=> {
-    return  el.userProfileName === name
-  })
+  const tragetData = dataUser.data.allUserProfile.find((el) => {
+    return el.userProfileName === name;
+  });
   const handleSaveEdit = () => {
-    // if (error) {
-    //   return setIsError(error);
-    // }
-    // if(tragetData.)
-    // if (tragetData == name) {
-    //   return name
-    // }
-    // if(tragetData) {
-
-    //   return setIsError("This name was already used")
-    // }
-
-    console.log(tragetData)
+    console.log(tragetData);
     if (name.length <= 0) {
       return setEmptyError("This field can't be empty");
     }
@@ -99,7 +86,6 @@ export default function ManageProfileModal({ onClose, data ,dataUser }) {
               />
               <div className="flex flex-col gap-2">
                 {emptyError && <div className="text-red-500">{emptyError}</div>}
-                {isError && <div className="text-red-500">{isError}</div>}
                 {error && <div className="text-red-500">{error}</div>}
 
                 <input
@@ -132,7 +118,7 @@ export default function ManageProfileModal({ onClose, data ,dataUser }) {
               </div>
               <div
                 onClick={() => {
-                  dispatch(resetState())
+                  dispatch(resetState());
                   return onClose(false);
                 }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
@@ -141,9 +127,7 @@ export default function ManageProfileModal({ onClose, data ,dataUser }) {
               </div>
               {userData?.length > 1 && (
                 <div
-                  // onClick={handleDelete}
-                  // onClick={()=>console.log(dataUser.data.allUserProfile.userProfileName)}
-                  onClick={()=>console.log(tragetData)}
+                  onClick={handleDelete}
                   className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
                 >
                   Delete
