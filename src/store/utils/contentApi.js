@@ -37,3 +37,10 @@ export const startWatching = async (videoId) => {
   console.log(res.data)
   return res.data;
 };
+
+export const endWatching = async (videoId, recentWatching) => {
+  console.log(videoId)
+  const res = await axios.post(`/user-browse/endWatching`, ({ videoId: videoId, recentWatching: recentWatching }))
+  console.log(res.data)
+  return res.data;
+};

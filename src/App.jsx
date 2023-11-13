@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMeAction } from "./store/slice/authSlice";
 import { getAccessToken } from "./utils/local-storage";
 import LoadingPage from "./pages/LoadingPage";
+import { isNotWatchPage } from "./store/slice/watchPageSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function App() {
     if (getAccessToken()) {
       dispatch(getMeAction());
     }
+    dispatch(isNotWatchPage())
   }, []);
 
   if (loading) return <LoadingPage />;
