@@ -30,7 +30,10 @@ export const editLike = async (movieId) => {
   return res.data;
 };
 
-export const startWatching = async (movieId) => {
-  const res = await axios.get(`/user-browse/startWatching/${movieId}`);
+export const startWatching = async (videoId) => {
+  console.log(videoId)
+  const res = await axios.get(`/user-browse/getVideo/${videoId}`)
+  await axios.get(`/user-browse/startWatching/${videoId}`);
+  console.log(res.data)
   return res.data;
 };
