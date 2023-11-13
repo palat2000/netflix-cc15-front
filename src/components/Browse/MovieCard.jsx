@@ -10,7 +10,7 @@ import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 
-export default function MovieCard() {
+export default function MovieCard({ movie }) {
   // const navigate = useNavigate();
   // let search = window.location.search;
   // let params = new URLSearchParams(search);
@@ -37,7 +37,7 @@ export default function MovieCard() {
     //   whileHover={{ scale: [null, 1.5, 1.4] }}
     //   transition={{ duration: 0.3 }}
     // />
-    <motion.div whileHover={{ scale: 1.2 }} className="box mx-2 ">
+    <motion.div whileHover={{ scale: 1.2 }} className="mx-1 ">
       <div className="relative flex flex-col rounded-sm  bg-zinc-900 w-fit  ">
         <video
           className="rounded-t-md"
@@ -48,10 +48,7 @@ export default function MovieCard() {
           autoPlay
           controls=""
         >
-          <source
-            src="https://res.cloudinary.com/diyiw4pvv/video/upload/v1698596816/comedy/ohox5l0fspwywcynxvqr.mp4"
-            type="video/mp4"
-          />
+          <source src={movie?.trailer} type="video/mp4" />
         </video>
         <div className="relative flex flex-col rounded-sm bg-zinc-900 w-fit ">
           <div className="flex justify-between m-2 ">
@@ -62,8 +59,8 @@ export default function MovieCard() {
             </div>
             <MoreInfoCircleButton customizeClass={"scale-90"} />
           </div>
-          <div className="text-white text-xs">Movie Name</div>
-          <div className="text-white text-xs">Genres</div>
+          <div className="text-white text-xs">{movie?.title}</div>
+          <div className="text-white text-xs">{movie?.enumGenres}</div>
         </div>
       </div>
     </motion.div>

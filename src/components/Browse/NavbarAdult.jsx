@@ -19,9 +19,9 @@ export default function NavbarAdult({ setSearch }) {
     setSearch(e);
     localStorage.setItem("searchQuery", JSON.stringify(e));
 
-    if (e.length === 1) {
-      navigate("/search");
-    }
+    // if (e.length === 1) {
+    navigate("/search");
+    // }
   };
 
   const handleClick = () => {
@@ -33,7 +33,6 @@ export default function NavbarAdult({ setSearch }) {
 
   useEffect(() => {
     const handleClickOutSide = (e) => {
-      console.log("test");
       if (!searchEl.current?.contains(e.target)) {
         setIsSearch(false);
       }
