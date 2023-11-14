@@ -3,9 +3,7 @@ import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
 import { isOnWatchPage, setRecentWatching, setVideoId } from "../store/slice/watchPageSlice";
 import { useLocation } from "react-router-dom";
-import PlayerControls from "../feature/VideoControls/PlayerControls";
-// import PlayerControls from "../feature/VideoControls/PlayerControls";
-// import { addRecentWatchVideo, getRecentWatchVideo } from "../utils/local-storage";
+import VideoControls from "../feature/VideoControls/VideoControls";
 
 function WatchPage() {
 
@@ -50,8 +48,9 @@ function WatchPage() {
 
   return (
     <>
-      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center ">
-        {video && <video onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} controls disablePictureInPicture preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center relative">
+        <VideoControls videoContainer={videoContainer} />
+        {video && <video onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
           <source src={video?.videoData?.videoUrl}></source>
         </video>}
       </div >

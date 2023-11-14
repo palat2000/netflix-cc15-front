@@ -9,11 +9,11 @@ export default function PlayerControls({ watchPlayer, currentTime, displayContro
     const [newCurrentTime, setNewCurrentTime] = useState(0)
     const [play, setPlay] = useState(true)
 
-    // useEffect(
-    //     () => {
-    //         watchPlayer.current.currentTime = newCurrentTime
-    //     }, [newCurrentTime]
-    // )
+    useEffect(
+        () => {
+            watchPlayer.current.currentTime = newCurrentTime
+        }, [newCurrentTime]
+    )
 
     const changeCurrentTime = (el) => {
         setNewCurrentTime(el.target.value)
