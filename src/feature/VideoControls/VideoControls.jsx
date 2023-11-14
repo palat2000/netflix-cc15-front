@@ -5,7 +5,10 @@ export default function VideoControls({ videoContainer }) {
                 <div>Return</div>
             </div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
-                <input type="range" />
+                <div className="flex flex-row w-full">
+                    <input className="w-full" type="range" />
+                    <div>Duration</div>
+                </div>
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
                     <div id="bottom-left" className="flex gap-3">
                         <div>Play</div>
