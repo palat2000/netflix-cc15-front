@@ -10,8 +10,3 @@ export const addChooseProfileAccessToken = (token) => { localStorage.setItem(CHO
 export const getChooseProfileAccessToken = () => localStorage.getItem(CHOOSE_PROFILE_ACCESS_TOKEN);
 export const removeChooseProfileAccessToken = () => localStorage.removeItem(CHOOSE_PROFILE_ACCESS_TOKEN);
 
-export const addRecentWatchVideo = (watchVideoData) => { localStorage.setItem(RECENT_WATCH_TOKEN, watchVideoData) }
-export const getRecentWatchVideo = () => localStorage.getItem(RECENT_WATCH_TOKEN);
-export const removeRecentWatchVideo = () => localStorage.removeItem(RECENT_WATCH_TOKEN);
-
-
