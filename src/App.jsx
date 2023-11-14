@@ -1,11 +1,23 @@
 import { useEffect } from "react";
 import Route from "./router/Route";
 import { useDispatch, useSelector } from "react-redux";
-import { getMeAction } from "./store/slice/authSlice";
-import { getAccessToken } from "./utils/local-storage";
+import {
+  getAllUserProfileAction,
+  getMeAction,
+  getMeProfileAction,
+  toggleLoading,
+} from "./store/slice/authSlice";
+import {
+  getAccessToken,
+  getChooseProfileAccessToken,
+} from "./utils/local-storage";
 import LoadingPage from "./pages/LoadingPage";
-import { endWatchingAction, isNotWatchPage } from "./store/slice/watchPageSlice";
+import {
+  endWatchingAction,
+  isNotWatchPage,
+} from "./store/slice/watchPageSlice";
 import { useLocation } from "react-router-dom";
+import { nativeSelectClasses } from "@mui/material";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,7 +26,18 @@ function App() {
   useEffect(() => {
     if (getAccessToken()) {
       dispatch(getMeAction());
-      dispatch(isNotWatchPage())
+      dispatch(isNotWatchPage());
+      if (getChooseProfileAccessToken()) {
+        dispatch(getMeProfileAction());
+      } else {
+        dispatch(getMeAction()).then((payload) => {
+          if (payload.payload.user.subscriptionId) {
+            dispatch(getAllUserProfileAction());
+          }
+        });
+      }
+    } else {
+      dispatch(toggleLoading());
     }
   }, []);
 
