@@ -1,7 +1,7 @@
 import { HiPencil } from "react-icons/hi";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProfileAction, resetState } from "../store/slice/authSlice";
+import { createProfileAction, resetError } from "../store/slice/authSlice";
 import { createUserProfile } from "../store/utils/userApi";
 
 export default function ManageProfileModal({ onClose, data }) {
@@ -20,11 +20,7 @@ export default function ManageProfileModal({ onClose, data }) {
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
- 
-
-
   const handleCreate = () => {
-  
     if (name === "") {
       return setEmptyError("This field can't be empty");
     }
@@ -33,8 +29,6 @@ export default function ManageProfileModal({ onClose, data }) {
     formData.append("userProfileName", name);
     formData.append("isKid", kid);
     formData.append("userId", data[0].userId);
-
-
 
     const res = dispatch(createProfileAction(formData)).unwrap();
     console.log("res", res).then(() => onClose(false));
@@ -95,11 +89,10 @@ export default function ManageProfileModal({ onClose, data }) {
                 Continue
               </div>
               <div
-                onClick={()=> {dispatch(resetState())
-                return onClose(false)
-                }
-                
-                }
+                onClick={() => {
+                  dispatch(resetError());
+                  return onClose(false);
+                }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
