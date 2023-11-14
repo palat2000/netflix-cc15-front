@@ -12,7 +12,7 @@ import { editProfileAction } from "../store/slice/authSlice";
 import MovieCard from "../components/Browse/MovieCard";
 import MovieSlideTab from "../components/Browse/MovieSlider";
 import { useLocation } from "react-router-dom";
-import { endWatchingAction } from "../store/slice/watchPageSlice";
+import { endWatchingAction, setRecentWatching } from "../store/slice/watchPageSlice";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
@@ -29,12 +29,15 @@ function UserBrowsePage() {
   const { error, loading, data } = useSelector((store) => store.allContent);
   useEffect(() => {
     dispatch(fetchAllContent());
-    console.log(location.pathname)
-    console.log(recentWatch)
+    // console.log(location.pathname)
+    // console.log(recentWatch)
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      if (recentVideoData.recentWatching === recentVideoData.videoDuration)
-        console.log("enter Logic")
-      dispatch(endWatchingAction(recentVideoData)).unwrap().then(res => console.log(res))
+      console.log(recentVideoData?.recentWatching === recentVideoData?.videoDuration)
+      if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
+        dispatch(endWatchingAction({ videoId: recentVideoData?.videoId, recentWatching: 0 })).unwrap().then(res => console.log(res))
+      } else {
+        dispatch(endWatchingAction(recentVideoData)).unwrap().then(res => console.log(res))
+      }
     }
   }, []);
 

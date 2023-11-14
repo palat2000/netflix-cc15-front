@@ -16,7 +16,6 @@ function WatchPage() {
   useEffect(
     () => {
       startWatching(videoId).then(res => setVideo(res))
-      dispatch(setVideoDuration(watchPlayer?.current?.duration))
       dispatch(isOnWatchPage(location.pathname))
       dispatch(setVideoId(videoId))
     }
@@ -24,12 +23,13 @@ function WatchPage() {
   )
 
   const loadRecentWatching = () => {
-    console.dir(watchPlayer.current)
-    console.log(video?.videoData?.history[0]?.recentWatching)
+    // console.dir(watchPlayer.current)
+    // console.log(video?.videoData?.history[0]?.recentWatching)
+    // dispatch(setVideoDuration(watchPlayer?.current?.duration))
     watchPlayer.current.currentTime = video?.videoData?.history[0]?.recentWatching
   }
 
-  const handleOnPause = () => {
+  const handleOnChange = () => {
     const recentWatch = watchPlayer.current.currentTime
     endWatching({ videoId: videoId, recentWatching: recentWatch })
   }
@@ -39,9 +39,10 @@ function WatchPage() {
   }
 
   const watchVideoData = useSelector(store => store.watchPage)
-  console.log(watchVideoData)
+  // console.log(watchVideoData)
 
   const updateTime = () => {
+    dispatch(setVideoDuration(watchPlayer?.current?.duration))
     dispatch(setRecentWatching(watchPlayer?.current?.currentTime))
   }
 
@@ -50,8 +51,8 @@ function WatchPage() {
       <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center relative ">
         {video && (
           <>
-            {/* <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} /> */}
-            <video controls onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+            <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
+            <video onSeeking={handleOnChange} onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnChange} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
               <source src={video?.videoData?.videoUrl}></source>
             </video>
           </>

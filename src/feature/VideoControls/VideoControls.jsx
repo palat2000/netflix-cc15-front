@@ -1,7 +1,26 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setVideoDuration } from "../../store/slice/watchPageSlice";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
+    const dispatch = useDispatch()
+    const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
+    const [newCurrentTime, setNewCurrentTime] = useState(0)
+
+
+    // console.dir(watchPlayer.current)
+    console.log(recentWatching)
+
+    useEffect(
+        () => {
+            watchPlayer.current.currentTime = newCurrentTime
+        }, [newCurrentTime]
+    )
+
+    const changeCurrentTime = (el) => {
+        setNewCurrentTime(el.target.value)
+    }
 
     // const [videoDuration, setVideoDuration] = useState(null);
 
@@ -14,7 +33,11 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     //     }
     // }, []);
 
-
+    // useEffect(
+    //     () => {
+    //         dispatch(setVideoDuration(watchPlayer?.current?.duration))
+    //     }
+    // )
 
     return (
         <div className="absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
@@ -25,7 +48,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
             </div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
                 <div className="flex flex-row w-full">
-                    <input className="w-full" type="range" />
+                    {recentWatching && (<input className="w-full" type="range" onChange={changeCurrentTime} value={recentWatching} min="0" max={watchPlayer?.current?.duration} step="any" />)}
                     <div>{watchPlayer?.current?.duration}</div>
                 </div>
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
@@ -48,6 +71,5 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        </div>)
 }
