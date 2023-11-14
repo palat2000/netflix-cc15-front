@@ -39,6 +39,10 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     //     }
     // )
 
+    const handleBackward = () => {
+        watchPlayer.current.currentTime = recentWatching - 10
+    }
+
     return (
         <div className="absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
             <div id="top" className="flex w-full flex-row justify-between h-[10%] items-center">
@@ -47,15 +51,16 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                 </Link>
             </div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
-                <div className="flex flex-row w-full">
-                    {recentWatching && (<input className="w-full" type="range" onChange={changeCurrentTime} value={recentWatching} min="0" max={watchPlayer?.current?.duration} step="any" />)}
+                {!isNaN(recentWatching) && <div className="flex flex-row w-full justify-between items-end">
+                    {/* <input className="w-full" type="range" /> */}
+                    <input className="w-full" type="range" onChange={changeCurrentTime} value={recentWatching} min="0" max={watchPlayer?.current?.duration} step="any" />
                     <div>{watchPlayer?.current?.duration}</div>
-                </div>
+                </div>}
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
                     <div id="bottom-left" className="flex gap-3">
                         <div className="cursor-pointer" onClick={() => watchPlayer.current.play()}>Play</div>
                         <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div>
-                        <div className="cursor-pointer" >Back10</div>
+                        <div className="cursor-pointer" onClick={handleBackward}>Back10</div>
                         <div>Forward10</div>
                         <div>Volume</div>
                     </div>
