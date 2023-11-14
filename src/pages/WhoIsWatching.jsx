@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
-import { chooseUserProfileAction, getMeAction } from "../store/slice/authSlice";
+import {
+  chooseUserProfileAction,
+  getMeAction,
+  getMeProfileAction,
+} from "../store/slice/authSlice";
 import { addChooseProfileAccessToken } from "../utils/local-storage";
 import { getMe } from "../store/utils/userApi";
 
@@ -36,6 +40,7 @@ export default function WhoIsWatching() {
         navigate("/browse");
       });
   };
+
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl md:text-6xl m-5">

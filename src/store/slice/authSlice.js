@@ -11,6 +11,7 @@ import {
   chooseUserProfile,
   getAllUserProfile,
   getMeProfile,
+  paymentSuccess,
 } from "../utils/userApi";
 
 import { useNavigate } from "react-router-dom";
@@ -139,12 +140,26 @@ export const getMeProfileAction = createAsyncThunk("user/me", async () => {
   }
 });
 
+export const paymentSuccessAction = createAsyncThunk(
+  "payment/success",
+  async (sessionId) => {
+    try {
+      const response = await paymentSuccess(sessionId);
+      return response;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     resetState: (state) => {
       state.error = null;
+      state.data = { user: null, userProfile: null, allUserProfile: [] };
+      state.loading = false;
     },
     toggleLoading: (state) => {
       state.loading = !state.loading;
@@ -266,6 +281,13 @@ export const authSlice = createSlice({
       })
       .addCase(getMeProfileAction.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(paymentSuccessAction.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+        state.data.allUserProfile = action.payload.allUserProfile;
+      })
+      .addCase(paymentSuccessAction.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

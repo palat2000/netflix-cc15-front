@@ -54,3 +54,8 @@ export const getMeProfile = async () => {
   const res = await axios.get("/user/me");
   return res.data;
 };
+
+export const paymentSuccess = async (sessionId) => {
+  const res = await axios.post(`/payment/success-subscription/${sessionId}`);
+  return res.data;
+};
