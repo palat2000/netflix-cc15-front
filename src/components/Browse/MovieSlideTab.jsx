@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 
 // import required modules
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
@@ -16,62 +17,28 @@ export default function MovieSlideTab({ movie }) {
     <>
       <Swiper
         slidesPerView={6}
-        spaceBetween={2}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
+        spaceBetween={1}
+        // freeMode={false}
+        speed={1000}
+        // pagination={{
+        //   clickable: true,
+        // }}
         navigation={true}
+        // effect="fade"
         modules={[FreeMode, Pagination, Navigation]}
-        className="mySwiper overflow-visible"
+        className="mySwiper overflow-visible overflow-x-clip"
       >
         {movie &&
           movie?.map((m, i) => {
             return (
-              <SwiperSlide key={i}>
+              <SwiperSlide
+                key={i}
+                style={{ maxWidth: "1200px", margin: "0 auto" }}
+              >
                 <MovieCard movie={m} />
               </SwiperSlide>
             );
           })}
-        {/* <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard />
-        </SwiperSlide> */}
       </Swiper>
     </>
   );

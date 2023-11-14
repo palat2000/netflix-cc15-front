@@ -5,7 +5,15 @@ export default function MainTrailer({ mainTrailerMovie }) {
     <div>
       <div className="relative">
         <MovieDetails movie={mainTrailerMovie} />
-        <video width="4000" height="auto" loop muted autoPlay controls="">
+        <video
+          // width={100}
+          className=""
+          height="auto"
+          loop
+          muted
+          autoPlay
+          controls=""
+        >
           {mainTrailerMovie && (
             <source src={mainTrailerMovie?.trailer} type="video/mp4" />
           )}

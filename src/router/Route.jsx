@@ -52,9 +52,17 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "browse/genres/:genres",
+        path: "browse/tvShows",
         element: <TVShowsPage />,
       },
+      // {
+      //   path: "browse/movies",
+      //   element: <MoviesPage />,
+      // },
+      // {
+      //   path: "browse/MyList",
+      //   element: <MyListPage />,
+      // },
     ],
   },
   {
