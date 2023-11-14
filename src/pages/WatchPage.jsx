@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
-// import axios from "../config/axios";
 import { isOnWatchPage, setRecentWatching, setVideoId } from "../store/slice/watchPageSlice";
-// import React from 'react';
 import { useLocation } from "react-router-dom";
 // import PlayerControls from "../feature/VideoControls/PlayerControls";
 // import { addRecentWatchVideo, getRecentWatchVideo } from "../utils/local-storage";
@@ -53,16 +51,11 @@ function WatchPage() {
     endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
-  // onEnded={handleOnEnded} onPause={handleOnPause}
   const watchVideoData = useSelector(store => store.watchPage)
   console.log(watchVideoData)
 
   const updateTime = () => {
     dispatch(setRecentWatching(watchPlayer?.current?.currentTime))
-    // dispatch(setRecentTime(watchPlayer?.current?.currentTime)).unwrap().then(res => console.log(res))
-    // addRecentWatchVideo(`recentTime ${watchVideoData?.recentTime}`)
-    // console.log(watchVideoData.recentTime)
-    // console.dir(getRecentWatchVideo())
   }
 
   return (
