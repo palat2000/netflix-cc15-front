@@ -10,6 +10,7 @@ const initialState = {
         videoId: null,
         videoDuration: null,
         recentWatching: null,
+        recentBuffer: null
     }
 
 };
@@ -55,6 +56,9 @@ const watchPageSlice = createSlice({
         setRecentWatching: (state, action) => {
             state.videoData.recentWatching = action.payload
         },
+        setRecentBuffer: (state, action) => {
+            state.videoData.recentBuffer = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -79,7 +83,7 @@ const watchPageSlice = createSlice({
     }
 });
 
-export const { isOnWatchPage, isNotWatchPage, setVideoId, setRecentWatching, setVideoDuration } = watchPageSlice.actions
+export const { isOnWatchPage, isNotWatchPage, setVideoId, setRecentWatching, setVideoDuration, setRecentBuffer } = watchPageSlice.actions
 const watchPageReducer = watchPageSlice.reducer
 export default watchPageReducer
 

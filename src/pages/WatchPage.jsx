@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
-import { isOnWatchPage, setRecentWatching, setVideoDuration, setVideoId } from "../store/slice/watchPageSlice";
+import { isOnWatchPage, setRecentBuffer, setRecentWatching, setVideoDuration, setVideoId } from "../store/slice/watchPageSlice";
 import { useLocation } from "react-router-dom";
 import VideoControls from "../feature/VideoControls/VideoControls";
 
@@ -44,6 +44,12 @@ function WatchPage() {
   const updateTime = () => {
     dispatch(setVideoDuration(watchPlayer?.current?.duration))
     dispatch(setRecentWatching(watchPlayer?.current?.currentTime))
+    console.log('zzzzzzzz', watchPlayer?.current?.buffered?.length)
+    console.log('yyyyyy', watchPlayer?.current?.buffered?.length - 1)
+    console.log("qqqqqqqqq", watchPlayer?.current?.buffered?.end(watchPlayer?.current?.buferred?.length - 1))
+    const recentBuffer = watchPlayer?.current?.buffered?.end(watchPlayer?.current?.buferred?.length - 1)
+    console.log("🚀 ~ file: WatchPage.jsx:51 ~ updateTime ~ recentBuffer:", recentBuffer)
+    dispatch(setRecentBuffer(recentBuffer))
   }
 
   return (
@@ -53,7 +59,8 @@ function WatchPage() {
           <>
             <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
             <video onSeeking={handleOnChange} onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnChange} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
-              <source src={video?.videoData?.videoUrl}></source>
+              <source src="https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"></source>
+              {/* <source src={video?.videoData?.videoUrl}></source> */}
             </video>
           </>
         )

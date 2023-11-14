@@ -18,16 +18,15 @@ input[type="range"] {
       background-color: red;
       border-radius: 50%;
       cursor: pointer;
-
+      box-shadow: -2px 8px 45px 0px rgba(0,0,0,1);
+-webkit-box-shadow: -2px 8px 45px 0px rgba(0,0,0,1);
+-moz-box-shadow: -2px 8px 45px 0px rgba(0,0,0,1);
     }
     input[type="range"]::-webkit-slider-thumb:hover {
         -webkit-appearance: none;
         width: 12px;
         height: 12px;
         background-color: red;
-        box-shadow: 4px 8px 35px -13px rgba(0,0,0,0.73);
-        -webkit-box-shadow: 4px 8px 35px -13px rgba(0,0,0,0.73);
-        -moz-box-shadow: 4px 8px 35px -13px rgba(0,0,0,0.73);
         transition-duration: 0.1s;
         border-radius: 50%;
         cursor: pointer;
