@@ -11,15 +11,30 @@ import { editProfileAction } from "../store/slice/authSlice";
 
 import MovieCard from "../components/Browse/MovieCard";
 import MovieSlideTab from "../components/Browse/MovieSlider";
+import { useLocation } from "react-router-dom";
+import { endWatchingAction } from "../store/slice/watchPageSlice";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
   const movie = useSelector((state) => state.allContent.data);
+  const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
+  const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
+  const haveRecentVideoData = recentVideoData?.videoId && recentVideoData?.recentWatching
   console.log(movie);
+
+  const location = useLocation()
+  console.log(location.pathname)
+  console.log(haveRecentVideoData)
 
   const { error, loading, data } = useSelector((store) => store.allContent);
   useEffect(() => {
     dispatch(fetchAllContent());
+    console.log(location.pathname)
+    console.log(recentWatch)
+    if (location.pathname !== recentWatch && haveRecentVideoData) {
+      console.log("enter Logic")
+      dispatch(endWatchingAction(recentVideoData)).unwrap().then(res => console.log(res))
+    }
   }, []);
 
   if (loading) return <h1>Loading...</h1>;

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { endWatching, startWatching } from "../store/utils/contentApi";
-import { useDispatch } from "react-redux";
-import axios from "../config/axios";
-import { isOnWatchPage, setRecentTime } from "../store/slice/watchPageSlice";
-import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
+// import axios from "../config/axios";
+import { isOnWatchPage, setRecentWatching, setVideoId } from "../store/slice/watchPageSlice";
+// import React from 'react';
 import { useLocation } from "react-router-dom";
+// import PlayerControls from "../feature/VideoControls/PlayerControls";
+// import { addRecentWatchVideo, getRecentWatchVideo } from "../utils/local-storage";
 
 function WatchPage() {
 
@@ -12,14 +14,27 @@ function WatchPage() {
   const videoContainer = useRef(null)
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
+  const location = useLocation()
+  const videoId = 1
+  // const [currentTime, setCurrentTime] = useState(null)
+  // const [displayControls, setDisplayControls] = useState(true)
 
   useEffect(
     () => {
-      startWatching(1).then(res => setVideo(res))
-      dispatch(isOnWatchPage())
+      startWatching(videoId).then(res => setVideo(res))
+      dispatch(isOnWatchPage(location.pathname))
+      dispatch(setVideoId(videoId))
     }
     , []
   )
+
+  // const showControls = () => {
+  //   setDisplayControls(true)
+  // }
+
+  // const hideControls = () => {
+  //   setTimeout(() => setDisplayControls(false), 1000)
+  // }
 
   const loadRecentWatching = () => {
     console.dir(watchPlayer.current)
@@ -28,32 +43,34 @@ function WatchPage() {
   }
 
   const handleOnPause = () => {
+    // showControls
     const recentWatch = watchPlayer.current.currentTime
-    endWatching(1, recentWatch)
+    endWatching({ videoId: videoId, recentWatching: recentWatch })
   }
 
   const handleOnEnded = () => {
     console.log('first')
-    endWatching(1, 0)
+    endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
   // onEnded={handleOnEnded} onPause={handleOnPause}
+  const watchVideoData = useSelector(store => store.watchPage)
+  console.log(watchVideoData)
 
-  // const updateTime = () => {
-  //   dispatch(setRecentTime(watchPlayer?.current?.currentTime))
-  // }
-
-  // componentWillUnmount() {
-  //   alert('The component is going to be unmounted');
-  // };
+  const updateTime = () => {
+    dispatch(setRecentWatching(watchPlayer?.current?.currentTime))
+    // dispatch(setRecentTime(watchPlayer?.current?.currentTime)).unwrap().then(res => console.log(res))
+    // addRecentWatchVideo(`recentTime ${watchVideoData?.recentTime}`)
+    // console.log(watchVideoData.recentTime)
+    // console.dir(getRecentWatchVideo())
+  }
 
   return (
     <>
       <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center ">
-        {video && <video onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} controls disablePictureInPicture preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+        {video && <video onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} controls disablePictureInPicture preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
           <source src={video?.videoData?.videoUrl}></source>
         </video>}
-        <h1>FullScreen</h1>
       </div >
     </>
   )

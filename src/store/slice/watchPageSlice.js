@@ -3,8 +3,13 @@ import { endWatching, getContentById } from "../utils/contentApi";
 
 const initialState = {
     // recentTime: 0,
+    // videoId: null,
     onWatchPage: false,
     loading: false,
+    videoData: {
+        videoId: null,
+        recentWatching: null
+    }
 
 };
 
@@ -19,9 +24,11 @@ const initialState = {
 //     }
 // })
 
-export const endWatchingAction = createAsyncThunk('video/endWatching', async (recentTime, thunkAPI) => {
+export const endWatchingAction = createAsyncThunk('watchPage/endWatching', async (videoData, thunkAPI) => {
     try {
-        const response = await endWatching(recentTime)
+        console.log("first")
+        console.log(videoData)
+        const response = await endWatching(videoData)
         console.log(response)
     } catch (err) {
         return thunkAPI.rejectWithValue(err.message);
@@ -33,13 +40,18 @@ const watchPageSlice = createSlice({
     initialState,
     reducers: {
         isOnWatchPage: (state, action) => {
-            state.onWatchPage = true
+            state.onWatchPage = action.payload
         },
-        isNotWatchPage: (state, action) => {
+        setVideoId: (state, action) => {
+            state.videoData.videoId = action.payload
+        },
+        isNotWatchPage: (state) => {
             state.onWatchPage = false
         },
-        setRecentTime: (state, action) => {
-            state.recentTime = action.payload
+        setRecentWatching: (state, action) => {
+            // state.videoId = action?.payload?.videoId
+            // state.recentTime = action?.payload?.recentTime
+            state.videoData.recentWatching = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -47,12 +59,14 @@ const watchPageSlice = createSlice({
             .addCase(endWatchingAction.pending, (state) => {
                 state.loading = true
                 state.error = null;
-                // state.onWatchPage = null;
             })
-            .addCase(endWatchingAction.fulfilled, (state, action) => {
+            .addCase(endWatchingAction.fulfilled, (state) => {
                 state.loading = false;
                 state.error = null;
-                state.recentTime = 0;
+                state.videoData = {
+                    videoId: null,
+                    recentWatching: null
+                };
             })
             .addCase(endWatchingAction.rejected, (state, action) => {
                 state.loading = false;
@@ -62,7 +76,7 @@ const watchPageSlice = createSlice({
     }
 });
 
-export const { isOnWatchPage, isNotWatchPage, setRecentTime } = watchPageSlice.actions
+export const { isOnWatchPage, isNotWatchPage, setVideoId, setRecentWatching } = watchPageSlice.actions
 const watchPageReducer = watchPageSlice.reducer
 export default watchPageReducer
 

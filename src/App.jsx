@@ -10,16 +10,12 @@ import { useLocation } from "react-router-dom";
 function App() {
   const dispatch = useDispatch();
   const { loading } = useSelector((store) => store.user);
-  // const location = useLocation()
 
   useEffect(() => {
     if (getAccessToken()) {
       dispatch(getMeAction());
+      dispatch(isNotWatchPage())
     }
-    // console.log(location.pathname)
-    // if (location.pathname !== `/watch/1`) {
-    //   dispatch(endWatchingAction())
-    // }
   }, []);
 
   if (loading) return <LoadingPage />;
