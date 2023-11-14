@@ -10,11 +10,10 @@ import {
 axios.defaults.baseURL = BACKEND_URL;
 
 axios.interceptors.request.use((config) => {
-  const authToken = getAccessToken();
+  const token = getAccessToken();
   const profileToken = getChooseProfileAccessToken();
-  if (authToken) {
-    config.headers.Authorization = `Bearer ${authToken}`;
-    config.headers.Profile = profileToken;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
   if (profileToken) {
     config.headers.authorizationprofile = `Bearer ${profileToken}`;
