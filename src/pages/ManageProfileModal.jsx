@@ -7,30 +7,34 @@ import {
   resetState,
 } from "../store/slice/authSlice";
 
-export default function ManageProfileModal({ onClose, data }) {
+export default function ManageProfileModal({ onClose, data, dataUser }) {
   const [file, setFile] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const [name, setName] = useState(data.userProfileName);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
 
-  const { error } = useSelector((state) => {
-    console.log(state);
-    return state.user;
+  const error = useSelector((state) => {
+    return state?.user.error;
   });
 
+  const defaultImage =
+    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
+  console.log(error);
+
+  const tragetData = dataUser.data.allUserProfile.find((el) => {
+    return el.userProfileName === name;
+  });
   const handleSaveEdit = () => {
-    // dispatch(resetState());
-    // if(file === null) {
-    //   setFile(data.)
-    // }
+    console.log(tragetData);
     if (name.length <= 0) {
       return setEmptyError("This field can't be empty");
     }
+
     const formData = new FormData();
 
-    formData.append("profileImageUrl", file);
-    formData.append("imagesss", data.profileImageUrl);
+    if (file !== null) formData.append("profileImageUrl", file);
+
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
     formData.append("userId", data.userId);
@@ -45,8 +49,6 @@ export default function ManageProfileModal({ onClose, data }) {
       .unwrap()
       .then(() => onClose(false));
   };
-  const defaultImage =
-    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
   const userData = useSelector((state) => {
     return state?.user?.data?.allUserProfile;
   });
@@ -98,7 +100,6 @@ export default function ManageProfileModal({ onClose, data }) {
             <input
               type="file"
               className="hidden"
-              accept="png,jpg"
               ref={inputEl}
               onChange={(e) => {
                 if (e.target.files[0]) {
@@ -116,7 +117,10 @@ export default function ManageProfileModal({ onClose, data }) {
                 Save
               </div>
               <div
-                onClick={() => onClose(false)}
+                onClick={() => {
+                  dispatch(resetState());
+                  return onClose(false);
+                }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
@@ -124,7 +128,6 @@ export default function ManageProfileModal({ onClose, data }) {
               {userData?.length > 1 && (
                 <div
                   onClick={handleDelete}
-                  // onClick={()=>console.log(data)}
                   className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
                 >
                   Delete

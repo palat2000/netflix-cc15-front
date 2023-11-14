@@ -2,16 +2,17 @@ import { HiPencil } from "react-icons/hi";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProfileAction, resetState } from "../store/slice/authSlice";
+import { createUserProfile } from "../store/utils/userApi";
 
 export default function ManageProfileModal({ onClose, data }) {
   const [file, setFile] = useState(null);
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [kid, setKid] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => {
-    return state.user;
+  const error = useSelector((state) => {
+    return state?.user.error;
   });
   const isKidHandleChange = () => {
     setKid(!kid);
@@ -19,9 +20,12 @@ export default function ManageProfileModal({ onClose, data }) {
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-  const handleSaveEdit = () => {
-    // dispatch(resetState());
-    if (name === null) {
+ 
+
+
+  const handleCreate = () => {
+  
+    if (name === "") {
       return setEmptyError("This field can't be empty");
     }
     const formData = new FormData();
@@ -30,10 +34,12 @@ export default function ManageProfileModal({ onClose, data }) {
     formData.append("isKid", kid);
     formData.append("userId", data[0].userId);
 
-    const res = dispatch(createProfileAction(formData))
-      .unwrap()
-      .then(() => onClose(false));
+
+
+    const res = dispatch(createProfileAction(formData)).unwrap();
+    console.log("res", res).then(() => onClose(false));
   };
+
   return (
     <div>
       <div>
@@ -83,15 +89,17 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 ">
               <div
-                onClick={handleSaveEdit}
-                // onClick={()=>console.log(data.message)}
+                onClick={handleCreate}
                 className="bg-white p-1 pr-5 pl-5 hover:bg-red-600 hover:text-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Continue
               </div>
               <div
-                // onClick={() => onClose(false)}
-                onClick={() => console.log(data)}
+                onClick={()=> {dispatch(resetState())
+                return onClose(false)
+                }
+                
+                }
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel
