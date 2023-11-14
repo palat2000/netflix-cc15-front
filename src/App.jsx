@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     if (getAccessToken()) {
-      dispatch(getMeAction());
+      // dispatch(getMeAction());
       dispatch(isNotWatchPage());
       if (getChooseProfileAccessToken()) {
         dispatch(getMeProfileAction());
