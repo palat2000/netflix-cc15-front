@@ -50,7 +50,7 @@ export default function ManageProfileModal({ onClose, data, dataUser }) {
       .then(() => onClose(false));
   };
   const userData = useSelector((state) => {
-    return state?.user?.data?.allUserProfile;
+    return state?.user?.data?.user.allUserProfile;
   });
 
   return (

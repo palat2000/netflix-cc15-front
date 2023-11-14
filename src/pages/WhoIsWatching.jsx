@@ -1,23 +1,36 @@
 import { FaPlusCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
-import { chooseUserProfileAction } from "../store/slice/authSlice";
+import {
+  chooseUserProfileAction,
+  getMeAction,
+  getMeProfileAction,
+} from "../store/slice/authSlice";
 import { addChooseProfileAccessToken } from "../utils/local-storage";
+import { getMe } from "../store/utils/userApi";
 
 export default function WhoIsWatching() {
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [modalData, setModalData] = useState(null);
   const dispatch = useDispatch();
+  const [allprofileData, setAllProfileData] = useState({});
+
   const user = useSelector((state) => {
     return state?.user;
   });
+  console.log("🚀 ~ file: WhoIsWatching.jsx:30 ~ user ~ user:", user);
+
   const navigate = useNavigate();
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const userData = user?.data?.allUserProfile;
+  console.log(
+    "🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:",
+    userData
+  );
 
   const handleChooseProfile = (id) => {
     dispatch(chooseUserProfileAction(id))
@@ -27,6 +40,7 @@ export default function WhoIsWatching() {
         navigate("/browse");
       });
   };
+
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl md:text-6xl m-5">
@@ -67,13 +81,12 @@ export default function WhoIsWatching() {
         {userData?.length < 5 && (
           <div
             onClick={() => {
-              setModalData(userData)
+              setModalData(userData);
               return setIsOpenModalCreate(!isOpenModalCreate);
             }}
             className="cursor-pointer  flex flex-col items-center p-1 translate-y-2 rounded-md group md:translate-y-2 "
           >
-            <FaPlusCircle 
-            className="md:h-40  absolute translate-y-5 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl md:-translate-y-1" />
+            <FaPlusCircle className="md:h-40  absolute translate-y-5 z-20 text-gray-500 group-hover:text-gray-500 text-4xl md:text-5xl md:-translate-y-1" />
             <div className=" h-20 w-20 -translate-y-1  rounded-md  group-hover:border opacity-0 group-hover:opacity-75 bg-white  md:h-40 md:w-40"></div>
 
             <div className="p-1 translate-y-2  md:-translate-y-2 md:m-3 md:text-lg text-xs text-gray-500 group-hover:text-white ">

@@ -15,7 +15,7 @@ export default function PackagePage() {
     try {
       setIsLoading(true);
       const res = await axios.post("/payment/create-checkout-session", {
-        lookup_key: "bill",
+        priceId: "price_1OBBJEHpiJPtdULK3EQvNKi8",
       });
       window.location.replace(res.data.url);
     } catch (err) {

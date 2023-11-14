@@ -1,13 +1,20 @@
 import { useSelector } from "react-redux"
-import AddToListButton from "../components/button/AddToListButton"
-import LikeButton from "../components/button/LikeButton"
+import LikeButton from "../components/Button/NeverLikeButton"
 import PlayButton from "../components/button/PlayButton"
 import { useNavigate } from "react-router-dom"
+import MyListButton from "./MyListButton"
+import { editLike } from "../store/utils/contentApi"
+import LikeFeatureButton from "./LikeFeatureButton"
 
 export default function TrailerLayoutLeft({ movieId }) {
 
-    const movieTitle = useSelector(state => state?.content[movieId]?.data?.movie[0]?.title)
+    const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
+    const movieIsInMyListData = useSelector(state => state?.content?.data?.movie?.inMyListHistory)
+    const movieIsInLikeData = useSelector(state => state?.content?.data?.movie?.likeHistory)
+    console.log("🚀 ~ file: TrailerLayoutLeft.jsx:14 ~ TrailerLayoutLeft ~ movieIsInLikeData:", movieIsInLikeData)
+
     const navigate = useNavigate()
+
 
     return (
         <div className='z-10 w-5/12 flex flex-col gap-3'>
@@ -18,9 +25,12 @@ export default function TrailerLayoutLeft({ movieId }) {
                 <div onClick={() => navigate(`/watch/1`)}>
                     <PlayButton />
                 </div>
-                <div className='flex'>
-                    <AddToListButton />
-                    <LikeButton />
+                <div className='flex gap-1'>
+                    <MyListButton movieId={movieId} movieIsInMyListData={movieIsInMyListData} />
+                    {/* <div onClick={() => editLike(movieId).then(res => console.log(res))}>
+                        <LikeButton />
+                    </div> */}
+                    <LikeFeatureButton movieId={movieId} movieIsInLikeData={movieIsInLikeData} />
                 </div>
             </div>
         </div>

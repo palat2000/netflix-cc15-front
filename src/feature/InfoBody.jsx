@@ -2,10 +2,11 @@ import { useSelector } from "react-redux"
 import EpisodeBox from "./EpisodeBox"
 import MovieLikeThisBox from "./MovieLikeThisBox"
 
-export default function InfoBody({ movieId }) {
+export default function InfoBody() {
 
-    const movieData = useSelector(state => state?.content[movieId]?.data?.movie[0])
-    const moreLikeThisData = useSelector(state => state?.content[movieId]?.data?.moreLikeThis)
+    const movieData = useSelector(state => state?.content?.data?.movie[0])
+    const moreLikeThisData = useSelector(state => state?.content?.data?.moreLikeThisData)
+    console.log("🚀 ~ file: InfoBody.jsx:9 ~ InfoBody ~ moreLikeThisData:", moreLikeThisData)
     const isSerie = movieData?.video
     console.log("🚀 ~ file: InfoBody.jsx:10 ~ InfoBody ~ isSerie:", isSerie)
 
@@ -43,9 +44,11 @@ export default function InfoBody({ movieId }) {
                     {movieData?.video?.map((el, index) => <EpisodeBox key={index} movie={el} />)}
                 </div>
             )}
-            <div>
+            <div >
                 <div className="font-semibold text-xl pb-2">More Like This</div>
-                {moreLikeThisData?.map((el, index) => <MovieLikeThisBox key={index} movie={el} />)}
+                <div className="flex flex-wrap gap-[2%] gap-y-3">
+                    {moreLikeThisData?.map((el, index) => <MovieLikeThisBox key={index} movie={el} />)}
+                </div>
             </div>
         </div>
     )

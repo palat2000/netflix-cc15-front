@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginAction, resetState } from "../store/slice/authSlice";
+import {
+  loginAction,
+  resetState,
+  getAllUserProfileAction,
+} from "../store/slice/authSlice";
 import { addAccessToken } from "../utils/local-storage";
 import { CircularProgress } from "@mui/material";
 import NetflixLogo from "../features/logo&button/NetflixLogo";
@@ -21,7 +25,7 @@ function LoginPage() {
     return state.user;
   });
 
-  console.log()
+  console.log();
 
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data))
@@ -30,6 +34,7 @@ function LoginPage() {
         console.log(data);
         if (user) {
           addAccessToken(user.accessToken);
+          dispatch(getAllUserProfileAction());
           navigate("/choose-profile");
         }
       });
