@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUserProfileAction,
   editProfileAction,
-  resetState,
+  resetError,
 } from "../store/slice/authSlice";
 
 export default function ManageProfileModal({ onClose, data, dataUser }) {
@@ -118,7 +118,7 @@ export default function ManageProfileModal({ onClose, data, dataUser }) {
               </div>
               <div
                 onClick={() => {
-                  dispatch(resetState());
+                  dispatch(resetError());
                   return onClose(false);
                 }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
