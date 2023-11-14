@@ -27,9 +27,6 @@ export default function TrailerLayoutLeft({ movieId }) {
                 </div>
                 <div className='flex gap-1'>
                     <MyListButton movieId={movieId} movieIsInMyListData={movieIsInMyListData} />
-                    {/* <div onClick={() => editLike(movieId).then(res => console.log(res))}>
-                        <LikeButton />
-                    </div> */}
                     <LikeFeatureButton movieId={movieId} movieIsInLikeData={movieIsInLikeData} />
                 </div>
             </div>

@@ -3,13 +3,15 @@ import authReducer from "../store/slice/authSlice";
 import allContentSliceReducer from "./slice/allContentSlice";
 import contentReducer from "./slice/contentSlice";
 import myListReducer from "./slice/myListSlice";
+import watchPageReducer from "./slice/watchPageSlice";
 
 const store = configureStore({
   reducer: {
     user: authReducer,
     allContent: allContentSliceReducer,
     content: contentReducer,
-    myList: myListReducer
+    myList: myListReducer,
+    watchPage: watchPageReducer
   },
 });
 

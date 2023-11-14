@@ -12,6 +12,11 @@ import {
   getChooseProfileAccessToken,
 } from "./utils/local-storage";
 import LoadingPage from "./pages/LoadingPage";
+import {
+  endWatchingAction,
+  isNotWatchPage,
+} from "./store/slice/watchPageSlice";
+import { useLocation } from "react-router-dom";
 import { nativeSelectClasses } from "@mui/material";
 
 function App() {
@@ -20,6 +25,8 @@ function App() {
 
   useEffect(() => {
     if (getAccessToken()) {
+      // dispatch(getMeAction());
+      dispatch(isNotWatchPage());
       if (getChooseProfileAccessToken()) {
         dispatch(getMeProfileAction());
       } else {
