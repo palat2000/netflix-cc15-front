@@ -3,6 +3,7 @@ import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
 import { isOnWatchPage, setRecentWatching, setVideoId } from "../store/slice/watchPageSlice";
 import { useLocation } from "react-router-dom";
+import PlayerControls from "../feature/VideoControls/PlayerControls";
 // import PlayerControls from "../feature/VideoControls/PlayerControls";
 // import { addRecentWatchVideo, getRecentWatchVideo } from "../utils/local-storage";
 
@@ -14,8 +15,6 @@ function WatchPage() {
   const dispatch = useDispatch()
   const location = useLocation()
   const videoId = 1
-  // const [currentTime, setCurrentTime] = useState(null)
-  // const [displayControls, setDisplayControls] = useState(true)
 
   useEffect(
     () => {
@@ -26,14 +25,6 @@ function WatchPage() {
     , []
   )
 
-  // const showControls = () => {
-  //   setDisplayControls(true)
-  // }
-
-  // const hideControls = () => {
-  //   setTimeout(() => setDisplayControls(false), 1000)
-  // }
-
   const loadRecentWatching = () => {
     console.dir(watchPlayer.current)
     console.log(video?.videoData?.history[0]?.recentWatching)
@@ -41,7 +32,6 @@ function WatchPage() {
   }
 
   const handleOnPause = () => {
-    // showControls
     const recentWatch = watchPlayer.current.currentTime
     endWatching({ videoId: videoId, recentWatching: recentWatch })
   }
