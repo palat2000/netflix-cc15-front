@@ -27,6 +27,20 @@ export const getMyListById = async (movieId) => {
 
 export const editLike = async (movieId) => {
   const res = await axios.patch('/user-browse/Like', { movieId: movieId });
-  console.log("bqyvqvuyqvyuqyuq", res.data)
+  return res.data;
+};
+
+export const startWatching = async (videoId) => {
+  console.log(videoId)
+  const res = await axios.get(`/user-browse/getVideo/${videoId}`)
+  await axios.get(`/user-browse/startWatching/${videoId}`);
+  console.log(res.data)
+  return res.data;
+};
+
+export const endWatching = async (videoData) => {
+  console.log(videoData)
+  const res = await axios.post(`/user-browse/endWatching`, videoData)
+  console.log(res.data)
   return res.data;
 };

@@ -1,5 +1,6 @@
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 const CHOOSE_PROFILE_ACCESS_TOKEN = "CHOOSE_PROFILE_ACCESS_TOKEN";
+const RECENT_WATCH_TOKEN = "RECENT_WATCH_TOKEN";
 
 export const addAccessToken = (token) => {
   localStorage.setItem(ACCESS_TOKEN, token);
