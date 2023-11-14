@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
-import { chooseUserProfileAction, getMeAction } from "../store/slice/authSlice";
+import {
+  chooseUserProfileAction,
+  getMeAction,
+  getMeProfileAction,
+} from "../store/slice/authSlice";
 import { addChooseProfileAccessToken } from "../utils/local-storage";
 import { getMe } from "../store/utils/userApi";
 
@@ -16,13 +20,13 @@ export default function WhoIsWatching() {
   const user = useSelector((state) => {
     return state?.user;
   });
-  console.log("🚀 ~ file: WhoIsWatching.jsx:30 ~ user ~ user:", user)
+  console.log("🚀 ~ file: WhoIsWatching.jsx:30 ~ user ~ user:", user);
 
   const navigate = useNavigate();
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-  const userData = user?.data?.user.allUserProfile;
+  const userData = user?.data?.allUserProfile;
   console.log(
     "🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:",
     userData
@@ -36,6 +40,7 @@ export default function WhoIsWatching() {
         navigate("/browse");
       });
   };
+
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl md:text-6xl m-5">
