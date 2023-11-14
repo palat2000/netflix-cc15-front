@@ -6,13 +6,13 @@ import { useLocation } from "react-router-dom";
 import VideoControls from "../feature/VideoControls/VideoControls";
 
 function WatchPage() {
-
   const watchPlayer = useRef(null)
   const videoContainer = useRef(null)
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
   const location = useLocation()
   const videoId = 1
+  // dispatch(isOnWatchPage(location.pathname))
 
   useEffect(
     () => {
@@ -49,8 +49,8 @@ function WatchPage() {
   return (
     <>
       <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center relative ">
-        <VideoControls videoContainer={videoContainer} />
-        {video && <video onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+        {/* <VideoControls videoContainer={videoContainer} /> */}
+        {video && <video controls disablePictureInPicture onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
           <source src={video?.videoData?.videoUrl}></source>
         </video>}
       </div >
