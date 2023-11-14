@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setVideoDuration } from "../../store/slice/watchPageSlice";
+import './VideoControls.css'
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
@@ -43,6 +44,10 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
         watchPlayer.current.currentTime = recentWatching - 10
     }
 
+    const handleForward = () => {
+        watchPlayer.current.currentTime = recentWatching + 10
+    }
+
     return (
         <div className="absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
             <div id="top" className="flex w-full flex-row justify-between h-[10%] items-center">
@@ -51,17 +56,21 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                 </Link>
             </div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
-                {!isNaN(recentWatching) && <div className="flex flex-row w-full justify-between items-end">
-                    {/* <input className="w-full" type="range" /> */}
-                    <input className="w-full" type="range" onChange={changeCurrentTime} value={recentWatching} min="0" max={watchPlayer?.current?.duration} step="any" />
-                    <div>{watchPlayer?.current?.duration}</div>
-                </div>}
+                {!isNaN(recentWatching) &&
+                    <div className="flex flex-row w-full justify-between items-center">
+                        <div className="w-full bg-blue-300 h-[8px] flex relative justify-center items-center">
+                            <progress className="w-full h-full absolute z-10" value={recentWatching} max={watchPlayer?.current?.duration}></progress>
+                            <input className="w-full absolute z-20" type="range" onChange={changeCurrentTime} value={recentWatching} min="0" max={watchPlayer?.current?.duration} step="any" />
+                        </div>
+                        <div>{watchPlayer?.current?.duration}</div>
+                    </div>
+                }
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
                     <div id="bottom-left" className="flex gap-3">
                         <div className="cursor-pointer" onClick={() => watchPlayer.current.play()}>Play</div>
                         <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div>
                         <div className="cursor-pointer" onClick={handleBackward}>Back10</div>
-                        <div>Forward10</div>
+                        <div className="cursor-pointer" onClick={handleForward}>Forward10</div>
                         <div>Volume</div>
                     </div>
                     <div id="bottom-center" className="flex gap-3">
