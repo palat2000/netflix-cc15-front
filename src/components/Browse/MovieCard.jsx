@@ -20,16 +20,11 @@ export default function MovieCard({ movie }) {
   };
 
   return (
-    // <motion.div
-    //   className="box"
-    //   whileHover={{ scale: [null, 1.5, 1.4] }}
-    //   transition={{ duration: 0.3 }}
-    // />
     <motion.div
       whileHover={{
         scale: 1.5,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.3s",
+        transitionDuration: "0.25s",
         zIndex: visible ? 50 : 1,
       }}
       onHoverStart={hoverStart}

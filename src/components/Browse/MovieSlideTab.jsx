@@ -17,24 +17,22 @@ export default function MovieSlideTab({ movie }) {
     <>
       <Swiper
         slidesPerView={6}
-        spaceBetween={1}
+        spaceBetween={5}
         // freeMode={false}
-        speed={1000}
+        speed={2000}
         // pagination={{
         //   clickable: true,
         // }}
         navigation={true}
         // effect="fade"
         modules={[FreeMode, Pagination, Navigation]}
-        className="mySwiper overflow-visible overflow-x-clip"
+        className="overflow-visible overflow-x-clip mr-10 bg-black"
       >
         {movie &&
           movie?.map((m, i) => {
+            console.log(movie);
             return (
-              <SwiperSlide
-                key={i}
-                style={{ maxWidth: "1200px", margin: "0 auto" }}
-              >
+              <SwiperSlide key={i}>
                 <MovieCard movie={m} />
               </SwiperSlide>
             );
