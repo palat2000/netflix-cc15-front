@@ -19,7 +19,7 @@ function UserBrowsePage() {
   const movie = useSelector((state) => state.allContent.data);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
-  const haveRecentVideoData = recentVideoData?.videoId && recentVideoData?.recentWatching
+  const haveRecentVideoData = recentVideoData?.videoId && recentVideoData?.recentWatching && recentVideoData?.videoDuration
   console.log(movie);
 
   const location = useLocation()
@@ -32,7 +32,8 @@ function UserBrowsePage() {
     console.log(location.pathname)
     console.log(recentWatch)
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      console.log("enter Logic")
+      if (recentVideoData.recentWatching === recentVideoData.videoDuration)
+        console.log("enter Logic")
       dispatch(endWatchingAction(recentVideoData)).unwrap().then(res => console.log(res))
     }
   }, []);

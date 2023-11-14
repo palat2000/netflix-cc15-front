@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
-import { isOnWatchPage, setRecentWatching, setVideoId } from "../store/slice/watchPageSlice";
+import { isOnWatchPage, setRecentWatching, setVideoDuration, setVideoId } from "../store/slice/watchPageSlice";
 import { useLocation } from "react-router-dom";
 import VideoControls from "../feature/VideoControls/VideoControls";
 
@@ -12,11 +12,11 @@ function WatchPage() {
   const dispatch = useDispatch()
   const location = useLocation()
   const videoId = 1
-  // dispatch(isOnWatchPage(location.pathname))
 
   useEffect(
     () => {
       startWatching(videoId).then(res => setVideo(res))
+      dispatch(setVideoDuration(watchPlayer?.current?.duration))
       dispatch(isOnWatchPage(location.pathname))
       dispatch(setVideoId(videoId))
     }
@@ -35,7 +35,6 @@ function WatchPage() {
   }
 
   const handleOnEnded = () => {
-    console.log('first')
     endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
@@ -48,11 +47,16 @@ function WatchPage() {
 
   return (
     <>
-      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center relative ">
-        {/* <VideoControls videoContainer={videoContainer} /> */}
-        {video && <video controls disablePictureInPicture onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
-          <source src={video?.videoData?.videoUrl}></source>
-        </video>}
+      <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center relative ">
+        {video && (
+          <>
+            {/* <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} /> */}
+            <video controls onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+              <source src={video?.videoData?.videoUrl}></source>
+            </video>
+          </>
+        )
+        }
       </div >
     </>
   )
