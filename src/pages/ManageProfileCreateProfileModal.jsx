@@ -20,14 +20,15 @@ export default function ManageProfileModal({ onClose, data }) {
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
-    // data.find((el)=>{
-    //   return name = el
-    // })
-
-
-  const handleCreate = () => {
-
-  
+    
+    const handleCreate = () => {
+      
+      let checkName = data.find((el)=>{
+        return el.userProfileName == name
+      })
+  if(checkName) {
+    return setEmptyError("This name was already used")
+  }
     if (name === "") {
       return setEmptyError("This field can't be empty");
     }
