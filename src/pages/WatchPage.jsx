@@ -48,7 +48,7 @@ function WatchPage() {
 
   return (
     <>
-      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center relative">
+      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center relative ">
         <VideoControls videoContainer={videoContainer} />
         {video && <video onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
           <source src={video?.videoData?.videoUrl}></source>
