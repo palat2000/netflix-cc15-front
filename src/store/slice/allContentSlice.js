@@ -4,7 +4,7 @@ import { getAllContent } from "../utils/contentApi";
 const initialState = {
   error: null,
   loading: false,
-  data: [],
+  data: {},
 };
 
 export const fetchAllContent = createAsyncThunk(

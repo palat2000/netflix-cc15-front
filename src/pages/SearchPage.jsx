@@ -45,7 +45,6 @@ import axios from "axios";
 //   },
 // ];
 
-// XxXXXXXXXX
 
 // const SearchPage = () => {
 //   const navigate = useNavigate();
@@ -59,7 +58,6 @@ import axios from "axios";
 //   setMovie(res?.data?.movie);
 // }, []);
 
-////  XXXXXXXXXXXXX
 
 export default function SearchPage() {
   const [search, setSearch] = useState(null);
@@ -67,7 +65,6 @@ export default function SearchPage() {
 
   const searchMovies = useCallback(async (search) => {
     const res = await axios.get(`/user-browse/search?q=${search}`);
-    console.log("res = ", res);
     setMovies(res?.data?.searchMovieBytitle);
   }, []);
 

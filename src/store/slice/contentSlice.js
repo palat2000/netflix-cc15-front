@@ -11,7 +11,6 @@ export const fetchContentAction = createAsyncThunk('content/fetch', async (movie
   try {
     const response = await getContentById(movieId)
     response.movieId = movieId
-    console.log(response)
     return response;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);

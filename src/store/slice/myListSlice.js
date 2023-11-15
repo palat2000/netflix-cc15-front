@@ -10,7 +10,6 @@ const initialState = {
 export const editMyListAction = createAsyncThunk('myList/edit', async (movieId, thunkAPI) => {
   try {
     const response = await editMylist(movieId)
-    console.log(response)
     return response;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
@@ -20,7 +19,6 @@ export const editMyListAction = createAsyncThunk('myList/edit', async (movieId, 
 // export const getMyListByIdAction = createAsyncThunk('myList/edit', async (movieId, thunkAPI) => {
 //   try {
 //     const response = await editMylist(movieId)
-//     console.log(response)
 //     return response;
 //   } catch (err) {
 //     return thunkAPI.rejectWithValue(err.message);

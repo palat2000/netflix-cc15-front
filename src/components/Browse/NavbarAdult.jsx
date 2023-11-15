@@ -8,19 +8,21 @@ import NotificatioBell from "./NotificationBell";
 import { useNavigate } from "react-router-dom";
 // import SideBarMenu from "./SideBarMenu";
 
-export default function NavbarAdult({ setSearch }) {
+export default function NavbarAdult() {
   const navigate = useNavigate();
   const ref = useRef(null);
 
   const [isSearch, setIsSearch] = useState(false);
-
   const handleOnChange = (e) => {
-    setSearch(e);
+    if(e.length === 0){
+      navigate("/browse");
+    }
     localStorage.setItem("searchQuery", JSON.stringify(e));
 
-    // if (e.length === 1) {
+    if (e.length >= 1) {
+
     navigate("/search");
-    // }
+    }
   };
 
   const handleClick = () => {
@@ -29,7 +31,6 @@ export default function NavbarAdult({ setSearch }) {
   };
 
   const goToPage = (page) => {
-    console.log("page =", page);
 
     if (page === "home") {
       navigate("/browse");

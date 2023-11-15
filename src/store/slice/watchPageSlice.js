@@ -19,7 +19,6 @@ const initialState = {
 //     try {
 //         const response = await getContentById(movieId)
 //         response.movieId = movieId
-//         console.log(response)
 //         return response;
 //     } catch (err) {
 //         return thunkAPI.rejectWithValue(err.message);
@@ -28,10 +27,7 @@ const initialState = {
 
 export const endWatchingAction = createAsyncThunk('watchPage/endWatching', async (videoData, thunkAPI) => {
     try {
-        console.log("first")
-        console.log(videoData)
         const response = await endWatching(videoData)
-        console.log(response)
     } catch (err) {
         return thunkAPI.rejectWithValue(err.message);
     }

@@ -11,7 +11,6 @@ export default function TrailerLayoutLeft({ movieId }) {
     const movieTitle = useSelector(state => state?.content?.data?.movie[0]?.title)
     const movieIsInMyListData = useSelector(state => state?.content?.data?.movie?.inMyListHistory)
     const movieIsInLikeData = useSelector(state => state?.content?.data?.movie?.likeHistory)
-    console.log("🚀 ~ file: TrailerLayoutLeft.jsx:14 ~ TrailerLayoutLeft ~ movieIsInLikeData:", movieIsInLikeData)
 
     const navigate = useNavigate()
 

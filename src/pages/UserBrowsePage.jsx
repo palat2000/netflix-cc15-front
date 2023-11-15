@@ -22,20 +22,16 @@ function UserBrowsePage() {
   const dispatch = useDispatch();
   const movie = useSelector((state) => state.allContent.data);
   const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
-  const [search, setSearch] = useState(null);
+  // const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
-  console.log("movie =", movie);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
   const haveRecentVideoData =
     recentVideoData?.videoId &&
     recentVideoData?.recentWatching &&
     recentVideoData?.videoDuration;
-  console.log(movie);
 
   const location = useLocation();
-  console.log(location.pathname);
-  console.log(haveRecentVideoData);
 
   const { error, loading, data } = useSelector((store) => store.allContent);
 
@@ -45,13 +41,9 @@ function UserBrowsePage() {
   }, [movie?.movies?.top10]);
 
   useEffect(() => {
-    dispatch(fetchAllContent());
-    // console.log(location.pathname)
-    // console.log(recentWatch)
+      dispatch(fetchAllContent());
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      console.log(
-        recentVideoData?.recentWatching === recentVideoData?.videoDuration
-      );
+      
       if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
         dispatch(
           endWatchingAction({
@@ -75,11 +67,11 @@ function UserBrowsePage() {
     }
   }, [movie, randomMovie]);
 
-  if (loading) return <LoadingPage />;
+  // if (loading) return <LoadingPage />;
 
   return (
     <div className="bg-black">
-      <NavbarAdult setSearch={setSearch} />
+      {/* <NavbarAdult setSearch={setSearch} /> */}
       {/* <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  ">
           TESTESTEST
         </div> */}

@@ -24,7 +24,6 @@ function WatchPage() {
 
   const loadRecentWatching = async () => {
     // console.dir(watchPlayer.current)
-    // console.log(video?.videoData?.history[0]?.recentWatching)
     // dispatch(setVideoDuration(watchPlayer?.current?.duration))
     watchPlayer.current.currentTime = await video?.videoData?.history[0]?.recentWatching
   }
@@ -39,7 +38,6 @@ function WatchPage() {
   }
 
   const watchVideoData = useSelector(store => store.watchPage)
-  // console.log(watchVideoData)
 
   const updateTime = () => {
     dispatch(setVideoDuration(watchPlayer?.current?.duration))

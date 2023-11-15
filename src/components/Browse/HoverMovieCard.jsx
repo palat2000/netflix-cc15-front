@@ -3,7 +3,6 @@ import MovieCard from "./MovieCard";
 
 export default function HoverMovieCard({ movie }) {
   const [isHovered, setIsHovered] = useState(false);
-  console.log(movie, "MOVIE MOFO");
   const handleMouseEnter = () => {
     setIsHovered(true);
   };

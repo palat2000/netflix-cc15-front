@@ -21,10 +21,7 @@ export default function ContentModalDetail({ movieId, setOpen }) {
   }, []);
 
   const { data: movieData, loading } = useSelector((state) => state?.content);
-  console.log(
-    "🚀 ~ file: ContentModalDetail.jsx:19 ~ ContentModalDetail ~ movieData:",
-    movieData
-  );
+
 
   if (loading)
     return (
