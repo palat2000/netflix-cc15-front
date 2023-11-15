@@ -11,9 +11,10 @@ function WatchPage() {
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
   const location = useLocation()
-  const videoId = 1
+  const videoIds = 1
+  const { videoId } = useParams()
   // const { videoId, movieId } = useParams()
-  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", movieId)
+  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", typeof (videoIds))
   // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
 
 
@@ -43,7 +44,7 @@ function WatchPage() {
     endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
-  const watchVideoData = useSelector(store => store.watchPage)
+  // const watchVideoData = useSelector(store => store.watchPage.)
   // console.log(watchVideoData)
 
   const updateTime = () => {
