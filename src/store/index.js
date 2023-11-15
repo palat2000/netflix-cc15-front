@@ -5,6 +5,7 @@ import contentReducer from "./slice/contentSlice";
 import myListReducer from "./slice/myListSlice";
 import watchPageReducer from "./slice/watchPageSlice";
 import notificationReducer from "./slice/notificationSlice";
+import searchReducer from "./slice/searchSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,8 @@ const store = configureStore({
     myList: myListReducer,
     watchPage: watchPageReducer,
     notification: notificationReducer,
+    search : searchReducer
+
   },
 });
 

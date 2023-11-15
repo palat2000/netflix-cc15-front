@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import NavbarAdult from "../components/Browse/NavbarAdult";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 // const mockUpVdo = [
 //   {
@@ -60,10 +61,12 @@ import axios from "axios";
 
 
 export default function SearchPage() {
-  const [search, setSearch] = useState(null);
+  // const [search, setSearch] = useState(null);
   const [movies, setMovies] = useState(null);
+  const search = useSelector(store=>store.search.search)
 
   const searchMovies = useCallback(async (search) => {
+    console.log("aaaaa",search)
     const res = await axios.get(`/user-browse/search?q=${search}`);
     setMovies(res?.data?.searchMovieBytitle);
   }, []);
@@ -78,7 +81,7 @@ export default function SearchPage() {
 
   return (
     <>
-      <NavbarAdult setSearch={setSearch} />
+      {/* <NavbarAdult search={search} setSearch={setSearch} /> */}
 
       <div className="bg-black h-full pr-10 pl-10 pb-8 pt-8">
         <div className="flex py-2">

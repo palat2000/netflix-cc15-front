@@ -1,28 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import UserProfileMenu from "./UserProfileMenu";
 import { useRef } from "react";
-import { useEffect } from "react";
 import NotificatioBell from "./NotificationBell";
 import { useNavigate } from "react-router-dom";
 // import SideBarMenu from "./SideBarMenu";
+import { setSearch } from "../../store/slice/searchSlice";
 
 export default function NavbarAdult() {
+  const dispatch = useDispatch();
+  const search = useSelector((store) => store.search.search);
   const navigate = useNavigate();
   const ref = useRef(null);
 
   const [isSearch, setIsSearch] = useState(false);
   const handleOnChange = (e) => {
-    if(e.length === 0){
+    console.log(e.target.value.length);
+
+    // setSearch(e)
+    // if (search.length >= 1) {
+    //   console.log("kuyy")
+    //   navigate("/search");
+    // }
+    // if (search.length < 1) {
+    //   console.log("here");
+    //   navigate("/browse");
+    // }
+    if (e.target.value.length >= 1) {
+      navigate("/search");
+    }
+    if (e.target.value.length < 1) {
       navigate("/browse");
     }
-    localStorage.setItem("searchQuery", JSON.stringify(e));
 
-    if (e.length >= 1) {
+    // localStorage.setItem("searchQuery", JSON.stringify(e));
 
-    navigate("/search");
-    }
+    dispatch(setSearch(e.target.value));
   };
 
   const handleClick = () => {
@@ -31,7 +46,6 @@ export default function NavbarAdult() {
   };
 
   const goToPage = (page) => {
-
     if (page === "home") {
       navigate("/browse");
     } else if (page === "tv-shows") {
@@ -106,9 +120,10 @@ export default function NavbarAdult() {
             {isSearch && (
               <input
                 ref={ref}
+                value={search}
                 placeholder="Search"
                 className="w-full text-white outline-none opacity-50 bg-black"
-                onChange={(e) => handleOnChange(e.target.value)}
+                onChange={handleOnChange}
               ></input>
             )}
           </div>
