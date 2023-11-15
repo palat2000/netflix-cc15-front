@@ -22,11 +22,11 @@ function WatchPage() {
     , []
   )
 
-  const loadRecentWatching = () => {
+  const loadRecentWatching = async () => {
     // console.dir(watchPlayer.current)
     // console.log(video?.videoData?.history[0]?.recentWatching)
     // dispatch(setVideoDuration(watchPlayer?.current?.duration))
-    watchPlayer.current.currentTime = video?.videoData?.history[0]?.recentWatching
+    watchPlayer.current.currentTime = await video?.videoData?.history[0]?.recentWatching
   }
 
   const handleOnChange = () => {
@@ -44,11 +44,7 @@ function WatchPage() {
   const updateTime = () => {
     dispatch(setVideoDuration(watchPlayer?.current?.duration))
     dispatch(setRecentWatching(watchPlayer?.current?.currentTime))
-    console.log('zzzzzzzz', watchPlayer?.current?.buffered?.length)
-    console.log('yyyyyy', watchPlayer?.current?.buffered?.length - 1)
-    console.log("qqqqqqqqq", watchPlayer?.current?.buffered?.end(watchPlayer?.current?.buferred?.length - 1))
     const recentBuffer = watchPlayer?.current?.buffered?.end(watchPlayer?.current?.buferred?.length - 1)
-    console.log("🚀 ~ file: WatchPage.jsx:51 ~ updateTime ~ recentBuffer:", recentBuffer)
     dispatch(setRecentBuffer(recentBuffer))
   }
 
