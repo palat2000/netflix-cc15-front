@@ -11,17 +11,17 @@ function WatchPage() {
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
   const location = useLocation()
-  const videoIds = 1
+  // const videoIds = 1
   const { videoId } = useParams()
   // const { videoId, movieId } = useParams()
-  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", videoIds)
-  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
+  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", videoIds)
+  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", typeof (videoId))
 
 
   useEffect(
     () => {
       startWatching(videoId).then(res => setVideo(res))
-      dispatch(fetchVideoAction(1))
+      // dispatch(fetchVideoAction(1))
       dispatch(isOnWatchPage(location.pathname))
       dispatch(setVideoId(1))
     }
