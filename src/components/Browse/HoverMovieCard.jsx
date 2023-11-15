@@ -22,8 +22,6 @@ export default function HoverMovieCard({ movie }) {
       >
         <MovieCard movie={movie} />
       </div>
-
-      {/* {isHovered && <MovieCard movie={movie} />} */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import AddToListButton from "../button/AddToListButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
-import { Fade } from "@mui/material";
+import axios from "../../config/axios";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
@@ -20,18 +20,34 @@ export default function MovieCard({ movie }) {
     setVisible(false);
   };
 
+  const [isLike, setIsLike] = useState(false);
+
+  const handleLike = async () => {
+    try {
+      const res = await axios.patch("/user-browse/like", { movieId: movie.id });
+      setIsLike(res.data.likeData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const [isAddToplayList, setIsAddToPlayList] = useState(false);
+
+  const handleAddToPlayList = async () => {
+    try {
+      const res = await axios.get("/user-browse/mylist", { movieId: movie.id });
+      setIsAddToPlayList(res.data.myList);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
-    // <motion.div
-    //   className="box"
-    //   whileHover={{ scale: [null, 1.5, 1.4] }}
-    //   transition={{ duration: 0.3 }}
-    // />
     <motion.div
       whileHover={{
         scale: 1.5,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.3s",
-        zIndex: visible ? 50 : 1,
+        transitionDuration: "0.25s",
+        zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
@@ -55,17 +71,24 @@ export default function MovieCard({ movie }) {
               <div className="flex justify-between   ">
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
-                  <AddToListButton customizeClass={"scale-75"} />
-                  <LikeButton customizeClass={""} />
+                  <AddToListButton
+                    handleAddToPlayList={handleAddToPlayList}
+                    customizeClass={"scale-75"}
+                  />
+                  <LikeButton
+                    handleLike={handleLike}
+                    isLike={isLike}
+                    customizeClass={""}
+                  />
                 </div>
                 <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
               </div>
             </div>
             <div>
-              <div className=" text-white text-xs/[5px] left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0">
                 {movie?.title}
               </div>
-              <div className=" text-white text-xs/[5px] left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0">
                 {movie?.enumGenres}
               </div>
             </div>
