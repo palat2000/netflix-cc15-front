@@ -4,7 +4,7 @@ import ContentModal from "../../feature/ContentModal";
 
 export default function MoreInfoCircleButton({ customizeClass }) {
   return (
-    <ContentModal>
+    <ContentModal movieId={1}>
       <div className={`${customizeClass} `}>
         <FontAwesomeIcon
           icon={faChevronCircleDown}

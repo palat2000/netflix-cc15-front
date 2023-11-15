@@ -14,10 +14,12 @@ import MovieSlideTab from "../components/Browse/MovieSlideTab";
 import { useLocation } from "react-router-dom";
 import { endWatchingAction, setRecentWatching } from "../store/slice/watchPageSlice";
 import LoadingPage from "./LoadingPage";
+import ContentModalDetail from "../feature/ContentModalDetail";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
   const movie = useSelector((state) => state.allContent.data);
+  const modalIsOpen = useSelector((state) => state.content.modalIsopen);
   const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
   console.log("movie =", movie);
@@ -67,6 +69,7 @@ function UserBrowsePage() {
         <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
         <MovieSlideTab movie={movie?.movies?.top10} />
+        {modalIsOpen && <ContentModalDetail movieId={1} />}
       </div>
     </div>
   );
