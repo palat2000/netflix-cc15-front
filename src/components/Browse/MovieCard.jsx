@@ -6,6 +6,7 @@ import AddToListButton from "../button/AddToListButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
+import axios from "../../config/axios";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
@@ -16,6 +17,17 @@ export default function MovieCard({ movie }) {
 
   const hoverEnd = () => {
     setVisible(false);
+  };
+
+  const [isLike, setIsLike] = useState(false);
+
+  const handleLike = async () => {
+    try {
+      const res = await axios.patch("/user-browse/like", { movieId: movie.id });
+      setIsLike(res.data.likeData);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -49,7 +61,11 @@ export default function MovieCard({ movie }) {
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton customizeClass={"scale-75"} />
-                  <LikeButton customizeClass={""} />
+                  <LikeButton
+                    handleLike={handleLike}
+                    isLike={isLike}
+                    customizeClass={""}
+                  />
                 </div>
                 <MoreInfoCircleButton customizeClass={" scale-75"} />
               </div>

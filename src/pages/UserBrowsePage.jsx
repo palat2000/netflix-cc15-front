@@ -9,7 +9,6 @@ import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 import { editProfileAction } from "../store/slice/authSlice";
 
-import MovieCard from "../components/Browse/MovieCard";
 import MovieSlideTab from "../components/Browse/MovieSlideTab";
 import { useLocation } from "react-router-dom";
 import { endWatchingAction } from "../store/slice/watchPageSlice";
