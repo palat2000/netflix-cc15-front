@@ -4,9 +4,11 @@ import TrailerHeaderModal from "./TrailerHeaderModal"
 import { changStatusOpenModal, fetchContentAction } from "../store/slice/contentSlice"
 import { useEffect } from "react"
 
-export default function ContentModalDetail({ movieId, setOpen }) {
+export default function ContentModalDetail({ setOpen }) {
 
   const dispatch = useDispatch()
+
+  const movieId = useSelector(store => store?.content?.movieId)
 
   useEffect(
     () => {
