@@ -15,23 +15,18 @@ function WatchPage() {
   const { videoId } = useParams()
   // const { videoId, movieId } = useParams()
   // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", videoIds)
-  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", typeof (videoId))
+  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", typeof (videoId))
 
 
   useEffect(
     () => {
       startWatching(videoId).then(res => setVideo(res))
-      // dispatch(fetchVideoAction(1))
       dispatch(isOnWatchPage(location.pathname))
-      dispatch(setVideoId(1))
     }
     , []
   )
 
   const loadRecentWatching = async () => {
-    // console.dir(watchPlayer.current)
-    // console.log(video?.videoData?.history[0]?.recentWatching)
-    // dispatch(setVideoDuration(watchPlayer?.current?.duration))
     watchPlayer.current.currentTime = await video?.videoData?.history[0]?.recentWatching
   }
 
