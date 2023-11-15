@@ -44,11 +44,22 @@ function UserBrowsePage() {
     // console.log(location.pathname)
     // console.log(recentWatch)
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      console.log(recentVideoData?.recentWatching === recentVideoData?.videoDuration)
+      console.log(
+        recentVideoData?.recentWatching === recentVideoData?.videoDuration
+      );
       if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
-        dispatch(endWatchingAction({ videoId: recentVideoData?.videoId, recentWatching: 0 })).unwrap().then(res => console.log(res))
+        dispatch(
+          endWatchingAction({
+            videoId: recentVideoData?.videoId,
+            recentWatching: 0,
+          })
+        )
+          .unwrap()
+          .then((res) => console.log(res));
       } else {
-        dispatch(endWatchingAction(recentVideoData)).unwrap().then(res => console.log(res))
+        dispatch(endWatchingAction(recentVideoData))
+          .unwrap()
+          .then((res) => console.log(res));
       }
     }
   }, []);
