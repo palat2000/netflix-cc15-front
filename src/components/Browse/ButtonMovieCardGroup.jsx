@@ -5,7 +5,7 @@ import AddToListButton from "../button/AddToListButton";
 
 export default function ButtonMovieCardGroup() {
   return (
-    <div className="relative flex flex-col rounded-sm  bg-zinc-900 w-fit ">
+    <div className="relative flex flex-col rounded-sm bg-zinc-900 w-fit ">
       <div className="flex justify-between m-2 ">
         <div className="flex items-center">
           <PlayCircleButton customizeClass={" scale-90"} />
