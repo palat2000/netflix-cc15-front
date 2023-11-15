@@ -19,7 +19,7 @@ import ContentModalDetail from "../feature/ContentModalDetail";
 function UserBrowsePage() {
   const dispatch = useDispatch();
   const movie = useSelector((state) => state.allContent.data);
-  const modalIsOpen = useSelector((state) => state.content.modalIsopen);
+  const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
   const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
   console.log("movie =", movie);
@@ -51,7 +51,7 @@ function UserBrowsePage() {
         dispatch(endWatchingAction(recentVideoData)).unwrap().then(res => console.log(res))
       }
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (movie) {
