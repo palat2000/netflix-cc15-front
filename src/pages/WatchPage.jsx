@@ -14,7 +14,7 @@ function WatchPage() {
   const videoIds = 1
   const { videoId } = useParams()
   // const { videoId, movieId } = useParams()
-  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", typeof (videoIds))
+  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", videoIds)
   // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
 
 
