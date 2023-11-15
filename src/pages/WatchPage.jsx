@@ -11,16 +11,15 @@ function WatchPage() {
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
   const location = useLocation()
-  // const videoIds = 1
   const { videoId } = useParams()
-  // const { videoId, movieId } = useParams()
-  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", videoIds)
-  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", typeof (videoId))
+  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
 
 
   useEffect(
     () => {
+      dispatch(setVideoId(videoId))
       startWatching(videoId).then(res => setVideo(res))
+      dispatch(fetchVideoAction(videoId))
       dispatch(isOnWatchPage(location.pathname))
     }
     , []
@@ -39,8 +38,8 @@ function WatchPage() {
     endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
-  // const watchVideoData = useSelector(store => store.watchPage.)
-  // console.log(watchVideoData)
+  const vidoData = useSelector(store => store?.watchPage?.videoData?.fetchData?.videoData)
+  console.log("🚀 ~ file: WatchPage.jsx:41 ~ WatchPage ~ vidoUrl:", vidoData)
 
   const updateTime = () => {
     dispatch(setVideoDuration(watchPlayer?.current?.duration))
@@ -52,12 +51,12 @@ function WatchPage() {
   return (
     <>
       <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center relative ">
-        {video && (
+        {vidoData && (
           <>
             <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
             <video onSeeking={handleOnChange} onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnChange} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
               {/* <source src="https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"></source> */}
-              <source src={video?.videoData?.videoUrl}></source>
+              <source src={vidoData?.videoUrl}></source>
             </video>
           </>
         )
