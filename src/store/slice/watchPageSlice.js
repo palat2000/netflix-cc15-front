@@ -8,7 +8,9 @@ const initialState = {
     loading: false,
     videoData: {
         videoId: null,
-        recentWatching: null
+        videoDuration: null,
+        recentWatching: null,
+        recentBuffer: null
     }
 
 };
@@ -48,10 +50,14 @@ const watchPageSlice = createSlice({
         isNotWatchPage: (state) => {
             state.onWatchPage = false
         },
+        setVideoDuration: (state, action) => {
+            state.videoData.videoDuration = action.payload
+        },
         setRecentWatching: (state, action) => {
-            // state.videoId = action?.payload?.videoId
-            // state.recentTime = action?.payload?.recentTime
             state.videoData.recentWatching = action.payload
+        },
+        setRecentBuffer: (state, action) => {
+            state.videoData.recentBuffer = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -65,6 +71,7 @@ const watchPageSlice = createSlice({
                 state.error = null;
                 state.videoData = {
                     videoId: null,
+                    videoDuration: null,
                     recentWatching: null
                 };
             })
@@ -76,7 +83,7 @@ const watchPageSlice = createSlice({
     }
 });
 
-export const { isOnWatchPage, isNotWatchPage, setVideoId, setRecentWatching } = watchPageSlice.actions
+export const { isOnWatchPage, isNotWatchPage, setVideoId, setRecentWatching, setVideoDuration, setRecentBuffer } = watchPageSlice.actions
 const watchPageReducer = watchPageSlice.reducer
 export default watchPageReducer
 

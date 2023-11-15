@@ -4,6 +4,7 @@ import allContentSliceReducer from "./slice/allContentSlice";
 import contentReducer from "./slice/contentSlice";
 import myListReducer from "./slice/myListSlice";
 import watchPageReducer from "./slice/watchPageSlice";
+import notificationReducer from "./slice/notificationSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     allContent: allContentSliceReducer,
     content: contentReducer,
     myList: myListReducer,
-    watchPage: watchPageReducer
+    watchPage: watchPageReducer,
+    notification: notificationReducer,
   },
 });
 

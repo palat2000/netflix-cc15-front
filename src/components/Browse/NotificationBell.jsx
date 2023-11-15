@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import profilePic1 from "../../assets/netflix-profile-red.jpeg";
 import profilePic2 from "../../assets/netflix-profile-yellow.jpeg";
 import profilePic3 from "../../assets/netflix-profile-green.jpeg";
@@ -10,6 +11,7 @@ import { faBell } from "@fortawesome/free-solid-svg-icons";
 
 export default function NotificatioBell() {
   const [isHovered, setIsHovered] = useState(false);
+  const notification = useSelector((state) => state.notification.data);
 
   const handleMouseEnter = () => {
     setIsHovered(true);

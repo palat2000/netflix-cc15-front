@@ -12,19 +12,20 @@ import { editProfileAction } from "../store/slice/authSlice";
 import MovieCard from "../components/Browse/MovieCard";
 import MovieSlideTab from "../components/Browse/MovieSlideTab";
 import { useLocation } from "react-router-dom";
-import { endWatchingAction } from "../store/slice/watchPageSlice";
+import { endWatchingAction, setRecentWatching } from "../store/slice/watchPageSlice";
 import LoadingPage from "./LoadingPage";
+import ContentModalDetail from "../feature/ContentModalDetail";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
   const movie = useSelector((state) => state.allContent.data);
+  const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
   const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
   console.log("movie =", movie);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
-  const haveRecentVideoData =
-    recentVideoData?.videoId && recentVideoData?.recentWatching;
+  const haveRecentVideoData = recentVideoData?.videoId && recentVideoData?.recentWatching && recentVideoData?.videoDuration
   console.log(movie);
 
   const location = useLocation();
@@ -40,15 +41,28 @@ function UserBrowsePage() {
 
   useEffect(() => {
     dispatch(fetchAllContent());
-    console.log(location.pathname);
-    console.log(recentWatch);
+    // console.log(location.pathname)
+    // console.log(recentWatch)
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      console.log("enter Logic");
-      dispatch(endWatchingAction(recentVideoData))
-        .unwrap()
-        .then((res) => console.log(res));
+      console.log(
+        recentVideoData?.recentWatching === recentVideoData?.videoDuration
+      );
+      if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
+        dispatch(
+          endWatchingAction({
+            videoId: recentVideoData?.videoId,
+            recentWatching: 0,
+          })
+        )
+          .unwrap()
+          .then((res) => console.log(res));
+      } else {
+        dispatch(endWatchingAction(recentVideoData))
+          .unwrap()
+          .then((res) => console.log(res));
+      }
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (movie) {
@@ -66,6 +80,7 @@ function UserBrowsePage() {
         <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
         <MovieSlideTab movie={movie?.movies?.top10} />
+        {modalIsOpen && <ContentModalDetail movieId={1} />}
       </div>
     </div>
   );

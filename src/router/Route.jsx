@@ -138,6 +138,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "your-account",
+    element: <YourAccount />,
+  },
 ]);
 
 function Route() {

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getContentById } from "../utils/contentApi";
 
 const initialState = {
-  modalIsopen: false,
+  modalIsOpen: false,
   loading: false,
   trailerIsMute: false
 };
