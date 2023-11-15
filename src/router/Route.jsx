@@ -138,11 +138,11 @@ const router = createBrowserRouter([
         path: "choose-profile",
         element: <WhoIsWatching />,
       },
+      {
+        path: "your-account",
+        element: <YourAccount />,
+      },
     ],
-  },
-  {
-    path: "your-account",
-    element: <YourAccount />,
   },
 ]);
 

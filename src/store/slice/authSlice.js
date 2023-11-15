@@ -155,6 +155,18 @@ export const paymentSuccessAction = createAsyncThunk(
   }
 );
 
+export const cancelSubscription = createAsyncThunk(
+  "cancel/subscription",
+  async () => {
+    try {
+      const response = await axios.patch("/payment/cancel-subscription");
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
@@ -297,6 +309,12 @@ export const authSlice = createSlice({
         state.data.allUserProfile = action.payload.allUserProfile;
       })
       .addCase(paymentSuccessAction.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(cancelSubscription.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+      })
+      .addCase(cancelSubscription.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
