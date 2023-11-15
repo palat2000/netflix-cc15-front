@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
-import { isOnWatchPage, setRecentBuffer, setRecentWatching, setVideoDuration, setVideoId } from "../store/slice/watchPageSlice";
-import { useLocation } from "react-router-dom";
+import { fetchVideoAction, isOnWatchPage, setRecentBuffer, setRecentWatching, setVideoDuration, setVideoId } from "../store/slice/watchPageSlice";
+import { useLocation, useParams } from "react-router-dom";
 import VideoControls from "../feature/VideoControls/VideoControls";
 
 function WatchPage() {
@@ -11,13 +11,19 @@ function WatchPage() {
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
   const location = useLocation()
-  const videoId = 1
+  const videoIds = 1
+  const { videoId } = useParams()
+  // const { videoId, movieId } = useParams()
+  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ movieId:", videoIds)
+  // console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
+
 
   useEffect(
     () => {
       startWatching(videoId).then(res => setVideo(res))
+      dispatch(fetchVideoAction(1))
       dispatch(isOnWatchPage(location.pathname))
-      dispatch(setVideoId(videoId))
+      dispatch(setVideoId(1))
     }
     , []
   )
@@ -38,7 +44,7 @@ function WatchPage() {
     endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
-  const watchVideoData = useSelector(store => store.watchPage)
+  // const watchVideoData = useSelector(store => store.watchPage.)
   // console.log(watchVideoData)
 
   const updateTime = () => {
@@ -55,8 +61,8 @@ function WatchPage() {
           <>
             <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
             <video onSeeking={handleOnChange} onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnChange} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
-              <source src="https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"></source>
-              {/* <source src={video?.videoData?.videoUrl}></source> */}
+              {/* <source src="https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"></source> */}
+              <source src={video?.videoData?.videoUrl}></source>
             </video>
           </>
         )
