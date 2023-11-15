@@ -32,13 +32,13 @@ export default function NavbarAdult({ setSearch }) {
     console.log("page =", page);
 
     if (page === "home") {
-      navigate("/home");
-    } else if (page === "tvShow") {
-      navigate("/tvShow");
+      navigate("/browse");
+    } else if (page === "tv-shows") {
+      navigate("/tv-shows");
     } else if (page === "movies") {
       navigate("/movies");
-    } else if (page === "myList") {
-      navigate("/mylist");
+    } else if (page === "my-list") {
+      navigate("/my-list");
     }
   };
 
@@ -71,19 +71,19 @@ export default function NavbarAdult({ setSearch }) {
           </div>
           <div
             className="hover:text-gray-400 mx-2"
-            onClick={() => goToPage("tvShows")}
+            onClick={() => goToPage("tv-shows")}
           >
             TV Shows
           </div>
           <div
             className="hover:text-gray-400 mx-2"
-            onClick={() => goToPage("movie")}
+            onClick={() => goToPage("movies")}
           >
-            Movie
+            Movies
           </div>
           <div
             className="hover:text-gray-400 mx-2"
-            onClick={() => goToPage("myList")}
+            onClick={() => goToPage("my-list")}
           >
             My List
           </div>

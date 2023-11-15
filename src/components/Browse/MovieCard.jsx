@@ -30,6 +30,16 @@ export default function MovieCard({ movie }) {
     }
   };
 
+  const [isAddToplayList, setIsAddToPlayList] = useState(false);
+
+  const handleAddToPlayList = async () => {
+    try {
+      const res = await axios.get("/user-browse/mylist", { movieId: movie.id });
+      setIsAddToPlayList(res.data.myList);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <motion.div
       whileHover={{
@@ -60,7 +70,10 @@ export default function MovieCard({ movie }) {
               <div className="flex justify-between   ">
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
-                  <AddToListButton customizeClass={"scale-75"} />
+                  <AddToListButton
+                    handleAddToPlayList={handleAddToPlayList}
+                    customizeClass={"scale-75"}
+                  />
                   <LikeButton
                     handleLike={handleLike}
                     isLike={isLike}
@@ -71,10 +84,10 @@ export default function MovieCard({ movie }) {
               </div>
             </div>
             <div>
-              <div className=" text-white text-xs/[5px] left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0">
                 {movie?.title}
               </div>
-              <div className=" text-white text-xs/[5px] left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0">
                 {movie?.enumGenres}
               </div>
             </div>

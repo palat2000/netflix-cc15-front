@@ -26,6 +26,8 @@ import RedirectIfAuthenticated from "../features/auth/RedirectIfAuthenticated";
 import Authenticated from "../features/auth/Authenticated";
 import RedirectIfNotChooseProfile from "../features/auth/RedirectIfNotChooseProfile";
 import RedirectIfNotSubscribe from "../features/auth/RedirectIfNotSubscribe";
+import MoviesPage from "../pages/MoviesPage";
+import MyListPage from "../pages/MyListPage";
 
 const router = createBrowserRouter([
   {
@@ -75,17 +77,17 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "browse/tvShows",
+        path: "tv-shows",
         element: <TVShowsPage />,
       },
-      // {
-      //   path: "browse/movies",
-      //   element: <MoviesPage />,
-      // },
-      // {
-      //   path: "browse/MyList",
-      //   element: <MyListPage />,
-      // },
+      {
+        path: "movies",
+        element: <MoviesPage />,
+      },
+      {
+        path: "my-list",
+        element: <MyListPage />,
+      },
     ],
   },
   {
