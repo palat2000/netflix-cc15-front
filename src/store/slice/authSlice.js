@@ -49,6 +49,7 @@ export const editProfileAction = createAsyncThunk(
   "auth/edit",
   async (input) => {
     try {
+      console.log(input);
       const res = await editUserProfile(input);
       console.log(res);
       return res;
@@ -65,6 +66,8 @@ export const createProfileAction = createAsyncThunk(
       console.log(res);
       return res;
     } catch (error) {
+      // throw error.response.data;
+      // return thunkAPI.rejectWithValue(error.response.data)
       throw error.response.data;
     }
   }
@@ -164,6 +167,9 @@ export const authSlice = createSlice({
     toggleLoading: (state) => {
       state.loading = !state.loading;
     },
+    resetError: (state) => {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -188,7 +194,8 @@ export const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginAction.rejected, (state, action) => {
-        state.error = action.error;
+        // state.error = action.error;
+
         state.loading = false;
       })
       .addCase(editProfileAction.fulfilled, (state, action) => {
@@ -205,7 +212,7 @@ export const authSlice = createSlice({
       })
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
-        state.data = action.payload;
+        // state.data = action.payload;
         // console.log(state)
         // console.log(action.error.message)
       })
@@ -240,6 +247,8 @@ export const authSlice = createSlice({
         ];
       })
       .addCase(createProfileAction.rejected, (state, action) => {
+        console.log("reject");
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(chooseUserProfileAction.pending, (state, action) => {
@@ -292,5 +301,5 @@ export const authSlice = createSlice({
       });
   },
 });
-export const { resetState, toggleLoading } = authSlice.actions;
+export const { resetState, toggleLoading, resetError } = authSlice.actions;
 export default authSlice.reducer;

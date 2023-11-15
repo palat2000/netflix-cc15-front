@@ -97,6 +97,7 @@ export default function WhoIsWatching() {
         {isOpenModalCreate && (
           <div>
             <ManageProfileCreateProfileModal
+              isOpenModalCreate={isOpenModalCreate}
               onClose={setIsOpenModalCreate}
               data={modalData}
             />
@@ -105,7 +106,6 @@ export default function WhoIsWatching() {
       </div>
       <div
         onClick={() => navigate("/manage-profile")}
-        // onClick={()=>console.log(user)}
         className="pl-4 pr-4 text-xs p-1 bg-black border  text-gray-500 hover:border-2 hover:border-white border-gray-500 hover:text-white hover:cursor-pointer md:text-2xl md:pl-9 md:pr-9 md:p-2"
       >
         Manage Profiles

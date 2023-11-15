@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   loginAction,
-  resetState,
+  resetError,
   getAllUserProfileAction,
 } from "../store/slice/authSlice";
 import { addAccessToken } from "../utils/local-storage";
@@ -114,7 +114,7 @@ function LoginPage() {
               <button
                 className="hover:underline"
                 onClick={() => {
-                  dispatch(resetState());
+                  dispatch(resetError());
                   return navigate("/signup");
                 }}
               >
