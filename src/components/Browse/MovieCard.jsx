@@ -10,6 +10,7 @@ import axios from "../../config/axios";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
+  // console.log('djkashd', movie)
 
   const hoverStart = () => {
     setVisible(true);

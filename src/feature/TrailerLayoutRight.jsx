@@ -2,7 +2,7 @@ import CloseButton from '../components/button/CloseButton';
 import MuteButton from '../components/button/MuteButton';
 import SoundOnButton from '../components/button/SoundOnButton';
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleMute } from "../store/slice/contentSlice"
+import { changStatusOpenModal, toggleMute } from "../store/slice/contentSlice"
 
 export default function TrailerLayoutRight({ movieId, setOpen }) {
   const trailerIsMute = useSelector(state => state.content?.trailerIsMute)
@@ -11,7 +11,7 @@ export default function TrailerLayoutRight({ movieId, setOpen }) {
 
   return (
     <div className='flex flex-col justify-between items-center h-full'>
-      <div onClick={() => setOpen(false)}>
+      <div onClick={() => dispatch(changStatusOpenModal(false))}>
         <CloseButton />
       </div>
       {trailerIsMute && (
