@@ -15,13 +15,12 @@ export default function NavbarAdult({ setSearch }) {
   const [isSearch, setIsSearch] = useState(false);
 
   const handleOnChange = (e) => {
-    console.log("handleOnChange =", e);
     setSearch(e);
     localStorage.setItem("searchQuery", JSON.stringify(e));
 
-    if (e.length === 1) {
-      navigate("/search");
-    }
+    // if (e.length === 1) {
+    navigate("/search");
+    // }
   };
 
   const handleClick = () => {
@@ -29,11 +28,24 @@ export default function NavbarAdult({ setSearch }) {
     ref.current.focus();
   };
 
+  const goToPage = (page) => {
+    console.log("page =", page);
+
+    if (page === "home") {
+      navigate("/home");
+    } else if (page === "tvShow") {
+      navigate("/tvShow");
+    } else if (page === "movies") {
+      navigate("/movies");
+    } else if (page === "myList") {
+      navigate("/mylist");
+    }
+  };
+
   const searchEl = useRef(null);
 
   useEffect(() => {
     const handleClickOutSide = (e) => {
-      console.log("test");
       if (!searchEl.current?.contains(e.target)) {
         setIsSearch(false);
       }
@@ -43,25 +55,38 @@ export default function NavbarAdult({ setSearch }) {
     return () => document.removeEventListener("click", handleClickOutSide);
   }, []);
 
-  // const onClickSearchEnter = () => {
-  //   setIsSearch(true);
-  // };
-  // const onClickSearchLeave = () => {
-  //   setIsSearch(false);
-  // };
-
   return (
     <div>
-      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px] mx-10  ">
+      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px] px-10 ">
         <div className="flex justify-start items-center ">
           <img
             className="h-8 w-auto"
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
-          ></img>
-          <div className="hover:text-gray-400 mx-2 ml-10 ">Home</div>
-          <div className="hover:text-gray-400 mx-2">TV Shows</div>
-          <div className="hover:text-gray-400 mx-2">Movie</div>
-          <div className="hover:text-gray-400 mx-2">My List</div>
+          />
+          <div
+            className="hover:text-gray-400 mx-2 ml-10"
+            onClick={() => goToPage("home")}
+          >
+            Home
+          </div>
+          <div
+            className="hover:text-gray-400 mx-2"
+            onClick={() => goToPage("tvShows")}
+          >
+            TV Shows
+          </div>
+          <div
+            className="hover:text-gray-400 mx-2"
+            onClick={() => goToPage("movie")}
+          >
+            Movie
+          </div>
+          <div
+            className="hover:text-gray-400 mx-2"
+            onClick={() => goToPage("myList")}
+          >
+            My List
+          </div>
         </div>
 
         <div className=" flex items-center">

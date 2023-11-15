@@ -36,5 +36,19 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  right: 10px;
+  height: auto;
+  padding: 50px 25px;
+  position: absolute;
+  fill: black !important;
+  stroke: black !important;
+
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 1.8));
 }
