@@ -9,12 +9,13 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
 // import required modules
-import { FreeMode, Pagination, Navigation } from "swiper/modules";
+import { FreeMode, Navigation } from "swiper/modules";
 import MovieCard from "./MovieCard";
 
-export default function MovieSlideTab({ movie }) {
+export default function MovieSlideTab({ movie, title }) {
   return (
     <>
+      <div className="text-white">{title}</div>
       <Swiper
         slidesPerView={6}
         spaceBetween={5}
@@ -25,14 +26,14 @@ export default function MovieSlideTab({ movie }) {
         // }}
         navigation={true}
         // effect="fade"
-        modules={[FreeMode, Pagination, Navigation]}
-        className="overflow-visible overflow-x-clip mr-10 bg-black"
+        modules={[FreeMode, Navigation]}
+        className="overflow-visible overflow-x-clip mr-10 my-10 bg-black"
       >
         {movie &&
           movie?.map((m, i) => {
             console.log(movie);
             return (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={i} className="pt-16 pb-16">
                 <MovieCard movie={m} />
               </SwiperSlide>
             );

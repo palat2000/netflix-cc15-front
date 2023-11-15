@@ -66,14 +66,22 @@ function UserBrowsePage() {
         </div> */}
       <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
-      <div className="flex flex-col ">
-        <MovieSlideTab movie={movie?.movies?.top10} />
-
-        <MovieSlideTab movie={movie?.movies?.top10} />
-
-        <MovieSlideTab movie={movie?.movies?.top10} />
-
-        <MovieSlideTab movie={movie?.movies?.top10} />
+      <div className="flex flex-col font-medium ml-10 ">
+        <MovieSlideTab
+          title="Continue Watching"
+          movie={movie?.movies?.continueWatching}
+        />
+        <MovieSlideTab title="Top 10" movie={movie?.movies?.top10} />
+        <MovieSlideTab
+          title="New Releases"
+          movie={movie?.movies?.newReleases}
+        />
+        <MovieSlideTab title="Action" movie={movie?.movies?.action} />
+        <MovieSlideTab title="Sport" movie={movie?.movies?.sport} />
+        <MovieSlideTab title="Comedy" movie={movie?.movies?.comedy} />
+        <MovieSlideTab title="Horror" movie={movie?.movies?.horror} />
+        <MovieSlideTab title="Kids" movie={movie?.movies?.kids} />
+        <MovieSlideTab title="Romantic" movie={movie?.movies?.romantic} />
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import AddToListButton from "../button/AddToListButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
-import { Fade } from "@mui/material";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
@@ -25,7 +24,7 @@ export default function MovieCard({ movie }) {
         scale: 1.5,
         // transitionDelay: "0.7s",
         transitionDuration: "0.25s",
-        zIndex: visible ? 50 : 1,
+        zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}

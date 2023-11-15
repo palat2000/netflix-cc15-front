@@ -47,7 +47,7 @@ body {
   left: 0;
   top: -40px;
   height: auto;
-  padding: 40px 20px;
+  padding: 50px 20px;
   position: absolute;
   fill: black !important;
   stroke: black !important;
@@ -60,11 +60,11 @@ body {
   background-color: white;
   background-color: black;
   color: white;
-  opacity: 0.4;
+  opacity: 0.5;
   right: 0;
   top: -40px;
   height: auto;
-  padding: 40px 20px;
+  padding: 50px 20px;
   position: absolute;
   fill: black !important;
   stroke: black !important;
