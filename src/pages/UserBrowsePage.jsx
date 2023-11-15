@@ -9,10 +9,12 @@ import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 import { editProfileAction } from "../store/slice/authSlice";
 
-import MovieCard from "../components/Browse/MovieCard";
 import MovieSlideTab from "../components/Browse/MovieSlideTab";
 import { useLocation } from "react-router-dom";
-import { endWatchingAction, setRecentWatching } from "../store/slice/watchPageSlice";
+import {
+  endWatchingAction,
+  setRecentWatching,
+} from "../store/slice/watchPageSlice";
 import LoadingPage from "./LoadingPage";
 import ContentModalDetail from "../feature/ContentModalDetail";
 
@@ -25,7 +27,10 @@ function UserBrowsePage() {
   console.log("movie =", movie);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
-  const haveRecentVideoData = recentVideoData?.videoId && recentVideoData?.recentWatching && recentVideoData?.videoDuration
+  const haveRecentVideoData =
+    recentVideoData?.videoId &&
+    recentVideoData?.recentWatching &&
+    recentVideoData?.videoDuration;
   console.log(movie);
 
   const location = useLocation();
@@ -73,14 +78,29 @@ function UserBrowsePage() {
   if (loading) return <LoadingPage />;
 
   return (
-    <div>
-      <div className="bg-black">
-        <NavbarAdult setSearch={setSearch} />
-        <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  "></div>
-        <MainTrailer mainTrailerMovie={mainTrailerMovie} />
+    <div className="bg-black">
+      <NavbarAdult setSearch={setSearch} />
+      {/* <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  ">
+          TESTESTEST
+        </div> */}
+      <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
-        <MovieSlideTab movie={movie?.movies?.top10} />
-        {modalIsOpen && <ContentModalDetail movieId={1} />}
+      <div className="flex flex-col font-medium ml-10 ">
+        <MovieSlideTab
+          title="Continue Watching"
+          movie={movie?.movies?.continueWatching}
+        />
+        <MovieSlideTab title="Top 10" movie={movie?.movies?.top10} />
+        <MovieSlideTab
+          title="New Releases"
+          movie={movie?.movies?.newReleases}
+        />
+        <MovieSlideTab title="Action" movie={movie?.movies?.action} />
+        <MovieSlideTab title="Sport" movie={movie?.movies?.sport} />
+        <MovieSlideTab title="Comedy" movie={movie?.movies?.comedy} />
+        <MovieSlideTab title="Horror" movie={movie?.movies?.horror} />
+        <MovieSlideTab title="Kids" movie={movie?.movies?.kids} />
+        <MovieSlideTab title="Romantic" movie={movie?.movies?.romantic} />
       </div>
     </div>
   );
