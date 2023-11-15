@@ -2,7 +2,7 @@ import { TiPencil } from "react-icons/ti";
 import { FaPlusCircle } from "react-icons/fa";
 import ManageProfileModal from "../pages/ManageProfileModal";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,7 @@ export default function ManageProfiles() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const user = useSelector((state) => {
     return state?.user;
   });
@@ -21,8 +22,6 @@ export default function ManageProfiles() {
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const userData = user?.data?.allUserProfile;
-  // const userData = user?.data
-  console.log(userData);
 
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
@@ -40,7 +39,7 @@ export default function ManageProfiles() {
               >
                 <TiPencil className=" translate-y-14 z-20 text-white text-lg  md:translate-y-28 md:text-4xl md:m-1" />
                 {data.isKid && (
-                  <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-20 md:text-2xl md:translate-x-12 md:translate-y-40">
+                  <div className=" bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-20 my-2 md:text-2xl md:translate-x-12 md:translate-y-44 md:my-1">
                     kids
                   </div>
                 )}
@@ -86,12 +85,11 @@ export default function ManageProfiles() {
         )}
 
         {IsOpenModal && (
-          <ManageProfileModal onClose={setIsOpenModal} data={modalData} />
+          <ManageProfileModal onClose={setIsOpenModal} data={modalData} dataUser={user}/>
         )}
       </div>
       <div
         onClick={() => navigate("/choose-profile")}
-        // onClick={()=>console.log(userData)}
         className="pl-4 pr-4 text-xs p-1 bg-white hover:bg-red-700 hover:text-white  hover:cursor-pointer md:p-2 md:font-medium md:pl-8 md:pr-8 md:text-lg"
       >
         Done

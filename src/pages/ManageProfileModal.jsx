@@ -4,33 +4,37 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUserProfileAction,
   editProfileAction,
-  resetState,
+  resetError,
 } from "../store/slice/authSlice";
 
-export default function ManageProfileModal({ onClose, data }) {
+export default function ManageProfileModal({ onClose, data, dataUser }) {
   const [file, setFile] = useState(null);
   const [emptyError, setEmptyError] = useState(null);
   const [name, setName] = useState(data.userProfileName);
   const inputEl = useRef(null);
   const dispatch = useDispatch();
 
-  const { error } = useSelector((state) => {
-    console.log(state);
-    return state.user;
+  const error = useSelector((state) => {
+    return state?.user.error;
   });
 
-  const a = useSelector((state) => state.user);
-  console.log(a);
+  const defaultImage =
+    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
+  console.log(error);
 
+  const tragetData = dataUser.data.allUserProfile.find((el) => {
+    return el.userProfileName === name;
+  });
   const handleSaveEdit = () => {
-    dispatch(resetState());
+    console.log(tragetData);
     if (name.length <= 0) {
       return setEmptyError("This field can't be empty");
     }
+
     const formData = new FormData();
 
-    formData.append("profileImageUrl", file);
-    // formData.append("profileImageUrl", defaultFile);
+    if (file !== null) formData.append("profileImageUrl", file);
+
     formData.append("userProfileName", name);
     formData.append("userProfileId", data.id);
     formData.append("userId", data.userId);
@@ -45,8 +49,6 @@ export default function ManageProfileModal({ onClose, data }) {
       .unwrap()
       .then(() => onClose(false));
   };
-  const defaultImage =
-    "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
   const userData = useSelector((state) => {
     return state?.user?.data?.allUserProfile;
   });
@@ -60,7 +62,7 @@ export default function ManageProfileModal({ onClose, data }) {
             <hr />
             <div className="flex gap-5 group  h-24 w-24 md:h-40 md:w-40">
               {data.isKid && (
-                <div className="text-white bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold translate-x-16 ml-1 translate-y-20 text-xs absolute  z-20  ">
+                <div className=" bg-gradient-to-br from-red-500 to-purple-700 text-transparent bg-clip-text font-extrabold translate-x-16 ml-1 translate-y-20 text-xs absolute  z-20 md:translate-y-32 md:translate-x-24 md:text-2xl md:mx-2">
                   kids
                 </div>
               )}
@@ -98,7 +100,6 @@ export default function ManageProfileModal({ onClose, data }) {
             <input
               type="file"
               className="hidden"
-              accept="png,jpg"
               ref={inputEl}
               onChange={(e) => {
                 if (e.target.files[0]) {
@@ -116,8 +117,10 @@ export default function ManageProfileModal({ onClose, data }) {
                 Save
               </div>
               <div
-                onClick={() => onClose(false)}
-                // onClick={()=>console.log(error)}
+                onClick={() => {
+                  dispatch(resetError());
+                  return onClose(false);
+                }}
                 className="text-gray-500 border border-gray-500 p-1 pr-3 pl-3 hover:text-white hover:border-white cursor-pointer md:text-2xl font-medium md:pl-9 md:pr-9 md:p-3"
               >
                 Cancel

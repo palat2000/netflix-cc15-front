@@ -1,11 +1,12 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { fetchAllContent } from "../store/slice/allContentSlice";
-// import Swal from "sweetalert2";
-// import axios from "../config/axios";
-// import MainTrailer from "../components/Browse/MainTrailer";
-// import NavbarAdult from "../components/Browse/NavbarAdult";
-// import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchAllContent } from "../store/slice/allContentSlice";
+import Swal from "sweetalert2";
+import axios from "../config/axios";
+import MainTrailer from "../components/Browse/MainTrailer";
+import NavbarAdult from "../components/Browse/NavbarAdult";
+import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
+import LoadingPage from "./LoadingPage";
 
 function TVShowsPage() {
   // const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function TVShowsPage() {
   //   dispatch(fetchAllContent());
   // }, []);
 
-  // if (loading) return <h1>Loading...</h1>;
+  if (loading) return <LoadingPage />;
 
   return <div>TVShowsPage</div>;
 }

@@ -9,6 +9,9 @@ import {
   getMe,
   checkEmailInDatabase,
   chooseUserProfile,
+  getAllUserProfile,
+  getMeProfile,
+  paymentSuccess,
 } from "../utils/userApi";
 
 import { useNavigate } from "react-router-dom";
@@ -17,8 +20,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
   error: null,
-  loading: false,
-  data: {},
+  loading: true,
+  data: { user: null, userProfile: null, allUserProfile: [] },
 };
 
 export const registerAction = createAsyncThunk(
@@ -36,6 +39,7 @@ export const registerAction = createAsyncThunk(
 export const loginAction = createAsyncThunk("auth/login", async (input) => {
   try {
     let res = await loginUser(input);
+    console.log(res);
     return res;
   } catch (error) {
     throw error.response.data;
@@ -45,6 +49,7 @@ export const editProfileAction = createAsyncThunk(
   "auth/edit",
   async (input) => {
     try {
+      console.log(input);
       const res = await editUserProfile(input);
       console.log(res);
       return res;
@@ -61,6 +66,8 @@ export const createProfileAction = createAsyncThunk(
       console.log(res);
       return res;
     } catch (error) {
+      // throw error.response.data;
+      // return thunkAPI.rejectWithValue(error.response.data)
       throw error.response.data;
     }
   }
@@ -78,7 +85,7 @@ export const deleteUserProfileAction = createAsyncThunk(
   }
 );
 export const chooseUserProfileAction = createAsyncThunk(
-  "auth/profile",
+  "user/profile",
   async (input) => {
     try {
       const res = await chooseUserProfile(input);
@@ -91,8 +98,13 @@ export const chooseUserProfileAction = createAsyncThunk(
 );
 
 export const getMeAction = createAsyncThunk("auth/me", async () => {
-  const res = await getMe();
-  return res;
+  try {
+    const res = await getMe();
+    console.log(res);
+    return res;
+  } catch (error) {
+    throw error.response.data;
+  }
 });
 
 export const checkEmailInDatabaseAction = createAsyncThunk(
@@ -108,11 +120,54 @@ export const checkEmailInDatabaseAction = createAsyncThunk(
   }
 );
 
+export const getAllUserProfileAction = createAsyncThunk(
+  "user/getProfile",
+  async () => {
+    try {
+      const response = await getAllUserProfile();
+      return response;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const getMeProfileAction = createAsyncThunk("user/me", async () => {
+  try {
+    const responseUser = await getMe();
+    const responseProfile = await getMeProfile();
+    const responseAllUserProfile = await getAllUserProfile();
+    return { ...responseUser, ...responseProfile, ...responseAllUserProfile };
+  } catch (error) {
+    throw error.response.data;
+  }
+});
+
+export const paymentSuccessAction = createAsyncThunk(
+  "payment/success",
+  async (sessionId) => {
+    try {
+      const response = await paymentSuccess(sessionId);
+      return response;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     resetState: (state) => {
+      state.error = null;
+      state.data = { user: null, userProfile: null, allUserProfile: [] };
+      state.loading = false;
+    },
+    toggleLoading: (state) => {
+      state.loading = !state.loading;
+    },
+    resetError: (state) => {
       state.error = null;
     },
   },
@@ -120,7 +175,7 @@ export const authSlice = createSlice({
     builder
       .addCase(registerAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.data.user = action.payload.user;
       })
       .addCase(registerAction.pending, (state, action) => {
         state.error = null;
@@ -132,18 +187,20 @@ export const authSlice = createSlice({
       })
       .addCase(loginAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload.user;
+        state.data.user = action.payload.user;
       })
       .addCase(loginAction.pending, (state, action) => {
         state.error = null;
         state.loading = true;
       })
       .addCase(loginAction.rejected, (state, action) => {
-        state.error = action.error;
+        // state.error = action.error;
+
         state.loading = false;
       })
-      .addCase(editProfileAction.fulfilled, (state, acstion) => {
+      .addCase(editProfileAction.fulfilled, (state, action) => {
         // console.log(current(state))
+        state.loading = false;
         const idx = state.data.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
         );
@@ -155,24 +212,22 @@ export const authSlice = createSlice({
       })
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
-        state.data = action.payload;
+        // state.data = action.payload;
         // console.log(state)
         // console.log(action.error.message)
       })
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
         state.loading = true;
-        state.data = {};
       })
       .addCase(getMeAction.fulfilled, (state, action) => {
         state.error = null;
         state.loading = false;
-        state.data = action.payload.user;
+        state.data.user = action.payload.user;
       })
       .addCase(getMeAction.rejected, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.data = {};
       })
       .addCase(deleteUserProfileAction.fulfilled, (state, action) => {
         state.data.allUserProfile = state.data.allUserProfile.filter(
@@ -180,7 +235,7 @@ export const authSlice = createSlice({
         );
         console.log(action);
       })
-      .addCase(deleteUserProfileAction.rejected, (state, action) => { })
+      .addCase(deleteUserProfileAction.rejected, (state, action) => {})
       .addCase(createProfileAction.pending, (state, action) => {
         state.loading = true;
       })
@@ -192,6 +247,8 @@ export const authSlice = createSlice({
         ];
       })
       .addCase(createProfileAction.rejected, (state, action) => {
+        console.log("reject");
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(chooseUserProfileAction.pending, (state, action) => {
@@ -199,6 +256,7 @@ export const authSlice = createSlice({
       })
       .addCase(chooseUserProfileAction.fulfilled, (state, action) => {
         // state.data = action.payload
+        state.data.userProfile = action.payload.userProfile;
         console.log(action);
         console.log(current(state));
       })
@@ -213,8 +271,35 @@ export const authSlice = createSlice({
       .addCase(checkEmailInDatabaseAction.rejected, (state, action) => {
         state.error = action.error;
         state.loading = false;
+      })
+      .addCase(getAllUserProfileAction.pending, (state, action) => {})
+      .addCase(getAllUserProfileAction.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(getAllUserProfileAction.fulfilled, (state, action) => {
+        state.data.allUserProfile = action.payload.allUserProfile;
+      })
+      .addCase(getMeProfileAction.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+        state.data.userProfile = action.payload.userProfile;
+        state.data.allUserProfile = action.payload.allUserProfile;
+        state.loading = false;
+      })
+      .addCase(getMeProfileAction.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getMeProfileAction.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(paymentSuccessAction.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+        state.data.allUserProfile = action.payload.allUserProfile;
+      })
+      .addCase(paymentSuccessAction.rejected, (state, action) => {
+        state.error = action.error.message;
       });
   },
 });
-export const { resetState } = authSlice.actions;
+export const { resetState, toggleLoading, resetError } = authSlice.actions;
 export default authSlice.reducer;

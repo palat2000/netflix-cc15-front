@@ -30,7 +30,7 @@ export const deleteUserProfile = async (param) => {
 };
 export const chooseUserProfile = async (body) => {
   console.log("sdsdsdsdsdsdsdsds", body);
-  const res = await axios.post(`/auth/profile`, body);
+  const res = await axios.post(`/user/choose-profile`, body);
   // console.log("asdasd",res.data)
   return res.data;
 };
@@ -41,7 +41,21 @@ export const getMe = async () => {
 };
 
 export const checkEmailInDatabase = async (body) => {
-    const res = await axios.post("/auth/checkemail",body)
-    return res.data
+  const res = await axios.post("/auth/checkemail", body);
+  return res.data;
+};
 
-}
+export const getAllUserProfile = async () => {
+  const res = await axios.get("/user/allUserProfile");
+  return res.data;
+};
+
+export const getMeProfile = async () => {
+  const res = await axios.get("/user/me");
+  return res.data;
+};
+
+export const paymentSuccess = async (sessionId) => {
+  const res = await axios.post(`/payment/success-subscription/${sessionId}`);
+  return res.data;
+};

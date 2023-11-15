@@ -1,23 +1,36 @@
 import { FaPlusCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ManageProfileCreateProfileModal from "../pages/ManageProfileCreateProfileModal";
-import { chooseUserProfileAction } from "../store/slice/authSlice";
+import {
+  chooseUserProfileAction,
+  getMeAction,
+  getMeProfileAction,
+} from "../store/slice/authSlice";
 import { addChooseProfileAccessToken } from "../utils/local-storage";
+import { getMe } from "../store/utils/userApi";
 
 export default function WhoIsWatching() {
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [modalData, setModalData] = useState(null);
   const dispatch = useDispatch();
+  const [allprofileData, setAllProfileData] = useState({});
+
   const user = useSelector((state) => {
     return state?.user;
   });
+  console.log("🚀 ~ file: WhoIsWatching.jsx:30 ~ user ~ user:", user);
+
   const navigate = useNavigate();
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const userData = user?.data?.allUserProfile;
+  console.log(
+    "🚀 ~ file: WhoIsWatching.jsx:21 ~ WhoIsWatching ~ userData:",
+    userData
+  );
 
   const handleChooseProfile = (id) => {
     dispatch(chooseUserProfileAction(id))
@@ -27,6 +40,7 @@ export default function WhoIsWatching() {
         navigate("/browse");
       });
   };
+
   return (
     <div className="flex flex-col bg-black items-center h-full p-10 gap-5 absolute w-full justify-center ">
       <div className="text-white text-2xl md:text-6xl m-5">
@@ -44,7 +58,7 @@ export default function WhoIsWatching() {
             >
               <div className="cursor-pointer  flex flex-col items-center p-1 gap-1 group">
                 {data.isKid && (
-                  <div className="text-white bg-gradient-to-br from-red-300 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-16 md:text-2xl md:translate-x-12 md:translate-y-32">
+                  <div className=" bg-gradient-to-br from-red-300 to-purple-700 text-transparent bg-clip-text font-extrabold  text-xs absolute translate-x-6 z-20 translate-y-16 md:text-2xl md:translate-x-12 md:translate-y-32">
                     kids
                   </div>
                 )}
@@ -67,6 +81,7 @@ export default function WhoIsWatching() {
         {userData?.length < 5 && (
           <div
             onClick={() => {
+              setModalData(userData);
               return setIsOpenModalCreate(!isOpenModalCreate);
             }}
             className="cursor-pointer  flex flex-col items-center p-1 translate-y-2 rounded-md group md:translate-y-2 "
@@ -82,6 +97,7 @@ export default function WhoIsWatching() {
         {isOpenModalCreate && (
           <div>
             <ManageProfileCreateProfileModal
+              isOpenModalCreate={isOpenModalCreate}
               onClose={setIsOpenModalCreate}
               data={modalData}
             />
