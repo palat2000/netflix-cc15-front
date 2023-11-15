@@ -1,36 +1,39 @@
 import { useEffect } from "react";
-import axios from "../config/axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import HeaderAuthPage from "../components/header/HeaderAuthPage";
+import { useDispatch, useSelector } from "react-redux";
+import { paymentSuccessAction } from "../store/slice/authSlice";
 
 function SuccessPage() {
+  const { error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     const sessionId = query.get("session_id");
-    const subscription = async (sessionId) => {
-      try {
-        await axios.post(`/payment/success-subscription/${sessionId}`);
-        Swal.fire({
-          title: "Payment successful",
-          text: "Subscription success",
-          icon: "success",
-          confirmButtonText: "close",
-        });
-      } catch (err) {
-        Swal.fire({
-          title: "Error",
-          text: err.message,
-          icon: "error",
-          confirmButtonText: "Close",
-        });
-      }
-    };
     if (query.get("success") === "true") {
-      subscription(sessionId);
+      dispatch(paymentSuccessAction(sessionId)).then((payload) => {
+        if (payload.type === "payment/success/rejected") {
+          Swal.fire({
+            title: "Error",
+            text: error,
+            icon: "error",
+            confirmButtonText: "Close",
+          });
+        } else if (payload.type === "payment/success/fulfilled") {
+          Swal.fire({
+            title: "Payment successful",
+            text: "Subscription success",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
+        }
+      });
     }
   }, []);
+
   return (
     <div className="h-full">
       <HeaderAuthPage />
