@@ -25,7 +25,6 @@ function LoginPage() {
     return state.user;
   });
 
-
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data))
       .unwrap()

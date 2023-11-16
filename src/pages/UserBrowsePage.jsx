@@ -68,7 +68,7 @@ function UserBrowsePage() {
     }
   }, [movie, randomMovie]);
 
-  // if (loading) return <LoadingPage />;
+  if (loading) return <LoadingPage />;
 
   return (
     <div className="bg-black">
