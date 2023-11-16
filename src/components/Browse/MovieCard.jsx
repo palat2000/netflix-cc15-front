@@ -14,10 +14,12 @@ import LikeFeatureButton from "../../feature/LikeFeatureButton";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
-  const likeHistory = useSelector(store => store?.content?.data?.movie?.likeHistory)
-  console.log(likeHistory)
-  const [isLike, setIsLike] = useState(likeHistory)
-  const dispatch = useDispatch()
+  const likeHistory = useSelector(
+    (store) => store?.content?.data?.movie?.likeHistory
+  );
+  console.log(likeHistory);
+  const [isLike, setIsLike] = useState(likeHistory);
+  const dispatch = useDispatch();
 
   const hoverStart = () => {
     setVisible(true);
@@ -26,6 +28,15 @@ export default function MovieCard({ movie }) {
   const hoverEnd = () => {
     setVisible(false);
   };
+
+  // const handleLike = async () => {
+  //   try {
+  //     const res = await axios.patch("/user-browse/like", { movieId: movie.id });
+  //     setIsLike(res.data.likeData);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const [isAddToMyList, setIsAddToMyList] = useState(false);
 
@@ -42,18 +53,25 @@ export default function MovieCard({ movie }) {
     }
   };
 
+  useEffect(() => {
+    if (visible) {
+      dispatch(fetchContentAction(movie.id));
+    } else {
+      dispatch(setVideoId(null));
+    }
+  }, [visible]);
+
   return (
     <motion.div
       whileHover={{
         scale: 2,
         // transitionDelay: "0.7s",
         transitionDuration: "0.25s",
-        zIndex: visible ? 99999 : 1,
+        zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
       className="box w-fit absolute"
-      style={{ zIndex: 2 }}
     >
       <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit">
         {visible ? (
@@ -78,10 +96,7 @@ export default function MovieCard({ movie }) {
                     handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
-                  <LikeButton
-                    movieId={movie.id}
-                    customizeClass={""}
-                  />
+                  <LikeButton movieId={movie.id} customizeClass={""} />
                 </div>
                 <MoreInfoCircleButton customizeClass={" scale-75"} />
               </div>
