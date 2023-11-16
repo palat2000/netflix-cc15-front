@@ -136,7 +136,7 @@ export default function NavbarAdult() {
               <div className=" mx-2">
                 <NotificatioBell />
               </div>
-
+      
               <UserProfileMenu />
             </div>
           </div>
