@@ -2,9 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 
 import axios from "axios";
 import { useSelector } from "react-redux";
+import MyListCard from "../components/Browse/MyListCard";
 
 export default function SearchPage() {
-  // const [search, setSearch] = useState(null);
+  const movie = useSelector((state) => state.allContent.data);
+
   const [movies, setMovies] = useState(null);
   const search = useSelector((store) => store.search.search);
 
@@ -13,6 +15,7 @@ export default function SearchPage() {
     setMovies(res?.data?.searchMovieBytitle);
   }, []);
 
+  console.log(movie);
   useEffect(() => {
     if (search) {
       searchMovies(search);
@@ -28,16 +31,13 @@ export default function SearchPage() {
           <div className="text-[#808080]">more to explore:</div>
           <div className="text-[#ffffff] pl-2">{search}</div>
         </div>
-        <div className="grid grid-cols-6 gap-3  bg-fixed ">
+        <div className="grid grid-cols-6 gap-3 bg-fixed ">
           {movies &&
             movies?.map((vdo, i) => {
               return (
                 <div key={i}>
-                  <video
-                    className="rounded-md pb-8 pt-8 "
-                    src={vdo.trailer}
-                    alt="Mockup"
-                  />
+                  <MyListCard movie={vdo} />
+
                   <div className="text-white">{vdo.title}</div>
                 </div>
               );
