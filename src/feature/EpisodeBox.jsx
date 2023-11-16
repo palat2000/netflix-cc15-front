@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function EpisodeBox({ movie }) {
     const videoEpisode = useRef(null);
     const [videoDuration, setVideoDuration] = useState(null);
+    const recentWatchingEpisode = useSelector(store => store?.content?.data?.movie?.recentWatchingEpisode?.videoId)
+    console.log("🚀 ~ file: EpisodeBox.jsx:9 ~ EpisodeBox ~ recentWatchingEpisode:", recentWatchingEpisode)
+    console.log('first', movie)
+    const [isRecentWatching, setIsRecenetWatching] = useState(false)
+
 
     useEffect(() => {
         if (videoEpisode.current) {
@@ -12,11 +18,14 @@ export default function EpisodeBox({ movie }) {
                 setVideoDuration(isNaN(duration) ? null : duration);
             });
         }
+        if (recentWatchingEpisode === movie.id) {
+            setIsRecenetWatching(true)
+        }
     }, []);
 
     return (
         <Link to={`/watch/${movie?.id}`}>
-            <div className="border-b-[1px] border-neutral-600">
+            <div className={`border-b-[1px] border-neutral-700 rounded-[4px] ${isRecentWatching && "bg-neutral-800"}`}>
                 <div className="w-full flex items-center p-4 rounded-md">
                     <div className="text-neutral-400 text-2xl">{movie?.videoEpisodeNo}</div>
                     <div className="h-full w-[20%]">
