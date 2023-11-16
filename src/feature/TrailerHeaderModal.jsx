@@ -26,7 +26,7 @@ export default function TrailerHeaderModal({ movieId, setOpen }) {
         <div className="flex flex-col relative w-full h-[454.5px] overflow-hidden">
             <TrailerLayout movieId={movieId} setOpen={setOpen} />
             <Link onClick={() => dispatch(closeModal())} to={`/watch/${recentVideoId}`}>
-                {!play && <img className='object-cover' src={movieImage} />}
+                {!play && <img className='w-full h-full object-cover' src={movieImage} />}
                 {play && <video ref={trailerPlayer} preload='true' poster={movieImage} className="overflow-hidden" width="100%" height="100%" muted={trailerIsMute} autoPlay>
                     <source src={movieTrailer}></source>
                 </video>}

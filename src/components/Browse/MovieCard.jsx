@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
@@ -7,10 +7,16 @@ import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContentAction } from "../../store/slice/contentSlice";
+import { setVideoId } from "../../store/slice/watchPageSlice";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
-  // console.log('djkashd', movie)
+  const likeHistory = useSelector(store => store?.content?.data?.movie?.likeHistory)
+  console.log(likeHistory)
+  // const [isLike, setIsLike] = useState(likeHistory)
+  const dispatch = useDispatch()
 
   const hoverStart = () => {
     setVisible(true);
@@ -20,16 +26,14 @@ export default function MovieCard({ movie }) {
     setVisible(false);
   };
 
-  const [isLike, setIsLike] = useState(false);
-
-  const handleLike = async () => {
-    try {
-      const res = await axios.patch("/user-browse/like", { movieId: movie.id });
-      setIsLike(res.data.likeData);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleLike = async () => {
+  //   try {
+  //     const res = await axios.patch("/user-browse/like", { movieId: movie.id });
+  //     setIsLike(res.data.likeData);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const [isAddToplayList, setIsAddToPlayList] = useState(false);
 
@@ -41,6 +45,17 @@ export default function MovieCard({ movie }) {
       console.log(err);
     }
   };
+
+  useEffect(
+    () => {
+      if (visible) {
+        dispatch(fetchContentAction(movie.id))
+      } else {
+        dispatch(setVideoId(null))
+      }
+    }, [visible]
+  )
+
   return (
     <motion.div
       whileHover={{
@@ -76,8 +91,9 @@ export default function MovieCard({ movie }) {
                     customizeClass={"scale-75"}
                   />
                   <LikeButton
-                    handleLike={handleLike}
-                    isLike={isLike}
+                    // handleLike={handleLike}
+                    // isLike={isLike}
+                    movieId={movie.id}
                     customizeClass={""}
                   />
                 </div>
