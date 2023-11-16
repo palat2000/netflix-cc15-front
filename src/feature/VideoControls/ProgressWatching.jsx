@@ -5,7 +5,6 @@ export default function ProgressWatching({ watchPlayer }) {
     const videoDuration = useSelector(store => store?.watchPage?.videoData?.videoDuration)
 
     const progressValue = (recentWatching / videoDuration) * 100
-    console.log("🚀 ~ file: ProgressBuffer.jsx:9 ~ ProgressBuffer ~ progressValue:", progressValue)
 
     const widthBar = {
         width: `${progressValue}%`

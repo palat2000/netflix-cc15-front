@@ -26,75 +26,75 @@ export default function UserProfileMenu() {
           <img
             src={profilePic1}
             alt="product"
-            width={15}
+            width={26}
             className="rounded-sm mr-1 "
           ></img>
         </button>
         {isHovered && (
           <>
-            <div className="absolute dropdown-content bg-black bg-opacity-50 py-2 right-0">
-              <div className="flex justify-center py-2">
+            <div className="absolute dropdown-content bg-black bg-opacity-50 py-1 right-10 border border-zinc-300">
+              <div className="flex justify-center py-2 px-4 ">
                 <div className="flex">
                   <div className="flex flex-col mx-2 ">
-                    <a href="" className="flex hover:text-stone-400 my-1 ">
+                    <a href="" className="flex hover:text-stone-400 my-2 ">
                       <img
                         src={profilePic1}
                         alt="product"
-                        width={15}
-                        className="rounded-sm mr-1"
+                        width={26}
+                        className="rounded-sm mr-2"
                       ></img>
                       Account1
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={profilePic2}
                         alt="product"
-                        width={15}
-                        className="rounded-sm mr-1"
+                        width={26}
+                        className="rounded-sm mr-2"
                       ></img>
                       Account2
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={profilePic3}
                         alt="product"
-                        width={15}
-                        className="rounded-sm mr-1"
+                        width={26}
+                        className="rounded-sm mr-2"
                       ></img>
                       Account3
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={profilePic4}
                         alt="product"
-                        width={15}
-                        className="rounded-sm mr-1"
+                        width={26}
+                        className="rounded-sm mr-2"
                       ></img>
                       Account4
                     </a>
 
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={profilePic5}
                         alt="product"
-                        width={15}
-                        className="rounded-sm mr-1"
+                        width={26}
+                        className="rounded-sm mr-2"
                       ></img>
                       Kid Account
                     </a>
 
                     <a
                       href="/manage-profile"
-                      className=" hover:text-stone-400 my-1"
+                      className=" hover:text-stone-400 my-2"
                     >
                       Manage Profiles
                     </a>
 
-                    <a href="" className=" hover:text-stone-400 my-1">
+                    <a href="" className=" hover:text-stone-400 my-2">
                       Account
                     </a>
 
-                    <a href="" className=" hover:text-stone-400 my-1">
+                    <a href="" className=" hover:text-stone-400 my-2">
                       Sign Out of Netflex
                     </a>
                   </div>
