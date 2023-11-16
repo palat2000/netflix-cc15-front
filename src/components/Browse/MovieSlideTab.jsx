@@ -16,6 +16,9 @@ export default function MovieSlideTab({ movie, title }) {
   return (
     <>
       <div className="text-white">{title}</div>
+      <div className="">
+        </div>
+
       <Swiper
         slidesPerView={6}
         spaceBetween={5}
@@ -27,14 +30,15 @@ export default function MovieSlideTab({ movie, title }) {
         navigation={true}
         // effect="fade"
         modules={[FreeMode, Navigation]}
-        className="overflow-visible overflow-x-clip mr-10 my-10 bg-black"
+        className="overflow-visible overflow-x-clip mr-10 my-10 bg-black  "
       >
         {movie &&
           movie?.map((m, i) => {
             return (
-              <SwiperSlide key={i} className="pt-10 pb-10 my-10">
+              <SwiperSlide key={i} className="pt-14 pb-5 my-">
                 <MovieCard movie={m} />
               </SwiperSlide>
+
             );
           })}
       </Swiper>

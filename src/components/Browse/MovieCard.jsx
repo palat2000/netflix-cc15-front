@@ -50,9 +50,9 @@ export default function MovieCard({ movie }) {
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
-      className="box w-fit absolute"
+      className="box w-fit absolute bg-black "
     >
-      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit">
+      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-11">
         {visible ? (
           <>
             <video
@@ -80,7 +80,10 @@ export default function MovieCard({ movie }) {
                     customizeClass={""}
                   />
                 </div>
-                <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
+                <MoreInfoCircleButton
+                  movieId={movie.id}
+                  customizeClass={" scale-75"}
+                />
               </div>
             </div>
             <div>
