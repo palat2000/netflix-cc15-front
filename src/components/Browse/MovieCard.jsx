@@ -18,7 +18,7 @@ export default function MovieCard({ movie }) {
     (store) => store?.content?.data?.movie?.likeHistory
   );
   console.log(likeHistory);
-  // const [isLike, setIsLike] = useState(likeHistory)
+  const [isLike, setIsLike] = useState(likeHistory);
   const dispatch = useDispatch();
 
   const hoverStart = () => {
@@ -92,16 +92,11 @@ export default function MovieCard({ movie }) {
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
+                    movieId={movie.id}
                     handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
-                  {/* <LikeButton
-                    // handleLike={handleLike}
-                    // isLike={isLike}
-                    movieId={movie.id}
-                    customizeClass={""}
-                  /> */}
-                  <LikeFeatureButton movieId={movie.id} />
+                  <LikeButton movieId={movie.id} customizeClass={""} />
                 </div>
                 <MoreInfoCircleButton customizeClass={" scale-75"} />
               </div>
