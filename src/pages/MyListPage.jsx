@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import axios from "axios";
+import MyListCard from "../components/Browse/MyListCard";
 
 function MyListPage() {
   const [myList, setMyList] = useState(null);
@@ -21,23 +22,11 @@ function MyListPage() {
 
   return (
     <>
-      <div className="bg-black h-full pr-10 pl-10 pb-8 pt-8">
-        <div className="grid grid-cols-6 gap-3  bg-fixed ">
-          {myList &&
-            myList?.map((vdo, i) => {
-              console.log(vdo, "VDO AI SARD");
-              return (
-                <div key={i}>
-                  <video
-                    className="rounded-md pb-8 pt-8 "
-                    src={vdo.movie.trailer}
-                    alt="Mockup"
-                  />
-
-                  <div className="text-white">{vdo.movie.title}</div>
-                </div>
-              );
-            })}
+      <div className="bg-black h-full pr-10 pb-8 pt-40">
+        <div className="grid grid-cols-6 gap-3  bg-fixed mx-20 ">
+          {myList?.map((vdo) => {
+            return <MyListCard key={vdo.movie.id} movie={vdo.movie} />;
+          })}
         </div>
       </div>
     </>
