@@ -79,25 +79,25 @@ export default function NavbarAdult() {
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
           />
           <div
-            className="hover:text-gray-400 mx-2 ml-10"
+            className="hover:text-gray-400 mx-2 ml-10 cursor-pointer"
             onClick={() => goToPage("home")}
           >
             Home
           </div>
           <div
-            className="hover:text-gray-400 mx-2"
+            className="hover:text-gray-400 mx-2 cursor-pointer"
             onClick={() => goToPage("tv-shows")}
           >
             TV Shows
           </div>
           <div
-            className="hover:text-gray-400 mx-2"
+            className="hover:text-gray-400 mx-2 cursor-pointer"
             onClick={() => goToPage("movies")}
           >
             Movies
           </div>
           <div
-            className="hover:text-gray-400 mx-2"
+            className="hover:text-gray-400 mx-2 cursor-pointer"
             onClick={() => goToPage("my-list")}
           >
             My List
@@ -115,21 +115,21 @@ export default function NavbarAdult() {
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               style={{ color: "#ffffff" }}
-              className="ml-2"
+              className="ml-2 cursor-pointer"
             />
             {isSearch && (
               <input
                 ref={ref}
                 value={search}
                 placeholder="Search"
-                className="w-full text-white outline-none opacity-50 bg-black"
+                className="w-full text-white outline-none opacity-50 bg-black cursor-pointer"
                 onChange={handleOnChange}
               ></input>
             )}
           </div>
           <div className=" hidden md:block ">
             <div className="flex items-center">
-              <div className="hover:text-gray-400 text-white ml-2">Kids</div>
+              <div className="hover:text-gray-400 text-white ml-2 cursor-pointer">Kids</div>
               <NotificatioBell />
 
               <UserProfileMenu />
