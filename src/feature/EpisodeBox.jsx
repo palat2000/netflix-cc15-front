@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import HoverPlayButton from "../components/button/HoverPlayButton";
+import HoverPlayButton from "../components/Button/HoverPlayButton";
 
 export default function EpisodeBox({ movie }) {
     const videoEpisode = useRef(null);

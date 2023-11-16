@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom";
 import {
   endWatchingAction,
   setRecentWatching,
+  setVideoId,
 } from "../store/slice/watchPageSlice";
 import LoadingPage from "./LoadingPage";
 import ContentModalDetail from "../feature/ContentModalDetail";
@@ -44,6 +45,7 @@ function UserBrowsePage() {
   useEffect(() => {
     console.log('fetch content')
     dispatch(fetchAllContent());
+    dispatch(setVideoId(null))
     if (location.pathname !== recentWatch && haveRecentVideoData) {
       if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
         dispatch(

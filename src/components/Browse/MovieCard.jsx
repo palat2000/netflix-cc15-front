@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
-import AddToListButton from "../button/AddToListButton";
+import AddToListButton from "../Button/AddToListButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
-import LikeButton from "../button/LikeButton";
+import LikeButton from "../Button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContentAction } from "../../store/slice/contentSlice";
+import { setVideoId } from "../../store/slice/watchPageSlice";
+import LikeFeatureButton from "../../feature/LikeFeatureButton";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
+  const likeHistory = useSelector(
+    (store) => store?.content?.data?.movie?.likeHistory
+  );
+  console.log(likeHistory);
+  // const [isLike, setIsLike] = useState(likeHistory)
+  const dispatch = useDispatch();
 
   const hoverStart = () => {
     setVisible(true);
@@ -19,16 +29,37 @@ export default function MovieCard({ movie }) {
     setVisible(false);
   };
 
-  const [isLike, setIsLike] = useState(false);
+  // const handleLike = async () => {
+  //   try {
+  //     const res = await axios.patch("/user-browse/like", { movieId: movie.id });
+  //     setIsLike(res.data.likeData);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const handleLike = async () => {
+  const [isAddToMyList, setIsAddToMyList] = useState(false);
+
+  const handleAddToMyList = async () => {
     try {
-      const res = await axios.patch("/user-browse/like", { movieId: movie.id });
-      setIsLike(res.data.likeData);
+      const res = await axios.post("/user-browse/mylist", {
+        movieId: movie.id,
+      });
+
+      console.log("handleAddToMyList res =", res);
+      setIsAddToMyList(res.data.myList);
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (visible) {
+      dispatch(fetchContentAction(movie.id));
+    } else {
+      dispatch(setVideoId(null));
+    }
+  }, [visible]);
 
   return (
     <motion.div
@@ -36,12 +67,11 @@ export default function MovieCard({ movie }) {
         scale: 2,
         // transitionDelay: "0.7s",
         transitionDuration: "0.25s",
-        zIndex: visible ? 99999 : 1,
+        zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
       className="box w-fit absolute"
-      style={{ zIndex: 2 }}
     >
       <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit">
         {visible ? (
@@ -61,12 +91,17 @@ export default function MovieCard({ movie }) {
               <div className="flex justify-between">
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
-                  <AddToListButton customizeClass={"scale-75"} />
-                  <LikeButton
-                    handleLike={handleLike}
-                    isLike={isLike}
-                    customizeClass={""}
+                  <AddToListButton
+                    handleClick={handleAddToMyList}
+                    customizeClass={"scale-75"}
                   />
+                  {/* <LikeButton
+                    // handleLike={handleLike}
+                    // isLike={isLike}
+                    movieId={movie.id}
+                    customizeClass={""}
+                  /> */}
+                  <LikeFeatureButton movieId={movie.id} />
                 </div>
                 <MoreInfoCircleButton customizeClass={" scale-75"} />
               </div>
