@@ -1,0 +1,50 @@
+input[type="range"] {
+      /* Remove default styles */
+      -webkit-appearance: none; 
+      -moz-apperance: none;
+      appearance: none;
+      
+      /* Set the track color */
+      background-color: transparent;
+      height: 10px;
+      border-radius: 5px;
+    }
+
+    /* Style the thumb (handle) */
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: -2px 8px 45px 0px rgba(0,0,0,1);
+-webkit-box-shadow: -2px 8px 45px 0px rgba(0,0,0,1);
+-moz-box-shadow: -2px 8px 45px 0px rgba(0,0,0,1);
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background-color: red;
+        transition-duration: 0.1s;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border: 2px solid #ddd;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    /* Adjust styles for Firefox */
+    input[type="range"]::-moz-range-track {
+      background-color: red;
+      height: 10px;
+      border-radius: 5px;
+      border: none;
+    }

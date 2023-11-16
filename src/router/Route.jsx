@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useLocation,
+} from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import UserBrowsePage from "../pages/UserBrowsePage";
 import WatchPage from "../pages/WatchPage";
@@ -10,16 +14,59 @@ import SuccessPage from "../pages/SuccessPage";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ManageProfiles from "../pages/ManageProfilesPage";
-import Authenticate from "../features/auth/register/Authenticate";
-import RedirectIfAuthenticated from "../features/auth/register/RedirectIfAuthenticated";
+import YourAccount from "../pages/YourAccountPage";
+import WhoIsWatching from "../pages/WhoIsWatching";
+import TVShowsPage from "../pages/TVShowsPage";
+import LoadingPage from "../pages/LoadingPage";
+import LayoutBrowse from "../layout/LayoutBrowse";
+import { endWatchingAction } from "../store/slice/watchPageSlice";
+import { useDispatch } from "react-redux";
+import LayoutStandAlone from "../layout/LayoutStandAlone";
+import RedirectIfAuthenticated from "../features/auth/RedirectIfAuthenticated";
+import Authenticated from "../features/auth/Authenticated";
+import RedirectIfNotChooseProfile from "../features/auth/RedirectIfNotChooseProfile";
+import RedirectIfNotSubscribe from "../features/auth/RedirectIfNotSubscribe";
+import MoviesPage from "../pages/MoviesPage";
+import MyListPage from "../pages/MyListPage";
+import KidsPage from "../pages/KidsPage";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: (
-      <Authenticate>
+      <RedirectIfAuthenticated>
+        <HomePage />
+      </RedirectIfAuthenticated>
+    ),
+  },
+  {
+    path: "",
+    element: (
+      <Authenticated>
         <Layout />
-      </Authenticate>
+      </Authenticated>
+    ),
+    children: [
+      {
+        path: "success",
+        element: <SuccessPage />,
+      },
+      {
+        path: "package",
+        element: <PackagePage />,
+      },
+    ],
+  },
+  {
+    path: "",
+    element: (
+      <Authenticated>
+        <RedirectIfNotSubscribe>
+          <RedirectIfNotChooseProfile>
+            <LayoutBrowse />
+          </RedirectIfNotChooseProfile>
+        </RedirectIfNotSubscribe>
+      </Authenticated>
     ),
     children: [
       {
@@ -27,24 +74,32 @@ const router = createBrowserRouter([
         element: <UserBrowsePage />,
       },
       {
-        path: "success",
-        element: <SuccessPage />,
-      },
-      {
-        path: "title/:movieId",
-        element: <GuestBrowsePage />,
-      },
-      {
         path: "search",
         element: <SearchPage />,
+      },
+      {
+        path: "tv-shows",
+        element: <TVShowsPage />,
+      },
+      {
+        path: "movies",
+        element: <MoviesPage />,
+      },
+      {
+        path: "my-list",
+        element: <MyListPage />,
+      },
+      {
+        path: "kids",
+        element: <KidsPage />,
       },
     ],
   },
   {
-    path: "auth",
+    path: "",
     element: (
       <RedirectIfAuthenticated>
-        <Layout />
+        <LayoutStandAlone />
       </RedirectIfAuthenticated>
     ),
     children: [
@@ -57,22 +112,42 @@ const router = createBrowserRouter([
         element: <SignUpPage />,
       },
       {
-        path: "package",
-        element: <PackagePage />,
+        path: "title/:movieId",
+        element: <GuestBrowsePage />,
       },
     ],
   },
   {
-    path: "home",
-    element: <HomePage />,
-  },
-  {
-    path: "watch/:movieId",
-    element: <WatchPage />,
-  },
-  {
-    path: "manage-profile",
-    element: <ManageProfiles />,
+    path: "",
+    element: (
+      <Authenticated>
+        <RedirectIfNotSubscribe>
+          <LayoutStandAlone />
+        </RedirectIfNotSubscribe>
+      </Authenticated>
+    ),
+    children: [
+      {
+        path: "watch/:videoId",
+        element: (
+          <RedirectIfNotChooseProfile>
+            <WatchPage />
+          </RedirectIfNotChooseProfile>
+        ),
+      },
+      {
+        path: "manage-profile",
+        element: <ManageProfiles />,
+      },
+      {
+        path: "choose-profile",
+        element: <WhoIsWatching />,
+      },
+      {
+        path: "your-account",
+        element: <YourAccount />,
+      },
+    ],
   },
 ]);
 

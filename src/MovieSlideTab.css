@@ -1,0 +1,14 @@
+.movie-slide-tab {
+  display: flex;
+  overflow-x: auto;
+}
+
+.movie-item {
+  width: 150px;
+  height: 200px;
+  transition: transform 0.4s;
+}
+
+.movie-item:hover {
+  transform: scale(1.2);
+}

@@ -1,22 +1,18 @@
-export default function MovieDetails() {
+import ButtonMainTrailerGroup from "./ButtonMainTrailerGroup";
+
+export default function MovieDetails({ movie }) {
   return (
     <div>
       <div>
-        <div className=" absolute z-10 text-white ml-10 bottom-2/4 md:box-content ">
-          <div className="static text-3xl font-extrabold ">
-            MovieName Longer
+        <div className=" absolute z-10 text-white ml-10 bottom-1/4  md:box-content">
+          <div className="static text-4xl font-extrabold ">{movie?.title}</div>
+          <div className="static text-base font-extralight pt-2 w-1/2 ">
+            {movie?.detail}
           </div>
-          <div className="absolute text-[10px] font-extralight pt-2">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum
-            magni error voluptatibus accusantium neque? Vitae aliquam quasi fuga
-            doloribus laborum nobis repellat atque officia consectetur
-            perspiciatis, iusto molestias. Ex, sunt? Lorem ipsum dolor sit amet
-            consectetur
+          <div className="sticky">
+            <ButtonMainTrailerGroup />
           </div>
         </div>
-        {/* <div className=" mx-10 ">
-          <ButtonMainTrailerGroup />
-        </div> */}
       </div>
     </div>
   );

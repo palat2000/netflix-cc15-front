@@ -1,13 +1,21 @@
 import ContentModalDetail from "./ContentModalDetail";
-import useContentModal from "./hook/useContentModal";
+import { useDispatch } from "react-redux";
+import { changStatusOpenModal, setMovieId } from "../store/slice/contentSlice";
+import { useEffect, useState } from "react";
 
 export default function ContentModal({ movieId, children }) {
-  const { isOpen, handleClickOpen } = useContentModal();
+  const dispatch = useDispatch();
+
+  const handleOnClick = () => {
+    dispatch(changStatusOpenModal(true));
+    dispatch(setMovieId(movieId));
+  };
 
   return (
     <>
-      <div onClick={handleClickOpen}>{children || "Open"}</div>
-      {isOpen && <ContentModalDetail movieId={movieId} />}
+      <div className="cursor-pointer" onClick={handleOnClick}>
+        {children || "Open"}
+      </div>
     </>
   );
 }

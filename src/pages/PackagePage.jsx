@@ -8,16 +8,26 @@ import { useState } from "react";
 import ButtonNetflix from "../features/logo&button/ButtonNetflix";
 import HeaderAuthPage from "../components/header/HeaderAuthPage";
 import Spinner from "../components/spinner/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { resumeSubscription } from "../store/slice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function PackagePage() {
+  const user = useSelector((store) => store.user.data.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const handleClick = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.post("/payment/create-checkout-session", {
-        lookup_key: "bill",
-      });
-      window.location.replace(res.data.url);
+      if (user.subscriptionId && new Date(user.expireDate) < new Date()) {
+        dispatch(resumeSubscription()).then(() => navigate("/choose-profile"));
+      } else {
+        const res = await axios.post("/payment/create-checkout-session", {
+          priceId: "price_1OBBJEHpiJPtdULK3EQvNKi8",
+        });
+        window.location.replace(res.data.url);
+      }
     } catch (err) {
       Swal.fire({
         title: "Error!",

@@ -36,5 +36,41 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
+
+.swiper-button-prev {
+  background-color: white;
+  background-color: black;
+  color: white;
+  opacity: 0.4;
+  left: 0;
+  top: -40px;
+  height: auto;
+  padding: 50px 20px;
+  position: absolute;
+  fill: black !important;
+  stroke: black !important;
+  border-top-right-radius: 5%;
+  border-bottom-right-radius: 5%;
+  z-index: 60;
+}
+
+.swiper-button-next {
+  background-color: white;
+  background-color: black;
+  color: white;
+  opacity: 0.5;
+  right: 0;
+  top: -40px;
+  height: auto;
+  padding: 50px 20px;
+  position: absolute;
+  fill: black !important;
+  stroke: black !important;
+  border-top-left-radius: 5%;
+  border-bottom-left-radius: 5%;
+  z-index: 60;
+}
+
+/* margin-top: calc(0px - (var(--swiper-navigation-size) / 1.8)); */
