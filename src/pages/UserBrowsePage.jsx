@@ -41,9 +41,8 @@ function UserBrowsePage() {
   }, [movie?.movies?.top10]);
 
   useEffect(() => {
-      dispatch(fetchAllContent());
+    dispatch(fetchAllContent());
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      
       if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
         dispatch(
           endWatchingAction({
@@ -71,10 +70,6 @@ function UserBrowsePage() {
 
   return (
     <div className="bg-black">
-      {/* <NavbarAdult setSearch={setSearch} /> */}
-      {/* <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  ">
-          TESTESTEST
-        </div> */}
       <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
       <div className="flex flex-col font-medium ml-10 ">

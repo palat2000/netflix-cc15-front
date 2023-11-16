@@ -7,9 +7,18 @@ import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
+import LikeFeatureButton from "../../feature/LikeFeatureButton";
+import { useSelector } from "react-redux";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
+
+  // const movieIsInMyListData = useSelector(
+  //   (state) => state?.content?.data?.movie?.inMyListHistory
+  // );
+  // const movieIsInLikeData = useSelector(
+  //   (state) => state?.content?.data?.movie?.likeHistory
+  // );
 
   const hoverStart = () => {
     setVisible(true);
@@ -30,22 +39,27 @@ export default function MovieCard({ movie }) {
     }
   };
 
-  const [isAddToplayList, setIsAddToPlayList] = useState(false);
+  const [isAddToMyList, setIsAddToMyList] = useState(false);
 
-  const handleAddToPlayList = async () => {
+  const handleAddToMyList = async () => {
     try {
-      const res = await axios.get("/user-browse/mylist", { movieId: movie.id });
-      setIsAddToPlayList(res.data.myList);
+      const res = await axios.post("/user-browse/mylist", {
+        movieId: movie.id,
+      });
+
+      console.log("handleAddToMyList res =", res);
+      setIsAddToMyList(res.data.myList);
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <motion.div
       whileHover={{
         scale: 1.5,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.25s",
+        transitionDuration: "0.1s",
         zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
@@ -71,16 +85,25 @@ export default function MovieCard({ movie }) {
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
-                    handleAddToPlayList={handleAddToPlayList}
+                    handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
+
+                  {/* <LikeFeatureButton
+                    movieId={movie.id}
+                    movieIsInLikeData={movieIsInLikeData}
+                  /> */}
+
                   <LikeButton
                     handleLike={handleLike}
                     isLike={isLike}
                     customizeClass={""}
                   />
                 </div>
-                <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
+                <MoreInfoCircleButton
+                  movieId={movie?.id}
+                  customizeClass={" scale-75"}
+                />
               </div>
             </div>
             <div>

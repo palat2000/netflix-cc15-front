@@ -7,9 +7,9 @@ export default function ContentModal({ movieId, children }) {
   const dispatch = useDispatch();
 
   const handleOnClick = () => {
-    dispatch(changStatusOpenModal(true))
-    dispatch(setMovieId(movieId))
-  }
+    dispatch(changStatusOpenModal(true));
+    dispatch(setMovieId(movieId));
+  };
 
   return (
     <>
