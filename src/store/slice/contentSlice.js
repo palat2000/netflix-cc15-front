@@ -3,6 +3,7 @@ import { getContentById } from "../utils/contentApi";
 
 const initialState = {
   modalIsOpen: false,
+  movieId: null,
   loading: false,
   trailerIsMute: false
 };
@@ -28,6 +29,9 @@ const contentSlice = createSlice({
     toggleMute: (state, action) => {
       state.trailerIsMute = !state.trailerIsMute
     },
+    setMovieId: (state, action) => {
+      state.movieId = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,7 +53,7 @@ const contentSlice = createSlice({
   }
 });
 
-export const { openModal, closeModal, setData, toggleMute, loadTrailer, changStatusOpenModal } = contentSlice.actions
+export const { openModal, closeModal, setData, toggleMute, loadTrailer, changStatusOpenModal, setMovieId } = contentSlice.actions
 const contentReducer = contentSlice.reducer
 export default contentReducer
 
