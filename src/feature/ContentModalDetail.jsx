@@ -11,7 +11,6 @@ export default function ContentModalDetail({ setOpen }) {
 
   const movieId = useSelector(store => store?.content?.movieId)
   const recentWatchingEpisode = useSelector(store => store?.content?.data?.movie?.recentWatchingEpisode?.videoId)
-  console.log("🚀 ~ file: ContentModalDetail.jsx:14 ~ ContentModalDetail ~ recentWatchingEpisode:", recentWatchingEpisode)
 
   useEffect(
     () => {
@@ -22,7 +21,6 @@ export default function ContentModalDetail({ setOpen }) {
   recentWatchingEpisode && dispatch(setVideoId(recentWatchingEpisode))
 
   const movieData = useSelector(state => state?.content?.data)
-  console.log("🚀 ~ file: ContentModalDetail.jsx:19 ~ ContentModalDetail ~ movieData:", movieData)
 
   const handleClickBackGround = () => {
     dispatch(changStatusOpenModal(false))

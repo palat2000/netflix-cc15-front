@@ -17,15 +17,12 @@ export default function NavbarAdult() {
 
   const [isSearch, setIsSearch] = useState(false);
   const handleOnChange = (e) => {
-    console.log(e.target.value.length);
 
     // setSearch(e)
     // if (search.length >= 1) {
-    //   console.log("kuyy")
     //   navigate("/search");
     // }
     // if (search.length < 1) {
-    //   console.log("here");
     //   navigate("/browse");
     // }
     if (e.target.value.length >= 1) {

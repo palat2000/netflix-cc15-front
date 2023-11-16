@@ -14,7 +14,6 @@ export default function TrailerHeaderModal({ movieId, setOpen }) {
     const [play, setPlay] = useState(false)
     const trailerPlayer = useRef(null)
 
-    console.log('oooooooooo', recentVideoId)
 
     function playTrailer() {
         setPlay(true)

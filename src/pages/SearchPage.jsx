@@ -66,7 +66,6 @@ export default function SearchPage() {
   const search = useSelector(store=>store.search.search)
 
   const searchMovies = useCallback(async (search) => {
-    console.log("aaaaa",search)
     const res = await axios.get(`/user-browse/search?q=${search}`);
     setMovies(res?.data?.searchMovieBytitle);
   }, []);
