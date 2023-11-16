@@ -32,8 +32,8 @@ export default function MovieSlideTab({ movie, title }) {
         {movie &&
           movie?.map((m, i) => {
             return (
-              <SwiperSlide key={i} className="pt-10 pb-10 my-10">
-                <MovieCard movie={m} />
+              <SwiperSlide key={i} className="pt-10 pb-10 my-20">
+                <MovieCard key={i} movie={m} />
               </SwiperSlide>
             );
           })}
