@@ -1,6 +1,6 @@
-import CloseButton from '../components/button/CloseButton';
-import MuteButton from '../components/button/MuteButton';
-import SoundOnButton from '../components/button/SoundOnButton';
+import CloseButton from '../components/Button/CloseButton';
+import MuteButton from '../components/Button/MuteButton';
+import SoundOnButton from '../components/Button/SoundOnButton';
 import { useSelector, useDispatch } from 'react-redux'
 import { changStatusOpenModal, toggleMute } from "../store/slice/contentSlice"
 import { setVideoId } from '../store/slice/watchPageSlice';

@@ -10,7 +10,7 @@ export default function MovieDetails({ movie }) {
             {movie?.detail}
           </div>
           <div className="sticky">
-            <ButtonMainTrailerGroup />
+            <ButtonMainTrailerGroup movie={movie} />
           </div>
         </div>
       </div>

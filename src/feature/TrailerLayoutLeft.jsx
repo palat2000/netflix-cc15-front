@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import PlayButton from "../components/button/PlayButton"
+import PlayButton from "../components/Button/PlayButton"
 import { useNavigate } from "react-router-dom"
 import MyListButton from "./MyListButton"
 import LikeFeatureButton from "./LikeFeatureButton"

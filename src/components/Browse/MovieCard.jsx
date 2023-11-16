@@ -2,14 +2,15 @@ import { Children, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
-import AddToListButton from "../button/AddToListButton";
+import AddToListButton from "../Button/AddToListButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
-import LikeButton from "../button/LikeButton";
+import LikeButton from "../Button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContentAction } from "../../store/slice/contentSlice";
 import { setVideoId } from "../../store/slice/watchPageSlice";
+import LikeFeatureButton from "../../feature/LikeFeatureButton";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
@@ -90,12 +91,13 @@ export default function MovieCard({ movie }) {
                     handleAddToPlayList={handleAddToPlayList}
                     customizeClass={"scale-75"}
                   />
-                  <LikeButton
+                  {/* <LikeButton
                     // handleLike={handleLike}
                     // isLike={isLike}
                     movieId={movie.id}
                     customizeClass={""}
-                  />
+                  /> */}
+                  <LikeFeatureButton movieId={movie.id} />
                 </div>
                 <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
               </div>
