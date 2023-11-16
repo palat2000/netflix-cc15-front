@@ -167,6 +167,32 @@ export const cancelSubscription = createAsyncThunk(
   }
 );
 
+export const resumeSubscription = createAsyncThunk(
+  "resume/subscription",
+  async () => {
+    try {
+      const response = await axios.patch("/payment/resume-subscription");
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const createSubscription = createAsyncThunk(
+  "create/subscription",
+  async () => {
+    try {
+      const response = await axios.post("/payment/create-subscription", {
+        priceId: "price_1OBBJEHpiJPtdULK3EQvNKi8",
+      });
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "user",
   initialState,
@@ -315,6 +341,18 @@ export const authSlice = createSlice({
         state.data.user = action.payload.user;
       })
       .addCase(cancelSubscription.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(resumeSubscription.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+      })
+      .addCase(resumeSubscription.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(createSubscription.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+      })
+      .addCase(createSubscription.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

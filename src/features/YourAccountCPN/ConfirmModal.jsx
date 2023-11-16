@@ -1,4 +1,4 @@
-function ConfirmModal({ handleClose, handleCancelSubscription }) {
+function ConfirmModal({ handleClose, handleFunction, message }) {
   return (
     <div
       onClick={handleClose}
@@ -8,10 +8,10 @@ function ConfirmModal({ handleClose, handleCancelSubscription }) {
         onClick={(e) => e.stopPropagation()}
         className="bg-white px-10 py-5 flex flex-col rounded-md shadow"
       >
-        <h2 className="text-3xl py-4">Do you want to cancel subscription ?</h2>
+        <h2 className="text-3xl py-4">{message}</h2>
         <div className="flex justify-center gap-2 pt-10 pb-5">
           <button
-            onClick={handleCancelSubscription}
+            onClick={handleFunction}
             className="text-white bg-primary px-4 py-2 rounded-md hover:-translate-x-0.5 hover:-translate-y-0.5 transition-transform"
           >
             Yes
