@@ -1,6 +1,18 @@
+import { useDispatch } from "react-redux";
 import MovieDetails from "./MovieDetails";
+import { setVideoId } from "../../store/slice/watchPageSlice";
+import { useEffect } from "react";
 
 export default function MainTrailer({ mainTrailerMovie }) {
+  console.log('zzzzzz', mainTrailerMovie)
+
+  const dispatch = useDispatch()
+
+  useEffect(
+    () => {
+      dispatch(setVideoId(mainTrailerMovie.id))
+    }, []
+  )
   return (
     <div>
       <div className="relative h-screen bg-black">

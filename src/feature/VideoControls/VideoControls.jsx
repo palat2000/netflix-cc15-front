@@ -20,7 +20,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     }
 
     return (
-        <div className="absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
+        <div className="text-[80%] absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
             <div id="top" className="flex w-full flex-row justify-between h-[10%] items-center">
                 <Link to={`/browse`}>
                     <div>Return</div>
@@ -39,7 +39,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                     <div id="bottom-center" className="flex gap-3">
                         <div>Title</div>
                     </div>
-                    <div id="bottom-right" className="flex gap-3">
+                    <div id="bottom-right" className="flex gap-3 ">
                         <div>All Ep.</div>
                         <div>Next Ep.</div>
                         <SetSpeedVideo watchPlayer={watchPlayer} />

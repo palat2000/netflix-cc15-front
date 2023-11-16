@@ -9,7 +9,9 @@ export default function ButtonMainTrailerGroup() {
       <div>
         <div className="flex justify-between z-10 ">
           <div className="flex">
-            <PlayButton customizeClass={"ml-0 "} />
+            <div>
+              <PlayButton customizeClass={"ml-0 "} />
+            </div>
             <div>
               <ContentModal movieId={2}>
                 <MoreInfoButton customizeClass={"ml-0 p-10"} />
