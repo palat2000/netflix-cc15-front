@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../store/slice/authSlice";
 import allContentSliceReducer from "./slice/allContentSlice";
 import contentReducer from "./slice/contentSlice";
-import myListReducer from "./slice/myListSlice";
+// import myListReducer from "./slice/myListSlice";
 import watchPageReducer from "./slice/watchPageSlice";
 import notificationReducer from "./slice/notificationSlice";
 import searchReducer from "./slice/searchSlice";
@@ -12,11 +12,10 @@ const store = configureStore({
     user: authReducer,
     allContent: allContentSliceReducer,
     content: contentReducer,
-    myList: myListReducer,
+    // myList: myListReducer,
     watchPage: watchPageReducer,
     notification: notificationReducer,
-    search : searchReducer
-
+    search: searchReducer,
   },
 });
 
