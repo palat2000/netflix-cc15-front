@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
@@ -80,7 +80,7 @@ export default function MovieCard({ movie }) {
                     customizeClass={""}
                   />
                 </div>
-                <MoreInfoCircleButton customizeClass={" scale-75"} />
+                <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
               </div>
             </div>
             <div>

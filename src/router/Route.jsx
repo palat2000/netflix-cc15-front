@@ -123,7 +123,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "watch/:movieId",
+        path: "watch/:videoId",
         element: (
           <RedirectIfNotChooseProfile>
             <WatchPage />

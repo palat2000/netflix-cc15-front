@@ -94,6 +94,7 @@ function UserBrowsePage() {
         <MovieSlideTab title="Kids" movie={movie?.movies?.kids} />
         <MovieSlideTab title="Romantic" movie={movie?.movies?.romantic} />
       </div>
+      {modalIsOpen && <ContentModalDetail />}
     </div>
   );
 }
