@@ -39,7 +39,6 @@ export const registerAction = createAsyncThunk(
 export const loginAction = createAsyncThunk("auth/login", async (input) => {
   try {
     let res = await loginUser(input);
-    console.log(res);
     return res;
   } catch (error) {
     throw error.response.data;
@@ -49,9 +48,7 @@ export const editProfileAction = createAsyncThunk(
   "auth/edit",
   async (input) => {
     try {
-      console.log(input);
       const res = await editUserProfile(input);
-      console.log(res);
       return res;
     } catch (error) {
       throw error.response.data;
@@ -63,7 +60,6 @@ export const createProfileAction = createAsyncThunk(
   async (input) => {
     try {
       const res = await createUserProfile(input);
-      console.log(res);
       return res;
     } catch (error) {
       // throw error.response.data;
@@ -77,7 +73,6 @@ export const deleteUserProfileAction = createAsyncThunk(
   async (input) => {
     try {
       const res = await deleteUserProfile(input);
-      console.log(res);
       return res;
     } catch (error) {
       throw error.response.data;
@@ -89,7 +84,6 @@ export const chooseUserProfileAction = createAsyncThunk(
   async (input) => {
     try {
       const res = await chooseUserProfile(input);
-      console.log(res);
       return res;
     } catch (error) {
       throw error.response.data;
@@ -100,7 +94,6 @@ export const chooseUserProfileAction = createAsyncThunk(
 export const getMeAction = createAsyncThunk("auth/me", async () => {
   try {
     const res = await getMe();
-    console.log(res);
     return res;
   } catch (error) {
     throw error.response.data;
@@ -112,7 +105,6 @@ export const checkEmailInDatabaseAction = createAsyncThunk(
   async (input) => {
     try {
       const res = await checkEmailInDatabase(input);
-      console.log(res);
       return res;
     } catch (error) {
       throw error.response.data;
@@ -149,6 +141,44 @@ export const paymentSuccessAction = createAsyncThunk(
     try {
       const response = await paymentSuccess(sessionId);
       return response;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const cancelSubscription = createAsyncThunk(
+  "cancel/subscription",
+  async () => {
+    try {
+      const response = await axios.patch("/payment/cancel-subscription");
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const resumeSubscription = createAsyncThunk(
+  "resume/subscription",
+  async () => {
+    try {
+      const response = await axios.patch("/payment/resume-subscription");
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const createSubscription = createAsyncThunk(
+  "create/subscription",
+  async () => {
+    try {
+      const response = await axios.post("/payment/create-subscription", {
+        priceId: "price_1OBBJEHpiJPtdULK3EQvNKi8",
+      });
+      return response.data;
     } catch (error) {
       throw error.response.data;
     }
@@ -199,7 +229,6 @@ export const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(editProfileAction.fulfilled, (state, action) => {
-        // console.log(current(state))
         state.loading = false;
         const idx = state.data.allUserProfile.findIndex(
           (el) => el?.id === action.payload.userProfile.id
@@ -213,8 +242,6 @@ export const authSlice = createSlice({
       .addCase(editProfileAction.rejected, (state, action) => {
         state.error = action.error.message;
         // state.data = action.payload;
-        // console.log(state)
-        // console.log(action.error.message)
       })
       .addCase(getMeAction.pending, (state, action) => {
         state.error = null;
@@ -233,7 +260,6 @@ export const authSlice = createSlice({
         state.data.allUserProfile = state.data.allUserProfile.filter(
           (el) => el.id !== action.payload.deleteUserProfile.id
         );
-        console.log(action);
       })
       .addCase(deleteUserProfileAction.rejected, (state, action) => {})
       .addCase(createProfileAction.pending, (state, action) => {
@@ -247,7 +273,6 @@ export const authSlice = createSlice({
         ];
       })
       .addCase(createProfileAction.rejected, (state, action) => {
-        console.log("reject");
         state.loading = false;
         state.error = action.error.message;
       })
@@ -257,8 +282,6 @@ export const authSlice = createSlice({
       .addCase(chooseUserProfileAction.fulfilled, (state, action) => {
         // state.data = action.payload
         state.data.userProfile = action.payload.userProfile;
-        console.log(action);
-        console.log(current(state));
       })
       .addCase(checkEmailInDatabaseAction.pending, (state, action) => {
         state.loading = true;
@@ -297,6 +320,24 @@ export const authSlice = createSlice({
         state.data.allUserProfile = action.payload.allUserProfile;
       })
       .addCase(paymentSuccessAction.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(cancelSubscription.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+      })
+      .addCase(cancelSubscription.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(resumeSubscription.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+      })
+      .addCase(resumeSubscription.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(createSubscription.fulfilled, (state, action) => {
+        state.data.user = action.payload.user;
+      })
+      .addCase(createSubscription.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

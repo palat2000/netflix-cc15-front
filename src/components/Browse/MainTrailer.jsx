@@ -18,10 +18,10 @@ export default function MainTrailer({ mainTrailerMovie }) {
 
   return (
     <div>
-      <div className="relative h-screen bg-black">
+      <div className="relative  ">
         <MovieDetails movie={mainTrailerMovie} />
         <video
-          width="auto"
+          width="2000"
           className=""
           height="auto"
           loop

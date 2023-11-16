@@ -16,6 +16,40 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
 
     const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
+<<<<<<< HEAD
+=======
+    // const [newCurrentTime, setNewCurrentTime] = useState(0)
+
+
+    // console.dir(watchPlayer.current)
+
+    // useEffect(
+    //     () => {
+    //         watchPlayer.current.currentTime = newCurrentTime
+    //     }, [newCurrentTime]
+    // )
+
+    // const changeCurrentTime = (el) => {
+    //     setNewCurrentTime(el.target.value)
+    // }
+
+    // const [videoDuration, setVideoDuration] = useState(null);
+
+    // useEffect(() => {
+    //     if (watchPlayer.current) {
+    //         watchPlayer.current.addEventListener("loadedmetadata", () => {
+    //             const duration = Math.floor(watchPlayer.current.duration / 60);
+    //             setVideoDuration(isNaN(duration) ? null : duration);
+    //         });
+    //     }
+    // }, []);
+
+    // useEffect(
+    //     () => {
+    //         dispatch(setVideoDuration(watchPlayer?.current?.duration))
+    //     }
+    // )
+>>>>>>> develop
 
     const handleBackward = () => {
         watchPlayer.current.currentTime = recentWatching - 10

@@ -4,17 +4,17 @@ import { getAllContent } from "../utils/contentApi";
 const initialState = {
   error: null,
   loading: false,
-  data: [],
+  data: {},
 };
 
 export const fetchAllContent = createAsyncThunk(
   "allContent/fetch",
   async (payload, thunkAPI) => {
     try {
-      const response = await getAllContent();
+      const response = await getAllContent(payload);
       return response;
     } catch (err) {
-      console.log(thunkAPI.rejectWithValue(err.message))
+      console.log(thunkAPI.rejectWithValue(err.message));
       return thunkAPI.rejectWithValue(err.message);
     }
   }

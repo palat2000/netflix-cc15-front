@@ -11,12 +11,10 @@ register();
 export default function VDOSwiperSlides({ movieDetails }) {
   const swiperElRef = useRef(null);
   // const [movie, setMovie] = useState(null);
-  console.log(movieDetails);
   useEffect(() => {
     // listen for Swiper events using addEventListener
     swiperElRef.current.addEventListener("swiperprogress", (e) => {
       const [swiper, progress] = e.detail;
-      console.log(progress);
     });
   }, []);
 

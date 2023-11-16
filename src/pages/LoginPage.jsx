@@ -25,13 +25,10 @@ function LoginPage() {
     return state.user;
   });
 
-  console.log();
-
   const handleSubmitForm = (data) => {
     dispatch(loginAction(data))
       .unwrap()
       .then((user) => {
-        console.log(data);
         if (user) {
           addAccessToken(user.accessToken);
           dispatch(getAllUserProfileAction());

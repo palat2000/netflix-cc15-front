@@ -12,7 +12,6 @@ function WatchPage() {
   const dispatch = useDispatch()
   const location = useLocation()
   const { videoId } = useParams()
-  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
 
 
   useEffect(
