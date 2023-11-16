@@ -9,7 +9,6 @@ export const getAllContent = async (isTVShows) => {
 
 export const getContentById = async (movieId) => {
   const res = await axios.get(`/user-browse/movie/${movieId}`);
-  console.log(res.data)
   return res.data;
 };
 

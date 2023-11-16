@@ -15,12 +15,10 @@ function TVShowsPage() {
   const movie = useSelector((state) => state.allContent.data);
   const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
-  console.log("movie =", movie);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
   const haveRecentVideoData =
     recentVideoData?.videoId && recentVideoData?.recentWatching;
-  console.log(movie);
 
   const location = useLocation();
 
@@ -36,7 +34,6 @@ function TVShowsPage() {
     console.log(location.pathname);
     console.log(recentWatch);
     if (location.pathname !== recentWatch && haveRecentVideoData) {
-      console.log("enter Logic");
       dispatch(endWatchingAction(recentVideoData))
         .unwrap()
         .then((res) => console.log(res));

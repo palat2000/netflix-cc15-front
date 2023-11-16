@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
-  // console.log('djkashd', movie)
 
   // const movieIsInMyListData = useSelector(
   //   (state) => state?.content?.data?.movie?.inMyListHistory

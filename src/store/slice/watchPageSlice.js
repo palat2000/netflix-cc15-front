@@ -25,10 +25,7 @@ export const fetchVideoAction = createAsyncThunk('watchPage/fetch', async (video
 
 export const endWatchingAction = createAsyncThunk('watchPage/endWatching', async (videoData, thunkAPI) => {
     try {
-        console.log("first")
-        console.log(videoData)
         const response = await endWatching(videoData)
-        console.log(response)
     } catch (err) {
         return thunkAPI.rejectWithValue(err.message);
     }

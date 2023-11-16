@@ -33,10 +33,6 @@ export default function ContentModalDetail({ setOpen }) {
   recentWatchingEpisode && dispatch(setVideoId(recentWatchingEpisode));
 
   const movieData = useSelector((state) => state?.content?.data);
-  console.log(
-    "🚀 ~ file: ContentModalDetail.jsx:19 ~ ContentModalDetail ~ movieData:",
-    movieData
-  );
 
   const handleClickBackGround = () => {
     dispatch(changStatusOpenModal(false));
