@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { chooseUserProfileAction, resetState } from "../../store/slice/authSlice";
 import { fetchAllContent } from "../../store/slice/allContentSlice";
 import { FaUserLarge } from "react-icons/fa6";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function UserProfileMenu() {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ export default function UserProfileMenu() {
     <>
       <div className=" dropdown " onMouseLeave={handleMouseLeave}>
         <button
-          className="flex items-center relative dropbtn hover:text-white "
+          className="flex items-center relative dropbtn group-hover:text-white group"
           onMouseEnter={handleMouseEnter}
         >
           <img
@@ -52,6 +53,8 @@ export default function UserProfileMenu() {
             width={26}
             className="rounded-sm mr-1 "
           ></img>
+          <IoMdArrowDropdown className="group-hover:rotate-180 transition-transform duration-300 " />
+
         </button>
         {isHovered && (
           <>
