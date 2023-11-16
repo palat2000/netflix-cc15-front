@@ -7,6 +7,7 @@ import PlayCircleButton from "../Button/PlayCircleButton";
 import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
+import LikeFeatureButton from "../../feature/LikeFeatureButton";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
@@ -30,16 +31,21 @@ export default function MovieCard({ movie }) {
     }
   };
 
-  const [isAddToplayList, setIsAddToPlayList] = useState(false);
+  const [isAddToMyList, setIsAddToMyList] = useState(false);
 
-  const handleAddToPlayList = async () => {
+  const handleAddToMyList = async () => {
     try {
-      const res = await axios.get("/user-browse/mylist", { movieId: movie.id });
-      setIsAddToPlayList(res.data.myList);
+      const res = await axios.post("/user-browse/mylist", {
+        movieId: movie.id,
+      });
+
+      console.log("handleAddToMyList res =", res);
+      setIsAddToMyList(res.data.myList);
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <motion.div
       whileHover={{
@@ -71,7 +77,7 @@ export default function MovieCard({ movie }) {
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
-                    handleAddToPlayList={handleAddToPlayList}
+                    handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
                   <LikeButton

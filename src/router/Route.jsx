@@ -28,6 +28,7 @@ import RedirectIfNotChooseProfile from "../features/auth/RedirectIfNotChooseProf
 import RedirectIfNotSubscribe from "../features/auth/RedirectIfNotSubscribe";
 import MoviesPage from "../pages/MoviesPage";
 import MyListPage from "../pages/MyListPage";
+import KidsPage from "../pages/KidsPage";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: "my-list",
         element: <MyListPage />,
+      },
+      {
+        path: "kids",
+        element: <KidsPage />,
       },
     ],
   },

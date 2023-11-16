@@ -30,90 +30,63 @@ export default function NotificatioBell() {
         </button>
         {isHovered && (
           <>
-            <div className="absolute dropdown-content bg-black bg-opacity-50 py-2 right-0">
+            <div className="absolute dropdown-content bg-black bg-opacity-50 py-2 right-20 border border-zinc-300">
               <div className="flex justify-center py-2">
                 <div className="flex">
-                  <div className="flex flex-col mx-2 ">
-                    <a href="" className="flex hover:text-stone-400 my-1 ">
+                  <div className=" flex flex-col mx-10 ">
+                    <a href="" className="flex hover:text-stone-400 my-2 ">
                       <img
                         src={NotiPic1}
                         alt="product"
-                        width={50}
+                        width={100}
                         className="rounded-sm mr-1"
                       ></img>
                       Notification 1
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={NotiPic1}
                         alt="product"
-                        width={50}
+                        width={100}
                         className="rounded-sm mr-1"
                       ></img>
                       Notification 2
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={NotiPic1}
                         alt="product"
-                        width={50}
+                        width={100}
                         className="rounded-sm mr-1"
                       ></img>
                       Notification 3
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={NotiPic1}
                         alt="product"
-                        width={50}
+                        width={100}
                         className="rounded-sm mr-1"
                       ></img>
                       Notification 4
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={NotiPic1}
                         alt="product"
-                        width={50}
+                        width={100}
                         className="rounded-sm mr-1"
                       ></img>
                       Notification 5
                     </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
+                    <a href="" className="flex hover:text-stone-400 my-2">
                       <img
                         src={NotiPic1}
                         alt="product"
-                        width={50}
+                        width={100}
                         className="rounded-sm mr-1"
                       ></img>
                       Notification 6
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={50}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 7
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={50}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 8
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-1">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={50}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 9
                     </a>
                   </div>
                 </div>

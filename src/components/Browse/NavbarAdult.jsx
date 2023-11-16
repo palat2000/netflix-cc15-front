@@ -57,10 +57,10 @@ export default function NavbarAdult({ setSearch }) {
 
   return (
     <div>
-      <div className="flex justify-between items-center text-xs  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight text-[6px] px-10">
-        <div className="flex justify-start items-center ">
+      <div className="cursor-pointer flex justify-between items-center text-base  bg-gradient-to-b  from-black to-transparent bg-black  z-50 fixed left-0 right-0 top-0 bg-transparent  text-white font-extralight  px-10">
+        <div className="flex justify-start items-center  ">
           <img
-            className="h-8 w-auto"
+            className="h-14 w-auto my-2"
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
           />
           <div
@@ -100,7 +100,7 @@ export default function NavbarAdult({ setSearch }) {
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               style={{ color: "#ffffff" }}
-              className="ml-2"
+              className="mx-2"
             />
             {isSearch && (
               <input
@@ -114,7 +114,9 @@ export default function NavbarAdult({ setSearch }) {
           <div className=" hidden md:block ">
             <div className="flex items-center">
               <div className="hover:text-gray-400 text-white ml-2">Kids</div>
-              <NotificatioBell />
+              <div className=" mx-2">
+                <NotificatioBell />
+              </div>
 
               <UserProfileMenu />
             </div>
