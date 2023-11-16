@@ -8,9 +8,17 @@ import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
 import LikeFeatureButton from "../../feature/LikeFeatureButton";
+import { useSelector } from "react-redux";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
+
+  // const movieIsInMyListData = useSelector(
+  //   (state) => state?.content?.data?.movie?.inMyListHistory
+  // );
+  // const movieIsInLikeData = useSelector(
+  //   (state) => state?.content?.data?.movie?.likeHistory
+  // );
 
   const hoverStart = () => {
     setVisible(true);
@@ -51,7 +59,7 @@ export default function MovieCard({ movie }) {
       whileHover={{
         scale: 1.5,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.25s",
+        transitionDuration: "0.1s",
         zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
@@ -80,13 +88,22 @@ export default function MovieCard({ movie }) {
                     handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
+
+                  {/* <LikeFeatureButton
+                    movieId={movie.id}
+                    movieIsInLikeData={movieIsInLikeData}
+                  /> */}
+
                   <LikeButton
                     handleLike={handleLike}
                     isLike={isLike}
                     customizeClass={""}
                   />
                 </div>
-                <MoreInfoCircleButton customizeClass={" scale-75"} />
+                <MoreInfoCircleButton
+                  movie={movie}
+                  customizeClass={" scale-75"}
+                />
               </div>
             </div>
             <div>

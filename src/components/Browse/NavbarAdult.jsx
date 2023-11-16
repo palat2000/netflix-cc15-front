@@ -39,6 +39,8 @@ export default function NavbarAdult({ setSearch }) {
       navigate("/movies");
     } else if (page === "my-list") {
       navigate("/my-list");
+    } else if (page === "kids") {
+      navigate("/kids");
     }
   };
 
@@ -113,7 +115,12 @@ export default function NavbarAdult({ setSearch }) {
           </div>
           <div className=" hidden md:block ">
             <div className="flex items-center">
-              <div className="hover:text-gray-400 text-white ml-2">Kids</div>
+              <div
+                className="hover:text-gray-400 text-white ml-2"
+                onClick={() => goToPage("kids")}
+              >
+                Kids
+              </div>
               <div className=" mx-2">
                 <NotificatioBell />
               </div>

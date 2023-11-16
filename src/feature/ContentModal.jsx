@@ -9,6 +9,7 @@ export default function ContentModal({ movieId, children }) {
 
   useEffect(() => {
     dispatch(changStatusOpenModal(open));
+    dispatch(setMovieId);
   }, [open]);
 
   return (
