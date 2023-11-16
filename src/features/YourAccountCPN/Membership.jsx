@@ -5,7 +5,6 @@ export default function Membership(){
     const userData = useSelector((state) => {
         return state?.user?.data;
     });
-    console.log(userData)
     return <div className="flex justify-between pt-10 ">
     <div className="pr-10 w-2/6">
         <div className="text-[#737373]">MEMBERSHIP & BILLING</div>

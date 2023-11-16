@@ -20,13 +20,11 @@ export default function ManageProfileModal({ onClose, data, dataUser }) {
 
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
-  console.log(error);
 
   const tragetData = dataUser.data.allUserProfile.find((el) => {
     return el.userProfileName === name;
   });
   const handleSaveEdit = () => {
-    console.log(tragetData);
     if (name.length <= 0) {
       return setEmptyError("This field can't be empty");
     }
