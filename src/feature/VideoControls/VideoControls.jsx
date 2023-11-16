@@ -9,6 +9,7 @@ import SetSpeedVideo from "./SetSpeedVideo";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
+
     const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
 
     const handleBackward = () => {
@@ -18,6 +19,8 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     const handleForward = () => {
         watchPlayer.current.currentTime = recentWatching + 10
     }
+
+    const videoData = useSelector(store => store?.watchPage?.videoData?.fetchData?.videoData)
 
     return (
         <div className="text-[80%] absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
@@ -37,7 +40,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                         <VolumeSlide watchPlayer={watchPlayer} />
                     </div>
                     <div id="bottom-center" className="flex gap-3">
-                        <div>Title</div>
+                        <div>{`${videoData.movie.title} : ${videoData.videoEpisodeName}`}</div>
                     </div>
                     <div id="bottom-right" className="flex gap-3 ">
                         <div>All Ep.</div>
