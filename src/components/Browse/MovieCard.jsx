@@ -14,10 +14,12 @@ import LikeFeatureButton from "../../feature/LikeFeatureButton";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
-  const likeHistory = useSelector(store => store?.content?.data?.movie?.likeHistory)
-  console.log(likeHistory)
+  const likeHistory = useSelector(
+    (store) => store?.content?.data?.movie?.likeHistory
+  );
+  console.log(likeHistory);
   // const [isLike, setIsLike] = useState(likeHistory)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const hoverStart = () => {
     setVisible(true);
@@ -51,22 +53,20 @@ export default function MovieCard({ movie }) {
     }
   };
 
-  useEffect(
-    () => {
-      if (visible) {
-        dispatch(fetchContentAction(movie.id))
-      } else {
-        dispatch(setVideoId(null))
-      }
-    }, [visible]
-  )
+  useEffect(() => {
+    if (visible) {
+      dispatch(fetchContentAction(movie.id));
+    } else {
+      dispatch(setVideoId(null));
+    }
+  }, [visible]);
 
   return (
     <motion.div
       whileHover={{
-        scale: 1.5,
+        scale: 2,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.1s",
+        transitionDuration: "0.25s",
         zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
@@ -77,7 +77,7 @@ export default function MovieCard({ movie }) {
         {visible ? (
           <>
             <video
-              className="rounded-t-md "
+              className="rounded-t-md"
               width="200"
               height="auto"
               muted
@@ -88,7 +88,7 @@ export default function MovieCard({ movie }) {
               <source src={movie?.trailer} type="video/mp4" />
             </video>
             <div className="flex flex-col  bg-zinc-900 ">
-              <div className="flex justify-between   ">
+              <div className="flex justify-between">
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
@@ -103,17 +103,14 @@ export default function MovieCard({ movie }) {
                   /> */}
                   <LikeFeatureButton movieId={movie.id} />
                 </div>
-                <MoreInfoCircleButton
-                  movieId={movie?.id}
-                  customizeClass={" scale-75"}
-                />
+                <MoreInfoCircleButton customizeClass={" scale-75"} />
               </div>
             </div>
             <div>
-              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0">
+              <div className=" text-white text-xs left-0 bottom-0">
                 {movie?.title}
               </div>
-              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0">
+              <div className=" text-white text-xs left-0 bottom-0">
                 {movie?.enumGenres}
               </div>
             </div>

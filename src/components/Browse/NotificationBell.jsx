@@ -11,7 +11,9 @@ import { faBell } from "@fortawesome/free-solid-svg-icons";
 
 export default function NotificatioBell() {
   const [isHovered, setIsHovered] = useState(false);
-  const notification = useSelector((state) => state.notification.data);
+  const { data: notification, expireAlert } = useSelector(
+    (state) => state.notification
+  );
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -36,60 +38,22 @@ export default function NotificatioBell() {
               <div className="flex justify-center py-2">
                 <div className="flex">
                   <div className=" flex flex-col mx-10 ">
-                    <a href="" className="flex hover:text-stone-400 my-2 ">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={100}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 1
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-2">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={100}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 2
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-2">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={100}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 3
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-2">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={100}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 4
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-2">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={100}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 5
-                    </a>
-                    <a href="" className="flex hover:text-stone-400 my-2">
-                      <img
-                        src={NotiPic1}
-                        alt="product"
-                        width={100}
-                        className="rounded-sm mr-1"
-                      ></img>
-                      Notification 6
-                    </a>
+                    {expireAlert && <span>Expire in {expireAlert}</span>}
+                    {notification.map((noti, index) => (
+                      <a
+                        href=""
+                        key={index}
+                        className="flex hover:text-stone-400 my-2 max-w-sm"
+                      >
+                        <img
+                          src={noti.image}
+                          alt={noti.detail}
+                          width={100}
+                          className="rounded-sm mr-1"
+                        ></img>
+                        {noti.detail}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>

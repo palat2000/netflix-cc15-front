@@ -1,7 +1,15 @@
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function HeaderMobileUser() {
+  const user = useSelector((state) => {
+    return state?.user;
+  });
+  // const navigate = useNavigate();
+
+
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>

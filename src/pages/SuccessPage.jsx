@@ -38,7 +38,7 @@ function SuccessPage() {
   return (
     <div className="h-full">
       <HeaderAuthPage />
-      <div className="-translate-y-10 flex flex-col gap-7 justify-center items-center w-full h-full">
+      <div className="translate-y-10 flex flex-col gap-5 justify-center items-center w-full h-full pb-10">
         <AiOutlineCheckCircle className="text-9xl text-green-500" />
         <h2 className="text-4xl ">Payment successful</h2>
         <h2 className="text-4xl ">Subscription success</h2>
