@@ -4,7 +4,7 @@ import ProgressWatching from "./ProgressWatching"
 import ProgressBuffer from "./ProgressBuffer"
 
 export default function TimeProgress({ watchPlayer }) {
-    const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
+    const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching) || 0
     const [newCurrentTime, setNewCurrentTime] = useState(0)
 
     useEffect(

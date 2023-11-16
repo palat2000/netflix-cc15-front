@@ -5,6 +5,7 @@ import { setVideoDuration } from "../../store/slice/watchPageSlice";
 import './VideoControls.css'
 import TimeProgress from "./TimeProgress";
 import VolumeSlide from "./VolumeSlide";
+import SetSpeedVideo from "./SetSpeedVideo";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
@@ -33,10 +34,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                         <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div>
                         <div className="cursor-pointer" onClick={handleBackward}>Back10</div>
                         <div className="cursor-pointer" onClick={handleForward}>Forward10</div>
-                        {/* <div className="cursor-pointer" > */}
-                        {/* <input onChange={(el) => watchPlayer.current.volume = el.target.value} type="range" min={0} max={1} step="any" className=" rotate-[-90deg] bg-blue-400 absolute bottom-10"></input> */}
                         <VolumeSlide watchPlayer={watchPlayer} />
-                        {/* </div> */}
                     </div>
                     <div id="bottom-center" className="flex gap-3">
                         <div>Title</div>
@@ -44,7 +42,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                     <div id="bottom-right" className="flex gap-3">
                         <div>All Ep.</div>
                         <div>Next Ep.</div>
-                        <div>Speed</div>
+                        <SetSpeedVideo watchPlayer={watchPlayer} />
                         <div className="cursor-pointer" onClick={() => videoContainer.current.requestFullscreen()}>Full</div>
                         <div className="cursor-pointer" onClick={() => document.exitFullscreen()}>ExitFull</div>
                     </div>
