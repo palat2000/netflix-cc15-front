@@ -4,6 +4,7 @@ import axios from "../../config/axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContentAction } from "../../store/slice/contentSlice";
+import { getLike } from "../../store/utils/contentApi";
 
 export default function LikeButton({ customizeClass, movieId }) {
   const likeHistory = useSelector(store => store?.content?.data?.movie?.likeHistory)
@@ -19,11 +20,11 @@ export default function LikeButton({ customizeClass, movieId }) {
     }
   };
 
-  // useEffect(
-  //   () => {
-  //     dispatch(fetchContentAction(movie.id))
-  //   }, [isLike]
-  // )
+  useEffect(
+    () => {
+      getLike(movieId).then(res => setIsLike(res?.likeHistory))
+    }, []
+  )
 
   return (
     <div onClick={handleLike} className={`${customizeClass}`}>

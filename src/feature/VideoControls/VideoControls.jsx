@@ -47,8 +47,8 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                         <div>{`${videoData.movie.title} : ${videoData.videoEpisodeName}`}</div>
                     </div>
                     <div id="bottom-right" className="flex gap-3 ">
-                        <div>All Ep.</div>
-                        <div>Next Ep.</div>
+                        {/* <div>All Ep.</div>
+                        <div>Next Ep.</div> */}
                         <SetSpeedVideo watchPlayer={watchPlayer} />
                         <FullAndExitScreen videoContainer={videoContainer} />
                     </div>
