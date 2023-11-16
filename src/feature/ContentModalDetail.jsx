@@ -1,33 +1,47 @@
-import { useDispatch, useSelector } from "react-redux"
-import InfoBody from "./InfoBody"
-import TrailerHeaderModal from "./TrailerHeaderModal"
-import { changStatusOpenModal, fetchContentAction } from "../store/slice/contentSlice"
-import { useEffect } from "react"
-import { setVideoId } from "../store/slice/watchPageSlice"
+import { useDispatch, useSelector } from "react-redux";
+import InfoBody from "./InfoBody";
+import TrailerHeaderModal from "./TrailerHeaderModal";
+import {
+  changStatusOpenModal,
+  fetchContentAction,
+} from "../store/slice/contentSlice";
+import { useEffect } from "react";
+import { setVideoId } from "../store/slice/watchPageSlice";
 
 export default function ContentModalDetail({ setOpen }) {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  const movieId = useSelector((store) => store?.content?.movieId);
+  console.log("movieId=", movieId);
+  const recentWatchingEpisode = useSelector(
+    (store) => store?.content?.data?.movie?.recentWatchingEpisode?.videoId
+  );
+  console.log(
+    "🚀 ~ file: ContentModalDetail.jsx:14 ~ ContentModalDetail ~ recentWatchingEpisode:",
+    recentWatchingEpisode
+  );
 
-  const movieId = useSelector(store => store?.content?.movieId)
-  const recentWatchingEpisode = useSelector(store => store?.content?.data?.movie?.recentWatchingEpisode?.videoId)
-  console.log("🚀 ~ file: ContentModalDetail.jsx:14 ~ ContentModalDetail ~ recentWatchingEpisode:", recentWatchingEpisode)
+  useEffect(() => {
+    dispatch(fetchContentAction(movieId))
+      .unwrap()
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-  useEffect(
-    () => {
-      dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => { console.log(err) })
-    }, []
-  )
+  recentWatchingEpisode && dispatch(setVideoId(recentWatchingEpisode));
 
-  recentWatchingEpisode && dispatch(setVideoId(recentWatchingEpisode))
-
-  const movieData = useSelector(state => state?.content?.data)
-  console.log("🚀 ~ file: ContentModalDetail.jsx:19 ~ ContentModalDetail ~ movieData:", movieData)
+  const movieData = useSelector((state) => state?.content?.data);
+  console.log(
+    "🚀 ~ file: ContentModalDetail.jsx:19 ~ ContentModalDetail ~ movieData:",
+    movieData
+  );
 
   const handleClickBackGround = () => {
-    dispatch(changStatusOpenModal(false))
-    dispatch(setVideoId(null))
-  }
+    dispatch(changStatusOpenModal(false));
+    dispatch(setVideoId(null));
+  };
 
   return (
     <>
@@ -36,12 +50,18 @@ export default function ContentModalDetail({ setOpen }) {
         {movieData ? (
           <div className="flex flex-col w-full items-center h-full absolute p-[2%] max-w-[850px]">
             <div className="flex bg-neutral-900 text-white flex-col w-full items-center">
-              <TrailerHeaderModal setIsLoad movieId={movieId} setOpen={setOpen} />
+              <TrailerHeaderModal
+                setIsLoad
+                movieId={movieId}
+                setOpen={setOpen}
+              />
               <InfoBody movieId={movieId} />
             </div>
           </div>
-        ) : (<> </>)}
-      </div >
+        ) : (
+          <> </>
+        )}
+      </div>
     </>
-  )
+  );
 }

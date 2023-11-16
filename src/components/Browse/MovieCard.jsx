@@ -102,7 +102,7 @@ export default function MovieCard({ movie }) {
                   />
                 </div>
                 <MoreInfoCircleButton
-                  movieId={movie.id}
+                  movieId={movie?.id}
                   customizeClass={" scale-75"}
                 />
               </div>
