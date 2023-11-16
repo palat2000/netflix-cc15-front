@@ -15,7 +15,7 @@ export default function SetSpeedVideo({ watchPlayer }) {
 
     const handleOnClick = (el) => {
         el.preventDefault()
-        setSpeed(el.target.value)
+        setSpeed(+el.target.value)
     }
 
     return (
@@ -29,7 +29,7 @@ export default function SetSpeedVideo({ watchPlayer }) {
                 <input type='checkbox' value={1.5} /> */}
                 {/* <button onClick={handleOnClick} className={`bg-red-300 ${()}`} value={0.5}>sdsdsd</button> */}
                 <button onClick={handleOnClick} className='bg-red-300 ' value={1}>1</button>
-                <ChooseSpeedButton handleOnClick={handleOnClick} />
+                <ChooseSpeedButton handleOnClick={handleOnClick} value={0.5} speed={speed} />
             </div>
         </div>
     )
