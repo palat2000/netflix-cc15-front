@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getContentById } from "../utils/contentApi";
 
 const initialState = {
-  modalIsopen: false,
+  modalIsOpen: false,
+  movieId: null,
   loading: false,
   trailerIsMute: false
 };
@@ -11,7 +12,6 @@ export const fetchContentAction = createAsyncThunk('content/fetch', async (movie
   try {
     const response = await getContentById(movieId)
     response.movieId = movieId
-    console.log(response)
     return response;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
@@ -27,6 +27,9 @@ const contentSlice = createSlice({
     },
     toggleMute: (state, action) => {
       state.trailerIsMute = !state.trailerIsMute
+    },
+    setMovieId: (state, action) => {
+      state.movieId = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -49,7 +52,7 @@ const contentSlice = createSlice({
   }
 });
 
-export const { openModal, closeModal, setData, toggleMute, loadTrailer, changStatusOpenModal } = contentSlice.actions
+export const { openModal, closeModal, setData, toggleMute, loadTrailer, changStatusOpenModal, setMovieId } = contentSlice.actions
 const contentReducer = contentSlice.reducer
 export default contentReducer
 

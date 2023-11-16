@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderAuthPage from "../components/header/HeaderAuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { paymentSuccessAction } from "../store/slice/authSlice";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
 function SuccessPage() {
   const { error } = useSelector((state) => state.user);
@@ -37,12 +38,13 @@ function SuccessPage() {
   return (
     <div className="h-full">
       <HeaderAuthPage />
-      <div className="flex flex-col justify-center items-center">
-        <h2>Payment successful</h2>
-        <h3>Subscription success</h3>
+      <div className="-translate-y-10 flex flex-col gap-7 justify-center items-center w-full h-full">
+        <AiOutlineCheckCircle className="text-9xl text-green-500" />
+        <h2 className="text-4xl ">Payment successful</h2>
+        <h2 className="text-4xl ">Subscription success</h2>
         <button
           onClick={() => navigate("/choose-profile")}
-          className="px-4 py-2 bg-primary text-white rounded-md"
+          className="px-4 py-2 bg-primary text-white rounded-md text-2xl hover:bg-red-500"
         >
           Continue
         </button>

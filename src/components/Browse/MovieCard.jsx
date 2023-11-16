@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
@@ -66,7 +66,7 @@ export default function MovieCard({ movie }) {
       onHoverEnd={hoverEnd}
       className="box w-fit absolute"
     >
-      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit">
+      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-3">
         {visible ? (
           <>
             <video
@@ -101,7 +101,7 @@ export default function MovieCard({ movie }) {
                   />
                 </div>
                 <MoreInfoCircleButton
-                  movie={movie}
+                  movieId={movie?.id}
                   customizeClass={" scale-75"}
                 />
               </div>

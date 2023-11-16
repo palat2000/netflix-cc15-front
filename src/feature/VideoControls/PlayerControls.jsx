@@ -4,16 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function PlayerControls({ watchPlayer, currentTime, displayControls }) {
 
-    console.log(watchPlayer)
 
     const [newCurrentTime, setNewCurrentTime] = useState(0)
     const [play, setPlay] = useState(true)
 
-    // useEffect(
-    //     () => {
-    //         watchPlayer.current.currentTime = newCurrentTime
-    //     }, [newCurrentTime]
-    // )
+    useEffect(
+        () => {
+            watchPlayer.current.currentTime = newCurrentTime
+        }, [newCurrentTime]
+    )
 
     const changeCurrentTime = (el) => {
         setNewCurrentTime(el.target.value)

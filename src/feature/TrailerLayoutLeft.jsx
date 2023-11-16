@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
-import LikeButton from "../components/Button/NeverLikeButton";
 import PlayButton from "../components/button/PlayButton";
 import { useNavigate } from "react-router-dom";
 import MyListButton from "./MyListButton";
-import { editLike } from "../store/utils/contentApi";
 import LikeFeatureButton from "./LikeFeatureButton";
 
 export default function TrailerLayoutLeft({ movieId }) {
@@ -16,17 +14,19 @@ export default function TrailerLayoutLeft({ movieId }) {
   const movieIsInLikeData = useSelector(
     (state) => state?.content?.data?.movie?.likeHistory
   );
-  console.log(
-    "🚀 ~ file: TrailerLayoutLeft.jsx:14 ~ TrailerLayoutLeft ~ movieIsInLikeData:",
-    movieIsInLikeData
+  const recentVideoId = useSelector(
+    (state) => state?.content?.data?.movie?.recentWatchingEpisode?.videoId
   );
+
+  const navigate = useNavigate();
 
   return (
     <div className="z-10 w-5/12 flex flex-col gap-3">
       <h1 className="text-4xl font-semibold">{movieTitle}</h1>
       <div className="flex items-center gap-1">
-        <PlayButton />
-
+        <div onClick={() => navigate(`/watch/${recentVideoId}`)}>
+          <PlayButton />
+        </div>
         <div className="flex gap-1">
           <MyListButton
             movieId={movieId}

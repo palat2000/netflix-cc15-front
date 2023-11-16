@@ -45,9 +45,9 @@ body {
   color: white;
   opacity: 0.4;
   left: 0;
-  top: -40px;
+  top: 0px;
   height: auto;
-  padding: 50px 20px;
+  padding: 70px 30px;
   position: absolute;
   fill: black !important;
   stroke: black !important;
@@ -62,9 +62,9 @@ body {
   color: white;
   opacity: 0.5;
   right: 0;
-  top: -40px;
+  top: 0px;
   height: auto;
-  padding: 50px 20px;
+  padding: 70px 30px;
   position: absolute;
   fill: black !important;
   stroke: black !important;

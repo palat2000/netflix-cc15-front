@@ -2,10 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 import ContentModal from "../../feature/ContentModal";
 
-export default function MoreInfoCircleButton({ customizeClass, movie }) {
-  console.log(movie);
+export default function MoreInfoCircleButton({ customizeClass, movieId }) {
   return (
-    <ContentModal movieId={movie.id}>
+    <ContentModal movieId={movieId}>
       <div className={`${customizeClass} `}>
         <FontAwesomeIcon
           icon={faChevronCircleDown}
