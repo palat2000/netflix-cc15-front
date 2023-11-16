@@ -4,42 +4,11 @@ import { Link } from "react-router-dom";
 import { setVideoDuration } from "../../store/slice/watchPageSlice";
 import './VideoControls.css'
 import TimeProgress from "./TimeProgress";
+import VolumeSlide from "./VolumeSlide";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
     const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
-    // const [newCurrentTime, setNewCurrentTime] = useState(0)
-
-
-    // console.dir(watchPlayer.current)
-    // console.log(recentWatching)
-
-    // useEffect(
-    //     () => {
-    //         watchPlayer.current.currentTime = newCurrentTime
-    //     }, [newCurrentTime]
-    // )
-
-    // const changeCurrentTime = (el) => {
-    //     setNewCurrentTime(el.target.value)
-    // }
-
-    // const [videoDuration, setVideoDuration] = useState(null);
-
-    // useEffect(() => {
-    //     if (watchPlayer.current) {
-    //         watchPlayer.current.addEventListener("loadedmetadata", () => {
-    //             const duration = Math.floor(watchPlayer.current.duration / 60);
-    //             setVideoDuration(isNaN(duration) ? null : duration);
-    //         });
-    //     }
-    // }, []);
-
-    // useEffect(
-    //     () => {
-    //         dispatch(setVideoDuration(watchPlayer?.current?.duration))
-    //     }
-    // )
 
     const handleBackward = () => {
         watchPlayer.current.currentTime = recentWatching - 10
@@ -57,16 +26,6 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                 </Link>
             </div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
-                {/* {!isNaN(recentWatching) &&
-                    <div className="flex flex-row w-full justify-between items-center">
-                        <div className="w-full h-[3px] flex relative justify-center items-center hover:h-[6px] duration-[0.1s]">
-                            <progress id="recentWatching" className="w-full h-full absolute z-10" value={recentWatching} max={watchPlayer?.current?.duration}></progress>
-                            <progress className="w-full h-full absolute z-20" value={recentWatching} max={watchPlayer?.current?.duration}></progress>
-                            <input className="w-full absolute z-20" type="range" onChange={changeCurrentTime} value={recentWatching} min="0" max={watchPlayer?.current?.duration} step="any" />
-                        </div>
-                        <div>{watchPlayer?.current?.duration}</div>
-                    </div>
-                } */}
                 <TimeProgress watchPlayer={watchPlayer} />
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
                     <div id="bottom-left" className="flex gap-3">
@@ -74,7 +33,10 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                         <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div>
                         <div className="cursor-pointer" onClick={handleBackward}>Back10</div>
                         <div className="cursor-pointer" onClick={handleForward}>Forward10</div>
-                        <div>Volume</div>
+                        {/* <div className="cursor-pointer" > */}
+                        {/* <input onChange={(el) => watchPlayer.current.volume = el.target.value} type="range" min={0} max={1} step="any" className=" rotate-[-90deg] bg-blue-400 absolute bottom-10"></input> */}
+                        <VolumeSlide watchPlayer={watchPlayer} />
+                        {/* </div> */}
                     </div>
                     <div id="bottom-center" className="flex gap-3">
                         <div>Title</div>
