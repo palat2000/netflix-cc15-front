@@ -66,7 +66,7 @@ export default function MyListCard({ movie }) {
       onHoverEnd={hoverEnd}
       className="box w-fit "
     >
-      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-3">
+      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-3 my-10">
         {visible ? (
           <>
             <video
@@ -107,10 +107,10 @@ export default function MyListCard({ movie }) {
               </div>
             </div>
             <div>
-              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0 text-center">
                 {movie?.title}
               </div>
-              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0 text-center">
                 {movie?.enumGenres}
               </div>
             </div>

@@ -22,7 +22,7 @@ function MyListPage() {
 
   return (
     <>
-      <div className="bg-black h-full pr-10 pb-8 pt-40">
+      <div className="bg-black h-full pr-10 pb-8 pt-40 ">
         <div className="grid grid-cols-6 gap-3  bg-fixed mx-20 ">
           {myList?.map((vdo) => {
             return <MyListCard key={vdo.movie.id} movie={vdo.movie} />;

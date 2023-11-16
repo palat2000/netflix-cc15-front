@@ -28,8 +28,8 @@ export default function SearchPage() {
     <>
       <div className="bg-black h-full pr-10 pl-10 pb-8 pt-8">
         <div className="flex py-2">
-          <div className="text-[#808080]">more to explore:</div>
-          <div className="text-[#ffffff] pl-2">{search}</div>
+          <div className="text-[#808080] pt-20">more to explore:</div>
+          <div className="text-[#ffffff] pl-2 pt-20">{search}</div>
         </div>
         <div className="grid grid-cols-6 gap-3 bg-fixed ">
           {movies &&
