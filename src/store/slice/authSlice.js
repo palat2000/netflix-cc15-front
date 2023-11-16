@@ -224,7 +224,7 @@ export const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginAction.rejected, (state, action) => {
-        // state.error = action.error;
+        state.error = action.error;
 
         state.loading = false;
       })
