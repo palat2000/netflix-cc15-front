@@ -9,6 +9,8 @@ import SetSpeedVideo from "./SetSpeedVideo";
 import PlayForward10 from "../../components/Button/PlayForward10";
 import PlayBack10 from "../../components/Button/PlayBack10";
 import PlayAndPause from "./PlayPause";
+import FullAndExitScreen from "./FullAndExitScreen";
+import BackToBrowseButton from "../../components/Button/BackToBrowseButton";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
@@ -29,15 +31,13 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
         <div className="text-[80%] absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
             <div id="top" className="flex w-full flex-row justify-between h-[10%] items-center">
                 <Link to={`/browse`}>
-                    <div>Return</div>
+                    <BackToBrowseButton />
                 </Link>
             </div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
                 <TimeProgress watchPlayer={watchPlayer} />
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
                     <div id="bottom-left" className="flex gap-3">
-                        {/* <div className="cursor-pointer" onClick={() => watchPlayer.current.play()}>Play</div>
-                        <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div> */}
                         <PlayAndPause watchPlayer={watchPlayer} />
                         <div className="cursor-pointer" onClick={handleBackward}><PlayBack10 /></div>
                         <div className="cursor-pointer" onClick={handleForward}><PlayForward10 /></div>
@@ -50,8 +50,7 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                         <div>All Ep.</div>
                         <div>Next Ep.</div>
                         <SetSpeedVideo watchPlayer={watchPlayer} />
-                        <div className="cursor-pointer" onClick={() => videoContainer.current.requestFullscreen()}>Full</div>
-                        <div className="cursor-pointer" onClick={() => document.exitFullscreen()}>ExitFull</div>
+                        <FullAndExitScreen videoContainer={videoContainer} />
                     </div>
                 </div>
             </div>
