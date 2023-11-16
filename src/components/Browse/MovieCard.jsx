@@ -45,20 +45,21 @@ export default function MovieCard({ movie }) {
   return (
     <motion.div
       whileHover={{
-        scale: 1.5,
+        scale: 2,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.1s",
-        zIndex: visible ? 99 : 1,
+        transitionDuration: "0.25s",
+        zIndex: visible ? 99999 : 1,
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
       className="box w-fit absolute"
+      style={{ zIndex: 2 }}
     >
       <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit">
         {visible ? (
           <>
             <video
-              className="rounded-t-md "
+              className="rounded-t-md"
               width="200"
               height="auto"
               muted
@@ -69,7 +70,7 @@ export default function MovieCard({ movie }) {
               <source src={movie?.trailer} type="video/mp4" />
             </video>
             <div className="flex flex-col  bg-zinc-900 ">
-              <div className="flex justify-between   ">
+              <div className="flex justify-between">
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
@@ -82,17 +83,14 @@ export default function MovieCard({ movie }) {
                     customizeClass={""}
                   />
                 </div>
-                <MoreInfoCircleButton
-                  movieId={movie?.id}
-                  customizeClass={" scale-75"}
-                />
+                <MoreInfoCircleButton customizeClass={" scale-75"} />
               </div>
             </div>
             <div>
-              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0">
+              <div className=" text-white text-xs left-0 bottom-0">
                 {movie?.title}
               </div>
-              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0">
+              <div className=" text-white text-xs left-0 bottom-0">
                 {movie?.enumGenres}
               </div>
             </div>
