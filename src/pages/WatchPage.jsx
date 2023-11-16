@@ -50,7 +50,7 @@ function WatchPage() {
 
   return (
     <>
-      <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center relative">
+      <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center fixed">
         {vidoData && (
           <>
             <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />

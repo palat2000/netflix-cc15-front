@@ -21,17 +21,14 @@ export default function SetSpeedVideo({ watchPlayer }) {
     const speedValueArr = [0.5, 0.75, 1, 1.25, 1.5]
 
     return (
-        <div className='relative'>
+        <div >
             <div>SetSpeedVideo</div>
-            <div className='flex flex-row justify-center items-center w-[300px] h-[100px] gap-[3%] bg-neutral-600 absolute bottom-[50px] right-[70px] z-30'>
-                {/* <input type='checkbox' value={0.5} />
-                <input type='checkbox' value={0.75} />
-                <input type='checkbox' value={1} />
-                <input type='checkbox' value={1.25} />
-                <input type='checkbox' value={1.5} /> */}
-                {/* <button onClick={handleOnClick} className={`bg-red-300 ${()}`} value={0.5}>sdsdsd</button> */}
-                {/* <button onClick={handleOnClick} className='bg-red-300 ' value={1}>1</button> */}
-                {speedValueArr.map((el, index) => <ChooseSpeedButton key={index} handleOnClick={handleOnClick} value={el} speed={speed} />)}
+            <div className='flex flex-row justify-center items-center w-[500px] h-[120px] gap-[3%] bg-neutral-800 absolute bottom-[50px] right-0 z-30'>
+                <div className='font-semibold text-lg absolute top-4 left-4'>Playback Speed</div>
+                <div className='bg-neutral-500 w-[90%] h-[1%] top-[59%] absolute'></div>
+                <div className='absolute bottom-1 flex flex-row justify-between items-end w-[110%] h-[100%] '>
+                    {speedValueArr.map((el, index) => <ChooseSpeedButton key={index} handleOnClick={handleOnClick} value={el} speed={speed} />)}
+                </div>
             </div>
         </div>
     )
