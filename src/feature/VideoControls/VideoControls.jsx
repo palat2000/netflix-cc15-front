@@ -6,6 +6,9 @@ import './VideoControls.css'
 import TimeProgress from "./TimeProgress";
 import VolumeSlide from "./VolumeSlide";
 import SetSpeedVideo from "./SetSpeedVideo";
+import PlayForward10 from "../../components/Button/PlayForward10";
+import PlayBack10 from "../../components/Button/PlayBack10";
+import PlayAndPause from "./PlayPause";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
@@ -33,10 +36,11 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
                 <TimeProgress watchPlayer={watchPlayer} />
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
                     <div id="bottom-left" className="flex gap-3">
-                        <div className="cursor-pointer" onClick={() => watchPlayer.current.play()}>Play</div>
-                        <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div>
-                        <div className="cursor-pointer" onClick={handleBackward}>Back10</div>
-                        <div className="cursor-pointer" onClick={handleForward}>Forward10</div>
+                        {/* <div className="cursor-pointer" onClick={() => watchPlayer.current.play()}>Play</div>
+                        <div className="cursor-pointer" onClick={() => watchPlayer.current.pause()}>Pause</div> */}
+                        <PlayAndPause watchPlayer={watchPlayer} />
+                        <div className="cursor-pointer" onClick={handleBackward}><PlayBack10 /></div>
+                        <div className="cursor-pointer" onClick={handleForward}><PlayForward10 /></div>
                         <VolumeSlide watchPlayer={watchPlayer} />
                     </div>
                     <div id="bottom-center" className="flex gap-3">

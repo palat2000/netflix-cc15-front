@@ -20,10 +20,10 @@ export default function SetSpeedVideo({ watchPlayer }) {
     }
 
     const mouseEnter = () => {
-        setTimeout(() => setIsOpen(true), 500)
+        setTimeout(() => setIsOpen(true), 200)
     }
     const mouseLeave = () => {
-        setTimeout(() => setIsOpen(false), 500)
+        setTimeout(() => setIsOpen(false), 200)
     }
 
     const speedValueArr = [0.5, 0.75, 1, 1.25, 1.5]
