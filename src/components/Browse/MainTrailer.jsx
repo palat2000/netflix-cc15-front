@@ -3,10 +3,10 @@ import MovieDetails from "./MovieDetails";
 export default function MainTrailer({ mainTrailerMovie }) {
   return (
     <div>
-      <div className="relative  ">
+      <div className="relative">
         <MovieDetails movie={mainTrailerMovie} />
         <video
-          width="2000"
+          width="100%"
           className=""
           height="auto"
           loop
