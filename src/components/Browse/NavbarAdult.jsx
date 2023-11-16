@@ -1,26 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import UserProfileMenu from "./UserProfileMenu";
 import { useRef } from "react";
-import { useEffect } from "react";
 import NotificatioBell from "./NotificationBell";
 import { useNavigate } from "react-router-dom";
 // import SideBarMenu from "./SideBarMenu";
+import { setSearch } from "../../store/slice/searchSlice";
 
-export default function NavbarAdult({ setSearch }) {
+export default function NavbarAdult() {
+  const dispatch = useDispatch();
+  const search = useSelector((store) => store.search.search);
   const navigate = useNavigate();
   const ref = useRef(null);
 
   const [isSearch, setIsSearch] = useState(false);
-
   const handleOnChange = (e) => {
-    setSearch(e);
-    localStorage.setItem("searchQuery", JSON.stringify(e));
 
-    // if (e.length === 1) {
-    navigate("/search");
+    // setSearch(e)
+    // if (search.length >= 1) {
+    //   navigate("/search");
     // }
+    // if (search.length < 1) {
+    //   navigate("/browse");
+    // }
+    if (e.target.value.length >= 1) {
+      navigate("/search");
+    }
+    if (e.target.value.length < 1) {
+      navigate("/browse");
+    }
+
+    // localStorage.setItem("searchQuery", JSON.stringify(e));
+
+    dispatch(setSearch(e.target.value));
   };
 
   const handleClick = () => {
@@ -29,8 +43,6 @@ export default function NavbarAdult({ setSearch }) {
   };
 
   const goToPage = (page) => {
-    console.log("page =", page);
-
     if (page === "home") {
       navigate("/browse");
     } else if (page === "tv-shows") {
@@ -64,25 +76,25 @@ export default function NavbarAdult({ setSearch }) {
             src="https://pngimg.com/uploads/netflix/netflix_PNG25.png"
           />
           <div
-            className="hover:text-gray-400 mx-2 ml-10"
+            className="hover:text-gray-400 mx-2 ml-10 cursor-pointer"
             onClick={() => goToPage("home")}
           >
             Home
           </div>
           <div
-            className="hover:text-gray-400 mx-2"
+            className="hover:text-gray-400 mx-2 cursor-pointer"
             onClick={() => goToPage("tv-shows")}
           >
             TV Shows
           </div>
           <div
-            className="hover:text-gray-400 mx-2"
+            className="hover:text-gray-400 mx-2 cursor-pointer"
             onClick={() => goToPage("movies")}
           >
             Movies
           </div>
           <div
-            className="hover:text-gray-400 mx-2"
+            className="hover:text-gray-400 mx-2 cursor-pointer"
             onClick={() => goToPage("my-list")}
           >
             My List
@@ -100,20 +112,21 @@ export default function NavbarAdult({ setSearch }) {
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               style={{ color: "#ffffff" }}
-              className="ml-2"
+              className="ml-2 cursor-pointer"
             />
             {isSearch && (
               <input
                 ref={ref}
+                value={search}
                 placeholder="Search"
-                className="w-full text-white outline-none opacity-50 bg-black"
-                onChange={(e) => handleOnChange(e.target.value)}
+                className="w-full text-white outline-none opacity-50 bg-black cursor-pointer"
+                onChange={handleOnChange}
               ></input>
             )}
           </div>
           <div className=" hidden md:block ">
             <div className="flex items-center">
-              <div className="hover:text-gray-400 text-white ml-2">Kids</div>
+              <div className="hover:text-gray-400 text-white ml-2 cursor-pointer">Kids</div>
               <NotificatioBell />
 
               <UserProfileMenu />

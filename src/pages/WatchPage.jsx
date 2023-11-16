@@ -12,7 +12,6 @@ function WatchPage() {
   const dispatch = useDispatch()
   const location = useLocation()
   const { videoId } = useParams()
-  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
 
 
   useEffect(
@@ -39,7 +38,6 @@ function WatchPage() {
   }
 
   const vidoData = useSelector(store => store?.watchPage?.videoData?.fetchData?.videoData)
-  console.log("🚀 ~ file: WatchPage.jsx:41 ~ WatchPage ~ vidoUrl:", vidoData)
 
   const updateTime = () => {
     dispatch(setVideoDuration(watchPlayer?.current?.duration))

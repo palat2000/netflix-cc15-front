@@ -12,7 +12,6 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
 
 
     // console.dir(watchPlayer.current)
-    // console.log(recentWatching)
 
     // useEffect(
     //     () => {

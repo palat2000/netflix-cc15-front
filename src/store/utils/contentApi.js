@@ -11,7 +11,6 @@ export const getAllContent = async () => {
 
 export const getContentById = async (movieId) => {
   const res = await axios.get(`/user-browse/movie/${movieId}`);
-  console.log(res.data)
   return res.data;
 };
 
@@ -32,16 +31,12 @@ export const editLike = async (movieId) => {
 };
 
 export const startWatching = async (videoId) => {
-  console.log(videoId)
   const res = await axios.get(`/user-browse/getVideo/${videoId}`)
   await axios.get(`/user-browse/startWatching/${videoId}`);
-  console.log(res.data)
   return res.data;
 };
 
 export const endWatching = async (videoData) => {
-  console.log(videoData)
   const res = await axios.post(`/user-browse/endWatching`, videoData)
-  console.log(res.data)
   return res.data;
 };
