@@ -27,15 +27,6 @@ export default function MovieCard({ movie }) {
     setVisible(false);
   };
 
-  const handleLike = async () => {
-    try {
-      const res = await axios.patch("/user-browse/like", { movieId: movie.id });
-      setIsLike(res.data.likeData);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const [isAddToMyList, setIsAddToMyList] = useState(false);
 
   const handleAddToMyList = async () => {
@@ -50,16 +41,6 @@ export default function MovieCard({ movie }) {
       console.log(err);
     }
   };
-
-  // useEffect(
-  //   () => {
-  //     if (visible) {
-  //       dispatch(fetchContentAction(movie.id))
-  //     } else {
-  //       dispatch(setVideoId(null))
-  //     }
-  //   }, [visible]
-  // )
 
   return (
     <motion.div
@@ -92,16 +73,14 @@ export default function MovieCard({ movie }) {
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
+                    movieId={movie.id}
                     handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
                   <LikeButton
-                    handleLike={handleLike}
-                    isLike={isLike}
                     movieId={movie.id}
                     customizeClass={""}
                   />
-                  {/* <LikeFeatureButton movieId={movie.id} /> */}
                 </div>
                 <MoreInfoCircleButton
                   movieId={movie?.id}
