@@ -27,12 +27,12 @@ export default function MovieSlideTab({ movie, title }) {
         navigation={true}
         // effect="fade"
         modules={[FreeMode, Navigation]}
-        className="overflow-visible overflow-x-clip mr-10 my-10 bg-black"
+        className="overflow-visible overflow-x-clip mr-10 my-10 bg-black "
       >
         {movie &&
           movie?.map((m, i) => {
             return (
-              <SwiperSlide key={i} className="pt-10 pb-16">
+              <SwiperSlide key={i} className="pt-16 mb-16">
                 <MovieCard movie={m} />
               </SwiperSlide>
             );
