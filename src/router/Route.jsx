@@ -128,7 +128,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "watch/:movieId",
+        path: "watch/:videoId",
         element: (
           <RedirectIfNotChooseProfile>
             <WatchPage />
@@ -144,6 +144,10 @@ const router = createBrowserRouter([
         element: <WhoIsWatching />,
       },
     ],
+  },
+  {
+    path: "your-account",
+    element: <YourAccount />,
   },
 ]);
 

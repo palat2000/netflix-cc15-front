@@ -1,76 +1,66 @@
 import { useEffect, useRef, useState } from "react";
 import { endWatching, startWatching } from "../store/utils/contentApi";
 import { useDispatch, useSelector } from "react-redux";
-// import axios from "../config/axios";
-import { isOnWatchPage, setRecentWatching, setVideoId } from "../store/slice/watchPageSlice";
-// import React from 'react';
-import { useLocation } from "react-router-dom";
-// import PlayerControls from "../feature/VideoControls/PlayerControls";
-// import { addRecentWatchVideo, getRecentWatchVideo } from "../utils/local-storage";
+import { fetchVideoAction, isOnWatchPage, setRecentBuffer, setRecentWatching, setVideoDuration, setVideoId } from "../store/slice/watchPageSlice";
+import { useLocation, useParams } from "react-router-dom";
+import VideoControls from "../feature/VideoControls/VideoControls";
 
 function WatchPage() {
-
   const watchPlayer = useRef(null)
   const videoContainer = useRef(null)
   const [video, setVideo] = useState(null)
   const dispatch = useDispatch()
   const location = useLocation()
-  const videoId = 1
-  // const [currentTime, setCurrentTime] = useState(null)
-  // const [displayControls, setDisplayControls] = useState(true)
+  const { videoId } = useParams()
+  console.log("🚀 ~ file: WatchPage.jsx:15 ~ WatchPage ~ videoId:", videoId)
+
 
   useEffect(
     () => {
-      startWatching(videoId).then(res => setVideo(res))
-      dispatch(isOnWatchPage(location.pathname))
       dispatch(setVideoId(videoId))
+      startWatching(videoId).then(res => setVideo(res))
+      dispatch(fetchVideoAction(videoId))
+      dispatch(isOnWatchPage(location.pathname))
     }
     , []
   )
 
-  // const showControls = () => {
-  //   setDisplayControls(true)
-  // }
-
-  // const hideControls = () => {
-  //   setTimeout(() => setDisplayControls(false), 1000)
-  // }
-
-  const loadRecentWatching = () => {
-    console.dir(watchPlayer.current)
-    console.log(video?.videoData?.history[0]?.recentWatching)
-    watchPlayer.current.currentTime = video?.videoData?.history[0]?.recentWatching
+  const loadRecentWatching = async () => {
+    watchPlayer.current.currentTime = await video?.videoData?.history[0]?.recentWatching
   }
 
-  const handleOnPause = () => {
-    // showControls
+  const handleOnChange = () => {
     const recentWatch = watchPlayer.current.currentTime
     endWatching({ videoId: videoId, recentWatching: recentWatch })
   }
 
   const handleOnEnded = () => {
-    console.log('first')
     endWatching({ videoId: videoId, recentWatching: 0 })
   }
 
-  // onEnded={handleOnEnded} onPause={handleOnPause}
-  const watchVideoData = useSelector(store => store.watchPage)
-  console.log(watchVideoData)
+  const vidoData = useSelector(store => store?.watchPage?.videoData?.fetchData?.videoData)
+  console.log("🚀 ~ file: WatchPage.jsx:41 ~ WatchPage ~ vidoUrl:", vidoData)
 
   const updateTime = () => {
+    dispatch(setVideoDuration(watchPlayer?.current?.duration))
     dispatch(setRecentWatching(watchPlayer?.current?.currentTime))
-    // dispatch(setRecentTime(watchPlayer?.current?.currentTime)).unwrap().then(res => console.log(res))
-    // addRecentWatchVideo(`recentTime ${watchVideoData?.recentTime}`)
-    // console.log(watchVideoData.recentTime)
-    // console.dir(getRecentWatchVideo())
+    const recentBuffer = watchPlayer?.current?.buffered?.end(watchPlayer?.current?.buferred?.length - 1)
+    dispatch(setRecentBuffer(recentBuffer))
   }
 
   return (
     <>
-      <div ref={videoContainer} className=" w-screen h-screen bg-black flex items-center ">
-        {video && <video onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnPause} onLoadStart={loadRecentWatching} controls disablePictureInPicture preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
-          <source src={video?.videoData?.videoUrl}></source>
-        </video>}
+      <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center relative ">
+        {vidoData && (
+          <>
+            <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
+            <video onSeeking={handleOnChange} onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnChange} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
+              {/* <source src="https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"></source> */}
+              <source src={vidoData?.videoUrl}></source>
+            </video>
+          </>
+        )
+        }
       </div >
     </>
   )

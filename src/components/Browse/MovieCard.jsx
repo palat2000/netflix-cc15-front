@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 
 export default function MovieCard({ movie }) {
   const [visible, setVisible] = useState(false);
+  // console.log('djkashd', movie)
 
   // const movieIsInMyListData = useSelector(
   //   (state) => state?.content?.data?.movie?.inMyListHistory
@@ -101,7 +102,7 @@ export default function MovieCard({ movie }) {
                   />
                 </div>
                 <MoreInfoCircleButton
-                  movie={movie}
+                  movieId={movie.id}
                   customizeClass={" scale-75"}
                 />
               </div>

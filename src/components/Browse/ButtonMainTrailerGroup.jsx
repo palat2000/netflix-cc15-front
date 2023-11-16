@@ -11,7 +11,7 @@ export default function ButtonMainTrailerGroup() {
           <div className="flex">
             <PlayButton customizeClass={"ml-0 "} />
             <div>
-              <ContentModal movieId={1}>
+              <ContentModal movieId={2}>
                 <MoreInfoButton customizeClass={"ml-0 p-10"} />
               </ContentModal>
             </div>
