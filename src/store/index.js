@@ -6,13 +6,14 @@ import contentReducer from "./slice/contentSlice";
 import watchPageReducer from "./slice/watchPageSlice";
 import notificationReducer from "./slice/notificationSlice";
 import searchReducer from "./slice/searchSlice";
+import mainTrailerSlice from "./slice/mainTrailerSlice";
 
 const store = configureStore({
   reducer: {
     user: authReducer,
     allContent: allContentSliceReducer,
     content: contentReducer,
-    // myList: myListReducer,
+    mainTrailer: mainTrailerSlice,
     watchPage: watchPageReducer,
     notification: notificationReducer,
     search: searchReducer,
