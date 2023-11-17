@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 
 import MainTrailer from "../components/Browse/MainTrailer";
-
+import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 import { editProfileAction } from "../store/slice/authSlice";
@@ -21,10 +21,10 @@ import ContentModalDetail from "../feature/ContentModalDetail";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
-  const userProfile = useSelector(store=>store.user.data.userProfile)
+  const userProfile = useSelector((store) => store.user.data.userProfile);
   const movie = useSelector((state) => state.allContent.data);
   const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
-
+  // const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
@@ -43,9 +43,9 @@ function UserBrowsePage() {
   }, [movie?.movies?.top10]);
 
   useEffect(() => {
-    console.log('fetch content')
+    // console.log('fetch content')
     dispatch(fetchAllContent());
-    dispatch(setVideoId(null))
+    dispatch(setVideoId(null));
     if (location.pathname !== recentWatch && haveRecentVideoData) {
       if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
         dispatch(

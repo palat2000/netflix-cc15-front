@@ -7,16 +7,16 @@ export default function FullAndExitScreen({ videoContainer }) {
 
     const clickFull = () => {
         videoContainer.current.requestFullscreen()
-        setIsFull(false)
+        setIsFull(true)
     }
     const clickExit = () => {
         document.exitFullscreen()
-        setIsFull(true)
+        setIsFull(false)
     }
 
     return (
         <div>
-            {isFull ?
+            {!isFull ?
                 <div onClick={clickFull}>
                     <FontAwesomeIcon
                         icon={faExpand}

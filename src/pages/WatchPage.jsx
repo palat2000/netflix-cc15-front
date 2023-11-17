@@ -50,11 +50,10 @@ function WatchPage() {
   return (
     <>
       <div ref={videoContainer} className="w-screen h-screen bg-black flex items-center fixed">
-        {videoData && (
+        {(videoData) && (
           <>
-            <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
+            && <VideoControls videoContainer={videoContainer} watchPlayer={watchPlayer} />
             <video onSeeking={handleOnChange} onTimeUpdate={updateTime} onEnded={handleOnEnded} onPause={handleOnChange} onLoadStart={loadRecentWatching} preload="true" autoPlay ref={watchPlayer} className="w-full h-full object-contain">
-              {/* <source src="https://res.cloudinary.com/dsldd3uhx/video/upload/v1698560049/qyjwotzxlymma0cyw6e0.mp4"></source> */}
               <source src={videoData?.videoUrl}></source>
             </video>
           </>

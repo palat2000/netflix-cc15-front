@@ -10,7 +10,7 @@ export default function ButtonMainTrailerGroup({ movie }) {
       <div>
         <div className="flex justify-between z-10 ">
           <div className="flex">
-            <PlayButton customizeClass={"ml-0 "} />
+            <PlayButton customizeClass={"ml-0 flex justify-center items-center"} />
             <div>
               <ContentModal movieId={movie?.id}>
                 <MoreInfoButton customizeClass={"ml-0 p-10"} />

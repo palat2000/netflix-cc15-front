@@ -12,6 +12,7 @@ export default function InfoBody() {
 
 
     return (
+        movieData &&
         <div className="flex flex-col w-11/12 pt-10 pb-20">
             <div className="flex justify-between w-full pb-9">
                 <div className="flex flex-col w-[55%] gap-4 ">
