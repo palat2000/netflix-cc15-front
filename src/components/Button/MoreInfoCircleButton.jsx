@@ -3,7 +3,9 @@ import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 import ContentModal from "../../feature/ContentModal";
 
 export default function MoreInfoCircleButton({ customizeClass, movieId }) {
+  console.log("🚀 ~ file: MoreInfoCircleButton.jsx:6 ~ MoreInfoCircleButton ~ movieId:", movieId)
   return (
+
     <ContentModal movieId={movieId}>
       <div className={`${customizeClass} `}>
         <FontAwesomeIcon

@@ -20,11 +20,11 @@ export default function LikeButton({ customizeClass, movieId }) {
     }
   };
 
-  useEffect(
-    () => {
-      getLike(movieId).then(res => setIsLike(res?.likeHistory))
-    }, []
-  )
+  // useEffect(
+  //   () => {
+  //     getLike(movieId).then(res => setIsLike(res?.likeHistory))
+  //   }, []
+  // )
 
   return (
     <div onClick={handleLike} className={`${customizeClass}`}>

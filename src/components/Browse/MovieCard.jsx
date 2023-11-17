@@ -93,12 +93,12 @@ export default function MovieCard({ movie }) {
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
                     movieId={movie.id}
-                    handleClick={handleAddToMyList}
+                    // handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
                   <LikeButton movieId={movie.id} customizeClass={""} />
                 </div>
-                <MoreInfoCircleButton customizeClass={" scale-75"} />
+                <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
               </div>
             </div>
             <div>
