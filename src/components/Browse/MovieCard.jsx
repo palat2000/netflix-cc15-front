@@ -17,7 +17,7 @@ export default function MovieCard({ movie }) {
   const likeHistory = useSelector(
     (store) => store?.content?.data?.movie?.likeHistory
   );
-  console.log(likeHistory);
+  // console.log(likeHistory);
   const [isLike, setIsLike] = useState(likeHistory);
   const dispatch = useDispatch();
 
@@ -46,20 +46,20 @@ export default function MovieCard({ movie }) {
         movieId: movie.id,
       });
 
-      console.log("handleAddToMyList res =", res);
+      // console.log("handleAddToMyList res =", res);
       setIsAddToMyList(res.data.myList);
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    if (visible) {
-      dispatch(fetchContentAction(movie.id));
-    } else {
-      dispatch(setVideoId(null));
-    }
-  }, [visible]);
+  // useEffect(() => {
+  //   if (visible) {
+  //     dispatch(fetchContentAction(movie.id));
+  //   } else {
+  //     dispatch(setVideoId(null));
+  //   }
+  // }, [visible]);
 
   return (
     <motion.div
@@ -96,9 +96,9 @@ export default function MovieCard({ movie }) {
                     // handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
-                  <LikeButton movieId={movie.id} customizeClass={""} />
+                  <LikeButton movieId={movie.id} likeMovie={movie?.likeMovie} customizeClass={""} />
                 </div>
-                <MoreInfoCircleButton movieId={movie.id} customizeClass={" scale-75"} />
+                <MoreInfoCircleButton movieId={movie.id} likeMovie={movie.likeMovie} customizeClass={" scale-75"} />
               </div>
             </div>
             <div>

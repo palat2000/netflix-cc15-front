@@ -5,16 +5,23 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContentAction } from "../../store/slice/contentSlice";
 import { getLike } from "../../store/utils/contentApi";
+import { setLike } from "../../store/slice/allContentSlice";
+import setCurrenLike from "../../utils/setCurrenLike";
 
-export default function LikeButton({ customizeClass, movieId }) {
-  const likeHistory = useSelector(store => store?.content?.data?.movie?.likeHistory)
-  const [isLike, setIsLike] = useState(likeHistory)
+export default function LikeButton({ customizeClass, movieId, likeMovie }) {
+  console.log("🚀 ~ file: LikeButton.jsx:12 ~ LikeButton ~ likeMovie:", likeMovie)
+  // const likeHistory = useSelector(store => store?.content?.data?.movie?.likeHistory)
+  const allMovieData = useSelector(store => store?.allContent?.data?.movies)
+  const [isLike, setIsLike] = useState(likeMovie)
   const dispatch = useDispatch()
 
   const handleLike = async () => {
     try {
       const res = await axios.patch("/user-browse/like", { movieId: movieId });
+      console.log(res)
       setIsLike(res.data.likeData);
+      dispatch(setLike({ movieId: movieId, allMovieData: allMovieData, newLikeData: res.data.likeData }))
+      // setCurrenLike(movieId, allMovieData, res.data.likeData)
     } catch (err) {
       console.log(err);
     }
@@ -22,8 +29,9 @@ export default function LikeButton({ customizeClass, movieId }) {
 
   // useEffect(
   //   () => {
-  //     getLike(movieId).then(res => setIsLike(res?.likeHistory))
-  //   }, []
+  //     dispatch(setLike())
+  //     // getLike(movieId).then(res => setIsLike(res?.likeHistory))
+  //   }, [isLike]
   // )
 
   return (

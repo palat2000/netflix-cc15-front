@@ -26,7 +26,7 @@ const allContentSlice = createSlice({
   initialState,
   reducers: {
     setLike: (state, action) => {
-      state.data = setCurrenLike(action.payload.movieId, action.payload.allMovieData, action.payload.newLikeData)
+      state.data.movies = setCurrenLike(action.payload.movieId, action.payload.allMovieData, action.payload.newLikeData)
     }
   },
   extraReducers: (builder) => {
