@@ -55,25 +55,25 @@ function HomePage() {
                 membership.
               </div>
               <form onSubmit={handleSubmit(handleSubmitForm)}>
-                <div className="flex justify-center gap-2">
+                <div className="flex justify-center">
                   <div className=" text-white opacity-80 bg-gray-950  ">
-                    <input
+                    {/* <input
                       className={`  h-full rounded-md  border-2  bg-transparent px-3 outline-none text-white "
                         }`}
-                      placeholder="email"
-                      {...register("email", {
-                        required: "Email is required.",
-                        minLength: {
-                          value: 5,
-                          message:
-                            "Email should be between 5 and 50 characters",
-                        },
-                        pattern: {
-                          value: /\S+@\S+\.\S+/,
-                          message: "Entered value does not match email format",
-                        },
-                      })}
-                    />
+                      // placeholder="email"
+                      // {...register("email", {
+                      //   required: "Email is required.",
+                      //   minLength: {
+                      //     value: 5,
+                      //     message:
+                      //       "Email should be between 5 and 50 characters",
+                      //   },
+                      //   pattern: {
+                      //     value: /\S+@\S+\.\S+/,
+                      //     message: "Entered value does not match email format",
+                      //   },
+                      // })}
+                    /> */}
                   </div>
 
                   <button className=" font-light bg-red-600 py-1 px-4 rounded-md hover:bg-red-800">
