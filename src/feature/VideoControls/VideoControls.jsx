@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setVideoDuration } from "../../store/slice/watchPageSlice";
 import './VideoControls.css'
 import TimeProgress from "./TimeProgress";
@@ -11,10 +11,12 @@ import PlayBack10 from "../../components/Button/PlayBack10";
 import PlayAndPause from "./PlayPause";
 import FullAndExitScreen from "./FullAndExitScreen";
 import BackToBrowseButton from "../../components/Button/BackToBrowseButton";
+import { fetchAllContent } from "../../store/slice/allContentSlice";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
     const [isPlay, setIsPlay] = useState(false)
+    const navigate = useNavigate()
 
     const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
 
@@ -45,9 +47,13 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     return (
         <div className="text-[80%] absolute z-10 w-full h-full flex flex-col text-white justify-between items-center">
             <div id="top" className="flex w-full flex-row justify-between h-[10%] items-center">
-                <Link to={`/browse`}>
+                <div onClick={
+                    () => {
+                        navigate(`/browse`)
+                    }
+                }>
                     <BackToBrowseButton />
-                </Link>
+                </div>
             </div>
             <div onClick={clickTogglePlay} className="w-full h-full"></div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
