@@ -1,9 +1,10 @@
 import ContentModal from "../../feature/ContentModal";
 import MoreInfoButton from "../Button/MoreInfoButton";
-import MuteButton from "../button/MuteButton";
-import PlayButton from "../button/PlayButton";
+import MuteButton from "../Button/MuteButton";
+import PlayButton from "../Button/PlayButton";
 
-export default function ButtonMainTrailerGroup() {
+export default function ButtonMainTrailerGroup({ movie }) {
+  // const dispatch = useDispatch()
   return (
     <div>
       <div>
@@ -11,7 +12,7 @@ export default function ButtonMainTrailerGroup() {
           <div className="flex">
             <PlayButton customizeClass={"ml-0 "} />
             <div>
-              <ContentModal movieId={2}>
+              <ContentModal movieId={movie?.id}>
                 <MoreInfoButton customizeClass={"ml-0 p-10"} />
               </ContentModal>
             </div>

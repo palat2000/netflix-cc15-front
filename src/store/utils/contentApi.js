@@ -41,3 +41,9 @@ export const endWatching = async (videoData) => {
   console.log(res.data);
   return res.data;
 };
+
+export const getLike = async (movieId) => {
+  const res = await axios.get(`/user-browse/getLike/${movieId}`);
+  console.log('egt Like', res.data);
+  return res.data;
+}

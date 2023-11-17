@@ -1,8 +1,8 @@
-import { useState } from "react";
-import AddToListButton from "../components/button/AddToListButton";
-import HoverPlayButton from "../components/button/HoverPlayButton";
-import { useNavigate } from "react-router-dom";
-import MyListButton from "./MyListButton";
+import { useState } from "react"
+import AddToListButton from "../components/button/AddToListButton"
+import HoverPlayButton from "../components/button/HoverPlayButton"
+import { useNavigate } from "react-router-dom"
+import MyListButton from "./MyListButton"
 
 export default function MovieLikeThisBox({ movie }) {
   const [play, setPlay] = useState(false);

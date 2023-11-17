@@ -3,6 +3,7 @@ import axios from "../../config/axios";
 
 const initialState = {
   data: [],
+  expireAlert: null,
   loading: false,
 };
 
@@ -10,7 +11,7 @@ export const fetchNotification = createAsyncThunk(
   "notification/fetch",
   async (payload, thunkAPI) => {
     try {
-      const response = await axios.get("/user/notification");
+      const response = await axios.get("/user-browse/getNotification");
       return response.data;
     } catch (err) {
       console.log(thunkAPI.rejectWithValue(err.message));
@@ -26,7 +27,8 @@ const notificationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchNotification.fulfilled, (state, action) => {
-        state.data = action.payload.notification;
+        state.data = action.payload.newMovieIn7days;
+        state.expireAlert = action.payload.subscriptExpireIn7Days;
         state.loading = false;
       })
       .addCase(fetchNotification.pending, (state, action) => {

@@ -14,12 +14,14 @@ import { useLocation } from "react-router-dom";
 import {
   endWatchingAction,
   setRecentWatching,
+  setVideoId,
 } from "../store/slice/watchPageSlice";
 import LoadingPage from "./LoadingPage";
 import ContentModalDetail from "../feature/ContentModalDetail";
 
 function UserBrowsePage() {
   const dispatch = useDispatch();
+  const userProfile = useSelector(store=>store.user.data.userProfile)
   const movie = useSelector((state) => state.allContent.data);
   const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
 
@@ -41,7 +43,9 @@ function UserBrowsePage() {
   }, [movie?.movies?.top10]);
 
   useEffect(() => {
+    console.log('fetch content')
     dispatch(fetchAllContent());
+    dispatch(setVideoId(null))
     if (location.pathname !== recentWatch && haveRecentVideoData) {
       if (recentVideoData?.recentWatching === recentVideoData?.videoDuration) {
         dispatch(

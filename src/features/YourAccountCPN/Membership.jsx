@@ -61,7 +61,7 @@ export default function Membership() {
       <div className="flex-1">
         <div className="flex justify-between">
           <div>{user.email}</div>
-          <button className="text-blue-600 hover:underline">Your email</button>
+          {/* <button className="text-blue-600 hover:underline">Your email</button> */}
         </div>
         <div className="flex justify-between">
           <div className="flex text-gray-500">
@@ -69,7 +69,7 @@ export default function Membership() {
             <div>********</div>
           </div>
         </div>
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <div className="flex  text-gray-500">
             <div>Phone:</div>
             <div>{user.mobile}</div>
@@ -77,7 +77,7 @@ export default function Membership() {
           <button className="text-blue-600 hover:underline">
             Your Phone number
           </button>
-        </div>
+        </div> */}
         <hr className="mt-2 mb-2" />
         <div className="pb-3 pt-3">
           Expired in {new Date(user.expiredDate).toDateString()}

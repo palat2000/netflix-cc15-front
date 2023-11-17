@@ -1,7 +1,8 @@
+import LikeFeatureButton from "../../feature/LikeFeatureButton";
 import LikeButton from "../Button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
-import AddToListButton from "../button/AddToListButton";
+import AddToListButton from "../Button/AddToListButton";
 
 export default function ButtonMovieCardGroup() {
   return (

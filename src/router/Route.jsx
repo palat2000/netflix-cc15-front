@@ -43,17 +43,17 @@ const router = createBrowserRouter([
     path: "",
     element: (
       <Authenticated>
-        <Layout />
+        <LayoutStandAlone />
       </Authenticated>
     ),
     children: [
       {
-        path: "success",
-        element: <SuccessPage />,
-      },
-      {
         path: "package",
         element: <PackagePage />,
+      },
+      {
+        path: "success",
+        element: <SuccessPage />,
       },
     ],
   },

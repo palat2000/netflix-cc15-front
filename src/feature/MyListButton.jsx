@@ -1,5 +1,5 @@
 import IsInMyListButton from "../components/Button/IsInMyListButton"
-import AddToListButton from "../components/button/AddToListButton"
+import AddToListButton from "../components/Button/AddToListButton"
 import { editMylist } from "../store/utils/contentApi"
 import { useState } from "react"
 
