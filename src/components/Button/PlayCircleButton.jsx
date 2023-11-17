@@ -1,11 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchContentAction } from "../../store/slice/contentSlice";
 
-export default function PlayCircleButton({ customizeClass }) {
+export default function PlayCircleButton({ movieId, customizeClass }) {
   const navigate = useNavigate()
   const recentVideoId = useSelector(state => state?.content?.data?.movie?.recentWatchingEpisode?.videoId)
+  const dispatch = useDispatch()
+
+  // useEffect(
+  //   () => {
+  //     dispatch(fetchContentAction(movieId)).unwrap().then(res => console.log(res)).catch(err => console.log(err))
+  //   }, []
+  // )
 
   return (
     <div onClick={() => navigate(`/watch/${recentVideoId}`)}>

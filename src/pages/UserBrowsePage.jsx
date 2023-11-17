@@ -37,6 +37,8 @@ function UserBrowsePage() {
 
   const { error, loading, data } = useSelector((store) => store.allContent);
 
+  // const [randomMovie, setRandomMovie] = useState(null) 
+
   const randomMovie = useCallback(() => {
     const randomNumber = Math.floor(Math.random() * 6);
     setMainTrailerMovie(movie?.movies?.top10[randomNumber - 1]);
