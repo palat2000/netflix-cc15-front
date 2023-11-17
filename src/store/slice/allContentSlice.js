@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAllContent } from "../utils/contentApi";
+import setCurrenLike from "../../utils/setCurrenLike";
 
 const initialState = {
   error: null,
@@ -23,7 +24,11 @@ export const fetchAllContent = createAsyncThunk(
 const allContentSlice = createSlice({
   name: "allContent",
   initialState,
-  reducers: {},
+  reducers: {
+    setLike: (state, action) => {
+      state.data = setCurrenLike(action.payload.movieId, action.payload.allMovieData, action.payload.newLikeData)
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllContent.pending, (state, action) => {
@@ -44,4 +49,6 @@ const allContentSlice = createSlice({
   },
 });
 
+
+export const { setLike } = allContentSlice.actions
 export default allContentSlice.reducer;
