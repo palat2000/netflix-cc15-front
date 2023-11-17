@@ -14,6 +14,7 @@ import BackToBrowseButton from "../../components/Button/BackToBrowseButton";
 
 export default function VideoControls({ videoContainer, watchPlayer }) {
     const dispatch = useDispatch()
+    const [isPlay, setIsPlay] = useState(false)
 
     const recentWatching = useSelector(store => store?.watchPage?.videoData?.recentWatching)
 
@@ -27,13 +28,29 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
 
     const videoData = useSelector(store => store?.watchPage?.videoData?.fetchData?.videoData)
 
+    const clickTogglePlay = () => {
+        // watchPlayer.current.play()
+        setIsPlay(!isPlay)
+    }
+
+    useEffect(
+        () => {
+            if (isPlay) {
+                watchPlayer.current.pause()
+            } else {
+                watchPlayer.current.play()
+            }
+        }, [isPlay]
+    )
+
     return (
-        <div className="text-[80%] absolute z-10 w-full h-full flex flex-col text-white justify-between items-center gap-7">
+        <div className="text-[80%] absolute z-10 w-full h-full flex flex-col text-white justify-between items-center">
             <div id="top" className="flex w-full flex-row justify-between h-[10%] items-center">
                 <Link to={`/browse`}>
                     <BackToBrowseButton />
                 </Link>
             </div>
+            <div onClick={clickTogglePlay} className="w-full h-full"></div>
             <div id="bottom" className="flex flex-col w-full h-[13%]">
                 <TimeProgress watchPlayer={watchPlayer} />
                 <div id="bottom-under" className="flex w-full flex-row justify-between h-full items-center">
