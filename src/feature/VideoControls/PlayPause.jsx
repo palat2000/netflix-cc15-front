@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 export default function PlayAndPause({ watchPlayer }) {
-    const [isPlay, setIsPlay] = useState(true)
+    console.log("🚀 ~ file: PlayPause.jsx:6 ~ PlayAndPause ~ watchPlayer:", watchPlayer)
+    const [isPlay, setIsPlay] = useState(false)
 
     const clickPlay = () => {
         watchPlayer.current.play()

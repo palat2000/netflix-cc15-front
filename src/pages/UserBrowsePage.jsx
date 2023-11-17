@@ -43,7 +43,7 @@ function UserBrowsePage() {
   }, [movie?.movies?.top10]);
 
   useEffect(() => {
-    console.log("fetch content");
+    // console.log('fetch content')
     dispatch(fetchAllContent());
     dispatch(setVideoId(null));
     if (location.pathname !== recentWatch && haveRecentVideoData) {

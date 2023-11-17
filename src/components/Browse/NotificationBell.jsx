@@ -39,7 +39,7 @@ export default function NotificatioBell() {
                 <div className="flex">
                   <div className=" flex flex-col mx-10 ">
                     {expireAlert && <span>Expire in {expireAlert}</span>}
-                    {notification.map((noti, index) => (
+                    {notification?.map((noti, index) => (
                       <a
                         href=""
                         key={index}
