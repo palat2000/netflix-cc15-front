@@ -16,9 +16,19 @@ export default function AddToListButton({ movieId, handleClick, customizeClass }
     )
   };
 
+  useEffect(
+    () => {
+      getMyListById(movieId).then(res => {
+        // console.log(res)
+        setIsAddToMyList(res.isInMyList)
+      })
+    }, []
+  )
+
+
   return (
     <div className={`${customizeClass}`} onClick={handleAddToMyList}>
-      {isAddToMyList ?
+      {!isAddToMyList ?
         <FontAwesomeIcon
           icon={faPlus}
           className="text-neutral-300 bg-zinc-900 bg-opacity-80 border border-neutral-400 rounded-full  hover:text-neutral-300 hover:border-neutral-300 hover:bg-neutral-60  p-2"

@@ -5,10 +5,7 @@ import { useEffect } from "react";
 import { fetchContentAction } from "../../store/slice/contentSlice";
 
 export default function MainTrailer({ mainTrailerMovie }) {
-  console.log('zzzzzz', mainTrailerMovie)
-
   const dispatch = useDispatch()
-  // useSelector()
 
   useEffect(
     () => {
