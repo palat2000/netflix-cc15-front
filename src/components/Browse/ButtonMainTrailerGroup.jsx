@@ -1,10 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import ContentModal from "../../feature/ContentModal";
+import { mainTrailerMute, mainTrailerUnMute } from "../../store/slice/mainTrailerSlice";
 import MoreInfoButton from "../Button/MoreInfoButton";
 import MuteButton from "../Button/MuteButton";
 import PlayButton from "../Button/PlayButton";
+import SoundOnButton from "../Button/SoundOnButton";
 
 export default function ButtonMainTrailerGroup({ movie }) {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const mainTrailerIsMute = useSelector(store => store?.mainTrailer?.mainTrailerIsMute)
+  console.log("🚀 ~ file: ButtonMainTrailerGroup.jsx:12 ~ ButtonMainTrailerGroup ~ mainTrailerIsMute:", mainTrailerIsMute)
+
   return (
     <div>
       <div>
@@ -17,9 +23,15 @@ export default function ButtonMainTrailerGroup({ movie }) {
               </ContentModal>
             </div>
           </div>
-          <div>
-            <MuteButton />
-          </div>
+          {!mainTrailerIsMute ?
+            <div onClick={() => dispatch(mainTrailerMute())}>
+              <SoundOnButton />
+            </div>
+            :
+            <div onClick={() => dispatch(mainTrailerUnMute())}>
+              <MuteButton />
+            </div>
+          }
         </div>
       </div>
     </div>
