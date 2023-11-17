@@ -29,7 +29,6 @@ export default function VideoControls({ videoContainer, watchPlayer }) {
     const videoData = useSelector(store => store?.watchPage?.videoData?.fetchData?.videoData)
 
     const clickTogglePlay = () => {
-        // watchPlayer.current.play()
         setIsPlay(!isPlay)
     }
 
