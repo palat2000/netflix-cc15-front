@@ -57,7 +57,10 @@ function UserBrowsePage() {
           })
         )
           .unwrap()
-          .then((res) => console.log(res));
+          .then((res) => {
+            console.log(res)
+            dispatch(fetchAllContent())
+          });
       } else {
         dispatch(endWatchingAction(recentVideoData))
           .unwrap()
