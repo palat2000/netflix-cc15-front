@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 
 import MainTrailer from "../components/Browse/MainTrailer";
-import NavbarAdult from "../components/Browse/NavbarAdult";
 
 import MovieSlideTab from "../components/Browse/MovieSlideTab";
 import { useLocation } from "react-router-dom";
@@ -50,10 +49,6 @@ function TVShowsPage() {
 
   return (
     <div className="bg-black">
-      <NavbarAdult setSearch={setSearch} />
-      {/* <div className=" mx-10 z-50 fixed text-white ml-10 bottom-1/4 md:box-content  ">
-          TESTESTEST
-        </div> */}
       <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
       <div className="flex flex-col font-medium ml-10 ">
