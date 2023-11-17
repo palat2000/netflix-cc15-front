@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { removeAccessToken } from "../../utils/local-storage";
+import {
+  removeAccessToken,
+  removeChooseProfileAccessToken,
+} from "../../utils/local-storage";
 import NetflixLogo from "../../features/logo&button/NetflixLogo";
 import { useDispatch } from "react-redux";
 import { resetState } from "../../store/slice/authSlice";
@@ -22,6 +25,7 @@ function HeaderAuthPage({ isSignUp }) {
           <button
             onClick={() => {
               removeAccessToken();
+              removeChooseProfileAccessToken();
               dispatch(resetState());
               return navigate("/");
             }}
