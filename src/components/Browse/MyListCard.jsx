@@ -1,25 +1,24 @@
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ButtonMovieCardGroup from "./ButtonMovieCardGroup";
-import AddToListButton from "../Button/AddToListButton";
+import AddToListButton from "../button/AddToListButton";
 import PlayCircleButton from "../Button/PlayCircleButton";
-import LikeButton from "../Button/LikeButton";
+import LikeButton from "../button/LikeButton";
 import MoreInfoCircleButton from "../Button/MoreInfoCircleButton";
 import axios from "../../config/axios";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchContentAction } from "../../store/slice/contentSlice";
-import { setVideoId } from "../../store/slice/watchPageSlice";
 import LikeFeatureButton from "../../feature/LikeFeatureButton";
+import { useSelector } from "react-redux";
 
-export default function MovieCard({ movie }) {
+export default function MyListCard({ movie }) {
   const [visible, setVisible] = useState(false);
-  const likeHistory = useSelector(
-    (store) => store?.content?.data?.movie?.likeHistory
-  );
-  // console.log(likeHistory);
-  const [isLike, setIsLike] = useState(likeHistory);
-  const dispatch = useDispatch();
+
+  // const movieIsInMyListData = useSelector(
+  //   (state) => state?.content?.data?.movie?.inMyListHistory
+  // );
+  // const movieIsInLikeData = useSelector(
+  //   (state) => state?.content?.data?.movie?.likeHistory
+  // );
 
   const hoverStart = () => {
     setVisible(true);
@@ -29,14 +28,16 @@ export default function MovieCard({ movie }) {
     setVisible(false);
   };
 
-  // const handleLike = async () => {
-  //   try {
-  //     const res = await axios.patch("/user-browse/like", { movieId: movie.id });
-  //     setIsLike(res.data.likeData);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const [isLike, setIsLike] = useState(false);
+
+  const handleLike = async () => {
+    try {
+      const res = await axios.patch("/user-browse/like", { movieId: movie.id });
+      setIsLike(res.data.likeData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const [isAddToMyList, setIsAddToMyList] = useState(false);
 
@@ -46,38 +47,30 @@ export default function MovieCard({ movie }) {
         movieId: movie.id,
       });
 
-      // console.log("handleAddToMyList res =", res);
+      console.log("handleAddToMyList res =", res);
       setIsAddToMyList(res.data.myList);
     } catch (err) {
       console.log(err);
     }
   };
 
-  // useEffect(() => {
-  //   if (visible) {
-  //     dispatch(fetchContentAction(movie.id));
-  //   } else {
-  //     dispatch(setVideoId(null));
-  //   }
-  // }, [visible]);
-
   return (
     <motion.div
       whileHover={{
-        scale: 2,
+        scale: 1.5,
         // transitionDelay: "0.7s",
-        transitionDuration: "0.25s",
+        transitionDuration: "0.1s",
         zIndex: visible ? 99 : 1,
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
-      className="box w-fit absolute"
+      className="box w-fit "
     >
-      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-3">
+      <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-3 my-10">
         {visible ? (
           <>
             <video
-              className="rounded-t-md"
+              className="rounded-t-md "
               width="200"
               height="auto"
               muted
@@ -88,24 +81,36 @@ export default function MovieCard({ movie }) {
               <source src={movie?.trailer} type="video/mp4" />
             </video>
             <div className="flex flex-col  bg-zinc-900 ">
-              <div className="flex justify-between">
+              <div className="flex justify-between   ">
                 <div className="flex items-center">
                   <PlayCircleButton customizeClass={"-mr-1 scale-75"} />
                   <AddToListButton
-                    movieId={movie.id}
-                    // handleClick={handleAddToMyList}
+                    handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
-                  <LikeButton movieId={movie.id} likeMovie={movie?.likeMovie} customizeClass={""} />
+
+                  {/* <LikeFeatureButton
+                    movieId={movie.id}
+                    movieIsInLikeData={movieIsInLikeData}
+                  /> */}
+
+                  <LikeButton
+                    handleLike={handleLike}
+                    isLike={isLike}
+                    customizeClass={""}
+                  />
                 </div>
-                <MoreInfoCircleButton movieId={movie.id} likeMovie={movie.likeMovie} customizeClass={" scale-75"} />
+                <MoreInfoCircleButton
+                  movieId={movie?.id}
+                  customizeClass={" scale-75"}
+                />
               </div>
             </div>
             <div>
-              <div className=" text-white text-xs left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1 left-0 bottom-0 text-center">
                 {movie?.title}
               </div>
-              <div className=" text-white text-xs left-0 bottom-0">
+              <div className=" text-white text-xs/[5px] py-1  left-0 bottom-0 text-center">
                 {movie?.enumGenres}
               </div>
             </div>

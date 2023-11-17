@@ -20,13 +20,13 @@ export default function WhoIsWatching() {
   const user = useSelector((state) => {
     return state?.user;
   });
+  console.log(user);
 
   const navigate = useNavigate();
   const defaultImage =
     "https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png";
 
   const userData = user?.data?.allUserProfile;
-
 
   const handleChooseProfile = (id) => {
     dispatch(chooseUserProfileAction(id))
