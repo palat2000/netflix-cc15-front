@@ -20,8 +20,8 @@ export default function LikeButton({ customizeClass, movieId, likeMovie }) {
       const res = await axios.patch("/user-browse/like", { movieId: movieId });
       console.log(res)
       setIsLike(res.data.likeData);
-      // dispatch(setLike({ movieId: movieId, allMovieData: allMovieData, newLikeData: res.data.likeData }))
-      setCurrenLike(movieId, allMovieData, res.data.likeData)
+      dispatch(setLike({ movieId: movieId, allMovieData: allMovieData, newLikeData: res.data.likeData }))
+      // setCurrenLike(movieId, allMovieData, res.data.likeData)
     } catch (err) {
       console.log(err);
     }
