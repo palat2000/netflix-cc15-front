@@ -53,13 +53,13 @@ export default function MovieCard({ movie }) {
     }
   };
 
-  useEffect(() => {
-    if (visible) {
-      dispatch(fetchContentAction(movie.id));
-    } else {
-      dispatch(setVideoId(null));
-    }
-  }, [visible]);
+  // useEffect(() => {
+  //   if (visible) {
+  //     dispatch(fetchContentAction(movie.id));
+  //   } else {
+  //     dispatch(setVideoId(null));
+  //   }
+  // }, [visible]);
 
   return (
     <motion.div
