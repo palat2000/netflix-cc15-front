@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchAllContent } from "../store/slice/allContentSlice";
 
 import MainTrailer from "../components/Browse/MainTrailer";
-
+import NavbarAdult from "../components/Browse/NavbarAdult";
 import VDOSwiperSlides from "../components/Browse/VDOSwiperSlides";
 import ButtonMainTrailerGroup from "../components/Browse/ButtonMainTrailerGroup";
 import { editProfileAction } from "../store/slice/authSlice";
@@ -24,7 +24,7 @@ function UserBrowsePage() {
   const userProfile = useSelector(store=>store.user.data.userProfile)
   const movie = useSelector((state) => state.allContent.data);
   const modalIsOpen = useSelector((state) => state.content.modalIsOpen);
-
+  // const [search, setSearch] = useState(null);
   const [mainTrailerMovie, setMainTrailerMovie] = useState(null);
   const recentWatch = useSelector((state) => state?.watchPage?.onWatchPage);
   const recentVideoData = useSelector((state) => state?.watchPage?.videoData);
