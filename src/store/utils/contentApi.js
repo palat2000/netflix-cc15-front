@@ -1,7 +1,7 @@
 import axios from "../../config/axios";
 
 export const getAllContent = async (isTVShows) => {
-  const A = isTVShows ? `/user-browse/?isTVShow=${isTVShows}` : "/user-browse/";
+  const A = isTVShows ? `/user-browse/?${isTVShows}` : "/user-browse/";
 
   const res = await axios.get(A);
   return res.data;
@@ -44,6 +44,6 @@ export const endWatching = async (videoData) => {
 
 export const getLike = async (movieId) => {
   const res = await axios.get(`/user-browse/getLike/${movieId}`);
-  console.log('egt Like', res.data);
+  console.log("egt Like", res.data);
   return res.data;
-}
+};

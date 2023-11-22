@@ -37,7 +37,7 @@ function UserBrowsePage() {
 
   const { error, loading, data } = useSelector((store) => store.allContent);
 
-  // const [randomMovie, setRandomMovie] = useState(null) 
+  // const [randomMovie, setRandomMovie] = useState(null)
 
   const randomMovie = useCallback(() => {
     const randomNumber = Math.floor(Math.random() * 6);
@@ -58,8 +58,8 @@ function UserBrowsePage() {
         )
           .unwrap()
           .then((res) => {
-            console.log(res)
-            dispatch(fetchAllContent())
+            console.log(res);
+            dispatch(fetchAllContent());
           });
       } else {
         dispatch(endWatchingAction(recentVideoData))
@@ -82,10 +82,12 @@ function UserBrowsePage() {
       <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
       <div className="flex flex-col font-medium ml-10 ">
-        <MovieSlideTab
-          title="Continue Watching"
-          movie={movie?.movies?.continueWatching}
-        />
+        {movie?.movies?.continueWatching.length > 0 && (
+          <MovieSlideTab
+            title="Continue Watching"
+            movie={movie?.movies?.continueWatching}
+          />
+        )}
         <MovieSlideTab title="Top 10" movie={movie?.movies?.top10} />
         <MovieSlideTab
           title="New Releases"

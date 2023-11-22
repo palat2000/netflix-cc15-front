@@ -32,7 +32,11 @@ export default function MovieSlideTab({ movie, title }) {
         {movie &&
           movie?.map((m, i) => {
             return (
-              <SwiperSlide key={i} className="pt-16 mb-16 bg-black">
+              <SwiperSlide
+                key={i}
+                className="pt-16 mb-16"
+                style={{ backgroundColor: "black" }}
+              >
                 <MovieCard movie={m} />
               </SwiperSlide>
             );

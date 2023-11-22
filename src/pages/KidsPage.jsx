@@ -30,7 +30,7 @@ function KidsPage() {
   }, [movie?.movies?.kids]);
 
   useEffect(() => {
-    dispatch(fetchAllContent());
+    dispatch(fetchAllContent("kid=1"));
     console.log(location.pathname);
     console.log(recentWatch);
     if (location.pathname !== recentWatch && haveRecentVideoData) {
@@ -53,10 +53,12 @@ function KidsPage() {
       <MainTrailer mainTrailerMovie={mainTrailerMovie} />
 
       <div className="flex flex-col font-medium ml-10 ">
-        <MovieSlideTab
-          title="Continue Watching"
-          movie={movie?.movies?.continueWatching}
-        />
+        {movie?.movies?.continueWatching.length > 0 && (
+          <MovieSlideTab
+            title="Continue Watching"
+            movie={movie?.movies?.continueWatching}
+          />
+        )}
         <MovieSlideTab title="Top 10" movie={movie?.movies?.top10} />
         <MovieSlideTab
           title="New Releases"
