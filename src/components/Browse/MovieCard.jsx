@@ -62,7 +62,7 @@ export default function MovieCard({ movie }) {
       }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
-      className="box w-fit absolute"
+      className="box w-fit absolute bg-black"
     >
       <div className="relative flex flex-col rounded-md bg-zinc-900 w-fit -translate-y-3">
         {visible ? (
@@ -81,15 +81,26 @@ export default function MovieCard({ movie }) {
             <div className="flex flex-col  bg-zinc-900 ">
               <div className="flex justify-between">
                 <div className="flex items-center">
-                  <PlayCircleButton movieId={movie.id} customizeClass={"-mr-1 scale-75"} />
+                  <PlayCircleButton
+                    movieId={movie.id}
+                    customizeClass={"-mr-1 scale-75"}
+                  />
                   <AddToListButton
                     movieId={movie.id}
                     // handleClick={handleAddToMyList}
                     customizeClass={"scale-75"}
                   />
-                  <LikeButton movieId={movie.id} likeMovie={movie?.likeMovie} customizeClass={""} />
+                  <LikeButton
+                    movieId={movie.id}
+                    likeMovie={movie?.likeMovie}
+                    customizeClass={""}
+                  />
                 </div>
-                <MoreInfoCircleButton movieId={movie.id} likeMovie={movie.likeMovie} customizeClass={" scale-75"} />
+                <MoreInfoCircleButton
+                  movieId={movie.id}
+                  likeMovie={movie.likeMovie}
+                  customizeClass={" scale-75"}
+                />
               </div>
             </div>
             <div>
