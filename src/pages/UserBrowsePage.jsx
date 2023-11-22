@@ -88,17 +88,33 @@ function UserBrowsePage() {
             movie={movie?.movies?.continueWatching}
           />
         )}
-        <MovieSlideTab title="Top 10" movie={movie?.movies?.top10} />
-        <MovieSlideTab
-          title="New Releases"
-          movie={movie?.movies?.newReleases}
-        />
-        <MovieSlideTab title="Action" movie={movie?.movies?.action} />
-        <MovieSlideTab title="Sport" movie={movie?.movies?.sport} />
-        <MovieSlideTab title="Comedy" movie={movie?.movies?.comedy} />
-        <MovieSlideTab title="Horror" movie={movie?.movies?.horror} />
-        <MovieSlideTab title="Kids" movie={movie?.movies?.kids} />
-        <MovieSlideTab title="Romantic" movie={movie?.movies?.romantic} />
+        {movie?.movies?.top10?.length > 0 && (
+          <MovieSlideTab title="Top 10" movie={movie?.movies?.top10} />
+        )}
+        {movie?.movies?.newReleases?.length > 0 && (
+          <MovieSlideTab
+            title="New Releases"
+            movie={movie?.movies?.newReleases}
+          />
+        )}
+        {movie?.movies?.action?.length > 0 && (
+          <MovieSlideTab title="Action" movie={movie?.movies?.action} />
+        )}
+        {movie?.movies?.sport?.length > 0 && (
+          <MovieSlideTab title="Sport" movie={movie?.movies?.sport} />
+        )}
+        {movie?.movies?.comedy?.length > 0 && (
+          <MovieSlideTab title="Comedy" movie={movie?.movies?.comedy} />
+        )}
+        {movie?.movies?.horror?.length > 0 && (
+          <MovieSlideTab title="Horror" movie={movie?.movies?.horror} />
+        )}
+        {movie?.movies?.kids?.length > 0 && (
+          <MovieSlideTab title="Kids" movie={movie?.movies?.kids} />
+        )}
+        {movie?.movies?.romantic?.length > 0 && (
+          <MovieSlideTab title="Romantic" movie={movie?.movies?.romantic} />
+        )}
       </div>
       {modalIsOpen && <ContentModalDetail />}
     </div>
